@@ -8,11 +8,15 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
+
     "C:\\Users\\kamil\\.nuget\\packages\\": {}
+
+
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+
       "projectUniqueName": "C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
       "projectName": "WpfApp1",
       "projectPath": "C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
@@ -21,6 +25,7 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kamil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
