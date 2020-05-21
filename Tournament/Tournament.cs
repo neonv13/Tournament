@@ -1,0 +1,7 @@
+﻿namespace Tournament
+{
+    class Tournament { }
+
+
+
+}

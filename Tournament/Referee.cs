@@ -1,0 +1,5 @@
+﻿namespace Tournament
+{
+    class Referee
+    { }
+}
