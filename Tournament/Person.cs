@@ -2,7 +2,7 @@
 {
     abstract class Person
     { 
-    
+     private string name;
     
     }
 }
