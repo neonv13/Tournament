@@ -1,0 +1,8 @@
+﻿namespace Tournament
+{
+    class PlayerList
+    { }
+
+
+
+}

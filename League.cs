@@ -1,0 +1,6 @@
+﻿namespace Tournament
+{
+    class League { }
+
+
+}
