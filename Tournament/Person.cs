@@ -3,6 +3,8 @@
     abstract class Person
     { 
      private string name;
+     private string surname;
+    
     
     }
 }
