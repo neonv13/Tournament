@@ -1,4 +1,4 @@
-﻿namespace Tournament
+﻿namespace Tournament.Models
 {
     class MatchList { }
 
