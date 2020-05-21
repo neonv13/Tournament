@@ -8,6 +8,8 @@
     <Grid>
         <Label Content="PlayerName:" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Height="30" Width="77"/>
         <TextBox HorizontalAlignment="Left" Margin="92,34,0,0" Text="{Binding Player.Name, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Height="30"/>
-        <Button Content="Button" Command="{Binding UpdateCommand}" HorizontalAlignment="Left" Margin="216,34,0,0" VerticalAlignment="Top" Height="30" Width="67"/>
+        <Button Content="Update" Command="{Binding UpdateCommand}" HorizontalAlignment="Left" Margin="216,34,0,0" VerticalAlignment="Top" Height="30" Width="67"/>
+        <Label HorizontalAlignment="Left" Margin="10,10,0,0" Content="Player Name"  VerticalAlignment="Top" Height="24" Width="82"/>
+        <Label HorizontalAlignment="Left" Margin="92,10,0,0" Content="{Binding Player.Name}"  VerticalAlignment="Top" Height="24" Width="82"/>
     </Grid>
 </Window>
