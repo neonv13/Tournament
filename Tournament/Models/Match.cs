@@ -19,7 +19,7 @@ namespace Tournament.Models
         private int teamBScore;
         private readonly int teamA_ID;
         private readonly int teamB_ID;
-        private GameType typeOfGame;
+        private readonly GameType typeOfGame;
         private readonly int matchID;
         private readonly MatchRank matchRank;
         /// <summary>
@@ -33,6 +33,11 @@ namespace Tournament.Models
         {
             throw new System.NotImplementedException();
         }
+
+        /// <summary>
+        /// Simulates results of match and 
+        /// returns results(teamAscore,teamBscore) 
+        /// </summary>
         public void SymulateGame()
         {
             throw new System.NotImplementedException();
