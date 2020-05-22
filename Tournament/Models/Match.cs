@@ -12,16 +12,16 @@ namespace Tournament.Models
     }
     class Match
     {
-        private List<Referee> referees;
-        private List<Player> playersTeamA;
-        private List<Player> playersTeamB;
+        private readonly List<Referee> referees;
+        private readonly List<Player> playersTeamA;
+        private readonly List<Player> playersTeamB;
         private int teamAScore;
         private int teamBScore;
-        private int teamA_ID;
-        private int teamB_ID;
+        private readonly int teamA_ID;
+        private readonly int teamB_ID;
         private GameType typeOfGame;
-        private int matchID;
-        private MatchRank matchRank;
+        private readonly int matchID;
+        private readonly MatchRank matchRank;
         /// <summary>
         /// Initializes a new instance of Match 
         /// </summary>
