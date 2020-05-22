@@ -2,15 +2,15 @@
 {
     public class Player : Person
     {
-        private int _IndiwidualPionts;
+        private int indiwidualPionts;
         public Player(string name, string surname, int ID) : base(name, surname, ID)
         {
         }
 
         public int IndiwidualPionts {
-            get => _IndiwidualPionts;
+            get => indiwidualPionts;
             set { 
-                _IndiwidualPionts = value;
+                indiwidualPionts = value;
                 OnPropertyChanged("IndiwidualPionts");
             }
         }

@@ -1,6 +1,11 @@
 ﻿namespace Tournament.Models
 {
-    class RefereesList { }
+    class RefereesList
+    { 
+    
+    
+    
+    }
 
 
 

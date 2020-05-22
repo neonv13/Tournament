@@ -3,26 +3,27 @@ namespace Tournament.Models
 {
     using System;
     using System.ComponentModel;
-    public abstract class Person : INotifyPropertyChanged
+    public abstract class Person : INotifyPropertyChanged, IDataErrorInfo
     {
-        private string _name;
-        private string _surname;
-        private int _ID;
+        private string name;
+        private string surname;
+        private readonly int id;
         /// <summary>
         /// /Initalizes a new instance of Person.
         /// </summary>
-        public Person(string name, string surname, int ID) { 
-            _name = name;
-            _surname = surname;
-            _ID = ID; }
+        public Person(string name, string surname, int id) { 
+            this.name = name;
+            this.surname = surname;
+            this.id = id; }
+
         /// <summary>
         /// Gets or sets Person's Name
         /// </summary>
         public string Name {
-            get => _name;
+            get => name;
             set
             {
-                _name = value;
+                name = value;
                 OnPropertyChanged("Name");
             }
         }
@@ -30,10 +31,10 @@ namespace Tournament.Models
         /// Gets or sets Person's Surname
         /// </summary>
         public string Surname {
-            get => _surname;
+            get => surname;
             set
             {
-                _surname = value;
+                surname = value;
                 OnPropertyChanged("Surname");
             }
         }
@@ -43,20 +44,52 @@ namespace Tournament.Models
         /// Have to discuss method of giving ID to Person.
         /// !!!!
         /// </summary>
-        public int ID { 
-            get => _ID; 
-            set => _ID = value; 
-        }
+        public int ID { get => id; }
 
         #region INotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-            protected void OnPropertyChanged(string propertyName) {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
+
         #endregion
+
+        #region
+        public string this[string propertyName]
+        {
+            get 
+            {
+                if (propertyName == "Name")
+                {
+                    if (String.IsNullOrWhiteSpace(Name))
+                    {
+                        Error = "Name cannot be null empty";
+                    }
+                    else
+                    {
+                        Error = null;
+                    }
+                }
+                else if (propertyName == "Surname")
+                {
+                    if (String.IsNullOrWhiteSpace(Surname))
+                    {
+                        Error = "Surname cannot be null";
+                    }
+                    else
+                    {
+                        Error = null;
+                    }
+                }
+                return Error;
+            }
+
+        } 
+        public string Error { get; private set; }
+        #endregion
+
     }
 
 }

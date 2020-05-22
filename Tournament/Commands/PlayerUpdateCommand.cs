@@ -8,16 +8,15 @@ namespace Tournament.Commands
 {
     internal class PlayerUpdateCommand : ICommand
     {
+        private PlayerViewModel viewModel;
+     
         /// <summary>
         /// Initializes a new instance of PlayerUpdateCommand class.
         /// </summary>
-     
         public PlayerUpdateCommand(PlayerViewModel viewModel){
-            _ViewModel = viewModel;
+            this.viewModel = viewModel;
         }
 
-        private PlayerViewModel _ViewModel;
-        private ICommand command;
 
         #region ICommand Members
 
@@ -26,10 +25,10 @@ namespace Tournament.Commands
             remove { CommandManager.RequerySuggested -= value; ; }
         }
         public bool CanExecute(object parameter) {
-            return _ViewModel.CanUpdate;
+            return String.IsNullOrWhiteSpace(viewModel.Player.Error);
         }
         public void Execute(object parameter) { 
-            throw new NotImplementedException(); 
+            viewModel.SaveChanges(); 
         }
 
         #endregion

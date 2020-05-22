@@ -6,10 +6,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="PlayerName:" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Height="30" Width="77"/>
-        <TextBox HorizontalAlignment="Left" Margin="92,34,0,0" Text="{Binding Player.Name, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Height="30"/>
-        <Button Content="Update" Command="{Binding UpdateCommand}" HorizontalAlignment="Left" Margin="216,34,0,0" VerticalAlignment="Top" Height="30" Width="67"/>
-        <Label HorizontalAlignment="Left" Margin="10,10,0,0" Content="Player Name"  VerticalAlignment="Top" Height="24" Width="82"/>
-        <Label HorizontalAlignment="Left" Margin="92,10,0,0" Content="{Binding Player.Name}"  VerticalAlignment="Top" Height="24" Width="82"/>
+        <Label Content="PlayerName:" HorizontalAlignment="Left" Margin="12,34,0,0" VerticalAlignment="Top" Height="30" Width="78"/>
+        <TextBox HorizontalAlignment="Left" Margin="115,34,0,0" Text="{Binding Player.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Height="30"/>
+        <Button Content="Update" Command="{Binding UpdateCommand}" HorizontalAlignment="Left" Margin="244,34,0,0" VerticalAlignment="Top" Height="30" Width="67"/>
+        <Label HorizontalAlignment="Left" Margin="10,76,0,0" Content="Player Surname:"  VerticalAlignment="Top" Height="24" Width="95"/>
+        <TextBox HorizontalAlignment="Left" Margin="115,76,0,0" Text="{Binding Player.Surname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Height="30"/>
+        <Button Content="Update" Command="{Binding UpdateCommand}" HorizontalAlignment="Left" Margin="244,76,0,0" VerticalAlignment="Top" Height="30" Width="67"/>
+        <Label HorizontalAlignment="Left" Margin="115,5,0,0" Content="{Binding Player.ID}"  VerticalAlignment="Top" Height="24" Width="95"/>
+        <Label HorizontalAlignment="Left" Margin="10,5,0,0" Content="Player ID:"  VerticalAlignment="Top" Height="24" Width="95"/>
     </Grid>
 </Window>
