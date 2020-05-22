@@ -24,7 +24,9 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new instance of Match 
         /// </summary>
-        public Match(List<Player> player,List<Referee> referees, MatchRank matchRank,int teamA_ID,int teamB_ID, GameType gameType) 
+        public Match(List<Player> player, List<Referee> referees,
+                    MatchRank matchRank, int teamA_ID,
+                    int teamB_ID, GameType gameType)
         {
             throw new System.NotImplementedException();
         }
@@ -46,6 +48,11 @@ namespace Tournament.Models
         public GameType GameType
         {
             get => GameType;
+        }
+
+        public int TeamAScore
+        {
+            get => teamAScore; 
         }
     }
 
