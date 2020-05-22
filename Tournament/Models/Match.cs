@@ -13,7 +13,8 @@ namespace Tournament.Models
     class Match
     {
         private List<Referee> referees;
-        private List<Player> players;
+        private List<Player> playersTeamA;
+        private List<Player> playersTeamB;
         private int teamAScore;
         private int teamBScore;
         private int teamA_ID;
@@ -24,7 +25,9 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new instance of Match 
         /// </summary>
-        public Match(List<Player> player, List<Referee> referees,
+        public Match(List<Player> playersTeamA,
+                    List<Player>playersTeamB,
+                    List<Referee> referees,
                     MatchRank matchRank, int teamA_ID,
                     int teamB_ID, GameType gameType)
         {
@@ -49,11 +52,50 @@ namespace Tournament.Models
         {
             get => GameType;
         }
-
+        /// <summary>
+        /// Gets TeamAScore value
+        /// </summary>
         public int TeamAScore
         {
-            get => teamAScore; 
+            get => teamAScore;
         }
+        /// <summary>
+        /// Gets TeamBScore value
+        /// </summary>
+        public int TeamBScore
+        {
+            get => teamBScore;
+        }
+        /// <summary>
+        /// Gets TeamA ID value
+        /// </summary>
+        public int TeamA_ID
+        {
+            get => teamA_ID;
+        }
+        /// <summary>
+        /// Gets TeamB ID value
+        /// </summary>
+        public int TeamB_ID
+        {
+            get => teamB_ID;
+        }
+        /// <summary>
+        /// Gets a List<Players> of TeamA  
+        /// </summary>
+        public List<Player> PlayersTeamA
+        {
+            get => playersTeamA;
+        }
+        /// <summary>
+        /// Gets a List<Players> of TeamB
+        /// </summary>
+        public List<Player> PlayersTeamB
+        {
+            get => playersTeamB;
+        }
+
+
     }
 
 
