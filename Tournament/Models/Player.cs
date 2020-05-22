@@ -2,16 +2,18 @@
 {
     public class Player : Person
     {
-        private int indiwidualPionts;
+        private int individualPoints;
         public Player(string name, string surname, int ID) : base(name, surname, ID)
         {
         }
-
-        public int IndiwidualPionts {
-            get => indiwidualPionts;
+        /// <summary>
+        /// Gets or sets IndividualPoints 
+        /// </summary>
+        public int IndividualPoints {
+            get => individualPoints;
             set { 
-                indiwidualPionts = value;
-                OnPropertyChanged("IndiwidualPionts");
+                individualPoints = value;
+                OnPropertyChanged("IndividualPoints");
             }
         }
     }
