@@ -14,9 +14,18 @@ namespace Tournament.Models
             do
             {
                 randID = random.Next(0, 1000);
-                foreach (var player in playerList.PlayersList)
-                    if (randID == player.ID)
-                        FreeID = false;
+                if (playerList.PlayersList != null)
+                {
+                    foreach (var player in playerList.PlayersList)
+                        if (randID == player.ID)
+                            FreeID = false;
+                }
+                else
+                {
+                    ID = randID;
+                    FreeID = false;
+                    break;
+                }
             } while (FreeID == false);
             if (FreeID)
                 ID = randID;
