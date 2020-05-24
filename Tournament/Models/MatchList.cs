@@ -3,21 +3,21 @@ using System.Collections.Generic;
 
 namespace Tournament.Models
 {
-    class MatchesList
+    class MatchList
     {
         private List<Match> matchList;
 
         /// <summary>
         /// Initalizes a new instance of MatchList
         /// </summary>
-        public MatchesList()
+        public MatchList()
         {
             var matchList = new List<Match>();
         }
         /// <summary>
         /// Gets a MatchList value (List<Match>)  
         /// </summary>
-        public List<Match> GetMatchesList 
+        public List<Match> GetMatchList 
         {
             get => matchList;
         }
@@ -26,17 +26,17 @@ namespace Tournament.Models
         /// </summary>
         public void AddMatch(Match match) 
         {
-            if (!GetMatchesList.Contains(match))
+            if (!GetMatchList.Contains(match))
                 matchList.Add(match);
         }
         /// <summary>
         /// Saves MatchList to specified file
         /// </summary>
-        public void SaveMatchList(string path, MatchesList matchesList) 
+        public void SaveMatchList(string path, MatchList MatchList) 
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
             {
-                foreach(var match in matchesList.GetMatchesList)
+                foreach(var match in MatchList.GetMatchList)
                 {
                     file.WriteLine("StartMatchData");
                     file.WriteLine("MatchID: " + match.MatchID);
@@ -64,7 +64,7 @@ namespace Tournament.Models
             };
         }
 
-        public List<Match> LoadMatchesList(string path, PlayerList playersList, RefereesList refereesList)
+        public List<Match> LoadMatchList(string path, PlayerList playersList, RefereesList refereesList)
         {
             var matchList = new List<Match>();
             var playersA = new List<Player>();
