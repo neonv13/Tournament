@@ -23,6 +23,7 @@ namespace Tournament.Models
         private GameType gameType;
         private int matchID;
         private MatchRank matchRank;
+
         /// <summary>
         /// Initializes a new instance of Match 
         /// </summary> 
@@ -30,7 +31,7 @@ namespace Tournament.Models
                     List<Player> playersTeamB,
                     List<Referee> referees,
                     MatchRank matchRank, int teamA_ID,
-                    int teamB_ID, GameType gameType, PlayerList playerList)
+                    int teamB_ID, GameType gameType, List<Match> matchList)
         {
 
             Random random = new Random();
@@ -39,8 +40,8 @@ namespace Tournament.Models
             do
             {
                 randID = random.Next(0, 1000);
-                foreach (var match in playerList.PlayersList)
-                    if (randID == match.ID)
+                foreach (var match in matchList)
+                    if (randID == match.MatchID)
                         FreeID = false;
             } while (FreeID == false);
              if (FreeID)
