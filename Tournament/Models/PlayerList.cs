@@ -4,7 +4,7 @@ namespace Tournament.Models
 {
     public class PlayerList
     {
-        private readonly List<Player> players;
+        private List<Player> players;
         private int count;
         /// <summary>
         /// Initializes a new instance of PlayerList.
@@ -32,28 +32,33 @@ namespace Tournament.Models
         /// </summary>
         public int Count
         {
-            get => count; 
+            get => count;
+            private set => count = value;
         }
         /// <summary>
         /// Gets a List of Players in PlayersList
         /// </summary>
         public List<Player> PlayersList { 
             get => players;
+            private set => players = value;
         }
         /// <summary>
         /// Adds a Player to PlayerList
         /// </summary>
         public void AddPlayer(Player Player)
         {
-            if(!IsThere(Player))
+            if (!PlayersList.Contains(Player))
+            {
                 players.Add(Player);
+                Count++;
+            }
         }
         /// <summary>
         /// Removes a Player form PlayersList
         /// </summary>
         public void RemovePlayer(Player Player)
         {
-            if(IsThere(Player))
+            if(Count > 0 && PlayersList.Contains(Player))
                 players.Remove(Player);
         }
         /// <summary>
@@ -61,19 +66,13 @@ namespace Tournament.Models
         /// </summary>
         public void RemovePlayer(int id)
         {
-            throw new System.NotImplementedException();
+            if (Count > 0 && PlayersList.Contains(FindPlayerByID(id)))
+            {
+                PlayersList.Remove(FindPlayerByID(id));
+                Count--;
+            }
         }
-        /// <summary>
-        /// Returns true (if Player already occurs in PlayerList)
-        /// or false (Player does not occurs in PlayerList)
-        /// </summary>
-        public bool IsThere(Player Player) 
-        {
-            if (players.Contains(Player)) 
-                return true;
-            else 
-                return false;
-        }
+        
         /// <summary>
         /// Saves PlayersList to file form given path
         /// </summary>

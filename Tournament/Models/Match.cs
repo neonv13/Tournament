@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Tournament.Models
 {
@@ -19,7 +20,7 @@ namespace Tournament.Models
         private int teamBScore;
         private int teamA_ID;
         private int teamB_ID;
-        private GameType typeOfGame;
+        private GameType gameType;
         private int matchID;
         private MatchRank matchRank;
         /// <summary>
@@ -29,9 +30,29 @@ namespace Tournament.Models
                     List<Player> playersTeamB,
                     List<Referee> referees,
                     MatchRank matchRank, int teamA_ID,
-                    int teamB_ID, GameType gameType)
+                    int teamB_ID, GameType gameType, PlayerList playerList)
         {
-            throw new System.NotImplementedException();
+
+            Random random = new Random();
+            int randID;
+            bool FreeID = true;
+            do
+            {
+                randID = random.Next(0, 1000);
+                foreach (var match in playerList.PlayersList)
+                    if (randID == match.ID)
+                        FreeID = false;
+            } while (FreeID == false);
+             if (FreeID)
+                MatchID = randID;
+
+            PlayersTeamA = playersTeamA;
+            PlayersTeamB = playersTeamB;
+            Referees = referees;
+            TeamA_ID = teamA_ID;
+            TeamB_ID = teamB_ID;
+            GameType = gameType;
+            MatchRank = matchRank;
         }
         /// <summary>
         /// Gets a Referees List  of Match
@@ -76,13 +97,15 @@ namespace Tournament.Models
         public MatchRank MatchRank
         {
             get => matchRank;
+            private set => matchRank = value;
         }
         /// <summary>
         /// Gets a GameType value of match
         /// </summary>
         public GameType GameType
         {
-            get => typeOfGame;
+            get => gameType;
+            private set => gameType = value;
         }
         /// <summary>
         /// Gets TeamAScore value
@@ -106,6 +129,8 @@ namespace Tournament.Models
         public int TeamA_ID
         {
             get => teamA_ID;
+            private set => teamA_ID = value;
+
         }
         /// <summary>
         /// Gets TeamB ID value
@@ -113,6 +138,8 @@ namespace Tournament.Models
         public int TeamB_ID
         {
             get => teamB_ID;
+            private set => teamB_ID = value;
+
         }
         /// <summary>
         /// Gets a List<Players> of TeamA  
@@ -120,6 +147,8 @@ namespace Tournament.Models
         public List<Player> PlayersTeamA
         {
             get => playersTeamA;
+            private set => playersTeamA = value;
+
         }
         /// <summary>
         /// Gets a List<Players> of TeamB
@@ -127,6 +156,8 @@ namespace Tournament.Models
         public List<Player> PlayersTeamB
         {
             get => playersTeamB;
+            private set => playersTeamB = value;
+
         }
 
     }
