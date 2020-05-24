@@ -40,11 +40,20 @@ namespace Tournament.Models
             do
             {
                 randID = random.Next(0, 1000);
-                foreach (var match in matchList)
-                    if (randID == match.MatchID)
-                        FreeID = false;
+                if (matchList != null)
+                {
+                    foreach (var match in matchList)
+                        if (randID == match.MatchID)
+                            FreeID = false;
+                }
+                else
+                {
+                    MatchID = randID;
+                    FreeID = false;
+                    break;
+                }
             } while (FreeID == false);
-             if (FreeID)
+            if (FreeID)
                 MatchID = randID;
 
             PlayersTeamA = playersTeamA;

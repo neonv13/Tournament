@@ -95,10 +95,12 @@ namespace Tournament.Models
         /// <summary>
         /// Loads a PlayersList from a file from given path
         /// </summary>
-        public void LoadPlayersList(string path)
+        public PlayerList LoadPlayersList(string path)
         {
+            PlayerList playerList = new PlayerList();
             using (System.IO.StreamReader file = new System.IO.StreamReader(path))
             {
+
                 int id = 0;
                 string name = string.Empty;
                 string surname = string.Empty;
@@ -130,6 +132,7 @@ namespace Tournament.Models
                                     {
                                         Player player = new Player(name, surname, null);
                                         player.ID = id;
+                                        playerList.AddPlayer(player);
                                     }
                                     break;
                                 }
@@ -138,7 +141,9 @@ namespace Tournament.Models
                 }
                 file.Close();
             }
+            return playerList;
         }
+
 
 
     }
