@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Tournament.Models
 {
@@ -31,15 +32,131 @@ namespace Tournament.Models
         /// <summary>
         /// Saves MatchList to specified file
         /// </summary>
-        public void SaveMatchList(string path) 
+        public void SaveMatchList(string path, MatchesList matchesList) 
         {
-            throw new System.NotImplementedException();
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            {
+                foreach(var match in matchesList.GetMatchesList)
+                {
+                    file.WriteLine("StartMatchData");
+                    file.WriteLine("MatchID: " + match.MatchID);
+                    file.WriteLine("MatchRank: " + match.MatchRank);
+                    file.WriteLine("GameType: " + match.GameType);
+                    file.WriteLine("TeamA_ID: " + match.TeamA_ID);
+                    file.WriteLine("TeamB_ID: " + match.TeamB_ID);
+                    file.WriteLine("TeamAScore: " + match.TeamAScore);
+                    file.WriteLine("TeamBScore: " + match.TeamBScore);
+                    foreach (var player in match.PlayersTeamA)
+                    {
+                        file.WriteLine("TeamAPlayerID: " + player.ID);
+                    }
+                    foreach (var player in match.PlayersTeamB)
+                    {
+                        file.WriteLine("TeamBPlayerID: " + player.ID);
+                    }
+                    foreach (var referee in match.Referees)
+                    {
+                        file.WriteLine("RefereeID: " + referee.ID);
+                    }
+                    file.WriteLine("EndMatchData");
+                }
+                file.Close();
+            };
         }
 
-        public List<Match> LoadMatchesList(string path)
+        public List<Match> LoadMatchesList(string path, PlayerList playersList, RefereesList refereesList)
         {
-            throw new System.NotImplementedException(); 
-           
+            var matchList = new List<Match>();
+            var playersA = new List<Player>();
+            var playersB = new List<Player>();
+            var referees = new List<Referee>();
+            MatchRank matchRank = 0;
+            int teamA_ID = 0;
+            int teamB_ID = 0;
+            GameType typeOfGame =0;
+            int matchID = 0;
+            int teamAScore = 0;
+            int teamBScore = 0;
+
+            using (System.IO.StreamReader file = new System.IO.StreamReader(path)) 
+            {
+                string line;
+                while ((line = file.ReadLine() ) != null)
+                {
+                    string[] words = line.Split(" ");
+                    if(words.Length > 1)
+                        switch (words[0])
+                        {
+                            case "MatchID":
+                                {
+                                    matchID = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "MatchRank":
+                                {
+                                    matchRank = (MatchRank)Enum.Parse(typeof(MatchRank),words[1]);
+                                    break;
+                                }
+                            case "GameType":
+                                {
+                                    typeOfGame = (GameType)Enum.Parse(typeof(GameType), words[1]);
+                                    break;
+                                }
+                            case "TeamA_ID":
+                                {
+                                    teamA_ID = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "TeamB_ID":
+                                {
+                                    teamB_ID = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "TeamAScore":
+                                {
+                                    teamAScore = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "TeamBScore":
+                                {
+                                    teamBScore = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "TeamAPlayerID":
+                                {
+                                    playersA.Add(playersList.FindPlayerByID(int.Parse(words[1])));
+                                    break;
+                                }
+                            case "TeamBPlayerID":
+                                {
+                                    playersB.Add(playersList.FindPlayerByID(int.Parse(words[1])));
+                                    break;
+                                }
+                            case "Referee":
+                                {
+                                    referees.Add(refereesList.FindRefeereByID(int.Parse(words[1])));
+                                    break;
+                                }
+
+                            case "EndMatchData":
+                                {
+
+                                    var match = new Match(playersA,playersB,referees,matchRank,teamA_ID,teamB_ID,typeOfGame);
+                                    match.ReadMatch(teamAScore,teamBScore,matchID);
+                                    matchList.Add(match);
+                                    break;
+                                }
+                        }
+
+                }
+
+
+
+
+
+                file.Close();
+            };
+            return matchList;
         }
     
     }

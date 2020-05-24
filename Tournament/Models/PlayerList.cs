@@ -9,11 +9,23 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new instance of PlayerList.
         /// </summary>
-        public PlayerList() 
+        public PlayerList()
         {
             var players = new List<Player>();
             count = 0;
 
+        }
+        /// <summary>
+        /// Retruns a instance of Player that has given ID
+        /// </summary>
+        public Player FindPlayerByID(int id)
+        {
+            foreach (var player in PlayersList)
+            {
+                if (player.ID == id)
+                    return player;
+            }
+            return null;
         }
         /// <summary>
         /// Gets a value of Players in PlayersList

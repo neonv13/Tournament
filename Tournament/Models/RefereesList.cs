@@ -12,6 +12,7 @@ namespace Tournament.Models
         /// Initializes a new istance of RefereesList
         /// </summary>
         public List<Referee> Referees { get => referees; }
+        public IEnumerable<object> RefereeList { get; private set; }
 
         /// <summary>
         /// Adds Referee to RefereesList
@@ -20,7 +21,19 @@ namespace Tournament.Models
         {
             referees.Add(referee);
         }
-    
+        /// <summary>
+        /// Retruns a instance of Player that has given ID
+        /// </summary>
+        public Referee FindRefeereByID(int id)
+        {
+            foreach (var referee in referees)
+            {
+                if (referee.ID == id)
+                    return referee;
+            }
+            return null;
+        }
+
     }
 
 
