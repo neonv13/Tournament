@@ -111,17 +111,17 @@ namespace Tournament.Models
                     if (words.Length > 1)
                         switch (words[0])
                         {
-                            case "PlayerID":
+                            case "PlayerID:":
                                 {
                                     id = int.Parse(words[1]);
                                     break;
                                 }
-                            case "PlayerName":
+                            case "PlayerName:":
                                 {
                                     name = words[1];
                                     break;
                                 }
-                            case "PlayerSurname":
+                            case "PlayerSurname:":
                                 {
                                     surname = words[1];
                                     break;
