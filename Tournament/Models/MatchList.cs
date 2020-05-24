@@ -51,11 +51,11 @@ namespace Tournament.Models
         /// <summary>
         /// Saves a MatchList to specified file
         /// </summary>
-        public void SaveMatchList(string path, MatchList MatchList) 
+        public void SaveMatchList(string path) 
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
             {
-                foreach(var match in MatchList.GetMatchList)
+                foreach(var match in GetMatchList)
                 {
                     file.WriteLine("StartMatchData");
                     file.WriteLine("MatchID: " + match.MatchID);
