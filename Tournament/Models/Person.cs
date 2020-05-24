@@ -7,19 +7,23 @@ namespace Tournament.Models
     {
         private string name;
         private string surname;
-        private readonly int id;
+        private int id;
+
         /// <summary>
         /// /Initalizes a new instance of Person.
         /// </summary>
-        public Person(string name, string surname, int id) { 
+        public Person(string name, string surname, int id) 
+        { 
             this.name = name;
             this.surname = surname;
-            this.id = id; }
+            this.id = id;
+        }
 
         /// <summary>
         /// Gets or sets Person's Name
         /// </summary>
-        public string Name {
+        public string Name
+        {
             get => name;
             set
             {
@@ -30,7 +34,8 @@ namespace Tournament.Models
         /// <summary>
         /// Gets or sets Person's Surname
         /// </summary>
-        public string Surname {
+        public string Surname 
+        {
             get => surname;
             set
             {
@@ -44,7 +49,11 @@ namespace Tournament.Models
         /// Have to discuss method of giving ID to Person.
         /// !!!!
         /// </summary>
-        public int ID { get => id; }
+        public int ID
+        {
+            get => id; 
+            protected set => id = value; 
+        }
 
         #region INotifyPropertyChanged Members
 

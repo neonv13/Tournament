@@ -3,7 +3,7 @@
 namespace Tournament.Models
 {
     using System.Collections.Generic;
-    class RefereesList
+    public class RefereeList
     {
 
         private List<Referee> referees;
@@ -11,15 +11,14 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new istance of RefereesList
         /// </summary>
-        public List<Referee> Referees { get => referees; }
-        public IEnumerable<object> RefereeList { get; private set; }
+        public List<Referee> RefereesList { get => referees;  }
 
         /// <summary>
         /// Adds Referee to RefereesList
         /// </summary>
         public void AddReferee(Referee referee)
         {
-            referees.Add(referee);
+            RefereesList.Add(referee);
         }
         /// <summary>
         /// Retruns a instance of Player that has given ID

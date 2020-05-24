@@ -64,7 +64,7 @@ namespace Tournament.Models
             };
         }
 
-        public List<Match> LoadMatchList(string path, PlayerList playersList, RefereesList refereesList)
+        public List<Match> LoadMatchList(string path, PlayerList playersList, RefereeList refereesList)
         {
             var matchList = new List<Match>();
             var playersA = new List<Player>();
@@ -124,24 +124,24 @@ namespace Tournament.Models
                                 }
                             case "TeamAPlayerID":
                                 {
-                                    playersA.Add(playersList.FindPlayerByID(int.Parse(words[1])));
+                                    //playersA.Add(playersList.FindPlayerByID(int.Parse(words[1])));
                                     break;
                                 }
                             case "TeamBPlayerID":
                                 {
-                                    playersB.Add(playersList.FindPlayerByID(int.Parse(words[1])));
+                                    //playersB.Add(playersList.FindPlayerByID(int.Parse(words[1])));
                                     break;
                                 }
                             case "Referee":
                                 {
-                                    referees.Add(refereesList.FindRefeereByID(int.Parse(words[1])));
+                                    //referees.Add(refereesList.FindRefeereByID(int.Parse(words[1])));
                                     break;
                                 }
 
                             case "EndMatchData":
                                 {
 
-                                    var match = new Match(playersA,playersB,referees,matchRank,teamA_ID,teamB_ID,typeOfGame);
+                                    var match = new Match(playersA,playersB,referees,matchRank,teamA_ID,teamB_ID,typeOfGame, GetMatchList);
                                     match.ReadMatch(teamAScore,teamBScore,matchID);
                                     matchList.Add(match);
                                     break;

@@ -1,10 +1,25 @@
-﻿namespace Tournament.Models
+﻿using System;
+
+namespace Tournament.Models
 {
     public class Player : Person
     {
         private int individualPoints;
-        public Player(string name, string surname, int ID) : base(name, surname, ID)
+
+        public Player(string name, string surname, PlayerList playerList) : base(name, surname, 0)
         {
+            Random random = new Random();
+            int randID;
+            bool FreeID = true;
+            do
+            {
+                randID = random.Next(0, 1000);
+                foreach (var player in playerList.PlayersList)
+                    if (randID == player.ID)
+                        FreeID = false;
+            } while (FreeID == false);
+            if (FreeID)
+                ID = randID;
         }
         /// <summary>
         /// Gets or sets IndividualPoints 
