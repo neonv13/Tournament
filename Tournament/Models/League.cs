@@ -1,6 +1,15 @@
 ﻿namespace Tournament.Models
 {
-    class League { }
+    class League {
 
+
+        private MatchList matchesPlanned;
+
+
+
+
+    }
+
+    
 
 }
