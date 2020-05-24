@@ -13,7 +13,7 @@ namespace Tournament.Models
         /// </summary>
         public MatchList()
         {
-            var matchList = new List<Match>();
+            matchList = new List<Match>();
         }
         /// <summary>
         /// Gets a MatchList value (List<Match>)  

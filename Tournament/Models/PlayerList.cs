@@ -11,7 +11,7 @@ namespace Tournament.Models
         /// </summary>
         public PlayerList()
         {
-            var players = new List<Player>();
+            players = new List<Player>();
             count = 0;
 
         }
