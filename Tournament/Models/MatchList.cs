@@ -6,6 +6,7 @@ namespace Tournament.Models
     class MatchList
     {
         private List<Match> matchList;
+        private int count;
 
         /// <summary>
         /// Initalizes a new instance of MatchList
@@ -17,12 +18,18 @@ namespace Tournament.Models
         /// <summary>
         /// Gets a MatchList value (List<Match>)  
         /// </summary>
+        public int Count
+        {
+            get => count;
+            private set => count = value;
+        }
         public List<Match> GetMatchList 
         {
             get => matchList;
+            private set => matchList = value;
         }
         /// <summary>
-        /// Adds Match to MatchList instance
+        /// Adds a Match instance to MatchList instance
         /// </summary>
         public void AddMatch(Match match) 
         {
@@ -30,7 +37,19 @@ namespace Tournament.Models
                 matchList.Add(match);
         }
         /// <summary>
-        /// Saves MatchList to specified file
+        /// Removes a Match instance form MatchList instance
+        /// </summary>
+        public void RemoveMatch(Match match)
+        {
+            if (Count > 0 && GetMatchList.Contains(match))
+                matchList.Remove(match);        
+        }
+
+
+
+
+        /// <summary>
+        /// Saves a MatchList to specified file
         /// </summary>
         public void SaveMatchList(string path, MatchList MatchList) 
         {
