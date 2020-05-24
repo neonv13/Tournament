@@ -52,7 +52,7 @@ namespace Tournament.Models
         public int ID
         {
             get => id; 
-            protected set => id = value; 
+            set => id = value; 
         }
 
         #region INotifyPropertyChanged Members

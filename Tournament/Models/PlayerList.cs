@@ -38,7 +38,8 @@ namespace Tournament.Models
         /// <summary>
         /// Gets a List of Players in PlayersList
         /// </summary>
-        public List<Player> PlayersList { 
+        public List<Player> PlayersList 
+        { 
             get => players;
             private set => players = value;
         }
@@ -78,14 +79,65 @@ namespace Tournament.Models
         /// </summary>
         public void SavePlayersList(string path)
         {
-            throw new System.NotImplementedException();
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            {
+                foreach (var player in PlayersList)
+                {
+                    file.WriteLine("PlayerID: " + player.ID);
+                    file.WriteLine("PlayerName: " + player.Name);
+                    file.WriteLine("PlayerSurname: " + player.Surname);
+                    file.WriteLine("PlayerPoints: " + player.IndividualPoints);
+                    file.WriteLine("EndPlayer");
+                }
+                file.Close();
+            }
         }
         /// <summary>
         /// Loads a PlayersList from a file from given path
         /// </summary>
         public void LoadPlayersList(string path)
         {
-            throw new System.NotImplementedException();
+            using (System.IO.StreamReader file = new System.IO.StreamReader(path))
+            {
+                int id = 0;
+                string name = string.Empty;
+                string surname = string.Empty;
+                string text;
+                while ((text = file.ReadLine()) != null)
+                {
+                    string[] words = text.Split(" ");
+                    if (words.Length > 1)
+                        switch (words[0])
+                        {
+                            case "PlayerID":
+                                {
+                                    id = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "PlayerName":
+                                {
+                                    name = words[1];
+                                    break;
+                                }
+                            case "PlayerSurname":
+                                {
+                                    surname = words[1];
+                                    break;
+                                }
+                            case "EndPlayer":
+                                {
+                                    if (id != 0 && name != string.Empty && surname != string.Empty)
+                                    {
+                                        Player player = new Player(name, surname, null);
+                                        player.ID = id;
+                                    }
+                                    break;
+                                }
+                        }
+
+                }
+                file.Close();
+            }
         }
 
 

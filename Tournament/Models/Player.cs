@@ -28,7 +28,7 @@ namespace Tournament.Models
             get => individualPoints;
             set { 
                 individualPoints = value;
-                OnPropertyChanged("IndividualPoints");
+                //OnPropertyChanged("IndividualPoints");
             }
         }
     }
