@@ -104,34 +104,41 @@ namespace Tournament.Models
                 int id = 0;
                 string name = string.Empty;
                 string surname = string.Empty;
-                string text;
-                while ((text = file.ReadLine()) != null)
+                int points = 0;
+                string text = string.Empty;
+                while ((text = file.ReadLine()) != null && text != "EndTeam")
                 {
                     string[] words = text.Split(" ");
-                    if (words.Length > 1)
                         switch (words[0])
                         {
-                            case "PlayerID":
+                            case "PlayerID:":
                                 {
                                     id = int.Parse(words[1]);
                                     break;
                                 }
-                            case "PlayerName":
+                            case "PlayerName:":
                                 {
                                     name = words[1];
                                     break;
                                 }
-                            case "PlayerSurname":
+                            case "PlayerSurname:":
                                 {
                                     surname = words[1];
                                     break;
                                 }
+                            case "PlayerPoints:": 
+                                {
+                                    points = int.Parse(words[1]);
+                                    break;
+                                }
+
                             case "EndPlayer":
                                 {
                                     if (id != 0 && name != string.Empty && surname != string.Empty)
                                     {
                                         Player player = new Player(name, surname, null);
                                         player.ID = id;
+                                        player.IndividualPoints = points;
                                         playerList.AddPlayer(player);
                                     }
                                     break;

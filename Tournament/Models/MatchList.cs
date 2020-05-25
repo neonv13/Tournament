@@ -65,17 +65,43 @@ namespace Tournament.Models
                     file.WriteLine("TeamB_ID: " + match.TeamB_ID);
                     file.WriteLine("TeamAScore: " + match.TeamAScore);
                     file.WriteLine("TeamBScore: " + match.TeamBScore);
-                    foreach (var player in match.PlayersTeamA)
+                    if (match.PlayersTeamA.Count > 0)
                     {
-                        file.WriteLine("TeamAPlayerID: " + player.ID);
+                        file.WriteLine("TeamA:");
+                        foreach (var player in match.PlayersTeamA)
+                        {
+                            file.WriteLine("PlayerID: " + player.ID);
+                            file.WriteLine("PlayerName: " + player.Name);
+                            file.WriteLine("PlayerSurname: " + player.Surname);
+                            file.WriteLine("PlayerPoints: " + player.IndividualPoints);
+                            file.WriteLine("EndPlayer");
+                        }
+                        file.WriteLine("EndTeam");
                     }
-                    foreach (var player in match.PlayersTeamB)
+                    if (match.PlayersTeamB.Count > 0)
                     {
-                        file.WriteLine("TeamBPlayerID: " + player.ID);
+                        file.WriteLine("TeamB:");
+                        foreach (var player in match.PlayersTeamA)
+                        {
+                            file.WriteLine("PlayerID: " + player.ID);
+                            file.WriteLine("PlayerName: " + player.Name);
+                            file.WriteLine("PlayerSurname: " + player.Surname);
+                            file.WriteLine("PlayerPoints: " + player.IndividualPoints);
+                            file.WriteLine("EndPlayer");
+                        }
+                        file.WriteLine("EndTeam");
                     }
-                    foreach (var referee in match.Referees)
+                    if (match.Referees.Count > 0)
                     {
-                        file.WriteLine("RefereeID: " + referee.ID);
+                        file.WriteLine("Referees");
+                        foreach (var referee in match.Referees)
+                        {
+                            file.WriteLine("RefereeID: " + referee.ID);
+                            file.WriteLine("RefereeName: " + referee.Name);
+                            file.WriteLine("RefereeSurname: " + referee.Surname);
+                            file.WriteLine("EndReferee");
+                        }
+                        file.WriteLine("EndReferees");
                     }
                     file.WriteLine("EndMatchData");
                 }
@@ -85,9 +111,9 @@ namespace Tournament.Models
 
         public List<Match> LoadMatchList(string path)
         {
-            var playersA = new List<Player>();
-            var playersB = new List<Player>();
-            var referees = new List<Referee>();
+            var playersA = new PlayerList();
+            var playersB = new PlayerList();
+            var referees = new RefereeList();
             MatchRank matchRank = 0;
             int teamA_ID = 0;
             int teamB_ID = 0;
@@ -139,38 +165,32 @@ namespace Tournament.Models
                                     teamBScore = int.Parse(words[1]);
                                     break;
                                 }
-                            case "TeamAPlayerID:":
+                            case "TeamA:":
                                 {
-                                    //playersA.Add(playersList.FindPlayerByID(int.Parse(words[1])));
+                                    playersA.LoadPlayersList(path);
                                     break;
                                 }
-                            case "TeamBPlayerID:":
+                            case "TeamB:":
                                 {
-                                    //playersB.Add(playersList.FindPlayerByID(int.Parse(words[1])));
+                                    playersB.LoadPlayersList(path);
                                     break;
                                 }
                             case "Referee:":
                                 {
-                                    //referees.Add(refereesList.FindRefeereByID(int.Parse(words[1])));
+                                    referees.LoadRefereeList(path);
                                     break;
                                 }
 
                             case "EndMatchData":
                                 {
 
-                                    var match = new Match(playersA,playersB,referees,matchRank,teamA_ID,teamB_ID,typeOfGame, GetMatchList);
+                                    var match = new Match(playersA.PlayersList,playersB.PlayersList,referees.RefereesList,matchRank,teamA_ID,teamB_ID,typeOfGame, GetMatchList);
                                     match.ReadMatch(teamAScore,teamBScore,matchID);
                                     matchList.Add(match);
                                     break;
                                 }
                         }
-
                 }
-
-
-
-
-
                 file.Close();
             };
             return matchList;

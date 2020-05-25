@@ -71,9 +71,67 @@ namespace Tournament.Models
             }
         }
 
-
+        public void SaveRefereeList(string path)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            {
+                foreach (var referee in RefereesList)
+                {
+                    file.WriteLine("RefereeID: " + referee.ID);
+                    file.WriteLine("RefereeName: " + referee.Name);
+                    file.WriteLine("RefereeSurname: " + referee.Surname);
+                    file.WriteLine("EndReferee");
+                }
+                file.Close();
+            }
+        }
+        /// <summary>
+        /// Loads RefereeList object from a specified file
+        /// </summary>
+        public RefereeList LoadRefereeList(string path)
+        {
+            RefereeList refereeList = new RefereeList();
+            using (System.IO.StreamReader file = new System.IO.StreamReader(path))
+            {
+                int id = 0;
+                string name = string.Empty;
+                string surname = string.Empty;
+                string text = string.Empty;
+                while ((text = file.ReadLine()) != null && text != "EndReferees")
+                {
+                    string[] words = text.Split(" ");
+                        switch (words[0])
+                        {
+                            case "RefereeID:":
+                                {
+                                    id = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "RefereeName:":
+                                {
+                                    name = words[1];
+                                    break;
+                                }
+                            case "RefereeSurname:":
+                                {
+                                    surname = words[1];
+                                    break;
+                                }
+                            case "EndReferee":
+                                {
+                                    if (id != 0 && name != string.Empty && surname != string.Empty)
+                                    {
+                                        Referee referee = new Referee(name, surname, null);
+                                        referee.ID = id;
+                                        refereeList.AddReferee(referee);
+                                    }
+                                    break;
+                                }
+                        }
+                }
+                file.Close();
+            }
+            return refereeList;
+        }
     }
-
-
-
 }
