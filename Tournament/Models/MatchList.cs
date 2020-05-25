@@ -85,7 +85,6 @@ namespace Tournament.Models
 
         public List<Match> LoadMatchList(string path, PlayerList playersList, RefereeList refereesList)
         {
-            var matchList = new List<Match>();
             var playersA = new List<Player>();
             var playersB = new List<Player>();
             var referees = new List<Referee>();
@@ -103,7 +102,6 @@ namespace Tournament.Models
                 while ((line = file.ReadLine() ) != null)
                 {
                     string[] words = line.Split(" ");
-                    if(words.Length > 1)
                         switch (words[0])
                         {
                             case "MatchID:":
