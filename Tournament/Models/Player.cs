@@ -30,6 +30,7 @@ namespace Tournament.Models
             if (FreeID)
                 ID = randID;
         }
+       
         /// <summary>
         /// Gets or sets IndividualPoints 
         /// </summary>

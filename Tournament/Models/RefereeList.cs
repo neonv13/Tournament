@@ -14,12 +14,19 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new istance of RefereesList
         /// </summary>
-        public List<Referee> RefereesList { get => referees;  }
+        public RefereeList()
+        {
+            referees = new List<Referee>();
+        }
+        /// <summary>
+        /// Gets Refrees List value
+        /// </summary>
+        public List<Referee> RefereesList { get => referees; }
 
         /// <summary>
         /// Adds Referee to RefereesList
         /// </summary>
-        
+
         public void AddReferee(Referee referee)
         {
             RefereesList.Add(referee);
@@ -100,34 +107,34 @@ namespace Tournament.Models
                 while ((text = file.ReadLine()) != null && text != "EndReferees")
                 {
                     string[] words = text.Split(" ");
-                        switch (words[0])
-                        {
-                            case "RefereeID:":
+                    switch (words[0])
+                    {
+                        case "RefereeID:":
+                            {
+                                id = int.Parse(words[1]);
+                                break;
+                            }
+                        case "RefereeName:":
+                            {
+                                name = words[1];
+                                break;
+                            }
+                        case "RefereeSurname:":
+                            {
+                                surname = words[1];
+                                break;
+                            }
+                        case "EndReferee":
+                            {
+                                if (id != 0 && name != string.Empty && surname != string.Empty)
                                 {
-                                    id = int.Parse(words[1]);
-                                    break;
+                                    Referee referee = new Referee(name, surname, null);
+                                    referee.ID = id;
+                                    refereeList.AddReferee(referee);
                                 }
-                            case "RefereeName:":
-                                {
-                                    name = words[1];
-                                    break;
-                                }
-                            case "RefereeSurname:":
-                                {
-                                    surname = words[1];
-                                    break;
-                                }
-                            case "EndReferee":
-                                {
-                                    if (id != 0 && name != string.Empty && surname != string.Empty)
-                                    {
-                                        Referee referee = new Referee(name, surname, null);
-                                        referee.ID = id;
-                                        refereeList.AddReferee(referee);
-                                    }
-                                    break;
-                                }
-                        }
+                                break;
+                            }
+                    }
                 }
                 file.Close();
             }

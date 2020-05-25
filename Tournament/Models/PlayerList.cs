@@ -38,8 +38,8 @@ namespace Tournament.Models
         /// <summary>
         /// Gets a List of Players in PlayersList
         /// </summary>
-        public List<Player> PlayersList 
-        { 
+        public List<Player> PlayersList
+        {
             get => players;
             private set => players = value;
         }
@@ -59,7 +59,7 @@ namespace Tournament.Models
         /// </summary>
         public void RemovePlayer(Player Player)
         {
-            if(Count > 0 && PlayersList.Contains(Player))
+            if (Count > 0 && PlayersList.Contains(Player))
                 players.Remove(Player);
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace Tournament.Models
                 Count--;
             }
         }
-        
+
         /// <summary>
         /// Saves PlayersList to file form given path
         /// </summary>
@@ -95,7 +95,7 @@ namespace Tournament.Models
         /// <summary>
         /// Loads a PlayersList from a file from given path
         /// </summary>
-        public PlayerList LoadPlayersList(string path)
+        public PlayerList LoadPlayersList(string path, string endstring)
         {
             PlayerList playerList = new PlayerList();
             using (System.IO.StreamReader file = new System.IO.StreamReader(path))
@@ -106,44 +106,44 @@ namespace Tournament.Models
                 string surname = string.Empty;
                 int points = 0;
                 string text = string.Empty;
-                while ((text = file.ReadLine()) != null && text != "EndTeam")
+                while ((text = file.ReadLine()) != null && text != endstring)
                 {
                     string[] words = text.Split(" ");
-                        switch (words[0])
-                        {
-                            case "PlayerID:":
-                                {
-                                    id = int.Parse(words[1]);
-                                    break;
-                                }
-                            case "PlayerName:":
-                                {
-                                    name = words[1];
-                                    break;
-                                }
-                            case "PlayerSurname:":
-                                {
-                                    surname = words[1];
-                                    break;
-                                }
-                            case "PlayerPoints:": 
-                                {
-                                    points = int.Parse(words[1]);
-                                    break;
-                                }
+                    switch (words[0])
+                    {
+                        case "PlayerID:":
+                            {
+                                id = int.Parse(words[1]);
+                                break;
+                            }
+                        case "PlayerName:":
+                            {
+                                name = words[1];
+                                break;
+                            }
+                        case "PlayerSurname:":
+                            {
+                                surname = words[1];
+                                break;
+                            }
+                        case "PlayerPoints:":
+                            {
+                                points = int.Parse(words[1]);
+                                break;
+                            }
 
-                            case "EndPlayer":
+                        case "EndPlayer":
+                            {
+                                if (id != 0 && name != string.Empty && surname != string.Empty)
                                 {
-                                    if (id != 0 && name != string.Empty && surname != string.Empty)
-                                    {
-                                        Player player = new Player(name, surname, null);
-                                        player.ID = id;
-                                        player.IndividualPoints = points;
-                                        playerList.AddPlayer(player);
-                                    }
-                                    break;
+                                    Player player = new Player(name, surname, null);
+                                    player.ID = id;
+                                    player.IndividualPoints = points;
+                                    playerList.AddPlayer(player);
                                 }
-                        }
+                                break;
+                            }
+                    }
 
                 }
                 file.Close();

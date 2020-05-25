@@ -23,7 +23,10 @@ namespace Tournament.Models
             get => count;
             private set => count = value;
         }
-        public List<Match> GetMatchList 
+        /// <summary>
+        /// Gets or Sets List<Match> value
+        /// </summary>
+        public List<Match> GetMatchList
         {
             get => matchList;
             private set => matchList = value;
@@ -31,7 +34,7 @@ namespace Tournament.Models
         /// <summary>
         /// Adds a Match instance to MatchList instance
         /// </summary>
-        public void AddMatch(Match match) 
+        public void AddMatch(Match match)
         {
             if (!GetMatchList.Contains(match))
                 matchList.Add(match);
@@ -42,7 +45,7 @@ namespace Tournament.Models
         public void RemoveMatch(Match match)
         {
             if (Count > 0 && GetMatchList.Contains(match))
-                matchList.Remove(match);        
+                matchList.Remove(match);
         }
 
 
@@ -51,11 +54,11 @@ namespace Tournament.Models
         /// <summary>
         /// Saves a MatchList to specified file
         /// </summary>
-        public void SaveMatchList(string path) 
+        public void SaveMatchList(string path)
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
             {
-                foreach(var match in GetMatchList)
+                foreach (var match in GetMatchList)
                 {
                     file.WriteLine("StartMatchData");
                     file.WriteLine("MatchID: " + match.MatchID);
@@ -67,7 +70,7 @@ namespace Tournament.Models
                     file.WriteLine("TeamBScore: " + match.TeamBScore);
                     if (match.PlayersTeamA.Count > 0)
                     {
-                        file.WriteLine("TeamA:");
+                        file.WriteLine("TeamA");
                         foreach (var player in match.PlayersTeamA)
                         {
                             file.WriteLine("PlayerID: " + player.ID);
@@ -76,12 +79,12 @@ namespace Tournament.Models
                             file.WriteLine("PlayerPoints: " + player.IndividualPoints);
                             file.WriteLine("EndPlayer");
                         }
-                        file.WriteLine("EndTeam");
+                        file.WriteLine("EndTeamA");
                     }
                     if (match.PlayersTeamB.Count > 0)
                     {
-                        file.WriteLine("TeamB:");
-                        foreach (var player in match.PlayersTeamA)
+                        file.WriteLine("TeamB");
+                        foreach (var player in match.PlayersTeamB)
                         {
                             file.WriteLine("PlayerID: " + player.ID);
                             file.WriteLine("PlayerName: " + player.Name);
@@ -89,11 +92,11 @@ namespace Tournament.Models
                             file.WriteLine("PlayerPoints: " + player.IndividualPoints);
                             file.WriteLine("EndPlayer");
                         }
-                        file.WriteLine("EndTeam");
+                        file.WriteLine("EndTeamB");
                     }
                     if (match.Referees.Count > 0)
                     {
-                        file.WriteLine("Referees");
+                        file.WriteLine("Referee:");
                         foreach (var referee in match.Referees)
                         {
                             file.WriteLine("RefereeID: " + referee.ID);
@@ -108,8 +111,54 @@ namespace Tournament.Models
                 file.Close();
             };
         }
+        private void LoadPlayer(System.IO.StreamReader file, string endstring, PlayerList players ) 
+        {
+            int id = 0;
+            string name = string.Empty;
+            string surname = string.Empty;
+            int points = 0;
+            string text1;
+            while ((text1 = file.ReadLine()) != null && text1 != endstring)
+            {
+                string[] word = text1.Split(" ");
+                switch (word[0])
+                {
+                    case "PlayerID:":
+                        {
+                            id = int.Parse(word[1]);
+                            break;
+                        }
+                    case "PlayerName:":
+                        {
+                            name = word[1];
+                            break;
+                        }
+                    case "PlayerSurname:":
+                        {
+                            surname = word[1];
+                            break;
+                        }
+                    case "PlayerPoints:":
+                        {
+                            points = int.Parse(word[1]);
+                            break;
+                        }
 
-        public List<Match> LoadMatchList(string path)
+                    case "EndPlayer":
+                        {
+                            if (id != 0 && name != string.Empty && surname != string.Empty)
+                            {
+                                Player player = new Player(name, surname, null);
+                                player.ID = id;
+                                player.IndividualPoints = points;
+                                players.AddPlayer(player);
+                            }
+                            break;
+                        }
+                }
+            }
+        }
+        public void LoadMatchList(string path)
         {
             var playersA = new PlayerList();
             var playersB = new PlayerList();
@@ -117,85 +166,87 @@ namespace Tournament.Models
             MatchRank matchRank = 0;
             int teamA_ID = 0;
             int teamB_ID = 0;
-            GameType typeOfGame =0;
+            GameType typeOfGame = 0;
             int matchID = 0;
             int teamAScore = 0;
             int teamBScore = 0;
 
-            using (System.IO.StreamReader file = new System.IO.StreamReader(path)) 
+            using (System.IO.StreamReader file = new System.IO.StreamReader(path))
             {
                 string line;
-                while ((line = file.ReadLine() ) != null)
+                while ((line = file.ReadLine()) != null)
                 {
                     string[] words = line.Split(" ");
-                        switch (words[0])
-                        {
-                            case "MatchID:":
-                                {
-                                    matchID = int.Parse(words[1]);
-                                    break;
-                                }
-                            case "MatchRank:":
-                                {
-                                    matchRank = (MatchRank)Enum.Parse(typeof(MatchRank),words[1]);
-                                    break;
-                                }
-                            case "GameType:":
-                                {
-                                    typeOfGame = (GameType)Enum.Parse(typeof(GameType), words[1]);
-                                    break;
-                                }
-                            case "TeamA_ID:":
-                                {
-                                    teamA_ID = int.Parse(words[1]);
-                                    break;
-                                }
-                            case "TeamB_ID:":
-                                {
-                                    teamB_ID = int.Parse(words[1]);
-                                    break;
-                                }
-                            case "TeamAScore:":
-                                {
-                                    teamAScore = int.Parse(words[1]);
-                                    break;
-                                }
-                            case "TeamBScore:":
-                                {
-                                    teamBScore = int.Parse(words[1]);
-                                    break;
-                                }
-                            case "TeamA:":
-                                {
-                                    playersA.LoadPlayersList(path);
-                                    break;
-                                }
-                            case "TeamB:":
-                                {
-                                    playersB.LoadPlayersList(path);
-                                    break;
-                                }
-                            case "Referee:":
-                                {
-                                    referees.LoadRefereeList(path);
-                                    break;
-                                }
+                    switch (words[0])
+                    {
+                        case "MatchID:":
+                            {
+                                matchID = int.Parse(words[1]);
+                                break;
+                            }
+                        case "MatchRank:":
+                            {
+                                matchRank = (MatchRank)Enum.Parse(typeof(MatchRank), words[1]);
+                                break;
+                            }
+                        case "GameType:":
+                            {
+                                typeOfGame = (GameType)Enum.Parse(typeof(GameType), words[1]);
+                                break;
+                            }
+                        case "TeamA_ID:":
+                            {
+                                teamA_ID = int.Parse(words[1]);
+                                break;
+                            }
+                        case "TeamB_ID:":
+                            {
+                                teamB_ID = int.Parse(words[1]);
+                                break;
+                            }
+                        case "TeamAScore:":
+                            {
+                                teamAScore = int.Parse(words[1]);
+                                break;
+                            }
+                        case "TeamBScore:":
+                            {
+                                teamBScore = int.Parse(words[1]);
+                                break;
+                            }
+                        case "TeamA":
+                            {
+                                string endstring = "End" + words[0];
+                                LoadPlayer(file, endstring, playersA);
+                                break;
+                            }
+                        case "TeamB":
+                            {
+                                string endstring = "End" + words[0];
+                                LoadPlayer(file, endstring, playersB);
+                                break;
+                            }
+                        case "Referee:":
+                            {
+                                referees = referees.LoadRefereeList(path);
+                                break;
+                            }
 
-                            case "EndMatchData":
-                                {
+                        case "EndMatchData":
+                            {
 
-                                    var match = new Match(playersA.PlayersList,playersB.PlayersList,referees.RefereesList,matchRank,teamA_ID,teamB_ID,typeOfGame, GetMatchList);
-                                    match.ReadMatch(teamAScore,teamBScore,matchID);
-                                    matchList.Add(match);
-                                    break;
-                                }
-                        }
+                                var match = new Match(playersA.PlayersList, playersB.PlayersList, referees.RefereesList, matchRank, teamA_ID, teamB_ID, typeOfGame, GetMatchList);
+                                match.ReadMatch(teamAScore, teamBScore, matchID);
+                                matchList.Add(match);
+                                break;
+                            }
+                    }
                 }
                 file.Close();
             };
-            return matchList;
+            GetMatchList = matchList;
         }
-    
+
     }
 
 
