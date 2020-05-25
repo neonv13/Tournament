@@ -83,7 +83,7 @@ namespace Tournament.Models
             };
         }
 
-        public List<Match> LoadMatchList(string path, PlayerList playersList, RefereeList refereesList)
+        public List<Match> LoadMatchList(string path)
         {
             var playersA = new List<Player>();
             var playersB = new List<Player>();
