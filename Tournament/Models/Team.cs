@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Documents;
+
 
 namespace Tournament.Models
 {
@@ -7,27 +9,69 @@ namespace Tournament.Models
     {
 
         private string teamName;
+        private int idTeam;
+        private List<Player> players;
+        private int pointEarned;
+
+        /// <summary>
+        /// Create a new team
+        /// </summary>
+        public Team(string team_name, List<Team> teamLists) 
+        {
+            Random random = new Random();
+            int randID;
+            bool FreeID = true;
+            do
+            {
+                randID = random.Next(0, 1000);
+                if (teamLists != null)
+                {
+                    foreach (var team in teamLists)
+                        {
+                            if (randID == team.IdTeam)
+                            FreeID = false;
+                        }
+                }
+                else
+                {
+                    IdTeam = randID;
+                    FreeID = false;
+                    break;
+                }
+            } while (FreeID == false);
+            IdTeam = randID;
+            PointEarned = 0;
+            TeamName = team_name;
+        }
+
+        /// <summary>
+        /// Create a new team with setted value of sets
+        /// </summary>
+        public Team(string tName, int id, List<Player> players, int point)
+        {
+            this.teamName = tName;
+            this.idTeam = id;
+            this.players = players;
+            this.pointEarned = point;
+        }
 
         /// <summary>
         /// Initializes a TeamName
         /// </summary>
         public string TeamName { get => teamName; set => teamName = value; }
 
-        private List<Player> players;
 
         /// <summary>
         /// Initializes a new istance of Players
         /// </summary>
         public List<Player> PlayersList { get => players; }
 
-        private int pointEarned;
 
         /// <summary>
         /// Initializes a PointEarned
         /// </summary>
-        private int PointEarned { get => pointEarned; set => pointEarned = value; }
+        public int PointEarned { get => pointEarned; set => pointEarned = value; }
 
-        private int idTeam;
 
         /// <summary>
         /// Initializes a IdTeam
