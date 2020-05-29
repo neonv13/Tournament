@@ -7,7 +7,9 @@ namespace Tournament.Models
 
 
         private MatchList matchesPlanned;
-
+        /// <summary>
+        /// Initializes a League instance
+        /// </summary>
         public League(TeamList teams, RefereeList referees, GameType gameType, MatchRank matchRank)
         {
             if (teams.GetTeamsList.Count >= 2)
@@ -35,6 +37,9 @@ namespace Tournament.Models
                 }
             }
         }
+        /// <summary>
+        /// Return IEnumerable<Match> value of symulated matches
+        /// </summary>
         public IEnumerable<Match> SymulateLeague()
         {
             foreach (var match in matchesPlanned.GetMatchList)

@@ -9,10 +9,11 @@ namespace Tournament.Models
     class Tournament 
     {
         MatchList matchHistory;
-        TeamList teamList;
         RefereeList refereeList;
         GameType gameType;
-
+        /// <summary>
+        /// Initializes a new Instance of Tournament
+        /// </summary>
         public Tournament(TeamList teamList, RefereeList refereeList, GameType gameType) 
         { 
             League league = new League(teamList,refereeList,gameType,MatchRank.GroupStage);
@@ -20,7 +21,10 @@ namespace Tournament.Models
             matchHistory.GetMatchList.AddRange(league.SymulateLeague());
         }
 
-            
+        /// <summary>
+        /// Symulate a Final or Semifinal results of match.
+        /// Returns winner Team value or null if it was draw
+        /// </summary>
         public Team FinalOrSemi(Team teamA, Team teamB,MatchRank matchRank)
         {
             Match match = new Match(teamA.PlayersList,teamB.PlayersList,refereeList.RefereesList,
@@ -38,7 +42,6 @@ namespace Tournament.Models
                 return null;
                 
         }
-            
     
         
     

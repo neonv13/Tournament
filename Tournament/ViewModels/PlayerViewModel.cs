@@ -16,8 +16,9 @@ namespace Tournament.Views
         /// <summary>
         /// Initializes a new instane of CustomerViewModel class.
         /// </summary>
-        public PlayerViewModel() {
-            player = new Player("Kamil", "Kośko", 1);
+        public PlayerViewModel() 
+        {
+            player = new Player("Kamil", "Kośko", null);
             childViewModel = new PlayerInfoViewModel();
             UpdateCommand = new PlayerUpdateCommand(this);
         }
@@ -26,13 +27,16 @@ namespace Tournament.Views
         /// <summary>
         /// Gets the person instance
         /// </summary>
-        public Player Player {
-           get => player; }
+        public Player Player 
+        {
+           get => player;
+        }
 
         /// <summary>
         /// Gets the UpdateCommand for the viewmodel.
         /// </summary>
-        public ICommand UpdateCommand { 
+        public ICommand UpdateCommand
+        { 
             get;
             private set;
         }
@@ -40,7 +44,8 @@ namespace Tournament.Views
         /// <summary>
         /// Saves changed made to the Player instance.
         /// </summary>
-        public void SaveChanges() {
+        public void SaveChanges() 
+        {
             PlayerInfoView view = new PlayerInfoView();
             view.DataContext = childViewModel;
 
