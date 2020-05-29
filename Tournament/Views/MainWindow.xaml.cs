@@ -23,5 +23,13 @@ namespace Tournament.Views
         {
             Main.Content = new TeamsView();
         }
+        private void Button_Click_Matches(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new MatchesView();
+        }
+        private void Button_Click_Players(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new PlayersView();
+        }
     }
 }

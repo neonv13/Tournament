@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="900">
     <Grid >
-        <Frame x:Name="Main" Margin=" 115,0,0,0" NavigationUIVisibility="Hidden">
+        <Frame x:Name="Main" Margin="112,0,0,0" NavigationUIVisibility="Hidden">
         </Frame>
 
         <StackPanel Background="#2a2bc5" HorizontalAlignment="Left" MinWidth ="80" VerticalAlignment="Stretch">
@@ -42,8 +42,9 @@
                         BorderThickness="0"
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center" 
-                        Foreground="White" Click="Button_Click_Teams">
-                        Teams
+                        Foreground="White" 
+                        Click="Button_Click_Teams">
+                    Teams
                     </Button>
                 </Border>
                 <Border 
@@ -60,7 +61,8 @@
                         BorderThickness="0" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center" 
-                        Foreground="White">
+                        Foreground="White"
+                        Click="Button_Click_Players">
                         Players
                     </Button>
                 </Border>
@@ -78,7 +80,8 @@
                         BorderThickness="0" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center" 
-                        Foreground="White">
+                        Foreground="White"
+                        Click="Button_Click_Matches">
                         Matches
                     </Button>
                 </Border>

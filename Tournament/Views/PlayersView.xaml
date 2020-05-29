@@ -1,4 +1,4 @@
-﻿<Page x:Class="Tournament.Views.TournamentView"
+﻿<Page x:Class="Tournament.Views.PlayersView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,14 +6,15 @@
       xmlns:local="clr-namespace:Tournament.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TournamentView">
+      Title="PlayersView">
 
-    <Grid Background="BlueViolet">
+    <Grid Background="Cornsilk">
         <StackPanel 
             Background="#2a2bff" 
             VerticalAlignment="Top"
-            Height="30">
-            <TextBlock Text="Tournament" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
+            Height="30" Margin="0,0,0,0"
+            >
+            <TextBlock Text="Players" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
 
         </StackPanel>
     </Grid>

@@ -12,10 +12,9 @@
         <StackPanel 
             Background="#2a2bff" 
             VerticalAlignment="Top"
-            MinWidth="500"
             Height="30" Margin="0,0,0,0"
             >
-            <TextBlock Text="Teams" HorizontalAlignment="Center"/>
+            <TextBlock Text="Teams" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
 
         </StackPanel>
 
