@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Tournament.Views
 {
@@ -10,7 +11,17 @@ namespace Tournament.Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new PlayerViewModel();
+            
+        }
+
+        private void Button_Click_Tournament(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new TournamentView();
+        }
+
+        private void Button_Click_Teams(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new TeamsView();
         }
     }
 }

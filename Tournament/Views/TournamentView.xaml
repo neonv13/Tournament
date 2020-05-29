@@ -1,0 +1,21 @@
+﻿<Page x:Class="Tournament.Views.TournamentView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tournament.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TournamentView">
+
+    <Grid Background="BlueViolet">
+        <StackPanel 
+            Background="#2a2bff" 
+            VerticalAlignment="Top"
+            MinWidth="500"
+            Height="30">
+            <TextBlock Text="Tournament" HorizontalAlignment="Center"/>
+
+        </StackPanel>
+    </Grid>
+</Page>
