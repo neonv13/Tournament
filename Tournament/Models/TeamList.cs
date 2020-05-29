@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Documents;
 
 namespace Tournament.Models
@@ -112,7 +114,9 @@ namespace Tournament.Models
                             }
                         case "Players:":
                             {
-                                players.LoadPlayersList(path);
+                                string endstring = "End" + words[0];
+                                LoadPlayer(file, endstring, players);
+                                //players.LoadPlayersList(path);
                                 break;
                             }
 
@@ -131,7 +135,10 @@ namespace Tournament.Models
             return teamsList;
         }
 
-
+        private void LoadPlayer(StreamReader file, string endstring, object playersA)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
