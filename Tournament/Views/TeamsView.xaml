@@ -12,11 +12,61 @@
         <StackPanel 
             Background="#2a2bff" 
             VerticalAlignment="Top"
-            Height="30" Margin="0,0,0,0"
-            >
+            Height="30">
             <TextBlock Text="Teams" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
-
         </StackPanel>
-
+        <StackPanel Background="#2a2bc5" Margin="0,30,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <Border 
+                    CornerRadius="6" 
+                    BorderBrush="#2a2bff"
+                    BorderThickness="6"
+                    Height="35" 
+                    Width="70" HorizontalAlignment="Left" Margin="10,5,0,0"
+                    >
+                <Button 
+                    Height="30"
+                    Width="70" 
+                    Background="#2a2bff"
+                    BorderThickness="0" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Foreground="White" 
+                    Content="Add Team" />
+            </Border>
+            <Border 
+                CornerRadius="6" 
+                BorderBrush="#2a2bff"
+                BorderThickness="6"
+                Height="35" 
+                Width="75" 
+                Margin="-180,-35,0,0">
+                <Button 
+                    Height="30"
+                    Width="75" 
+                    Background="#2a2bff"
+                    BorderThickness="0" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Foreground="White" 
+                    Content="View Teams"/>
+            </Border>
+            <Border 
+                CornerRadius="6" 
+                BorderBrush="#2a2bff"
+                BorderThickness="6"
+                Height="35" 
+                Width="90" 
+                Margin="-450,-35,0,0">
+                <Button 
+                    Height="30"
+                    Width="90" 
+                    Background="#2a2bff"
+                    BorderThickness="0" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Foreground="White" 
+                    Content="Remove Team"/>
+            </Border>
+        </StackPanel>
     </Grid>
 </Page>
