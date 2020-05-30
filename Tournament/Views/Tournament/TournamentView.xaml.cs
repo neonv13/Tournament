@@ -22,5 +22,6 @@ namespace Tournament.Views
         {
             InitializeComponent();
         }
+        
     }
 }

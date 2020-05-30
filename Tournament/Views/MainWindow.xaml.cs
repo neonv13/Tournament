@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 
+
 namespace Tournament.Views
 {
     /// <summary>
@@ -18,7 +19,6 @@ namespace Tournament.Views
         {
             Main.Content = new TournamentView();
         }
-
         private void Button_Click_Teams(object sender, RoutedEventArgs e)
         {
             Main.Content = new TeamsView();
@@ -31,5 +31,7 @@ namespace Tournament.Views
         {
             Main.Content = new PlayersView();
         }
+
+       
     }
 }

@@ -9,6 +9,7 @@
       Title="TeamsView">
 
     <Grid Background="BurlyWood">
+        <Frame x:Name="Teams" Margin="0,75,0,0"/>
         <StackPanel 
             Background="#2a2bff" 
             VerticalAlignment="Top"
