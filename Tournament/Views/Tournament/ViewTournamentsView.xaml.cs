@@ -8,16 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tournament.Views
+namespace Tournament.Views.Tournament
 {
     /// <summary>
-    /// Interaction logic for AddTeamWindow.xaml
+    /// Interaction logic for ViewTournamentsView.xaml
     /// </summary>
-    public partial class AddTeamWindow : Window
+    public partial class ViewTournamentsView : Page
     {
-        public AddTeamWindow()
+        public ViewTournamentsView()
         {
             InitializeComponent();
         }

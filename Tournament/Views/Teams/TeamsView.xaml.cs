@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Views.Teams;
 
 namespace Tournament.Views
 {
@@ -23,9 +24,17 @@ namespace Tournament.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_AddTeam(object sender, RoutedEventArgs e)
         {
-
+            Teams.Content = new TeamsAddTeamView();
+        }
+        private void Button_Click_RemoveTeam(object sender, RoutedEventArgs e)
+        {
+            Teams.Content = new TeamsRemoveTeamView();
+        }
+        private void Button_Click_ViewTeams(object sender, RoutedEventArgs e)
+        {
+            Teams.Content = new TeamsViewTeamsView();
         }
     }
 }

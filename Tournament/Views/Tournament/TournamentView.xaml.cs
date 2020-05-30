@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Views.Tournament;
 
 namespace Tournament.Views
 {
@@ -22,6 +23,13 @@ namespace Tournament.Views
         {
             InitializeComponent();
         }
-        
+        private void Button_Click_NewTournament(object sender, RoutedEventArgs e)
+        {
+            Tournament.Content = new CreateTournamentView();
+        }
+        private void Button_Click_ViewTournaments(object sender, RoutedEventArgs e)
+        {
+            Tournament.Content = new ViewTournamentsView();
+        }
     }
 }
