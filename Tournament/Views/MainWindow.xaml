@@ -6,105 +6,68 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1024">
     <Grid >
-        <Frame x:Name="Main" Margin="112,0,0,0" NavigationUIVisibility="Hidden">
+        <Frame x:Name="Main" Margin="100,0,0,0" Background="#FF252526" NavigationUIVisibility="Hidden">
         </Frame>
 
-        <StackPanel Background="#2a2bc5" HorizontalAlignment="Left" MinWidth ="80" VerticalAlignment="Stretch">
-                <Border 
-                    CornerRadius="6" 
-                    BorderBrush="#2a2bff"
-                    BorderThickness="6"
-                    HorizontalAlignment="Center"
-                    Height="35" 
-                    Margin="15" >
-                    <Button 
-                        Height="30"
-                        Width="70" 
-                        Background="#2a2bff"
-                        BorderThickness="0" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center" 
-                        Foreground="White" Click="Button_Click_Tournament" >
-                        Tournament
-                    </Button>
-                </Border>
-                <Border 
-                    CornerRadius="6"
-                    BorderBrush="#2a2bff"
-                    BorderThickness="6" 
-                    HorizontalAlignment="Center"
-                    Height="35" 
-                    Margin="0,75,0,-43" >
-                    <Button 
-                        Height="30" 
-                        Width="70" 
-                        Background="#2a2bff"
-                        BorderThickness="0"
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center" 
-                        Foreground="White" 
-                        Click="Button_Click_Teams">
-                    Teams
-                    </Button>
-                </Border>
-                <Border 
-                    CornerRadius="6" 
-                    BorderBrush="#2a2bff" 
-                    BorderThickness="6" 
-                    HorizontalAlignment="Center" 
-                    Height="35" 
-                    Margin="0,132,0,-100" >
-                    <Button 
-                        Height="30" 
-                        Width="70" 
-                        Background="#2a2bff"
-                        BorderThickness="0" 
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" 
-                        Foreground="White"
-                        Click="Button_Click_Players">
-                        Players
-                    </Button>
-                </Border>
-                <Border 
-                    CornerRadius="6" 
-                    BorderBrush="#2a2bff" 
-                    BorderThickness="6" 
-                    HorizontalAlignment="Center" 
-                    Height="35" 
-                    Margin="0,188,0,-156" >
-                    <Button 
-                        Height="30" 
-                        Width="70" 
-                        Background="#2a2bff"
-                        BorderThickness="0" 
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" 
-                        Foreground="White"
-                        Click="Button_Click_Matches">
-                        Matches
-                    </Button>
-                </Border>
-            <Border 
-                    CornerRadius="6" 
-                    BorderBrush="#2a2bff" 
-                    BorderThickness="6" 
-                    HorizontalAlignment="Center" 
-                    Height="35" 
-                    Margin="0,350,0,0" >
-                <Button 
-                        Height="30" 
-                        Width="40" 
-                        Background="#2a2bff"
-                        BorderThickness="0" 
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" 
-                        Foreground="White"
-                        Click="Button_Click_Exit">
-                    Exit
-                </Button>
-            </Border>
+        <StackPanel Background="#FF2D2D30" HorizontalAlignment="Left" MinWidth ="80" VerticalAlignment="Stretch">
+
+            <Button 
+                Background="#FF2D2D30"
+                Margin="15,30,15,30"
+                Height="30"
+                Width="70" 
+                BorderThickness="0" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Foreground="White"
+                Click="Button_Click_Tournament" 
+                Content ="Tournament"/>
+            <Button 
+                Background="#FF2D2D30"
+                
+                Margin="15,30,15,30"
+                Height="30" 
+                Width="70" 
+                BorderThickness="0"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Foreground="White" 
+                Click="Button_Click_Teams"
+                Content="Teams"/>
+            <Button 
+                Background="#FF2D2D30"
+                
+                Margin="15,30,15,30"
+                Height="30" 
+                Width="70" 
+                BorderThickness="0" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                Foreground="White"
+                Click="Button_Click_Players"
+                Content ="Players"/>
+            <Button
+                
+                Margin="15,30,15,30"
+                Height="30" 
+                Width="70" 
+                BorderThickness="0" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                Foreground="White"
+                Click="Button_Click_Matches"
+                Content = "Matches" Background="#FF2D2D30"/>
+
+            <Button 
+                    Background="#FF2D2D30"
+                    Height="30" 
+                    Width="40" 
+                    BorderThickness="0" 
+                    Foreground="White"
+                    Click="Button_Click_Exit" 
+                    Content="Exit"/>
+
         </StackPanel>
-        
+
     </Grid>
 </Window>
