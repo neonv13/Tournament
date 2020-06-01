@@ -31,7 +31,10 @@ namespace Tournament.Views
         {
             Main.Content = new PlayersView();
         }
+        private void Button_Click_Exit(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
 
-       
     }
 }
