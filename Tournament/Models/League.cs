@@ -14,6 +14,7 @@ namespace Tournament.Models
         {
             if (teams.GetTeamsList.Count >= 2)
             {
+                matchesPlanned = new MatchList();
                 int i = 0;
                 int j;
                 Match match;

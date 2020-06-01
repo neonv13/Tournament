@@ -8,14 +8,17 @@
       d:DesignHeight="720" d:DesignWidth="912"
       Title="MatchesView">
 
-    <Grid Background="Coral">
-        <StackPanel 
-            Background="#2a2bff" 
-            VerticalAlignment="Top"
-            Height="30" Margin="0,0,0,0"
-            >
-            <TextBlock Text="Matches" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Tournament;component\css\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources> 
+    
+    <Grid Style="{StaticResource NormalView}">
+        <StackPanel Background="#FF1E1E1E" VerticalAlignment="Top" Height="30" Margin="0,0,0,0">
+            <TextBlock Style="{StaticResource MainText}" Text="Matches" />
         </StackPanel>
     </Grid>
 </Page>

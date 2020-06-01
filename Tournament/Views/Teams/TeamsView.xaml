@@ -11,7 +11,7 @@
     <Grid Background="BurlyWood">
         <Frame x:Name="Teams" Margin="0,75,0,0"/>
         <StackPanel 
-            Background="#2a2bff" 
+            Background="#FF1E1E1E" 
             VerticalAlignment="Top"
             Height="30">
             <TextBlock Text="Teams" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>

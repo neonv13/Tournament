@@ -17,7 +17,9 @@ namespace Tournament.Models
         public Tournament(TeamList teamList, RefereeList refereeList, GameType gameType) 
         { 
             League league = new League(teamList,refereeList,gameType,MatchRank.GroupStage);
-
+            this.refereeList = refereeList;
+            this.gameType = gameType;
+            matchHistory = new MatchList();
             matchHistory.GetMatchList.AddRange(league.SymulateLeague());
         }
 

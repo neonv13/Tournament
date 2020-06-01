@@ -11,7 +11,7 @@
     <Grid Background="BlueViolet">
         <Frame x:Name="Tournament"/>
         <StackPanel 
-            Background="#2a2bff" 
+            Background="#FF1E1E1E" 
             VerticalAlignment="Top"
             Height="30">
             <TextBlock Text="Tournament" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>

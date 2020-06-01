@@ -11,14 +11,17 @@
     <Page.DataContext>
         <ViewModels:PlayersViewModel/>
     </Page.DataContext>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Tournament;component\css\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
-    <Grid Background="#FF252526">
-        <StackPanel 
-            Background="#FF1E1E1E" 
-            VerticalAlignment="Top"
-            Height="30" Margin="0,0,0,0"
-            >
-            <TextBlock Text="Players" HorizontalAlignment="Center" FontSize="20" Foreground="#FFF1F1F1"/>
+    <Grid Style="{StaticResource NormalView}">
+        <StackPanel Style="{StaticResource Header}">
+            <TextBlock Text="Players" Style="{StaticResource MainText}"/>
         </StackPanel>
         <TextBlock Width="120" Height="30" Text="PlayersList:" FontSize="20" HorizontalAlignment="Left"
                    VerticalAlignment="Top" Margin="60,30,0,0" Foreground="#FFF1F1F1"/>
