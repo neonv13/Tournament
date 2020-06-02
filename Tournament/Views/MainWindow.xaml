@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1024">
+    
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -13,22 +14,20 @@
         </ResourceDictionary>
     </Window.Resources>  
     
-    
-    
-    
-    
-    <Grid >
-        <Frame x:Name="Main" Margin="100,0,0,0" Background="#FF252526" NavigationUIVisibility="Hidden">
-        </Frame>
-
-        <StackPanel Background="#FF2D2D30" HorizontalAlignment="Left" MinWidth ="80" VerticalAlignment="Stretch">
-
+    <Grid Style="{StaticResource NormalView}">
+        <Frame x:Name="Main" Margin="100,0,0,0" NavigationUIVisibility="Hidden"/>
+        <StackPanel Background="#FF2D2D30" HorizontalAlignment="Left" MinWidth="120">
+            <StackPanel Style="{StaticResource Header}">
+                <TextBlock Style="{StaticResource MainText}" Text="Tournament" FontStyle="Italic" Foreground="#01a6fa"/>
+            </StackPanel>
             <Button Click="Button_Click_Tournament" Content ="Tournament" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Teams" Content="Teams" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Players" Content ="Players" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Matches" Content = "Matches" Style="{StaticResource NormalButton}"/>
+            <Button Content = "Save" Style="{StaticResource NormalButton}"/>
+            <Button Content = "Load" Style="{StaticResource NormalButton}"/>
+            <Button Content = "Authors" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Exit" Content="Exit" Style="{StaticResource NormalButton}"/>
         </StackPanel>
-
     </Grid>
 </Window>

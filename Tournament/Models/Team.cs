@@ -35,7 +35,6 @@ namespace Tournament.Models
                 else
                 {
                     IdTeam = randID;
-                    FreeID = false;
                     break;
                 }
             } while (FreeID == false);

@@ -8,59 +8,25 @@
       d:DesignHeight="720" d:DesignWidth="912"
       Title="TournamentView">
 
-    <Grid Background="BlueViolet">
-        <Frame x:Name="Tournament"/>
-        <StackPanel 
-            Background="#FF1E1E1E" 
-            VerticalAlignment="Top"
-            Height="30">
-            <TextBlock Text="Tournament" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Tournament;component\css\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Style="{StaticResource NormalView}">
+        <Frame x:Name="Tournament" Margin="0,60,0,0"/>
+        <StackPanel Style="{StaticResource Header}">
+            <TextBlock Text="Tournament" Style="{StaticResource MainText}"/>
         </StackPanel>
-        <StackPanel Background="#2a2bc5" Margin="0,30,0,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-            <Grid Margin="5" Height="40" >
-                <Border 
-                    CornerRadius="6" 
-                    BorderBrush="#2a2bff"
-                    BorderThickness="6"
-                    Height="35" 
-                    Width="105" 
-                    HorizontalAlignment="Left" 
-                    Margin="30,2,0,2">
-                    <Button 
-                    Height="30"
-                    Width="105" 
-                    Background="#2a2bff"
-                    BorderThickness="0" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    Foreground="White" 
-                    Content="New Tournament" 
-                    Click="Button_Click_NewTournament" />
-                </Border>
-
-
-
-                <Border 
-                CornerRadius="6" 
-                BorderBrush="#2a2bff"
-                BorderThickness="6"
-                Height="35" 
-                Width="130"
-                Margin="130,0,450,0">
-                    <Button 
-                    Height="30"
-                    Width="130" 
-                    Background="#2a2bff"
-                    BorderThickness="0" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    Foreground="White" 
-                    Content="View Tournaments"
-                    Click="Button_Click_ViewTournaments"/>
-
-                </Border>
-
-            </Grid>
-        </StackPanel>
+        <Grid  Margin="0,30,0,0" VerticalAlignment="Top">
+            <Button Style="{StaticResource NormalButton}" Content="New Tournament" Click="Button_Click_NewTournament" 
+                    HorizontalAlignment="Left" Margin="200,0,0,0" Width="120"/>
+            <Button Style="{StaticResource NormalButton}" Content="View Tournaments" Click="Button_Click_ViewTournaments" 
+                    HorizontalAlignment="Left" Margin="30,0,0,0" Width="120"/>
+        </Grid>
     </Grid>
 </Page>

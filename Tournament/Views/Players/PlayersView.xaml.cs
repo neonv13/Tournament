@@ -23,7 +23,17 @@ namespace Tournament.Views
         {
             InitializeComponent();
             DataContext = new PlayersViewModel();
+        }
 
+        private void Button_Click_AddPlayer(object sender, RoutedEventArgs e)
+        {
+            AddPlayerWindow addPlayerWindow = new AddPlayerWindow();
+            addPlayerWindow.Show();
+        }
+        private void Button_Click_RemovePlayer(object sender, RoutedEventArgs e)
+        {
+            RemovePlayerWindow removePlayerWindow = new RemovePlayerWindow();
+            removePlayerWindow.Show();
         }
     }
 }

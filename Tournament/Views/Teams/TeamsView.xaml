@@ -8,69 +8,54 @@
       d:DesignHeight="720" d:DesignWidth="912"
       Title="TeamsView">
 
-    <Grid Background="BurlyWood">
-        <Frame x:Name="Teams" Margin="0,75,0,0"/>
-        <StackPanel 
-            Background="#FF1E1E1E" 
-            VerticalAlignment="Top"
-            Height="30">
-            <TextBlock Text="Teams" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Tournament;component\css\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Style="{StaticResource NormalView}">
+        <Frame x:Name="Teams" Margin="0,60,0,0"/>
+        <StackPanel Style="{StaticResource Header}">
+            <TextBlock Text="Teams" Style="{StaticResource MainText}"/>
         </StackPanel>
-        <StackPanel Background="#2a2bc5" Margin="0,30,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-            <Border 
-                    CornerRadius="6" 
-                    BorderBrush="#2a2bff"
-                    BorderThickness="6"
-                    Height="35" 
-                    Width="70" HorizontalAlignment="Left" Margin="10,5,0,0"
-                    >
-                <Button 
-                    Height="30"
-                    Width="70" 
-                    Background="#2a2bff"
-                    BorderThickness="0" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    Foreground="White" 
-                    Content="Add Team" 
-                    Click="Button_Click_AddTeam" />
-            </Border>
-            <Border 
-                CornerRadius="6" 
-                BorderBrush="#2a2bff"
-                BorderThickness="6"
-                Height="35" 
-                Width="75" 
-                Margin="-180,-35,0,0">
-                <Button 
-                    Height="30"
-                    Width="75" 
-                    Background="#2a2bff"
-                    BorderThickness="0" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    Foreground="White" 
-                    Content="View Teams"
-                    Click="Button_Click_ViewTeams"/>
-            </Border>
-            <Border 
-                CornerRadius="6" 
-                BorderBrush="#2a2bff"
-                BorderThickness="6"
-                Height="35" 
-                Width="90" 
-                Margin="-450,-35,0,0">
-                <Button 
-                    Height="30"
-                    Width="90" 
-                    Background="#2a2bff"
-                    BorderThickness="0" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    Foreground="White" 
-                    Content="Remove Team"
-                    Click="Button_Click_RemoveTeam "/>
-            </Border>
-        </StackPanel>
+        <Grid VerticalAlignment="Top" Margin="0,30,0,0">
+            <Button Style="{StaticResource NormalButton}" Content="Add Team" Click="Button_Click_AddTeam" 
+                    HorizontalAlignment="Left" Margin="30,0,0,0"/>
+            <Button Style="{StaticResource NormalButton}" Content="Remove Team" Width="85" Click="Button_Click_RemoveTeam" 
+                    HorizontalAlignment="Left" Margin="120,0,0,0"/>
+        </Grid>
+        <TextBlock Width="100" Text="PlayersList:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
+                   VerticalAlignment="Top" Margin="60,60,0,0" />
+        <ListBox Margin="60,90,60,60" ItemsSource="{Binding Player}" 
+                 HorizontalContentAlignment="Stretch" 
+                 Background="#FF3E3E40" Foreground="#FFF1F1F1"
+                 BorderBrush="#FF252526">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

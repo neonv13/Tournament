@@ -21,5 +21,10 @@ namespace Tournament.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            SystemCommands.CloseWindow(this);
+        }
     }
 }
