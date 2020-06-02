@@ -15,7 +15,7 @@ namespace Tournament.Views.Tournament
     /// <summary>
     /// Interaction logic for CreateTournament.xaml
     /// </summary>
-    public partial class CreateTournament : Window
+    public partial class CreateTournament : Page
     {
         public CreateTournament()
         {
@@ -32,7 +32,7 @@ namespace Tournament.Views.Tournament
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
-            SystemCommands.CloseWindow(this);
+            
         }
     }
 }

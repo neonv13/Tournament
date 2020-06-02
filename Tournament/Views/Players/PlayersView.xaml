@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Tournament.Views"
       xmlns:ViewModels="clr-namespace:Tournament.ViewModels" x:Class="Tournament.Views.PlayersView"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="912"
+      d:DesignHeight="720" d:DesignWidth="911"
       Title="PlayersView">
     <Page.DataContext>
         <ViewModels:PlayersViewModel/>
@@ -26,44 +26,12 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,30,0,0">
             <Button Style="{StaticResource NormalButton}" Content="Add Player" Margin="30,0,0,0" 
                     HorizontalAlignment="Left" Click="Button_Click_AddPlayer"/>
+            <Button Style="{StaticResource NormalButton}" Content="View Players"  Width="90"
+                    HorizontalAlignment="Left" Margin="60,0,0,0" Click="Button_Click_ViewPlayers"/>
             <Button Style="{StaticResource NormalButton}" Content="Remove Player"  Width="90"
-                    HorizontalAlignment="Left" Margin="120,0,0,0" 
+                    HorizontalAlignment="Left" Margin="50,0,0,0" 
                     Click="Button_Click_RemovePlayer"/>
         </StackPanel>
-        <TextBlock Width="100" Text="Players List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
-                   VerticalAlignment="Top" Margin="60,60,0,0" />
-        <ListBox Margin="60,90,60,60" ItemsSource="{Binding Players}" 
-                 HorizontalContentAlignment="Stretch" 
-                 Background="#FF3E3E40" Foreground="#FFF1F1F1"
-                 BorderBrush="#FF252526">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
-                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
-                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname}"/>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-
-
-
-
+        <Frame x:Name="PlayerView" NavigationUIVisibility="Hidden" Margin="0,50,0,0"/>
     </Grid>
 </Page>

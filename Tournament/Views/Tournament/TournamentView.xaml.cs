@@ -24,17 +24,14 @@ namespace Tournament.Views
         public TournamentView()
         {
             InitializeComponent();
-            DataContext = new TournamentViewModel();
         }
         private void Button_Click_NewTournament(object sender, RoutedEventArgs e)
         {
-            CreateTournament createTournament = new CreateTournament();
-            createTournament.Show();
+            TourView.Content = new CreateTournament();
         }
         private void Button_Click_DeleteTournament(object sender, RoutedEventArgs e)
         {
-            DeleteTournament createTournament = new DeleteTournament();
-            createTournament.Show();
+            TourView.Content = new DeleteTournament();
         }
         private void Button_Click_ViewTournaments(object sender, RoutedEventArgs e)
         {

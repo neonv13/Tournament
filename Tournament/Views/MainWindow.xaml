@@ -15,7 +15,8 @@
     </Window.Resources>  
     
     <Grid Style="{StaticResource NormalView}">
-        <Frame x:Name="Main" Margin="100,0,0,0" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="Main" Margin="121,0,0,0" NavigationUIVisibility="Hidden"/>
+        <Border Margin="121,0,0,0" BorderBrush="#FF252526" BorderThickness="1"/>
         <StackPanel Background="#FF2D2D30" HorizontalAlignment="Left" MinWidth="120">
             <StackPanel Style="{StaticResource Header}">
                 <TextBlock Style="{StaticResource MainText}" Text="Tournament" FontStyle="Italic" Foreground="#01a6fa"/>

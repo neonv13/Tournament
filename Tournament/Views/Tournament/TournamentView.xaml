@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Tournament.Views"
       xmlns:ViewModels="clr-namespace:Tournament.ViewModels" x:Class="Tournament.Views.TournamentView"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="912"
+      d:DesignHeight="720" d:DesignWidth="911"
       Title="TournamentView">
 
 
@@ -30,15 +30,16 @@
         <StackPanel Style="{StaticResource Header}">
             <TextBlock Text="Tournament" Style="{StaticResource MainText}"/>
         </StackPanel>
-        
+
         <StackPanel Orientation="Horizontal"  Margin="0,30,0,0" VerticalAlignment="Top">
-            <Button Style="{StaticResource NormalButton}" Content="New Tournament" Click="Button_Click_NewTournament" 
-                    HorizontalAlignment="Left" Margin="30,0,0,0" Width="120"/>
-            <Button Style="{StaticResource NormalButton}" Content="View Tournaments" Click="Button_Click_ViewTournaments"  
-                    HorizontalAlignment="Left" Margin="30,0,0,0" Width="120"/>
-            <Button Style="{StaticResource NormalButton}" Content="Delete Tournament" Click="Button_Click_DeleteTournament"  
-                    HorizontalAlignment="Left" Margin="30,0,0,0" Width="120"/>
-        </StackPanel>
-        <Frame x:Name="TourView" NavigationUIVisibility="Hidden" Margin="0,50,0,0"/>
+                <Button Style="{StaticResource NormalButton}" Content="New Tournament" Click="Button_Click_NewTournament" 
+                        HorizontalAlignment="Left" Margin="30,0,0,0" Width="120"/>
+                <Button Style="{StaticResource NormalButton}" Content="View Tournaments" Click="Button_Click_ViewTournaments"  
+                        HorizontalAlignment="Left" Margin="30,0,0,0" Width="120"/>
+                <Button Style="{StaticResource NormalButton}" Content="Delete Tournament" Click="Button_Click_DeleteTournament"  
+                        HorizontalAlignment="Left" Margin="30,0,0,0" Width="120"/>
+            </StackPanel>
+            <Frame x:Name="TourView" NavigationUIVisibility="Hidden" Margin="0,50,0,0"/>
+
     </Grid>
 </Page>

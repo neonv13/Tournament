@@ -3,6 +3,8 @@ namespace Tournament.Models
 {
     using System;
     using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
     public abstract class Person : INotifyPropertyChanged, IDataErrorInfo
     {
         private string name;
@@ -28,7 +30,7 @@ namespace Tournament.Models
             set
             {
                 name = value;
-                OnPropertyChanged("Name");
+                OnPropertyChanged();
             }
         }
         /// <summary>
@@ -40,14 +42,11 @@ namespace Tournament.Models
             set
             {
                 surname = value;
-                OnPropertyChanged("Surname");
+                OnPropertyChanged();
             }
         }
         /// <summary>
         /// Gets or sets Person's ID
-        /// !!!!
-        /// Have to discuss method of giving ID to Person.
-        /// !!!!
         /// </summary>
         public int ID
         {
@@ -58,9 +57,9 @@ namespace Tournament.Models
         #region INotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged([CallerMemberName] string name="")
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         #endregion

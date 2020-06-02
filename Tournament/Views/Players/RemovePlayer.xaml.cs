@@ -13,18 +13,14 @@ using System.Windows.Shapes;
 namespace Tournament.Views
 {
     /// <summary>
-    /// Interaction logic for AddPlayerWindow.xaml
+    /// Interaction logic for RemovePlayerWindow.xaml
     /// </summary>
-    public partial class AddPlayerWindow : Window
+    public partial class RemovePlayer : Page
     {
-        public AddPlayerWindow()
+        public RemovePlayer()
         {
             InitializeComponent();
         }
-
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            SystemCommands.CloseWindow(this);
-        }
+        
     }
 }

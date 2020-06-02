@@ -98,6 +98,7 @@ namespace Tournament.Models
         public PlayerList LoadPlayersList(string path, string endstring)
         {
             PlayerList playerList = new PlayerList();
+            if(path != null && path != string.Empty)
             using (System.IO.StreamReader file = new System.IO.StreamReader(path))
             {
 

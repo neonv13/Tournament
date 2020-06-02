@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tournament.ViewModels;
+using Tournament.Views.Players;
 
 namespace Tournament.Views
 {
@@ -27,13 +28,16 @@ namespace Tournament.Views
 
         private void Button_Click_AddPlayer(object sender, RoutedEventArgs e)
         {
-            AddPlayerWindow addPlayerWindow = new AddPlayerWindow();
-            addPlayerWindow.Show();
+            PlayerView.Content = new AddPlayer();
         }
         private void Button_Click_RemovePlayer(object sender, RoutedEventArgs e)
         {
-            RemovePlayerWindow removePlayerWindow = new RemovePlayerWindow();
-            removePlayerWindow.Show();
+            PlayerView.Content = new RemovePlayer();
         }
+        private void Button_Click_ViewPlayers(object sender, RoutedEventArgs e)
+        {
+            PlayerView.Content = new ViewPlayers();
+        }
+
     }
 }

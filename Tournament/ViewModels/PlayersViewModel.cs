@@ -7,17 +7,22 @@ namespace Tournament.ViewModels
 {
     class PlayersViewModel
     {
-        public  List<Player> Players { get; private set; }
+        public string Name { get;  set; }
+        public string Surname { get;  set; }
+        public  PlayerList Players { get; private set; }
+        public bool CanUpdate { get; internal set; }
+
         public PlayersViewModel()
         {
-            Players = new List<Player>();
-            Players.Add(new Player("Kamil", "Kosko", Players));
-            Players.Add(new Player("4321", "K2413ko", Players));
-            Players.Add(new Player("12354l", "Ko23", Players));
-            Players.Add(new Player("Kam235il", "Ko421o", Players));
-
+            Players = new PlayerList();
+            Players.LoadPlayersList("plik.txt","null");
+            UpdateCommand = new 
         }
-        
+        public void AddPlayerToList() 
+        {
+            Players.AddPlayer(new Player(Name,Surname,Players.PlayersList));
+            Players.SavePlayersList("plik.txt");
+        }
 
     }
 }
