@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Tournament.Models
 {
@@ -7,7 +8,7 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new instance of Referee
         /// </summary>
-        public Referee(string name, string surname, RefereeList refereeList) : base(name, surname, 0)
+        public Referee(string name, string surname, List<Referee> refereeList) : base(name, surname, 0)
         {
             Random random = new Random();
             int randID;
@@ -15,9 +16,9 @@ namespace Tournament.Models
             do
             {
                 randID = random.Next(0, 1000);
-                if (refereeList.RefereesList != null)
+                if (refereeList != null)
                 {
-                    foreach (var referee in refereeList.RefereesList)
+                    foreach (var referee in refereeList)
                         if (randID == referee.ID)
                             FreeID = false;
                 }

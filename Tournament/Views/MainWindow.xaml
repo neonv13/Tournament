@@ -26,7 +26,7 @@
             <Button Click="Button_Click_Matches" Content = "Matches" Style="{StaticResource NormalButton}"/>
             <Button Content = "Save" Style="{StaticResource NormalButton}"/>
             <Button Content = "Load" Style="{StaticResource NormalButton}"/>
-            <Button Content = "Authors" Style="{StaticResource NormalButton}"/>
+            <Button Click="Button_Click_Authors" Content = "Authors" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Exit" Content="Exit" Style="{StaticResource NormalButton}"/>
         </StackPanel>
     </Grid>

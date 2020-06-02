@@ -35,6 +35,9 @@ namespace Tournament.Views
         {
             System.Windows.Application.Current.Shutdown();
         }
-
+        private void Button_Click_Authors(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Authors();
+        }
     }
 }

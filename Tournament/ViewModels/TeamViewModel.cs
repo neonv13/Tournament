@@ -7,21 +7,17 @@ namespace Tournament.ViewModels
 {
     class TeamViewModel
     {
-        private List<Team> teams;
+        public List<Team> Teams { get; private set; }
         public TeamViewModel()
         {
-            teams = new List<Team>();
-            teams.Add(new Team("Jacusie",teams));
-            teams.Add(new Team("Paliki", teams));
-            teams.Add(new Team("Ciosy",  teams));
-            teams.Add(new Team("Janusze",teams));
+            Teams = new List<Team>();
+            Teams.Add(new Team("Jacusie",Teams));
+            Teams.Add(new Team("Paliki", Teams));
+            Teams.Add(new Team("Ciosy",  Teams));
+            Teams.Add(new Team("Janusze",Teams));
 
         }
-        public List<Team> Teams
-        {
-            get => teams;
-
-        }
+        
 
     }
 }

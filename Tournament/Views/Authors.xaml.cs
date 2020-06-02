@@ -8,22 +8,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tournament.Views.Tournament
+namespace Tournament.Views
 {
     /// <summary>
-    /// Interaction logic for DeleteTournament.xaml
+    /// Interaction logic for Authors.xaml
     /// </summary>
-    public partial class DeleteTournament : Window
+    public partial class Authors : Page
     {
-        public DeleteTournament()
+        public Authors()
         {
             InitializeComponent();
-        }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            SystemCommands.CloseWindow(this);
         }
     }
 }

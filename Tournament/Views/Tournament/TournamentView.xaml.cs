@@ -10,23 +10,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.ViewModels;
 using Tournament.Views.Tournament;
+
 
 namespace Tournament.Views
 {
     /// <summary>
-    /// Interaction logic for TournamentView.xaml
+    /// Interaction logic for TournamentView.xaml   
     /// </summary>
     public partial class TournamentView : Page
     {
         public TournamentView()
         {
             InitializeComponent();
+            DataContext = new TournamentViewModel();
         }
         private void Button_Click_NewTournament(object sender, RoutedEventArgs e)
         {
-            Tournament.Content = new CreateTournamentView();
+            CreateTournament createTournament = new CreateTournament();
+            createTournament.Show();
         }
-        
+        private void Button_Click_DeleteTournament(object sender, RoutedEventArgs e)
+        {
+            DeleteTournament createTournament = new DeleteTournament();
+            createTournament.Show();
+        }
+        private void Button_Click_ViewTournaments(object sender, RoutedEventArgs e)
+        {
+            TourView.Content = new ViewTournaments();
+        }
     }
 }

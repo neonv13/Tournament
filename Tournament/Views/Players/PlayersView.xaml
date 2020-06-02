@@ -32,7 +32,7 @@
         </StackPanel>
         <TextBlock Width="100" Text="Players List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="60,60,0,0" />
-        <ListBox Margin="60,90,60,60" ItemsSource="{Binding Player}" 
+        <ListBox Margin="60,90,60,60" ItemsSource="{Binding Players}" 
                  HorizontalContentAlignment="Stretch" 
                  Background="#FF3E3E40" Foreground="#FFF1F1F1"
                  BorderBrush="#FF252526">

@@ -21,5 +21,18 @@ namespace Tournament.Views.Tournament
         {
             InitializeComponent();
         }
+
+        private void Button_Click_RefereesList(object sender, RoutedEventArgs e)
+        {
+            ListsPlace.Content = new RefereesToChoose();
+        }
+        private void Button_Click_TeamsList(object sender, RoutedEventArgs e)
+        {
+            ListsPlace.Content = new TeamsToChoose();
+        }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            SystemCommands.CloseWindow(this);
+        }
     }
 }

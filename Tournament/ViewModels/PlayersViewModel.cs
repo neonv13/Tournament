@@ -7,21 +7,17 @@ namespace Tournament.ViewModels
 {
     class PlayersViewModel
     {
-        private List<Player> player;
+        public  List<Player> Players { get; private set; }
         public PlayersViewModel()
         {
-            player = new List<Player>();
-            player.Add(new Player("Kamil", "Kosko", null));
-            player.Add(new Player("4321", "K2413ko", null));
-            player.Add(new Player("12354l", "Ko23", null));
-            player.Add(new Player("Kam235il", "Ko421o", null));
+            Players = new List<Player>();
+            Players.Add(new Player("Kamil", "Kosko", Players));
+            Players.Add(new Player("4321", "K2413ko", Players));
+            Players.Add(new Player("12354l", "Ko23", Players));
+            Players.Add(new Player("Kam235il", "Ko421o", Players));
 
         }
-        public List<Player> Player
-        {
-            get => player;
-
-        }
+        
 
     }
 }
