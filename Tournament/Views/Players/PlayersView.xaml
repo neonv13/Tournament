@@ -30,7 +30,7 @@
                     HorizontalAlignment="Left" Margin="120,0,0,0" 
                     Click="Button_Click_RemovePlayer"/>
         </Grid>
-        <TextBlock Width="100" Text="PlayersList:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
+        <TextBlock Width="100" Text="Players List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="60,60,0,0" />
         <ListBox Margin="60,90,60,60" ItemsSource="{Binding Player}" 
                  HorizontalContentAlignment="Stretch" 

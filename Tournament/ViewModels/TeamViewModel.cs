@@ -17,7 +17,7 @@ namespace Tournament.ViewModels
             teams.Add(new Team("Janusze",teams));
 
         }
-        public List<Team> Player
+        public List<Team> Teams
         {
             get => teams;
 

@@ -7,7 +7,7 @@ namespace Tournament.Models
 {
     class Team
     {
-
+        private int count;
         private string teamName;
         private int idTeam;
         private List<Player> players;
@@ -41,6 +41,7 @@ namespace Tournament.Models
             IdTeam = randID;
             PointEarned = 0;
             TeamName = team_name;
+            count = 0;
         }
 
         /// <summary>
@@ -117,7 +118,11 @@ namespace Tournament.Models
             }
         }
 
-
+        public int Count 
+        {
+            get => count;
+            private set => count = value;
+        }
 
     }
 
