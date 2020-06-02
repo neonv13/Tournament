@@ -8,25 +8,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Tournament.Views.Tournament;
 
-namespace Tournament.Views
+namespace Tournament.Views.Matches
 {
     /// <summary>
-    /// Interaction logic for TournamentView.xaml
+    /// Interaction logic for ChooseTournament.xaml
     /// </summary>
-    public partial class TournamentView : Page
+    public partial class ChooseTournamentWindow : Window
     {
-        public TournamentView()
+        public ChooseTournamentWindow()
         {
             InitializeComponent();
         }
-        private void Button_Click_NewTournament(object sender, RoutedEventArgs e)
-        {
-            Tournament.Content = new CreateTournamentView();
-        }
-        
     }
 }

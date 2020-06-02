@@ -26,12 +26,12 @@
         <StackPanel Style="{StaticResource Header}">
             <TextBlock Text="Teams" Style="{StaticResource MainText}"/>
         </StackPanel>
-        <Grid VerticalAlignment="Top" Margin="0,30,0,0">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,30,0,0">
             <Button Style="{StaticResource NormalButton}" Content="Add Team" Click="Button_Click_AddTeam" 
                     HorizontalAlignment="Left" Margin="30,0,0,0"/>
             <Button Style="{StaticResource NormalButton}" Content="Remove Team" Width="85" Click="Button_Click_RemoveTeam" 
                     HorizontalAlignment="Left" Margin="120,0,0,0"/>
-        </Grid>
+        </StackPanel>
         <TextBlock Width="100" Text="Teams List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="60,60,0,0" />
         <ListBox Margin="60,90,60,60" ItemsSource="{Binding Teams}" 
@@ -41,7 +41,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
-                        <Grid>
+                        <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>

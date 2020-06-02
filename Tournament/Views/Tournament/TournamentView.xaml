@@ -22,11 +22,11 @@
         <StackPanel Style="{StaticResource Header}">
             <TextBlock Text="Tournament" Style="{StaticResource MainText}"/>
         </StackPanel>
-        <Grid  Margin="0,30,0,0" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal"  Margin="0,30,0,0" VerticalAlignment="Top">
             <Button Style="{StaticResource NormalButton}" Content="New Tournament" Click="Button_Click_NewTournament" 
-                    HorizontalAlignment="Left" Margin="200,0,0,0" Width="120"/>
+                    HorizontalAlignment="Left" Margin="30,0,0,0" Width="120"/>
             <Button Style="{StaticResource NormalButton}" Content="View Tournaments" Click="Button_Click_ViewTournaments" 
                     HorizontalAlignment="Left" Margin="30,0,0,0" Width="120"/>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

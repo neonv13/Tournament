@@ -16,9 +16,12 @@
     </Window.Resources>
     
     <Grid Style="{StaticResource NormalView}">
-        <TextBlock Style="{StaticResource MainText}" Margin="80,27,0,0" 
-                   Text="Complete personal details." HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Border BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
+        <StackPanel Orientation="Horizontal" Style="{StaticResource Header}">
+            <TextBlock Style="{StaticResource MainText}" 
+                   Text="Complete personal details." Margin="30,0,0,0"
+                       HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+                <Border BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
                 HorizontalAlignment="Center" Width="401" Height="151"/>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="150" Background="#FF3E3E40">
             <Grid.RowDefinitions>
