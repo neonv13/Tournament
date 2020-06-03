@@ -14,12 +14,32 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new istance of RefereesList
         /// </summary>
-        public List<Referee> RefereesList { get => referees;  }
+        public RefereeList()
+        {
+            referees = new List<Referee>();
+        }
+        /// <summary>
+        /// Gets Refrees List value
+        /// </summary>
+        public List<Referee> RefereesList { get => referees; }
 
         /// <summary>
         /// Adds Referee to RefereesList
         /// </summary>
-        
+
+        /// <summary>
+        /// Retruns a instance of Referee that has given ID
+        /// </summary>
+        public Referee FindRefereeByID(int id)
+        {
+            foreach (var referee in RefereesList)
+            {
+                if (referee.ID == id)
+                    return referee;
+            }
+            return null;
+        }
+
         public void AddReferee(Referee referee)
         {
             RefereesList.Add(referee);
@@ -48,32 +68,74 @@ namespace Tournament.Models
         /// </summary>
         public void RemoveReferee(int id)
         {
-            foreach (var referee in referees)
+            if (RefereesList.Contains(FindRefeereByID(id)))
             {
-                if (referee.ID == id)
-                {
-                    RefereesList.Remove(referee);
-                }
+                RefereesList.Remove(FindRefeereByID(id));
             }
         }
 
-        /// <summary>
-        /// Removes Referee from RefereesList by Surname and Name
-        /// </summary>
-        public void RemoveReferee(string surName, string name)
+        public void SaveRefereeList(string path)
         {
-            foreach (var referee in referees)
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
             {
-                if (referee.Surname == surName && referee.Name == name)
+                foreach (var referee in RefereesList)
                 {
-                    RefereesList.Remove(referee);
+                    file.WriteLine("RefereeID: " + referee.ID);
+                    file.WriteLine("RefereeName: " + referee.Name);
+                    file.WriteLine("RefereeSurname: " + referee.Surname);
+                    file.WriteLine("EndReferee");
                 }
+                file.Close();
             }
         }
-
-
+        /// <summary>
+        /// Loads RefereeList object from a specified file
+        /// </summary>
+        public void LoadRefereeList(string path)
+        {
+            RefereeList refereeList = new RefereeList();
+            using (System.IO.StreamReader file = new System.IO.StreamReader(path))
+            {
+                int id = 0;
+                string name = string.Empty;
+                string surname = string.Empty;
+                string text = string.Empty;
+                while ((text = file.ReadLine()) != null && text != "EndReferees")
+                {
+                    string[] words = text.Split(" ");
+                    switch (words[0])
+                    {
+                        case "RefereeID:":
+                            {
+                                id = int.Parse(words[1]);
+                                break;
+                            }
+                        case "RefereeName:":
+                            {
+                                name = words[1];
+                                break;
+                            }
+                        case "RefereeSurname:":
+                            {
+                                surname = words[1];
+                                break;
+                            }
+                        case "EndReferee":
+                            {
+                                if (id != 0 && name != string.Empty && surname != string.Empty)
+                                {
+                                    Referee referee = new Referee(name, surname, null);
+                                    referee.ID = id;
+                                    refereeList.AddReferee(referee);
+                                }
+                                break;
+                            }
+                    }
+                }
+                file.Close();
+            }
+            Count = refereeList.Count;
+            referees = refereeList.RefereesList;
+        }
     }
-
-
-
 }

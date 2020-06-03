@@ -1,0 +1,59 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tournament.Views.Teams"
+      xmlns:ViewModels="clr-namespace:Tournament.ViewModels" x:Class="Tournament.Views.Teams.TeamsViewTeamsView"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TeamsViewTeamsView">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Tournament;component\css\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.DataContext>
+        <ViewModels:TeamViewModel/>
+    </Page.DataContext>
+
+    <Grid Style="{StaticResource NormalView}">
+        <TextBlock Width="100" Text="Teams List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
+                   VerticalAlignment="Top" Margin="60,30,0,0" />
+        <ListBox Margin="30,60,30,30" ItemsSource="{Binding Teams}" 
+                 HorizontalContentAlignment="Stretch" 
+                 Background="#FF3E3E40" Foreground="#FFF1F1F1"
+                 BorderBrush="#FF252526">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding IdTeam}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TeamName}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Points: "/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PointEarned}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Players: "/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Count}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>

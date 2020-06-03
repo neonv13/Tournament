@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Office2010.ExcelAc;
+using System;
+using System.Collections.Generic;
 
 namespace Tournament.Models
 {
@@ -6,7 +8,7 @@ namespace Tournament.Models
     {
         private int individualPoints;
 
-        public Player(string name, string surname, PlayerList playerList) : base(name, surname, 0)
+        public Player(string name, string surname, List<Player> playerList) : base(name, surname, 0)
         {
             Random random = new Random();
             int randID;
@@ -14,22 +16,23 @@ namespace Tournament.Models
             do
             {
                 randID = random.Next(0, 1000);
-                if (playerList.PlayersList != null)
-                {
-                    foreach (var player in playerList.PlayersList)
-                        if (randID == player.ID)
-                            FreeID = false;
-                }
+                
+                if (playerList != null)
+                    {
+                        foreach (var player in playerList)
+                            if (randID == player.ID)
+                                FreeID = false;
+                    }
                 else
                 {
                     ID = randID;
-                    FreeID = false;
                     break;
                 }
             } while (FreeID == false);
             if (FreeID)
                 ID = randID;
         }
+       
         /// <summary>
         /// Gets or sets IndividualPoints 
         /// </summary>

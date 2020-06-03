@@ -8,16 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Tournament.Views
 {
     /// <summary>
-    /// Interaction logic for PlaterInfoView.xaml
+    /// Interaction logic for Authors.xaml
     /// </summary>
-    public partial class PlayerInfoView : Window
+    public partial class Authors : Page
     {
-        public PlayerInfoView()
+        public Authors()
         {
             InitializeComponent();
         }

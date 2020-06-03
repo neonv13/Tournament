@@ -106,52 +106,52 @@ namespace Tournament.Models
                     if(words.Length > 1)
                         switch (words[0])
                         {
-                            case "MatchID:":
+                            case "MatchID":
                                 {
                                     matchID = int.Parse(words[1]);
                                     break;
                                 }
-                            case "MatchRank:":
+                            case "MatchRank":
                                 {
                                     matchRank = (MatchRank)Enum.Parse(typeof(MatchRank),words[1]);
                                     break;
                                 }
-                            case "GameType:":
+                            case "GameType":
                                 {
                                     typeOfGame = (GameType)Enum.Parse(typeof(GameType), words[1]);
                                     break;
                                 }
-                            case "TeamA_ID:":
+                            case "TeamA_ID":
                                 {
                                     teamA_ID = int.Parse(words[1]);
                                     break;
                                 }
-                            case "TeamB_ID:":
+                            case "TeamB_ID":
                                 {
                                     teamB_ID = int.Parse(words[1]);
                                     break;
                                 }
-                            case "TeamAScore:":
+                            case "TeamAScore":
                                 {
                                     teamAScore = int.Parse(words[1]);
                                     break;
                                 }
-                            case "TeamBScore:":
+                            case "TeamBScore":
                                 {
                                     teamBScore = int.Parse(words[1]);
                                     break;
                                 }
-                            case "TeamAPlayerID:":
+                            case "TeamAPlayerID":
                                 {
                                     //playersA.Add(playersList.FindPlayerByID(int.Parse(words[1])));
                                     break;
                                 }
-                            case "TeamBPlayerID:":
+                            case "TeamBPlayerID":
                                 {
                                     //playersB.Add(playersList.FindPlayerByID(int.Parse(words[1])));
                                     break;
                                 }
-                            case "Referee:":
+                            case "Referee":
                                 {
                                     //referees.Add(refereesList.FindRefeereByID(int.Parse(words[1])));
                                     break;

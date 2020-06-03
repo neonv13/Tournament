@@ -4,15 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="PlayerName:" HorizontalAlignment="Left" Margin="12,34,0,0" VerticalAlignment="Top" Height="30" Width="78"/>
-        <TextBox HorizontalAlignment="Left" Margin="115,34,0,0" Text="{Binding Player.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Height="30"/>
-        <Button Content="Update" Command="{Binding UpdateCommand}" HorizontalAlignment="Left" Margin="244,34,0,0" VerticalAlignment="Top" Height="30" Width="67"/>
-        <Label HorizontalAlignment="Left" Margin="10,76,0,0" Content="Player Surname:"  VerticalAlignment="Top" Height="24" Width="95"/>
-        <TextBox HorizontalAlignment="Left" Margin="115,76,0,0" Text="{Binding Player.Surname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Height="30"/>
-        <Button Content="Update" Command="{Binding UpdateCommand}" HorizontalAlignment="Left" Margin="244,76,0,0" VerticalAlignment="Top" Height="30" Width="67"/>
-        <Label HorizontalAlignment="Left" Margin="115,5,0,0" Content="{Binding Player.ID}"  VerticalAlignment="Top" Height="24" Width="95"/>
-        <Label HorizontalAlignment="Left" Margin="10,5,0,0" Content="Player ID:"  VerticalAlignment="Top" Height="24" Width="95"/>
+        Title="MainWindow" Height="720" Width="1024">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Tournament;component\css\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>  
+    
+    <Grid Style="{StaticResource NormalView}">
+        <Frame x:Name="Main" Margin="121,0,0,0" NavigationUIVisibility="Hidden"/>
+        <Border Margin="121,0,0,0" BorderBrush="#FF252526" BorderThickness="1"/>
+        <StackPanel Background="#FF2D2D30" HorizontalAlignment="Left" MinWidth="120">
+            <StackPanel Style="{StaticResource Header}">
+                <TextBlock Style="{StaticResource MainText}" Text="Tournament" FontStyle="Italic" Foreground="#01a6fa"/>
+            </StackPanel>
+            <Button Click="Button_Click_Tournament" Content ="Tournament" Style="{StaticResource NormalButton}"/>
+            <Button Click="Button_Click_Matches" Content = "Matches" Style="{StaticResource NormalButton}"/>
+            <Button Click="Button_Click_Teams" Content="Teams" Style="{StaticResource NormalButton}"/>
+            <Button Click="Button_Click_Players" Content ="Players" Style="{StaticResource NormalButton}"/>
+            <Button Click="Button_Click_Referees" Content = "Referees" Style="{StaticResource NormalButton}"/>
+            <Button Content = "Save" Style="{StaticResource NormalButton}"/>
+            <Button Content = "Load" Style="{StaticResource NormalButton}"/>
+            <Button Click="Button_Click_Authors" Content = "Authors" Style="{StaticResource NormalButton}"/>
+            <Button Click="Button_Click_Exit" Content="Exit" Style="{StaticResource NormalButton}"/>
+        </StackPanel>
     </Grid>
 </Window>

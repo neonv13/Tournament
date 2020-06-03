@@ -1,0 +1,52 @@
+﻿<Page x:Class="Tournament.Views.Tournament.DeleteTournament"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tournament.Views.Tournament"
+        mc:Ignorable="d"
+        Title="DeleteTournament" Height="270" Width="480">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Tournament;component\css\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Style="{StaticResource NormalView}">
+            <TextBlock Style="{StaticResource MainText}" Margin="40,20,0,0" 
+                   Text="Complete Tournament details." HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Border BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
+                HorizontalAlignment="Center" Width="401" Height="151"/>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="150" Background="#FF3E3E40">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border  Margin="5,5,5,2" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="ID:" Style="{StaticResource MainText}"/>
+                    <TextBox  Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center" />
+                </Grid>
+            </Border>
+            <Border Margin="5,2,5,5" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
+                    <TextBox  Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Remove"/>
+        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel" Click="Button_Click_Close"/>
+    </Grid>
+</Page>
