@@ -28,17 +28,30 @@ namespace Tournament.Models
         {
             TeamsList.Add(team);
         }
+        /// <summary>
+        /// Finds Team instance with following ID 
+        /// </summary>
+        public Team FindTeamByID(int id)
+        {
+            foreach (var team in TeamsList)
+            {
+                if (team.IdTeam == id)
+                    return team;
+            }
 
+            return null;
+        }
         /// <summary>
         /// Removes Team from TeamsList
         /// </summary>
         public void RemoveTeam(int id)
         {
-            foreach(var team in TeamsList)
-            {
-                if (team.IdTeam == id)
-                    TeamsList.Remove(team);
-            }
+            
+                if (TeamsList.Contains(FindTeamByID(id)))
+                {     
+                    TeamsList.Remove(FindTeamByID(id));
+                    Count--;
+                }
         }
 
         /// <summary>

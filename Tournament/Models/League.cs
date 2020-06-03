@@ -26,7 +26,7 @@ namespace Tournament.Models
                         if (j > i)
                         {
                             match = new Match(
-                                teamA, teamB, referees.RefereesList,
+                                teamA, teamB, referees,
                                 matchRank, teamA.IdTeam, teamB.IdTeam, gameType,
                                 matchesPlanned.GetMatchList);
                             matchesPlanned.AddMatch(match);

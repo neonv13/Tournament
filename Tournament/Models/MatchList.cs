@@ -21,12 +21,12 @@ namespace Tournament.Models
         public int Count
         {
             get => count;
-            private set => count = value;
+            set => count = value;
         }
         public List<Match> GetMatchList 
         {
             get => matchList;
-            private set => matchList = value;
+            set => matchList = value;
         }
         /// <summary>
         /// Adds a Match instance to MatchList instance
@@ -86,9 +86,9 @@ namespace Tournament.Models
         public List<Match> LoadMatchList(string path, PlayerList playersList, RefereeList refereesList)
         {
             var matchList = new List<Match>();
-            var playersA = new List<Player>();
-            var playersB = new List<Player>();
-            var referees = new List<Referee>();
+            var TeamA = new Team(string.Empty, null);
+            var TeamB = new Team(string.Empty, null);
+            var referees = new RefereeList();
             MatchRank matchRank = 0;
             int teamA_ID = 0;
             int teamB_ID = 0;
@@ -141,26 +141,29 @@ namespace Tournament.Models
                                     teamBScore = int.Parse(words[1]);
                                     break;
                                 }
-                            case "TeamAPlayerID":
+                            case "TeamA":
                                 {
-                                    //playersA.Add(playersList.FindPlayerByID(int.Parse(words[1])));
+                                    string endstring = "End" + words[0];
+                                    LoadPlayer(file, endstring, TeamA.PlayersList);
                                     break;
                                 }
-                            case "TeamBPlayerID":
+                            case "TeamB":
                                 {
-                                    //playersB.Add(playersList.FindPlayerByID(int.Parse(words[1])));
+                                    string endstring = "End" + words[0];
+                                    LoadPlayer(file, endstring, TeamB.PlayersList);
                                     break;
                                 }
                             case "Referee":
                                 {
-                                    //referees.Add(refereesList.FindRefeereByID(int.Parse(words[1])));
+                                    referees.LoadRefereeList(path);
                                     break;
                                 }
 
                             case "EndMatchData":
                                 {
 
-                                    var match = new Match(playersA,playersB,referees,matchRank,teamA_ID,teamB_ID,typeOfGame, GetMatchList);
+                                    var match = new Match(TeamA, TeamB, referees, matchRank, teamA_ID, teamB_ID, typeOfGame, GetMatchList);
+
                                     match.ReadMatch(teamAScore,teamBScore,matchID);
                                     matchList.Add(match);
                                     break;
@@ -168,11 +171,6 @@ namespace Tournament.Models
                         }
 
                 }
-
-
-
-
-
                 file.Close();
             };
             return matchList;

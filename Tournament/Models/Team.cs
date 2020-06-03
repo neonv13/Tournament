@@ -95,6 +95,7 @@ namespace Tournament.Models
                 if(player.ID == id)
                 {
                     PlayersList.PlayersList.Remove(player);
+                    Count--;
                 }
             }
         }
