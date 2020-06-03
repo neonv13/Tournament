@@ -119,8 +119,6 @@ namespace Tournament.Models
                     while ((text = file.ReadLine()) != null && text != endstring)
                     {
                         string[] words = text.Split(" ");
-
-                        if (words.Length > 1)
                             switch (words[0])
                             {
                                 case "PlayerID:":
@@ -137,6 +135,11 @@ namespace Tournament.Models
                                     {
                                         surname = words[1];
                                         break;
+                                    }
+                                case "PlayerPoints:": 
+                                    {
+                                        points = int.Parse(words[1]);
+                                        break; 
                                     }
                                 case "EndPlayer":
 

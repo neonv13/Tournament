@@ -30,7 +30,9 @@ namespace Tournament.Views.Referees
             int id = int.Parse(IDTextBox.Text);
             string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
-            if (refereesViewModel.Referees.FindRefereeByID(id).Name == name && refereesViewModel.Referees.FindRefereeByID(id).Surname == surname)
+            if (refereesViewModel.Referees.FindRefereeByID(id) != null 
+                && refereesViewModel.Referees.FindRefereeByID(id).Name == name 
+                && refereesViewModel.Referees.FindRefereeByID(id).Surname == surname)
             {                     
                 refereesViewModel.Referees.RemoveReferee(id);
                 refereesViewModel.Referees.SaveRefereeList("refereesList.txt");

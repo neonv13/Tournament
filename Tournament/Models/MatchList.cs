@@ -66,11 +66,11 @@ namespace Tournament.Models
                     file.WriteLine("TeamB_ID: " + match.TeamB_ID);
                     file.WriteLine("TeamAScore: " + match.TeamAScore);
                     file.WriteLine("TeamBScore: " + match.TeamBScore);
-                    foreach (var player in match.PlayersTeamA)
+                    foreach (var player in match.TeamA.PlayersList.PlayersList)
                     {
                         file.WriteLine("TeamAPlayerID: " + player.ID);
                     }
-                    foreach (var player in match.PlayersTeamB)
+                    foreach (var player in match.TeamB.PlayersList.PlayersList)
                     {
                         file.WriteLine("TeamBPlayerID: " + player.ID);
                     }

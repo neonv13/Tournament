@@ -1,12 +1,12 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
+﻿//using DocumentFormat.OpenXml.Office2010.Excel;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Documents;
+//using System.Windows.Documents;
 
 namespace Tournament.Models
 {
-    class TeamList 
+    class TeamList
     {
         private List<Team> teamsList;
         private int count;
@@ -20,6 +20,10 @@ namespace Tournament.Models
         /// Initializes a GetTeamsList
         /// </summary>
         public List<Team> TeamsList { get => teamsList; set => teamsList = value; }
+        public TeamList()
+        {
+            teamsList = new List<Team>();
+        }
 
         /// <summary>
         /// Adds Team to TeamsList
@@ -67,7 +71,7 @@ namespace Tournament.Models
                     file.WriteLine("TeamName: " + team.TeamName);
                     file.WriteLine("TeamID: " + team.IdTeam);
                     file.WriteLine("TeamsPointEarned: " + team.PointEarned);
-                    if (team.PlayersList.Count > 0)
+                    if (team != null && team.PlayersList != null && team.PlayersList.Count > 0)
                     {
                         file.WriteLine("Players");
                         foreach (var player in team.PlayersList.PlayersList)
@@ -99,54 +103,94 @@ namespace Tournament.Models
 
             System.IO.StreamReader file = new System.IO.StreamReader(path);
             
-                string line;
-                while ((line = file.ReadLine()) != null)
+            string line;
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] words = line.Split(" ");
+                switch (words[0])
                 {
-                    string[] words = line.Split(" ");
-                    switch (words[0])
-                    {
-                        case "TeamName:":
-                            {
-                                teamName = words[1];
-                                break;
-                            }
-                        case "TeamID:":
-                            {
-                                teamID = int.Parse(words[1]);
-                                break;
-                            }
-                        case "TeamsPointEarned:":
-                            {
-                                teamPoint = int.Parse(words[1]);
-                                break;
-                            }
-                        case "Players:":
-                            {
-                                string endstring = "End" + words[0];
-                                LoadPlayer(file, endstring, players);
-                                //players.LoadPlayersList(path);
-                                break;
-                            }
+                    case "TeamName:":
+                        {
+                            teamName = words[1];
+                            break;
+                        }
+                    case "TeamID:":
+                        {
+                            teamID = int.Parse(words[1]);
+                            break;
+                        }
+                    case "TeamsPointEarned:":
+                        {
+                            teamPoint = int.Parse(words[1]);
+                            break;
+                        }
+                    case "Players":
+                        {
+                            string endstring = "End" + words[0];
+                            LoadPlayer(file, endstring, players);
+                            break;
+                        }
+                    case "EndTeamsData":
+                        {
 
-
-                        case "EndTeamsData":
-                            {
-
-                                var team = new Team(teamName, teamID, players, teamPoint);
-                                teamsList.Add(team);
-                                break;
-                            }
-                    }
-                file.Close();
+                            var team = new Team(teamName, teamID, players, teamPoint);
+                            teamsList.Add(team);
+                            break;
+                        }
+                }
             
+            }
+            file.Close();
             TeamsList = teamsList;
             Count = teamsList.Count;
-            }
         }
 
-        private void LoadPlayer(StreamReader file, string endstring, object playersA)
+        private void LoadPlayer(StreamReader file, string endstring, PlayerList players )
         {
-            throw new NotImplementedException();
+            int id = 0;
+            string name = string.Empty;
+            string surname = string.Empty;
+            int points = 0;
+            string text;
+            while ((text = file.ReadLine()) != null && text != endstring)
+            {
+                string[] words = text.Split(" ");
+                switch (words[0])
+                {
+                    case "PlayerID:":
+                        {
+                            id = int.Parse(words[1]);
+                            break;
+                        }
+                    case "PlayerName:":
+                        {
+                            name = words[1];
+                            break;
+                        }
+                    case "PlayerSurname:":
+                        {
+                            surname = words[1];
+                            break;
+                        }
+                    case "EndPlayer":
+                        {
+                            if (id != 0 && name != string.Empty && surname != string.Empty)
+                            {
+                                Player player = new Player(name, surname, null)
+                                {
+                                    ID = id,
+                                    IndividualPoints = points
+                                };
+                                players.AddPlayer(player);
+                            }
+                            break;
+                        }
+                    case "EndTeam": 
+                        { 
+                            return;
+                        }
+                }
+            }
         }
     }
 

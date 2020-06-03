@@ -30,7 +30,7 @@ namespace Tournament.Views
             TeamViewModel teamViewModel = new TeamViewModel();
             string name = TeamName.Text;
             teamViewModel.Teams.AddTeam(new Team(name,teamViewModel.Teams.TeamsList));
-            teamViewModel.Teams.SaveTeamsList("plik2.txt");
+            teamViewModel.Teams.SaveTeamsList("teamsList.txt");
             NavigationService.Navigate(new TeamsViewTeamsView());
         }
     }

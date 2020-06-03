@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Tournament.Models;
 
-namespace Tournament.ViewModels
+namespace Tournament.ViewModels 
 {
-    class TeamViewModel
+    class TeamViewModel : INotifyPropertyChanged
     {
-        public TeamList Teams { get; set; }
+        private TeamList teamsList;
+        public TeamList Teams { get=> teamsList; set { teamsList = value; OnPropertyChanged(); } }
         public TeamViewModel()
         {
             Teams = new TeamList();
-            Teams.TeamsList.Add(new Team("Jacusie",Teams.TeamsList));
-            Teams.TeamsList.Add(new Team("Paliki", Teams.TeamsList));
-            Teams.TeamsList.Add(new Team("Ciosy",  Teams.TeamsList));
-            Teams.TeamsList.Add(new Team("Janusze",Teams.TeamsList));
-
+            Teams.LoadTeamsList("teamsList.txt");
         }
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
     }
 }

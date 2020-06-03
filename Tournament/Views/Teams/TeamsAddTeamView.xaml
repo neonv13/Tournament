@@ -36,7 +36,7 @@
                     </Border>
                 </Grid>
             </Border>
-            <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Save"/>
+            <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Save"/>
         </Grid>
     </Grid>
 </Page>

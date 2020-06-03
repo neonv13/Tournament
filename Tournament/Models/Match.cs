@@ -4,18 +4,18 @@ using System.Collections.Generic;
 namespace Tournament.Models
 {
     public enum MatchRank
-    { 
+    {
         GroupStage, Semifinal, Final
     }
     public enum GameType
-    { 
+    {
         Volleyball, TugOfWar, DodgeBall
     }
     class Match
     {
         private List<Referee> referees;
-        private Team TeamA { get; set; }
-        private Team TeamB { get; set; }
+        public Team TeamA { get; set; }
+        public Team TeamB { get; set; }
         private int teamAScore;
         private int teamBScore;
         private int teamA_ID;
@@ -57,7 +57,7 @@ namespace Tournament.Models
                 MatchID = randID;
 
             TeamA = A;
-            TeamB= B;
+            TeamB = B;
             Referees = referees.RefereesList;
             TeamA_ID = teamA_ID;
             TeamB_ID = teamB_ID;
@@ -91,7 +91,7 @@ namespace Tournament.Models
         /// Use when Match was read from file
         /// and you want to add missing fields 
         /// </summary>
-        public void ReadMatch(int teamAScore,int teamBScore, int matchID)
+        public void ReadMatch(int teamAScore, int teamBScore, int matchID)
         {
             TeamAScore = teamAScore;
             TeamBScore = teamBScore;
@@ -113,12 +113,12 @@ namespace Tournament.Models
         public void SymulateGame()
         {
             Random random = new Random();
-            switch(random.Next(1,3))
+            switch (random.Next(1, 3))
             {
                 case (1):
                     {
-                    TeamA.PointEarned=TeamAScore = 3;
-                    TeamB.PointEarned=TeamBScore = 0;
+                        TeamA.PointEarned = TeamAScore = 3;
+                        TeamB.PointEarned = TeamBScore = 0;
                         break;
                     }
                 case (2):
@@ -158,7 +158,7 @@ namespace Tournament.Models
         public int TeamAScore
         {
             get => teamAScore;
-            private set=> teamAScore = value;
+            private set => teamAScore = value;
         }
         /// <summary>
         /// Gets TeamBScore value
