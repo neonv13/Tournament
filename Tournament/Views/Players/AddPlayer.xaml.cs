@@ -34,7 +34,7 @@ namespace Tournament.Views
             string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
             playersViewModel.Players.AddPlayer(new Player(name,surname,playersViewModel.Players.PlayersList));
-            playersViewModel.Players.SavePlayersList("plik2.txt");
+            playersViewModel.Players.SavePlayersList("playersList.txt");
             NavigationService.Navigate(new ViewPlayers());
         }
     }
