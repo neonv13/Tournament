@@ -119,32 +119,30 @@ namespace Tournament.Models
                 while ((text = file.ReadLine()) != null && text != endstring)
                 {
                     string[] words = text.Split(" ");
-                    switch (words[0])
-                    {
-                        case "PlayerID:":
-                            {
-                                id = int.Parse(words[1]);
-                                break;
-                            }
-                        case "PlayerName:":
-                            {
-                                name = words[1];
-                                break;
-                            }
-                        case "PlayerSurname:":
-                            {
-                                surname = words[1];
-                                break;
-                            }
-                        case "PlayerPoints:":
-                            {
-                                points = int.Parse(words[1]);
-                                break;
-                            }
 
-                        case "EndPlayer":
+                    if (words.Length > 1)
+                        switch (words[0])
+                        {
+                            case "PlayerID:":
+                                {
+                                    id = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "PlayerName:":
+                                {
+                                    name = words[1];
+                                    break;
+                                }
+                            case "PlayerSurname:":
+                                {
+                                    surname = words[1];
+                                    break;
+                                }
+                            case "EndPlayer":
+
                             {
                                 if (id != 0 && name != string.Empty && surname != string.Empty)
+
                                 {
                                     Player player = new Player(name, surname, null);
                                     player.ID = id;
@@ -154,7 +152,6 @@ namespace Tournament.Models
                                 break;
                             }
                     }
-
                 }
                 file.Close();
             }
