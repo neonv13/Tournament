@@ -63,7 +63,7 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new istance of Players
         /// </summary>
-        public PlayerList PlayersList { get => players; }
+        public PlayerList PlayersList { get => players; set => players = value; }
 
 
         /// <summary>

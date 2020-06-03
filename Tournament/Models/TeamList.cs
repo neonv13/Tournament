@@ -55,7 +55,7 @@ namespace Tournament.Models
         }
 
         /// <summary>
-        /// Saves a MatchList
+        /// Saves a  TeamsList
         /// </summary>
         public void SaveTeamsList(string path)
         {
@@ -97,8 +97,8 @@ namespace Tournament.Models
             string teamName = "";
             int teamPoint = 0;
 
-            using (System.IO.StreamReader file = new System.IO.StreamReader(path))
-            {
+            System.IO.StreamReader file = new System.IO.StreamReader(path);
+            
                 string line;
                 while ((line = file.ReadLine()) != null)
                 {
@@ -138,7 +138,7 @@ namespace Tournament.Models
                             }
                     }
                 file.Close();
-            }
+            
             TeamsList = teamsList;
             Count = teamsList.Count;
             }

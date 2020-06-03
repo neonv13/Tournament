@@ -84,9 +84,9 @@ namespace Tournament.Models
                 }
                 semi.Add(team);
             }
-            Match semi1 = new Match(semi[0], semi[1], RefereeList.RefereesList, MatchRank.Semifinal, semi[0].IdTeam, semi[1].IdTeam, GameType, MatchHistory.GetMatchList);
+            Match semi1 = new Match(semi[0], semi[1], RefereeList, MatchRank.Semifinal, semi[0].IdTeam, semi[1].IdTeam, GameType, MatchHistory.GetMatchList);
             Semi.AddMatch(semi1);
-            Match semi2 = new Match(semi[2], semi[3], RefereeList.RefereesList, MatchRank.Semifinal, semi[2].IdTeam, semi[3].IdTeam, GameType, MatchHistory.GetMatchList);
+            Match semi2 = new Match(semi[2], semi[3], RefereeList, MatchRank.Semifinal, semi[2].IdTeam, semi[3].IdTeam, GameType, MatchHistory.GetMatchList);
             Semi.AddMatch(semi2);
             foreach(Match match in Semi.GetMatchList)
             {
@@ -111,7 +111,7 @@ namespace Tournament.Models
         /// </summary>
         public Team FinalOrSemi(Team teamA, Team teamB,MatchRank matchRank)
         {
-            Match match = new Match(teamA,teamB,RefereeList.RefereesList,
+            Match match = new Match(teamA,teamB,RefereeList,
                 matchRank,
                 teamA.IdTeam,teamB.IdTeam,
                 GameType, MatchHistory.GetMatchList);

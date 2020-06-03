@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Tournament.Models
 {
@@ -13,7 +14,7 @@ namespace Tournament.Models
         /// </summary>
         public MatchList()
         {
-            var matchList = new List<Match>();
+            matchList = new List<Match>();
         }
         /// <summary>
         /// Gets a MatchList value (List<Match>)  
@@ -83,7 +84,7 @@ namespace Tournament.Models
             };
         }
 
-        public List<Match> LoadMatchList(string path, PlayerList playersList, RefereeList refereesList)
+        public List<Match> LoadMatchList(string path)
         {
             var matchList = new List<Match>();
             var TeamA = new Team(string.Empty, null);
@@ -175,7 +176,11 @@ namespace Tournament.Models
             };
             return matchList;
         }
-    
+
+        private void LoadPlayer(StreamReader file, string endstring, PlayerList playersList)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

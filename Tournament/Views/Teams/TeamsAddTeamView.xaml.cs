@@ -28,10 +28,9 @@ namespace Tournament.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TeamViewModel teamViewModel = new TeamViewModel();
-            string name = NameTextBox.Text;
-            string surname = SurnameTextBox.Text;
-            TeamViewModel.Teams.AddTeam(new Team(name,teamViewModel.Teams));
-            TeamViewModel.Teams.SaveTeamsList("plik2.txt");
+            string name = TeamName.Text;
+            teamViewModel.Teams.AddTeam(new Team(name,teamViewModel.Teams.TeamsList));
+            teamViewModel.Teams.SaveTeamsList("plik2.txt");
             NavigationService.Navigate(new TeamsViewTeamsView());
         }
     }
