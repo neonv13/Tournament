@@ -9,6 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tournament.ViewModels;
+using Tournament.Views.Players;
 
 namespace Tournament.Views
 {
@@ -21,6 +23,13 @@ namespace Tournament.Views
         {
             InitializeComponent();
         }
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PlayersViewModel playersViewModel = new PlayersViewModel();
+            int id = int.Parse(IDTextBox.Text);
+            playersViewModel.Players.RemovePlayer(id);
+            playersViewModel.Players.SavePlayersList("plik2.txt");
+            NavigationService.Navigate(new ViewPlayers());
+        }
     }
 }

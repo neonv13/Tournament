@@ -1,27 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
+using Tournament.Commands;
 using Tournament.Models;
 
 namespace Tournament.ViewModels
 {
-    class PlayersViewModel
+    class PlayersViewModel : INotifyPropertyChanged
     {
         public string Name { get;  set; }
         public string Surname { get;  set; }
-        public  PlayerList Players { get; private set; }
-        public bool CanUpdate { get; internal set; }
-
+        private PlayerList players;
+        public  PlayerList Players 
+        {
+            get => players;
+            private set 
+            {
+                players = value;
+                OnPropertyChanged(); 
+            } 
+        }
+        public PlayersSaveCommand UpdateCommand { get; private set; }
+        public Player player { get; set; }
         public PlayersViewModel()
         {
             Players = new PlayerList();
-            Players.LoadPlayersList("plik.txt","null");
-            UpdateCommand = new 
+            Players.LoadPlayersList("C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\Tournament\\bin\\Debug\\netcoreapp3.1\\plik2.txt", "null");
         }
-        public void AddPlayerToList() 
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = "")
         {
-            Players.AddPlayer(new Player(Name,Surname,Players.PlayersList));
-            Players.SavePlayersList("plik.txt");
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+
+        public bool CanUpdate 
+        {
+            get 
+            {
+                if (player == null)
+                    return false;
+                return !String.IsNullOrWhiteSpace(player.Name); } 
         }
 
     }

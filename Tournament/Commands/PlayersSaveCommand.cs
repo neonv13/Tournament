@@ -11,19 +11,11 @@ namespace Tournament.Commands
     {
         public PlayersSaveCommand(PlayersViewModel viewModel)
         {
-            viewModel = ViewModel;
+            ViewModel = viewModel;
+            Execute(ViewModel);
         }
         
         public PlayersViewModel ViewModel { get; private set; }
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         public event EventHandler CanExecuteChanged 
         {
@@ -38,7 +30,7 @@ namespace Tournament.Commands
 
         public void Execute(object parameter)
         {
-            ViewModel.AddPlayerToList();
+            //throw System.NotImplementedException();
         }
     }
 }

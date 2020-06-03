@@ -16,9 +16,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Page.DataContext>
-        <ViewModels:PlayersViewModel/>
-    </Page.DataContext>
+    
 
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Style="{StaticResource MainText}" 
@@ -38,7 +36,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
-                        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="15" FontSize="30" TextAlignment="Center" />
+                        <TextBox x:Name="NameTextBox"  Grid.Column="1" Margin="15" FontSize="30" TextAlignment="Center" />
                     </Grid>
                 </Border>
                 <Border Margin="5,2,5,5" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
@@ -48,11 +46,11 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Surname:" Style="{StaticResource MainText}"/>
-                        <TextBox Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged }"   Grid.Column="1" Margin="15" FontSize="30" TextAlignment="Center"/>
+                        <TextBox x:Name="SurnameTextBox"   Grid.Column="1" Margin="15" FontSize="30" TextAlignment="Center"/>
                     </Grid>
                 </Border>
             </Grid>
         </Border>
-        <Button Style="{StaticResource WindowButton}" Click="{Binding AddPlayerToList}" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Save"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Save"/>
     </Grid>
 </Page>

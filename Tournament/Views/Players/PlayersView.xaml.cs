@@ -23,7 +23,6 @@ namespace Tournament.Views
         public PlayersView()
         {
             InitializeComponent();
-            DataContext = new PlayersViewModel();
         }
 
         private void Button_Click_AddPlayer(object sender, RoutedEventArgs e)

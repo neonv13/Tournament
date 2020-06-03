@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Tournament.Models
 {
-    public class PlayerList
+    public class PlayerList : INotifyPropertyChanged
     {
         private List<Player> players;
         private int count;
+
+        
+
         /// <summary>
         /// Initializes a new instance of PlayerList.
         /// </summary>
@@ -15,6 +20,13 @@ namespace Tournament.Models
             count = 0;
 
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         /// <summary>
         /// Retruns a instance of Player that has given ID
         /// </summary>
@@ -33,7 +45,11 @@ namespace Tournament.Models
         public int Count
         {
             get => count;
-            private set => count = value;
+            private set
+                {
+                count = value;
+                OnPropertyChanged();
+                }
         }
         /// <summary>
         /// Gets a List of Players in PlayersList
@@ -59,15 +75,18 @@ namespace Tournament.Models
         /// </summary>
         public void RemovePlayer(Player Player)
         {
-            if (Count > 0 && PlayersList.Contains(Player))
+            if (PlayersList.Contains(Player))
+            {
                 players.Remove(Player);
+                Count--;
+            }
         }
         /// <summary>
         /// Removes Player object form PlayersList which have same id as given
         /// </summary>
         public void RemovePlayer(int id)
         {
-            if (Count > 0 && PlayersList.Contains(FindPlayerByID(id)))
+            if (PlayersList.Contains(FindPlayerByID(id)))
             {
                 PlayersList.Remove(FindPlayerByID(id));
                 Count--;
@@ -95,7 +114,7 @@ namespace Tournament.Models
         /// <summary>
         /// Loads a PlayersList from a file from given path
         /// </summary>
-        public PlayerList LoadPlayersList(string path, string endstring)
+        public void LoadPlayersList(string path, string endstring)
         {
             PlayerList playerList = new PlayerList();
             if(path != null && path != string.Empty)
@@ -149,7 +168,8 @@ namespace Tournament.Models
                 }
                 file.Close();
             }
-            return playerList;
+            Count = playerList.Count;
+           players = playerList.PlayersList;
         }
 
 
