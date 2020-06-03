@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Documents;
@@ -11,12 +12,6 @@ namespace Tournament.Models
         private int count;
 
         /// <summary>
-        /// Initializes a TeamsList
-        /// </summary>
-        private List<Team> TeamsList { get => teamsList; }
-
-
-        /// <summary>
         /// Initializes a Count
         /// </summary>
         public int Count { get => count; set => count = value; }
@@ -24,7 +19,7 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a GetTeamsList
         /// </summary>
-        public List<Team> GetTeamsList { get => teamsList; set => teamsList = value; }
+        public List<Team> TeamsList { get => teamsList; set => teamsList = value; }
 
         /// <summary>
         /// Adds Team to TeamsList
@@ -53,7 +48,7 @@ namespace Tournament.Models
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
             {
-                foreach (var team in GetTeamsList)
+                foreach (var team in TeamsList)
                 {
                     file.WriteLine("StartTeamsData");
                     file.WriteLine("TeamName: " + team.TeamName);
@@ -62,7 +57,7 @@ namespace Tournament.Models
                     if (team.PlayersList.Count > 0)
                     {
                         file.WriteLine("Players");
-                        foreach (var player in team.PlayersList)
+                        foreach (var player in team.PlayersList.PlayersList)
                         {
                             file.WriteLine("PlayerID: " + player.ID);
                             file.WriteLine("PlayerName: " + player.Name);
@@ -81,10 +76,10 @@ namespace Tournament.Models
         /// <summary>
         /// Load TeamList
         /// </summary>
-        public List<Team> LoadTeamsList(string path)
+        public void LoadTeamsList(string path)
         {
             var players = new PlayerList();
-            var teamslist = new List<Team>(); 
+            var teamsList = new List<Team>(); 
             int teamID = 0;
             string teamName = "";
             int teamPoint = 0;
@@ -124,15 +119,16 @@ namespace Tournament.Models
                         case "EndTeamsData":
                             {
 
-                                var team = new Team(teamName, teamID, players.PlayersList, teamPoint);
+                                var team = new Team(teamName, teamID, players, teamPoint);
                                 teamsList.Add(team);
                                 break;
                             }
                     }
-                }
                 file.Close();
-            };
-            return teamsList;
+            }
+            TeamsList = teamsList;
+            Count = teamsList.Count;
+            }
         }
 
         private void LoadPlayer(StreamReader file, string endstring, object playersA)

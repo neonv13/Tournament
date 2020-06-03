@@ -10,7 +10,7 @@ namespace Tournament.Models
         private int count;
         private string teamName;
         private int idTeam;
-        private List<Player> players;
+        private PlayerList players;
         private int pointEarned;
 
         /// <summary>
@@ -43,11 +43,10 @@ namespace Tournament.Models
             TeamName = team_name;
             count = 0;
         }
-
         /// <summary>
         /// Create a new team with setted value of sets
         /// </summary>
-        public Team(string tName, int id, List<Player> players, int point)
+        public Team(string tName, int id, PlayerList players, int point)
         {
             this.teamName = tName;
             this.idTeam = id;
@@ -64,7 +63,7 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new istance of Players
         /// </summary>
-        public List<Player> PlayersList { get => players; }
+        public PlayerList PlayersList { get => players; }
 
 
         /// <summary>
@@ -83,7 +82,7 @@ namespace Tournament.Models
         /// </summary>
         public void AddPlayer(Player player)
         {
-            PlayersList.Add(player);
+            PlayersList.PlayersList.Add(player);
         }
    
         /// <summary>
@@ -91,11 +90,11 @@ namespace Tournament.Models
         /// </summary>
         public void RemovePlayer(int id)
         {
-            foreach(var player in PlayersList)
+            foreach(var player in PlayersList.PlayersList)
             {
                 if(player.ID == id)
                 {
-                    PlayersList.Remove(player);
+                    PlayersList.PlayersList.Remove(player);
                 }
             }
         }
