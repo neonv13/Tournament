@@ -29,7 +29,7 @@ namespace Tournament.Models
         /// </summary> 
         public Match(Team A,
                     Team B,
-                    List<Referee> referees,
+                    RefereeList referees,
                     MatchRank matchRank, int teamA_ID,
                     int teamB_ID, GameType gameType, List<Match> matchList)
         {
@@ -58,7 +58,7 @@ namespace Tournament.Models
 
             this.A = A;
             this.B= B;
-            Referees = referees;
+            Referees = referees.RefereesList;
             TeamA_ID = teamA_ID;
             TeamB_ID = teamB_ID;
             GameType = gameType;
