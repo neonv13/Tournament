@@ -228,7 +228,7 @@ namespace Tournament.Models
                             }
                         case "Referee:":
                             {
-                                referees = referees.LoadRefereeList(path);
+                                referees.LoadRefereeList(path);
                                 break;
                             }
 

@@ -8,32 +8,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Tournament.Models;
 using Tournament.ViewModels;
 using Tournament.Views.Players;
 
-namespace Tournament.Views
+namespace Tournament.Views.Referees
 {
     /// <summary>
-    /// Interaction logic for RemovePlayerWindow.xaml
+    /// Interaction logic for RemoveReferee.xaml
     /// </summary>
-    public partial class RemovePlayer : Page
+    public partial class RemoveReferee : Page
     {
-        public RemovePlayer()
+        public RemoveReferee()
         {
             InitializeComponent();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PlayersViewModel playersViewModel = new PlayersViewModel();
+            RefereesViewModel refereesViewModel = new RefereesViewModel();
             int id = int.Parse(IDTextBox.Text);
-            string name= NameTextBox.Text;
+            string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
-            if (playersViewModel.Players.FindPlayerByID(id).Name == name && playersViewModel.Players.FindPlayerByID(id).Surname == surname)
-            {
-                playersViewModel.Players.RemovePlayer(id);
-                playersViewModel.Players.SavePlayersList("playersList.txt");
+            if (refereesViewModel.Referees.FindRefereeByID(id).Name == name && refereesViewModel.Referees.FindRefereeByID(id).Surname == surname)
+            {                     
+                refereesViewModel.Referees.RemoveReferee(id);
+                refereesViewModel.Referees.SaveRefereeList("refereesList.txt");
             }
             NavigationService.Navigate(new ViewPlayers());
         }

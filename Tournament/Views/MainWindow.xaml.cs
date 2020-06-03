@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-
+using Tournament.Views.Referees;
 
 namespace Tournament.Views
 {
@@ -38,6 +38,10 @@ namespace Tournament.Views
         private void Button_Click_Authors(object sender, RoutedEventArgs e)
         {
             Main.Content = new Authors();
+        }
+        private void Button_Click_Referees(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new RefereeView();
         }
     }
 }

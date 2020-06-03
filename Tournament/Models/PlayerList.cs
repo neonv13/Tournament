@@ -70,17 +70,7 @@ namespace Tournament.Models
                 Count++;
             }
         }
-        /// <summary>
-        /// Removes a Player form PlayersList
-        /// </summary>
-        public void RemovePlayer(Player Player)
-        {
-            if (PlayersList.Contains(Player))
-            {
-                players.Remove(Player);
-                Count--;
-            }
-        }
+        
         /// <summary>
         /// Removes Player object form PlayersList which have same id as given
         /// </summary>
