@@ -27,9 +27,6 @@
                  HorizontalContentAlignment="Stretch" 
                  Background="#FF3E3E40" Foreground="#FFF1F1F1"
                  BorderBrush="#FF252526">
-            <ListBox.DataContext>
-                <ViewModels:PlayersViewModel/>
-            </ListBox.DataContext>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">

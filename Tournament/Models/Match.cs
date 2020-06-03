@@ -14,8 +14,8 @@ namespace Tournament.Models
     class Match
     {
         private List<Referee> referees;
-        private List<Player> playersTeamA;
-        private List<Player> playersTeamB;
+        private Team A;
+        private Team B;
         private int teamAScore;
         private int teamBScore;
         private int teamA_ID;
@@ -27,8 +27,8 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new instance of Match 
         /// </summary> 
-        public Match(List<Player> playersTeamA,
-                    List<Player> playersTeamB,
+        public Match(Team A,
+                    Team B,
                     List<Referee> referees,
                     MatchRank matchRank, int teamA_ID,
                     int teamB_ID, GameType gameType, List<Match> matchList)
@@ -56,13 +56,27 @@ namespace Tournament.Models
             if (FreeID)
                 MatchID = randID;
 
-            PlayersTeamA = playersTeamA;
-            PlayersTeamB = playersTeamB;
+            this.A = A;
+            this.B= B;
             Referees = referees;
             TeamA_ID = teamA_ID;
             TeamB_ID = teamB_ID;
             GameType = gameType;
             MatchRank = matchRank;
+        }
+
+        public Match(Match match)
+        {
+            this.referees = match.Referees;
+            this.A = match.A;
+            this.B = match.B;
+            this.teamAScore = match.TeamAScore;
+            this.teamBScore = match.TeamBScore;
+            this.teamA_ID = match.teamA_ID;
+            this.teamB_ID = match.TeamB_ID;
+            this.gameType = match.GameType;
+            this.matchID = match.MatchID;
+            this.matchRank = match.MatchRank;
         }
         /// <summary>
         /// Gets a Referees List  of Match
@@ -98,7 +112,28 @@ namespace Tournament.Models
         /// </summary>
         public void SymulateGame()
         {
-            throw new System.NotImplementedException();
+            Random random = new Random();
+            switch(random.Next(1,3))
+            {
+                case (1):
+                    {
+                    A.PointEarned=TeamAScore = 3;
+                    B.PointEarned=TeamBScore = 0;
+                        break;
+                    }
+                case (2):
+                    {
+                        A.PointEarned = TeamAScore = 1;
+                        B.PointEarned = TeamBScore = 1;
+                        break;
+                    }
+                case (3):
+                    {
+                        A.PointEarned = TeamAScore = 0;
+                        B.PointEarned = TeamBScore = 3;
+                        break;
+                    }
+            }
 
         }
         /// <summary>
@@ -156,8 +191,7 @@ namespace Tournament.Models
         /// </summary>
         public List<Player> PlayersTeamA
         {
-            get => playersTeamA;
-            private set => playersTeamA = value;
+            get => A.PlayersList.PlayersList;
 
         }
         /// <summary>
@@ -165,11 +199,9 @@ namespace Tournament.Models
         /// </summary>
         public List<Player> PlayersTeamB
         {
-            get => playersTeamB;
-            private set => playersTeamB = value;
+            get => B.PlayersList.PlayersList;
 
         }
-
     }
 
 

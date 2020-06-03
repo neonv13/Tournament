@@ -160,8 +160,8 @@ namespace Tournament.Models
         }
         public void LoadMatchList(string path)
         {
-            var playersA = new PlayerList();
-            var playersB = new PlayerList();
+            var TeamA = new Team(string.Empty,null);
+            var TeamB = new Team(string.Empty, null);
             var referees = new RefereeList();
             MatchRank matchRank = 0;
             int teamA_ID = 0;
@@ -217,13 +217,13 @@ namespace Tournament.Models
                         case "TeamA":
                             {
                                 string endstring = "End" + words[0];
-                                LoadPlayer(file, endstring, playersA);
+                                LoadPlayer(file, endstring, TeamA.PlayersList);
                                 break;
                             }
                         case "TeamB":
                             {
                                 string endstring = "End" + words[0];
-                                LoadPlayer(file, endstring, playersB);
+                                LoadPlayer(file, endstring, TeamB.PlayersList);
                                 break;
                             }
                         case "Referee:":
@@ -235,7 +235,7 @@ namespace Tournament.Models
                         case "EndMatchData":
                             {
 
-                                var match = new Match(playersA.PlayersList, playersB.PlayersList, referees.RefereesList, matchRank, teamA_ID, teamB_ID, typeOfGame, GetMatchList);
+                                var match = new Match(TeamA, TeamB, referees.RefereesList, matchRank, teamA_ID, teamB_ID, typeOfGame, GetMatchList);
                                 match.ReadMatch(teamAScore, teamBScore, matchID);
                                 matchList.Add(match);
                                 break;
