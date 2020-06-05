@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.ViewModels;
 
 namespace Tournament.Views.Teams
 {
@@ -21,6 +22,18 @@ namespace Tournament.Views.Teams
         public TeamsRemoveTeamView()
         {
             InitializeComponent();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TeamViewModel teamsViewModel = new TeamViewModel();
+            int id = int.Parse(IDTextBox.Text);
+            string name = NameTextBox.Text;
+            if (teamsViewModel.Teams.FindTeamByID(id) != null && teamsViewModel.Teams.FindTeamByID(id).TeamName == name)
+            {   
+                teamsViewModel.Teams.RemoveTeam(id);
+                teamsViewModel.Teams.SaveTeamsList("teamsList.txt");
+            }
+            NavigationService.Navigate(new TeamsViewTeamsView());
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Windows.Documents;
+﻿//using System.Windows.Documents;
 using System.Collections.Generic;
 
 namespace Tournament.Models
@@ -14,7 +14,7 @@ namespace Tournament.Models
         {
             if (teams.TeamsList.Count >= 2)
             {
-                matchesPlanned = new MatchList();
+                MatchesPlanned = new MatchList();
                 int i = 0;
                 int j;
                 Match match;
@@ -26,10 +26,10 @@ namespace Tournament.Models
                         if (j > i)
                         {
                             match = new Match(
-                                teamA, teamB, referees.RefereesList,
+                                teamA, teamB, referees,
                                 matchRank, teamA.IdTeam, teamB.IdTeam, gameType,
-                                matchesPlanned.GetMatchList);
-                            matchesPlanned.AddMatch(match);
+                                MatchesPlanned.GetMatchList);
+                            MatchesPlanned.AddMatch(match);
                         }
                         j++;
                     }
@@ -38,16 +38,19 @@ namespace Tournament.Models
                 }
             }
         }
+
+        internal MatchList MatchesPlanned { get => matchesPlanned; set => matchesPlanned = value; }
+
         /// <summary>
         /// Return IEnumerable<Match> value of symulated matches
         /// </summary>
         public IEnumerable<Match> SymulateLeague()
         {
-            foreach (var match in matchesPlanned.GetMatchList)
+            foreach (var match in MatchesPlanned.GetMatchList)
             {
                 match.SymulateGame();
                 Match copy = new Match(match);
-                matchesPlanned.RemoveMatch(match);
+                MatchesPlanned.RemoveMatch(match);
                 yield return copy;
             }
         }

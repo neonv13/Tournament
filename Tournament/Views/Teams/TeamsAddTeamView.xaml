@@ -31,12 +31,12 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
-                            <TextBox  Grid.Column="1" Margin="10,16,25,16" FontSize="30" TextAlignment="Center" />
+                            <TextBox x:Name="TeamName" Grid.Column="1" Margin="10,16,25,16" FontSize="30" TextAlignment="Center" />
                         </Grid>
                     </Border>
                 </Grid>
             </Border>
-            <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Save"/>
+            <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Save"/>
         </Grid>
     </Grid>
 </Page>

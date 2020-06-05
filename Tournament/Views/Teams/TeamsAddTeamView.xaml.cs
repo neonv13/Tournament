@@ -10,6 +10,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Models;
+using Tournament.ViewModels;
+using Tournament.Views.Teams;
 
 namespace Tournament.Views
 {
@@ -21,6 +24,14 @@ namespace Tournament.Views
         public TeamsAddTeamView()
         {
             InitializeComponent();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TeamViewModel teamViewModel = new TeamViewModel();
+            string name = TeamName.Text;
+            teamViewModel.Teams.AddTeam(new Team(name,teamViewModel.Teams.TeamsList));
+            teamViewModel.Teams.SaveTeamsList("teamsList.txt");
+            NavigationService.Navigate(new TeamsViewTeamsView());
         }
     }
 }

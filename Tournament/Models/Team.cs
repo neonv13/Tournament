@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Documents;
+//using System.Windows.Documents;
 
 
 namespace Tournament.Models
@@ -63,7 +63,7 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a new istance of Players
         /// </summary>
-        public PlayerList PlayersList { get => players; }
+        public PlayerList PlayersList { get => players; set => players = value; }
 
 
         /// <summary>
@@ -95,6 +95,7 @@ namespace Tournament.Models
                 if(player.ID == id)
                 {
                     PlayersList.PlayersList.Remove(player);
+                    Count--;
                 }
             }
         }

@@ -1,9 +1,6 @@
-﻿using System.Windows.Documents;
-
-namespace Tournament.Models
+﻿namespace Tournament.Models
 {
     using System.Collections.Generic;
-    using System.Threading;
 
     public class RefereeList
     {
@@ -76,17 +73,17 @@ namespace Tournament.Models
 
         public void SaveRefereeList(string path)
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            System.IO.StreamWriter file = new System.IO.StreamWriter(path);
+
+            foreach (var referee in RefereesList)
             {
-                foreach (var referee in RefereesList)
-                {
-                    file.WriteLine("RefereeID: " + referee.ID);
-                    file.WriteLine("RefereeName: " + referee.Name);
-                    file.WriteLine("RefereeSurname: " + referee.Surname);
-                    file.WriteLine("EndReferee");
-                }
-                file.Close();
+                file.WriteLine("RefereeID: " + referee.ID);
+                file.WriteLine("RefereeName: " + referee.Name);
+                file.WriteLine("RefereeSurname: " + referee.Surname);
+                file.WriteLine("EndReferee");
             }
+            file.Close();
+
         }
         /// <summary>
         /// Loads RefereeList object from a specified file
@@ -124,8 +121,10 @@ namespace Tournament.Models
                             {
                                 if (id != 0 && name != string.Empty && surname != string.Empty)
                                 {
-                                    Referee referee = new Referee(name, surname, null);
-                                    referee.ID = id;
+                                    Referee referee = new Referee(name, surname, null)
+                                    {
+                                        ID = id
+                                    };
                                     refereeList.AddReferee(referee);
                                 }
                                 break;

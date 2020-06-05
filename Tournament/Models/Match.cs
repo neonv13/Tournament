@@ -4,18 +4,18 @@ using System.Collections.Generic;
 namespace Tournament.Models
 {
     public enum MatchRank
-    { 
+    {
         GroupStage, Semifinal, Final
     }
     public enum GameType
-    { 
+    {
         Volleyball, TugOfWar, DodgeBall
     }
     class Match
     {
         private List<Referee> referees;
-        private Team A;
-        private Team B;
+        public Team TeamA { get; set; }
+        public Team TeamB { get; set; }
         private int teamAScore;
         private int teamBScore;
         private int teamA_ID;
@@ -56,8 +56,8 @@ namespace Tournament.Models
             if (FreeID)
                 MatchID = randID;
 
-            this.A = A;
-            this.B= B;
+            TeamA = A;
+            TeamB = B;
             Referees = referees.RefereesList;
             TeamA_ID = teamA_ID;
             TeamB_ID = teamB_ID;
@@ -67,16 +67,16 @@ namespace Tournament.Models
 
         public Match(Match match)
         {
-            this.referees = match.Referees;
-            this.A = match.A;
-            this.B = match.B;
-            this.teamAScore = match.TeamAScore;
-            this.teamBScore = match.TeamBScore;
-            this.teamA_ID = match.teamA_ID;
-            this.teamB_ID = match.TeamB_ID;
-            this.gameType = match.GameType;
-            this.matchID = match.MatchID;
-            this.matchRank = match.MatchRank;
+            referees = match.Referees;
+            TeamA = match.TeamA;
+            TeamB = match.TeamB;
+            teamAScore = match.TeamAScore;
+            teamBScore = match.TeamBScore;
+            teamA_ID = match.teamA_ID;
+            teamB_ID = match.TeamB_ID;
+            gameType = match.GameType;
+            matchID = match.MatchID;
+            matchRank = match.MatchRank;
         }
         /// <summary>
         /// Gets a Referees List  of Match
@@ -91,7 +91,7 @@ namespace Tournament.Models
         /// Use when Match was read from file
         /// and you want to add missing fields 
         /// </summary>
-        public void ReadMatch(int teamAScore,int teamBScore, int matchID)
+        public void ReadMatch(int teamAScore, int teamBScore, int matchID)
         {
             TeamAScore = teamAScore;
             TeamBScore = teamBScore;
@@ -113,24 +113,24 @@ namespace Tournament.Models
         public void SymulateGame()
         {
             Random random = new Random();
-            switch(random.Next(1,3))
+            switch (random.Next(1, 3))
             {
                 case (1):
                     {
-                    A.PointEarned=TeamAScore = 3;
-                    B.PointEarned=TeamBScore = 0;
+                        TeamA.PointEarned = TeamAScore = 3;
+                        TeamB.PointEarned = TeamBScore = 0;
                         break;
                     }
                 case (2):
                     {
-                        A.PointEarned = TeamAScore = 1;
-                        B.PointEarned = TeamBScore = 1;
+                        TeamA.PointEarned = TeamAScore = 1;
+                        TeamB.PointEarned = TeamBScore = 1;
                         break;
                     }
                 case (3):
                     {
-                        A.PointEarned = TeamAScore = 0;
-                        B.PointEarned = TeamBScore = 3;
+                        TeamA.PointEarned = TeamAScore = 0;
+                        TeamB.PointEarned = TeamBScore = 3;
                         break;
                     }
             }
@@ -158,7 +158,7 @@ namespace Tournament.Models
         public int TeamAScore
         {
             get => teamAScore;
-            private set=> teamAScore = value;
+            private set => teamAScore = value;
         }
         /// <summary>
         /// Gets TeamBScore value
@@ -186,22 +186,7 @@ namespace Tournament.Models
             private set => teamB_ID = value;
 
         }
-        /// <summary>
-        /// Gets a List<Players> of TeamA  
-        /// </summary>
-        public List<Player> PlayersTeamA
-        {
-            get => A.PlayersList.PlayersList;
-
-        }
-        /// <summary>
-        /// Gets a List<Players> of TeamB
-        /// </summary>
-        public List<Player> PlayersTeamB
-        {
-            get => B.PlayersList.PlayersList;
-
-        }
+        
     }
 
 

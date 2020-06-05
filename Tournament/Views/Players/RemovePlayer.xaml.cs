@@ -30,7 +30,9 @@ namespace Tournament.Views
             int id = int.Parse(IDTextBox.Text);
             string name= NameTextBox.Text;
             string surname = SurnameTextBox.Text;
-            if (playersViewModel.Players.FindPlayerByID(id).Name == name && playersViewModel.Players.FindPlayerByID(id).Surname == surname)
+            if (playersViewModel.Players.FindPlayerByID(id) != null
+                && playersViewModel.Players.FindPlayerByID(id).Name == name 
+                && playersViewModel.Players.FindPlayerByID(id).Surname == surname)
             {
                 playersViewModel.Players.RemovePlayer(id);
                 playersViewModel.Players.SavePlayersList("playersList.txt");
