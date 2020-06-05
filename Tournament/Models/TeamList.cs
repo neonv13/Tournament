@@ -1,12 +1,15 @@
 ﻿//using DocumentFormat.OpenXml.Office2010.Excel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Text.Encodings.Web;
 //using System.Windows.Documents;
 
 namespace Tournament.Models
 {
-    class TeamList
+    public class TeamList : INotifyPropertyChanged
     {
         private List<Team> teamsList;
         private int count;
@@ -19,12 +22,25 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a GetTeamsList
         /// </summary>
-        public List<Team> TeamsList { get => teamsList; set => teamsList = value; }
+        public List<Team> TeamsList
+        {
+            get => teamsList;
+            set
+            {
+                teamsList = value;
+                OnPropertyChanged();
+            }
+        }
         public TeamList()
         {
-            teamsList = new List<Team>();
+            TeamsList = new List<Team>();
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
         /// <summary>
         /// Adds Team to TeamsList
         /// </summary>
@@ -143,6 +159,7 @@ namespace Tournament.Models
             file.Close();
             TeamsList = teamsList;
             Count = teamsList.Count;
+            
         }
 
         private void LoadPlayer(StreamReader file, string endstring, PlayerList players )

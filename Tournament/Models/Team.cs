@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Tournament.Models
 {
-    class Team
+    public class Team
     {
         private int count;
         private string teamName;
@@ -18,6 +18,7 @@ namespace Tournament.Models
         /// </summary>
         public Team(string team_name, List<Team> teamLists) 
         {
+            players = new PlayerList();
             Random random = new Random();
             int randID;
             bool FreeID = true;

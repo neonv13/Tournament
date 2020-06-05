@@ -21,17 +21,25 @@ namespace Tournament.Views
     /// </summary>
     public partial class TeamsAddTeamView : Page
     {
-        public TeamsAddTeamView()
+        private TeamViewModel teamViewModel;
+        private TeamsViewTeamsView teamsViewTeamsView;
+        public TeamsViewTeamsView TeamsViewTeamsView { get => teamsViewTeamsView; set => teamsViewTeamsView = value; }
+
+        public TeamsAddTeamView(TeamViewModel teamViewModel, TeamsViewTeamsView teamsViewTeamsView)
         {
+            TeamsViewTeamsView = teamsViewTeamsView;
+            TeamViewModel = teamViewModel;
             InitializeComponent();
         }
+
+        public TeamViewModel TeamViewModel { get => teamViewModel; set => teamViewModel = value; }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TeamViewModel teamViewModel = new TeamViewModel();
             string name = TeamName.Text;
             teamViewModel.Teams.AddTeam(new Team(name,teamViewModel.Teams.TeamsList));
-            teamViewModel.Teams.SaveTeamsList("teamsList.txt");
-            NavigationService.Navigate(new TeamsViewTeamsView());
+            
+            NavigationService.Navigate(TeamsViewTeamsView);
         }
     }
 }

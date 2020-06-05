@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Models;
+using Tournament.ViewModels;
 
 namespace Tournament.Views.Teams
 {
@@ -18,9 +20,26 @@ namespace Tournament.Views.Teams
     /// </summary>
     public partial class TeamsViewTeamsView : Page
     {
-        public TeamsViewTeamsView()
+        private TeamViewModel teamViewModel;
+        public TeamViewModel TeamViewModel { get => teamViewModel; set => teamViewModel = value; }
+        public TeamsViewTeamsView(TeamViewModel teamViewModel)
         {
+            TeamViewModel = teamViewModel;
             InitializeComponent();
+        }
+
+        private void Button_Click_ViewTeam(object sender, RoutedEventArgs e)
+        {
+            Team team = MyListBox.SelectedItem as Team;
+            if (team != null)
+            {
+                TeamWindow teamWindow = new TeamWindow(team.IdTeam, TeamViewModel);
+                teamWindow.Show();
+            }
+        }
+        public void Refresh()
+        {
+            MyListBox.Items.Refresh();
         }
     }
 }
