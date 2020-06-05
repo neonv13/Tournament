@@ -39,16 +39,21 @@ namespace Tournament.Views
         {
             Teams.Content = new TeamsAddTeamView(teamsViewModel, teamsViewTeamsView);
             TeamsViewTeamsView.Refresh();
+            TeamsViewModel.SaveTeamViewModel();
         }
         private void Button_Click_RemoveTeam(object sender, RoutedEventArgs e)
         {
             Teams.Content = new TeamsRemoveTeamView(teamsViewModel, teamsViewTeamsView);
             TeamsViewTeamsView.Refresh();
+            TeamsViewModel.SaveTeamViewModel();
+
         }
         private void Button_Click_ViewTeams(object sender, RoutedEventArgs e)
         {
             Teams.Content = TeamsViewTeamsView;
             TeamsViewTeamsView.Refresh();
+            TeamsViewModel.SaveTeamViewModel();
+
         }
     }
 }

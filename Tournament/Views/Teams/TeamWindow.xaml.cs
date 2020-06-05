@@ -19,11 +19,11 @@ namespace Tournament.Views.Teams
     /// <summary>
     /// Interaction logic for TeamWindow.xaml
     /// </summary>
-    public partial class TeamWindow : Window, INotifyPropertyChanged
+    public partial class TeamWindow : Window
     {
         private int teamID;
         private TeamViewModel teamViewModel;
-
+        public Team Team { get; set; }
         public int TeamID 
         { 
             get => teamID;
@@ -36,7 +36,7 @@ namespace Tournament.Views.Teams
             set 
             { 
                 teamViewModel = value;
-                OnPropertyChanged();
+               
             } 
         }
 
@@ -45,15 +45,23 @@ namespace Tournament.Views.Teams
         {
             TeamID = teamID;
             TeamViewModel = teamViewModel;
+            Team = teamViewModel.Teams.FindTeamByID(TeamID);
             InitializeComponent();
+            if(Team.PlayersList != null && Team.PlayersList.PlayersList != null)
+                PlayersListBox.ItemsSource = teamViewModel.Teams.FindTeamByID(TeamID).PlayersList.PlayersList;
         }
 
         private void Button_Click_AddPlayerToTeam(object sender, RoutedEventArgs e)
         {
             AddPlayerToTeamWindow addPlayerToTeamWindow = new AddPlayerToTeamWindow(TeamID, TeamViewModel);
             addPlayerToTeamWindow.Show();
+            Refresh();
         }
-      
+        public void Refresh() 
+        {
+            PlayersListBox.ItemsSource = null;
+            PlayersListBox.ItemsSource = teamViewModel.Teams.FindTeamByID(TeamID).PlayersList.PlayersList;
+        }
         #region
 
         public event PropertyChangedEventHandler PropertyChanged;

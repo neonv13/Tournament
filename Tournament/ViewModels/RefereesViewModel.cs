@@ -24,6 +24,15 @@ namespace Tournament.ViewModels
             Referees = new RefereeList();
             Referees.LoadRefereeList("C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\Tournament\\bin\\Debug\\netcoreapp3.1\\refereesList.txt");
         }
+
+        public void SaveRefereesViewModel()
+        {
+            Referees.SaveRefereeList("refereesList.txt");
+        
+        }
+
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = "")
         {

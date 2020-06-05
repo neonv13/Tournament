@@ -24,6 +24,10 @@ namespace Tournament.ViewModels
             Players = new PlayerList();
             Players.LoadPlayersList("C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\Tournament\\bin\\Debug\\netcoreapp3.1\\playersList.txt", "null");
         }
+        public void SavePlayersViewModel()
+        {
+            Players.SavePlayersList("playersList.txt");
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = "")

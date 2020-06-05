@@ -27,6 +27,11 @@ namespace Tournament.ViewModels
             Teams = new TeamList();
             Teams.LoadTeamsList("C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\Tournament\\bin\\Debug\\netcoreapp3.1\\teamsList.txt");
         }
+        public void SaveTeamViewModel() 
+        {
+            Teams.SaveTeamsList("teamsList.txt");
+
+        }
 
         #region
 

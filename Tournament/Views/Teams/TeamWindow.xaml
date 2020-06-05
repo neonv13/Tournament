@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tournament.Views.Teams"
-        xmlns:ViewModels="clr-namespace:Tournament.ViewModels" x:Class="Tournament.Views.Teams.TeamWindow"
+        xmlns:ViewModels="clr-namespace:Tournament.ViewModels" xmlns:Views="clr-namespace:Tournament.Views" x:Class="Tournament.Views.Teams.TeamWindow"
         mc:Ignorable="d"
         Title="TeamWindow" Height="450" Width="800">
     <Window.Resources>
@@ -14,16 +14,19 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
-
     <Window.DataContext>
         <ViewModels:TeamViewModel/>
     </Window.DataContext>
 
 
+
+
+
     <Grid Style="{StaticResource NormalView}">
         <StackPanel Style="{StaticResource Header}">
-            <TextBlock Style ="{StaticResource MainText}" Text="{Binding Team.Name}"/>
+            <TextBlock Style ="{StaticResource MainText}" Text="{Binding  Teams.TeamsList.F}">
+                
+            </TextBlock>
         </StackPanel>
 
         <StackPanel Margin="0,30,0,30" Height="30" VerticalAlignment="Top" Orientation="Horizontal">
@@ -31,8 +34,8 @@
         </StackPanel>
         <TextBlock  Width="100" Text="Players List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
              VerticalAlignment="Top" Margin="470,60,0,0" />
-        <ListBox Margin="470,90,30,30" ItemsSource="{Binding Players.PlayersList, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                 HorizontalContentAlignment="Stretch" 
+        <ListBox Margin="490,90,30,30" ItemsSource="{Binding Players.PlayersList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalContentAlignment="Stretch"  x:Name="PlayersListBox"
                  Background="#FF3E3E40" Foreground="#FFF1F1F1"
                  BorderBrush="#FF252526">
             <ListBox.ItemTemplate>
@@ -73,10 +76,10 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Margin="0,30,0,30">
-                <TextBlock Margin="10" FontSize="15" Text="{Binding Team.Name}"/>
-                <TextBlock Margin="10" FontSize="15" Text="{Binding Team.Points}" />
-                <TextBlock Margin="10" FontSize="15" Text="{Binding Team.GameType}" />
-                <TextBlock Margin="10" FontSize="15" Text="{Binding Team.Count}" />
+                <TextBlock Margin="10" FontSize="15" Text="{Binding Name}"/>
+                <TextBlock Margin="10" FontSize="15" Text="{Binding Points}" />
+                <TextBlock Margin="10" FontSize="15" Text="{Binding GameType}" />
+                <TextBlock Margin="10" FontSize="15" Text="{Binding Count}" />
             </StackPanel>
         </Grid>
 

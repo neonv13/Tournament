@@ -18,7 +18,6 @@ namespace Tournament.Models
         /// </summary>
         public Team(string team_name, List<Team> teamLists) 
         {
-            players = new PlayerList();
             Random random = new Random();
             int randID;
             bool FreeID = true;
@@ -39,10 +38,11 @@ namespace Tournament.Models
                     break;
                 }
             } while (FreeID == false);
+            players = new PlayerList();
             IdTeam = randID;
             PointEarned = 0;
             TeamName = team_name;
-            count = 0;
+            Count = 0;
         }
         /// <summary>
         /// Create a new team with setted value of sets

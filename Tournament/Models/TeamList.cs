@@ -47,6 +47,7 @@ namespace Tournament.Models
         public void AddTeam(Team team)
         {
             TeamsList.Add(team);
+            Count++;
         }
         /// <summary>
         /// Finds Team instance with following ID 

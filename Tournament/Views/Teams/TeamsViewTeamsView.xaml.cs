@@ -39,7 +39,9 @@ namespace Tournament.Views.Teams
         }
         public void Refresh()
         {
-            MyListBox.Items.Refresh();
+            MyListBox.ItemsSource = null;
+            MyListBox.ItemsSource = TeamViewModel.Teams.TeamsList;
+
         }
     }
 }

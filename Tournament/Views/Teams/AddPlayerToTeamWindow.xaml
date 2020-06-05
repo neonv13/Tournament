@@ -21,8 +21,8 @@
                    Text="Complete personal details." Margin="80,45,0,0"
                        HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Border BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
-                HorizontalAlignment="Center" Width="401" Height="151">
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="150" Background="#FF3E3E40">
+                HorizontalAlignment="Center" Width="401" Height="250">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="249" Background="#FF3E3E40">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
