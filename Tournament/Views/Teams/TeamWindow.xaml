@@ -24,19 +24,18 @@
 
     <Grid Style="{StaticResource NormalView}">
         <StackPanel Style="{StaticResource Header}">
-            <TextBlock Style ="{StaticResource MainText}" Text="{Binding  Teams.TeamsList.F}">
-                
-            </TextBlock>
+            <TextBlock x:Name="TopTextBlock" Style ="{StaticResource MainText}" Text="{Binding Team.TeamName }"/>
         </StackPanel>
 
         <StackPanel Margin="0,30,0,30" Height="30" VerticalAlignment="Top" Orientation="Horizontal">
-            <Button Style="{StaticResource NormalButton}" Width="150" Margin="30,5,30,5" Content="Add or remove player" Click="Button_Click_AddPlayerToTeam"/>
+            <Button Style="{StaticResource NormalButton}" Width="150" Margin="30,5,30,5" Content="Add player" Click="Button_Click_AddPlayerToTeam"/>
+            <Button Style="{StaticResource NormalButton}" Width="150" Margin="30,5,30,5" Content="Remove player" Click="Button_Click_RemovePlayerFromTeam"/>
         </StackPanel>
         <TextBlock  Width="100" Text="Players List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
              VerticalAlignment="Top" Margin="470,60,0,0" />
         <ListBox Margin="490,90,30,30" ItemsSource="{Binding Players.PlayersList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                  HorizontalContentAlignment="Stretch"  x:Name="PlayersListBox"
-                 Background="#FF3E3E40" Foreground="#FFF1F1F1"
+                 Background="#FF3E3E40" Foreground="#FFF1F1F1" ScrollViewer.HorizontalScrollBarVisibility="Auto"
                  BorderBrush="#FF252526">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -52,7 +51,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID , UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
@@ -69,17 +68,17 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="0,30,0,30">
-                <TextBlock Margin="10" Style="{StaticResource MainText}" FontSize="15" Text="Team Name:"/>
-                <TextBlock Margin="10" Style="{StaticResource MainText}" FontSize="15" Text="Games"/>
-                <TextBlock Margin="10" Style="{StaticResource MainText}" FontSize="15" Text="Points:"/>
-                <TextBlock Margin="10" Width="110" Style="{StaticResource MainText}" FontSize="15" Text="Players in team:"/>
+                <TextBlock Margin="10" Style="{StaticResource MainText}" Text="Team ID:"/>
+                <TextBlock Margin="10" Style="{StaticResource MainText}" Text="Game Type:"/>
+                <TextBlock Margin="10" Style="{StaticResource MainText}" Text="Points:"/>
+                <TextBlock Margin="10" Width="140" Style="{StaticResource MainText}" Text="Players in team:"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Margin="0,30,0,30">
-                <TextBlock Margin="10" FontSize="15" Text="{Binding Name}"/>
-                <TextBlock Margin="10" FontSize="15" Text="{Binding Points}" />
-                <TextBlock Margin="10" FontSize="15" Text="{Binding GameType}" />
-                <TextBlock Margin="10" FontSize="15" Text="{Binding Count}" />
+                <TextBlock Style="{StaticResource MainText}" x:Name="TeamIDTextBlock" Margin="10" Text="{Binding Team.IdTeam}"/>
+                <TextBlock Style="{StaticResource MainText}" x:Name="TeamGameTypeTextBlock" Margin="10" Text="{Binding Team.GameType}"/>
+                <TextBlock Style="{StaticResource MainText}" x:Name="TeamPointsTextBlock" Margin="10" Text="{Binding Team.PointEarned}" />
+                <TextBlock Style="{StaticResource MainText}" x:Name="TeamCountTextBlock" Margin="10" Text="{Binding Team.Count}" />
             </StackPanel>
         </Grid>
 

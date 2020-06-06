@@ -5,7 +5,7 @@ using Tournament.Models;
 
 namespace Tournament.ViewModels
 {
-    class TournamentViewModel
+    public class TournamentViewModel
     {
         public List<Tournaments> Tournaments { get; private set; }
         public TournamentViewModel()

@@ -11,7 +11,7 @@ namespace Tournament.Models
     {
         Volleyball, TugOfWar, DodgeBall
     }
-    class Match
+    public class Match
     {
         private List<Referee> referees;
         public Team TeamA { get; set; }

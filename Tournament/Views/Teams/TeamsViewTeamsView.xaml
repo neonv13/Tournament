@@ -25,7 +25,7 @@
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Width="100" Text="Teams List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="60,30,0,0" />
-        <ListBox Margin="30,60,30,30" ItemsSource="{Binding Teams.TeamsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+        <ListBox Margin="30,60,30,30" ItemsSource="{Binding Teams.TeamsList, Mode=TwoWay, UpdateSourceTrigger=Explicit}" 
                  Width="700" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" 
                  BorderBrush="#FF252526" x:Name="MyListBox" HorizontalAlignment="Stretch">
@@ -40,6 +40,7 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -49,10 +50,12 @@
                             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding IdTeam}" x:Name="IDTextBlock"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TeamName}"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Points: "/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Game: "/>
                             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PointEarned}"/>
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Players: "/>
-                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Count}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Points: "/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding GameType}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Players: "/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Count}"/>
                             <Button Click="Button_Click_ViewTeam"  Content="View" Width="50" Height="20" Grid.Row="4" Grid.Column="1" Margin="50,2,50,0"/>
                         </Grid>
                     </Border>

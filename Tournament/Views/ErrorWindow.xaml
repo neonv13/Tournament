@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tournament.Views"
         mc:Ignorable="d"
-        Title="ErrorWindow" Height="150" Width="300">
+        Title="ErrorWindow" Height="200" Width="300">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,7 +15,7 @@
     </Window.Resources>
     
     <Grid Style="{StaticResource NormalView}">
-        <TextBlock Style="{StaticResource MainText}" Text="Wrong Name, Surname or ID!" />
-        <Button Style="{StaticResource WindowButton}" Margin="0,89,0,0" VerticalAlignment="Top" Content="OK" Click="Button_Click"/>
+        <TextBlock Style="{StaticResource MainText}" x:Name="ErrorContent" Text="Wrong Name, Surname or ID!" Margin="20" VerticalAlignment="Top" />
+        <Button Style="{StaticResource WindowButton}" Margin="0,120,0,0" VerticalAlignment="Top" Content="OK" Click="Button_Click"/>
     </Grid>
 </Window>

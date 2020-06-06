@@ -7,7 +7,7 @@ using System.Linq;
 namespace Tournament.Models
 
 {
-    class Tournaments 
+    public class Tournaments 
     {
         /// <summary>
         /// Gets or sets a int matchesPlayed value

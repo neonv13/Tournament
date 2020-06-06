@@ -9,16 +9,8 @@ namespace Tournament.ViewModels
 {
     public class PlayersViewModel : INotifyPropertyChanged
     {
-        private PlayerList players;
-        public  PlayerList Players 
-        {
-            get => players;
-            private set 
-            {
-                players = value;
-                OnPropertyChanged(); 
-            } 
-        }
+        public PlayerList Players { get; set; }
+       
         public PlayersViewModel()
         {
             Players = new PlayerList();

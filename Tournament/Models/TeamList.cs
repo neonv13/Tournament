@@ -4,33 +4,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
-using System.Text.Encodings.Web;
 //using System.Windows.Documents;
 
 namespace Tournament.Models
 {
-    public class TeamList : INotifyPropertyChanged
+    public class TeamList
     {
-        private List<Team> teamsList;
-        private int count;
+        public int Count { get; set; }
+        public List<Team> TeamsList { get; set; }
 
-        /// <summary>
-        /// Initializes a Count
-        /// </summary>
-        public int Count { get => count; set => count = value; }
-
-        /// <summary>
-        /// Initializes a GetTeamsList
-        /// </summary>
-        public List<Team> TeamsList
-        {
-            get => teamsList;
-            set
-            {
-                teamsList = value;
-                OnPropertyChanged();
-            }
-        }
         public TeamList()
         {
             TeamsList = new List<Team>();
@@ -67,13 +49,14 @@ namespace Tournament.Models
         /// </summary>
         public void RemoveTeam(int id)
         {
-            
-                if (TeamsList.Contains(FindTeamByID(id)))
-                {     
-                    TeamsList.Remove(FindTeamByID(id));
-                    Count--;
-                }
+
+            if (TeamsList.Contains(FindTeamByID(id)))
+            {
+                TeamsList.Remove(FindTeamByID(id));
+                Count--;
+            }
         }
+
 
         /// <summary>
         /// Saves a  TeamsList
@@ -85,10 +68,11 @@ namespace Tournament.Models
                 foreach (var team in TeamsList)
                 {
                     file.WriteLine("StartTeamsData");
-                    file.WriteLine("TeamName: " + team.TeamName);
                     file.WriteLine("TeamID: " + team.IdTeam);
+                    file.WriteLine("TeamName: " + team.TeamName);
+                    file.WriteLine("TeamGameType: " + team.GameType);
                     file.WriteLine("TeamsPointEarned: " + team.PointEarned);
-                    if (team != null && team.PlayersList != null && team.PlayersList.Count > 0)
+                    if (team != null && team.PlayersList != null && team.PlayersList.PlayersList.Count > 0)
                     {
                         file.WriteLine("Players");
                         foreach (var player in team.PlayersList.PlayersList)
@@ -113,13 +97,14 @@ namespace Tournament.Models
         public void LoadTeamsList(string path)
         {
             var players = new PlayerList();
-            var teamsList = new List<Team>(); 
+            var teamsList = new List<Team>();
             int teamID = 0;
+            GameType teamGameType = 0;
             string teamName = "";
             int teamPoint = 0;
 
             System.IO.StreamReader file = new System.IO.StreamReader(path);
-            
+
             string line;
             while ((line = file.ReadLine()) != null)
             {
@@ -141,6 +126,11 @@ namespace Tournament.Models
                             teamPoint = int.Parse(words[1]);
                             break;
                         }
+                    case "TeamsGameType:":
+                        {
+                            teamGameType = (GameType)Enum.Parse(typeof(GameType), words[1]);
+                            break;
+                        }
                     case "Players":
                         {
                             string endstring = "End" + words[0];
@@ -150,20 +140,20 @@ namespace Tournament.Models
                     case "EndTeamsData":
                         {
 
-                            var team = new Team(teamName, teamID, players, teamPoint);
+                            var team = new Team(teamName, teamID, players, teamPoint, teamGameType) { Count = players.Count };
                             teamsList.Add(team);
+                            players = new PlayerList();
                             break;
                         }
                 }
-            
+
             }
             file.Close();
             TeamsList = teamsList;
             Count = teamsList.Count;
-            
         }
 
-        private void LoadPlayer(StreamReader file, string endstring, PlayerList players )
+        private void LoadPlayer(StreamReader file, string endstring, PlayerList players)
         {
             int id = 0;
             string name = string.Empty;
@@ -203,8 +193,8 @@ namespace Tournament.Models
                             }
                             break;
                         }
-                    case "EndTeam": 
-                        { 
+                    case "EndTeam":
+                        {
                             return;
                         }
                 }

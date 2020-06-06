@@ -21,46 +21,47 @@ namespace Tournament.Views.Teams
     /// </summary>
     public partial class TeamWindow : Window
     {
-        private int teamID;
-        private TeamViewModel teamViewModel;
         public Team Team { get; set; }
-        public int TeamID 
-        { 
-            get => teamID;
-            set => teamID = value; 
-        }
-
-        public TeamViewModel TeamViewModel 
-        { 
-            get => teamViewModel;
-            set 
-            { 
-                teamViewModel = value;
-               
-            } 
-        }
-
-
-        public TeamWindow(int teamID, TeamViewModel teamViewModel)
+        public TeamViewModel TeamViewModel { get; set; }
+       
+        public TeamWindow(Team team, TeamViewModel teamViewModel)
         {
-            TeamID = teamID;
+            Team = team;
             TeamViewModel = teamViewModel;
-            Team = teamViewModel.Teams.FindTeamByID(TeamID);
             InitializeComponent();
-            if(Team.PlayersList != null && Team.PlayersList.PlayersList != null)
-                PlayersListBox.ItemsSource = teamViewModel.Teams.FindTeamByID(TeamID).PlayersList.PlayersList;
+            XMLData();
         }
-
+        private void XMLData() 
+        {
+            if (Team.PlayersList != null && Team.PlayersList.PlayersList != null)
+                PlayersListBox.ItemsSource = Team.PlayersList.PlayersList;
+            TopTextBlock.Text = Team.TeamName;
+            TeamIDTextBlock.Text = Team.IdTeam.ToString();
+            TeamCountTextBlock.Text = Team.Count.ToString();
+            TeamPointsTextBlock.Text = Team.PointEarned.ToString();
+            TeamGameTypeTextBlock.Text = Team.GameType.ToString();
+        }
         private void Button_Click_AddPlayerToTeam(object sender, RoutedEventArgs e)
         {
-            AddPlayerToTeamWindow addPlayerToTeamWindow = new AddPlayerToTeamWindow(TeamID, TeamViewModel);
+            AddPlayerToTeamWindow addPlayerToTeamWindow = new AddPlayerToTeamWindow(Team, this, TeamViewModel);
             addPlayerToTeamWindow.Show();
+            Refresh();
+        }
+        private void Button_Click_RemovePlayerFromTeam(object sender, RoutedEventArgs e)
+        {
+            RemovePlayerFromTeamWindow removePlayerFromTeamWindow = new RemovePlayerFromTeamWindow(Team, this, TeamViewModel);
+            removePlayerFromTeamWindow.Show();
             Refresh();
         }
         public void Refresh() 
         {
-            PlayersListBox.ItemsSource = null;
-            PlayersListBox.ItemsSource = teamViewModel.Teams.FindTeamByID(TeamID).PlayersList.PlayersList;
+            PlayersListBox.Items.Refresh();
+            TeamCountTextBlock.Text = null;
+            TeamCountTextBlock.Text = Team.Count.ToString();
+            TeamPointsTextBlock.Text = null;
+            TeamPointsTextBlock.Text = Team.PointEarned.ToString();
+            TeamGameTypeTextBlock.Text = null;
+            TeamGameTypeTextBlock.Text = Team.GameType.ToString();
         }
         #region
 

@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Tournament.Models;
 using Tournament.ViewModels;
 using Tournament.Views.Teams;
@@ -21,25 +13,39 @@ namespace Tournament.Views
     /// </summary>
     public partial class TeamsAddTeamView : Page
     {
-        private TeamViewModel teamViewModel;
-        private TeamsViewTeamsView teamsViewTeamsView;
-        public TeamsViewTeamsView TeamsViewTeamsView { get => teamsViewTeamsView; set => teamsViewTeamsView = value; }
+        public TeamsViewTeamsView TeamsViewTeamsView { get; set; }
+        public TeamViewModel TeamViewModel { get; set; }
 
         public TeamsAddTeamView(TeamViewModel teamViewModel, TeamsViewTeamsView teamsViewTeamsView)
         {
             TeamsViewTeamsView = teamsViewTeamsView;
             TeamViewModel = teamViewModel;
             InitializeComponent();
+            TeamGameType.ItemsSource = new List<GameType> { GameType.DodgeBall, GameType.TugOfWar, GameType.Volleyball };
         }
 
-        public TeamViewModel TeamViewModel { get => teamViewModel; set => teamViewModel = value; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string name = TeamName.Text;
-            teamViewModel.Teams.AddTeam(new Team(name,teamViewModel.Teams.TeamsList));
-            
-            NavigationService.Navigate(TeamsViewTeamsView);
+
+            if (TeamGameType.SelectedItem is GameType type)
+            {
+                TeamViewModel.Teams.AddTeam(new Team(name, TeamViewModel.Teams.TeamsList,type));
+                TeamViewModel.SaveTeamViewModel();
+                ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.ErrorContent.Text = "Succesfully added team";
+                errorWindow.Show();
+                TeamsViewTeamsView.MyListBox.Items.Refresh();
+                NavigationService.GoBack();
+            }
+            else
+            {
+                ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.ErrorContent.Text = "Choose Game Type";
+            }
+
         }
     }
+
 }

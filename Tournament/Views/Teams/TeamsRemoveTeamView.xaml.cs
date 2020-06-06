@@ -20,10 +20,8 @@ namespace Tournament.Views.Teams
     /// </summary>
     public partial class TeamsRemoveTeamView : Page
     {
-        private TeamViewModel teamViewModel;
-        private TeamsViewTeamsView teamsViewTeamsView;
-        public TeamViewModel TeamViewModel { get => teamViewModel; set => teamViewModel = value; }
-        public TeamsViewTeamsView TeamsViewTeamsView { get => teamsViewTeamsView; set => teamsViewTeamsView = value; }
+        public TeamViewModel TeamViewModel { get; set; }
+        public TeamsViewTeamsView TeamsViewTeamsView { get; set; }
 
         public TeamsRemoveTeamView(TeamViewModel teamViewModel, TeamsViewTeamsView teamsViewTeamsView)
         {
@@ -42,11 +40,11 @@ namespace Tournament.Views.Teams
             {
                 TeamViewModel.Teams.RemoveTeam(id);
                 TeamViewModel.Teams.SaveTeamsList("teamsList.txt");
-                TeamViewModel.Teams.LoadTeamsList("teamsList.txt");
             }
             else
             {
                 ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.Width+=100;
                 errorWindow.Show();
             }
             NavigationService.Navigate(TeamsViewTeamsView);

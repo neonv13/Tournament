@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Tournament.Models
 {
-    class MatchList
+    public class MatchList
     {
         private List<Match> matchList;
         private int count;
@@ -87,8 +87,8 @@ namespace Tournament.Models
         public List<Match> LoadMatchList(string path)
         {
             var matchList = new List<Match>();
-            var TeamA = new Team(string.Empty, null);
-            var TeamB = new Team(string.Empty, null);
+            var TeamA = new Team(string.Empty, null,0);
+            var TeamB = new Team(string.Empty, null,0);
             var referees = new RefereeList();
             MatchRank matchRank = 0;
             int teamA_ID = 0;

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,10 +20,9 @@ namespace Tournament.Views.Teams
     /// <summary>
     /// Interaction logic for TeamsViewTeamsView.xaml
     /// </summary>
-    public partial class TeamsViewTeamsView : Page
+    public partial class TeamsViewTeamsView : Page, INotifyPropertyChanged
     {
-        private TeamViewModel teamViewModel;
-        public TeamViewModel TeamViewModel { get => teamViewModel; set => teamViewModel = value; }
+        public TeamViewModel TeamViewModel { get; set; }
         public TeamsViewTeamsView(TeamViewModel teamViewModel)
         {
             TeamViewModel = teamViewModel;
@@ -30,10 +31,9 @@ namespace Tournament.Views.Teams
 
         private void Button_Click_ViewTeam(object sender, RoutedEventArgs e)
         {
-            Team team = MyListBox.SelectedItem as Team;
-            if (team != null)
+            if (MyListBox.SelectedItem is Team team)
             {
-                TeamWindow teamWindow = new TeamWindow(team.IdTeam, TeamViewModel);
+                TeamWindow teamWindow = new TeamWindow(team, TeamViewModel);
                 teamWindow.Show();
             }
         }
@@ -41,7 +41,12 @@ namespace Tournament.Views.Teams
         {
             MyListBox.ItemsSource = null;
             MyListBox.ItemsSource = TeamViewModel.Teams.TeamsList;
+        }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

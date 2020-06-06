@@ -1,31 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace Tournament.Models
 {
-    public class PlayerList : INotifyPropertyChanged
+    public class PlayerList
     {
-        private List<Player> players;
-        private int count;
-
-
+        public int Count { get; set; }
+        public List<Player> PlayersList { get; set; }
 
         /// <summary>
         /// Initializes a new instance of PlayerList.
         /// </summary>
         public PlayerList()
         {
-            players = new List<Player>();
-            count = 0;
-
+            PlayersList = new List<Player>();
+            Count = 0;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+
 
         /// <summary>
         /// Retruns a instance of Player that has given ID
@@ -39,26 +30,9 @@ namespace Tournament.Models
             }
             return null;
         }
-        /// <summary>
-        /// Gets a value of Players in PlayersList
-        /// </summary>
-        public int Count
-        {
-            get => count;
-            private set
-            {
-                count = value;
-                OnPropertyChanged();
-            }
-        }
-        /// <summary>
-        /// Gets a List of Players in PlayersList
-        /// </summary>
-        public List<Player> PlayersList
-        {
-            get => players;
-            private set => players = value;
-        }
+
+
+
         /// <summary>
         /// Adds a Player to PlayerList
         /// </summary>
@@ -66,7 +40,7 @@ namespace Tournament.Models
         {
             if (!PlayersList.Contains(Player))
             {
-                players.Add(Player);
+                PlayersList.Add(Player);
                 Count++;
             }
         }
@@ -106,7 +80,6 @@ namespace Tournament.Models
         /// </summary>
         public void LoadPlayersList(string path, string endstring)
         {
-            PlayerList playerList = new PlayerList();
             if (path != null && path != string.Empty)
                 using (System.IO.StreamReader file = new System.IO.StreamReader(path))
                 {
@@ -119,49 +92,46 @@ namespace Tournament.Models
                     while ((text = file.ReadLine()) != null && text != endstring)
                     {
                         string[] words = text.Split(" ");
-                            switch (words[0])
-                            {
-                                case "PlayerID:":
+                        switch (words[0])
+                        {
+                            case "PlayerID:":
+                                {
+                                    id = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "PlayerName:":
+                                {
+                                    name = words[1];
+                                    break;
+                                }
+                            case "PlayerSurname:":
+                                {
+                                    surname = words[1];
+                                    break;
+                                }
+                            case "PlayerPoints:":
+                                {
+                                    points = int.Parse(words[1]);
+                                    break;
+                                }
+                            case "EndPlayer":
+                                {
+                                    if (id != 0 && name != string.Empty && surname != string.Empty)
                                     {
-                                        id = int.Parse(words[1]);
-                                        break;
-                                    }
-                                case "PlayerName:":
-                                    {
-                                        name = words[1];
-                                        break;
-                                    }
-                                case "PlayerSurname:":
-                                    {
-                                        surname = words[1];
-                                        break;
-                                    }
-                                case "PlayerPoints:": 
-                                    {
-                                        points = int.Parse(words[1]);
-                                        break; 
-                                    }
-                                case "EndPlayer":
-
-                                    {
-                                        if (id != 0 && name != string.Empty && surname != string.Empty)
-
+                                        Player player = new Player(name, surname, null)
                                         {
-                                            Player player = new Player(name, surname, null)
-                                            {
-                                                ID = id,
-                                                IndividualPoints = points
-                                            };
-                                            playerList.AddPlayer(player);
-                                        }
-                                        break;
+                                            ID = id,
+                                            IndividualPoints = points
+                                        };
+                                        PlayersList.Add(player);
+                                        Count++;
                                     }
-                            }
+                                    break;
+                                }
+                        }
                     }
                     file.Close();
                 }
-            Count = playerList.Count;
-            players = playerList.PlayersList;
         }
 
 

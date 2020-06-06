@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.ViewModels;
 
 namespace Tournament.Views
 {
@@ -18,7 +19,7 @@ namespace Tournament.Views
     /// </summary>
     public partial class MatchesView : Page
     {
-        public MatchesView()
+        public MatchesView(MatchesViewModel matchesViewModel)
         {
             InitializeComponent();
         }

@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Models;
 using Tournament.ViewModels;
 using Tournament.Views.Teams;
 
@@ -20,30 +21,27 @@ namespace Tournament.Views
     /// </summary>
     public partial class TeamsView : Page
     {
-        private TeamViewModel teamsViewModel;
-        private TeamsViewTeamsView teamsViewTeamsView;
             
-        public TeamViewModel TeamsViewModel { get => teamsViewModel; set => teamsViewModel = value; }
-        public TeamsViewTeamsView TeamsViewTeamsView { get => teamsViewTeamsView; set => teamsViewTeamsView = value; }
+        public TeamViewModel TeamsViewModel { get; set; }
+        public TeamsViewTeamsView TeamsViewTeamsView { get; set; }
 
-        public TeamsView()
+        public TeamsView(TeamViewModel teamViewModel)
         {
-            TeamsViewModel = new TeamViewModel();
+            TeamsViewModel = teamViewModel;
              
-            TeamsViewTeamsView = new TeamsViewTeamsView(teamsViewModel);
+            TeamsViewTeamsView = new TeamsViewTeamsView(TeamsViewModel);
             InitializeComponent();
         }
 
-
         private void Button_Click_AddTeam(object sender, RoutedEventArgs e)
         {
-            Teams.Content = new TeamsAddTeamView(teamsViewModel, teamsViewTeamsView);
+            Teams.Content = new TeamsAddTeamView(TeamsViewModel, TeamsViewTeamsView);
             TeamsViewTeamsView.Refresh();
             TeamsViewModel.SaveTeamViewModel();
         }
         private void Button_Click_RemoveTeam(object sender, RoutedEventArgs e)
         {
-            Teams.Content = new TeamsRemoveTeamView(teamsViewModel, teamsViewTeamsView);
+            Teams.Content = new TeamsRemoveTeamView(TeamsViewModel, TeamsViewTeamsView);
             TeamsViewTeamsView.Refresh();
             TeamsViewModel.SaveTeamViewModel();
 
@@ -52,8 +50,8 @@ namespace Tournament.Views
         {
             Teams.Content = TeamsViewTeamsView;
             TeamsViewTeamsView.Refresh();
-            TeamsViewModel.SaveTeamViewModel();
 
         }
+        
     }
 }

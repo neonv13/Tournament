@@ -1,8 +1,5 @@
-﻿using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.Office2010.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,47 +15,46 @@ using Tournament.ViewModels;
 namespace Tournament.Views.Teams
 {
     /// <summary>
-    /// Interaction logic for AddPlayerToTeamWindow.xaml
+    /// Interaction logic for RemovePlayerFromTeamWindow.xaml
     /// </summary>
-    public partial class AddPlayerToTeamWindow : Window
+    public partial class RemovePlayerFromTeamWindow : Window
     {
-        public TeamViewModel TeamViewModel { get; set; }
-        public Team Team{ get; set; }
+        public TeamViewModel TeamViewModel {get ;set; }
+        public Team Team { get; set; }
         public TeamWindow TeamWindow { get; set; }
+        public TeamViewModel TeamList { get; set; }
 
-        public AddPlayerToTeamWindow(Team team, TeamWindow teamWindow, TeamViewModel teamViewModel)
+
+        public RemovePlayerFromTeamWindow(Team team, TeamWindow teamWindow, TeamViewModel teamViewModel)
         {
-            TeamWindow = teamWindow;
             TeamViewModel = teamViewModel;
+            TeamWindow = teamWindow;
             Team = team;
             InitializeComponent();
         }
 
-        private void Button_Click_Add(object sender, RoutedEventArgs e)
+
+        private void Button_Click_Remove(object sender, RoutedEventArgs e)
         {
             PlayersViewModel playersViewModel = new PlayersViewModel();
-            
+
             int id = int.Parse(IDText.Text);
             string name = NameText.Text;
             string surname = SurnameText.Text;
             Player player = playersViewModel.Players.FindPlayerByID(id);
-            if (player != null &&  player.Name == name && player.Surname == surname)
+            if (player != null && player.Name == name && player.Surname == surname)
             {
-                if (!Team.IsInTeam(id))
+                if (Team.IsInTeam(id))
                 {
-                    Team.AddPlayer(player);
+                    Team.RemovePlayer(player.ID);
                     TeamWindow.Refresh();
                     TeamViewModel.SaveTeamViewModel();
                     this.Close();
                 }
                 else
                 {
-                    ErrorWindow errorWindow = new ErrorWindow
-                    {
-                        Height = 300,
-                        Width = 500
-                    };
-                    errorWindow.ErrorContent.Text = "This player is already in this team";
+                    ErrorWindow errorWindow = new ErrorWindow();
+                    errorWindow.ErrorContent.Text = "This player isn't in this team";
                     errorWindow.Show();
                 }
             }
@@ -68,12 +64,9 @@ namespace Tournament.Views.Teams
                 errorWindow.Show();
             }
         }
-
-       
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
     }
-
 }
