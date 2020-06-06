@@ -37,7 +37,7 @@ namespace Tournament.Views
                 playersViewModel.Players.RemovePlayer(id);
                 playersViewModel.Players.SavePlayersList("playersList.txt");
             }
-            NavigationService.Navigate(new ViewPlayers());
+            NavigationService.Navigate(new ViewPlayers(null));
         }
     }
 }

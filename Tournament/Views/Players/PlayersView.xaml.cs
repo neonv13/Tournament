@@ -20,8 +20,10 @@ namespace Tournament.Views
     /// </summary>
     public partial class PlayersView : Page
     {
+        public PlayersViewModel PlayersViewModel { get; set; }
         public PlayersView(PlayersViewModel playersViewModel)
         {
+            PlayersViewModel = playersViewModel;
             InitializeComponent();
         }
 
@@ -35,7 +37,7 @@ namespace Tournament.Views
         }
         private void Button_Click_ViewPlayers(object sender, RoutedEventArgs e)
         {
-            PlayerView.Content = new ViewPlayers();
+            PlayerView.Content = new ViewPlayers(PlayersViewModel);
         }
 
     }

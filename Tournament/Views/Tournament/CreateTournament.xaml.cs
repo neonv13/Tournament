@@ -9,6 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tournament.Models;
+using Tournament.ViewModels;
 
 namespace Tournament.Views.Tournament
 {
@@ -17,9 +19,13 @@ namespace Tournament.Views.Tournament
     /// </summary>
     public partial class CreateTournament : Page
     {
-        public CreateTournament()
+        private TournamentViewModel TournamentViewModel { get; set; }
+        public CreateTournament(TournamentViewModel tournamentViewModel)
         {
+            TournamentViewModel = tournamentViewModel;
             InitializeComponent();
+            GameTypeComboBox.ItemsSource = new List<GameType> { GameType.DodgeBall, GameType.TugOfWar, GameType.Volleyball };
+
         }
 
         private void Button_Click_RefereesList(object sender, RoutedEventArgs e)
@@ -33,6 +39,27 @@ namespace Tournament.Views.Tournament
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string name = TourName.Text;
+
+            if (GameTypeComboBox.SelectedItem is GameType type)
+            {
+                TournamentViewModel.Teams.AddTeam(new Team(name, TeamViewModel.Teams.TeamsList, type));
+                TeamViewModel.SaveTeamViewModel();
+                ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.ErrorContent.Text = "Succesfully added team";
+                errorWindow.Show();
+                TeamsViewTeamsView.MyListBox.Items.Refresh();
+                NavigationService.GoBack();
+            }
+            else
+            {
+                ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.ErrorContent.Text = "Choose Game Type";
+            }
+
         }
     }
 }

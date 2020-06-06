@@ -21,7 +21,10 @@ namespace Tournament.Views
     /// </summary>
     public partial class TournamentView : Page
     {
-        public TournamentView(TournamentViewModel tournament)
+        public TournamentViewModel Tournament { get; set; }
+        public PlayersViewModel PlayersViewModel { get; set; }
+        public TeamViewModel TeamViewModel { get; set; }
+        public TournamentView(TournamentViewModel tournament, PlayersViewModel playersViewModel, TeamViewModel teamViewModel)
         {
             InitializeComponent();
         }

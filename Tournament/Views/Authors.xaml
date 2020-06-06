@@ -29,22 +29,22 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Row="0" BorderBrush="#FF252526" BorderThickness="1" Margin="5" Padding="5">
-                <Grid >
-                    <TextBlock Style="{StaticResource MainText}" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Kamil Kośko"/>
-                    <TextBlock Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Front-end" Margin="0,30,0,0"/>
-                    <TextBlock Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="MVVM Implementation" Margin="0,55,0,0"/>
-                    <TextBlock Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Some Models" Margin="0,80,0,0"/>
+            <Border Margin="10"  Grid.Row="0" BorderBrush="#FF252526" BorderThickness="1" >
+                <Grid Background="#FF3E3E40">
+                    <TextBlock Margin="5" Style="{StaticResource MainText}" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Kamil Kośko"/>
+                    <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Front-end" Margin="30,30,5,5"/>
+                    <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="MVVM Implementation" Margin="30,55,5,5"/>
+                    <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Some Models" Margin="30,80,5,5"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="1" BorderBrush="#FF252526" BorderThickness="1" Margin="5" Padding="5">
-                <Grid >
-                    <TextBlock Style="{StaticResource MainText}" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Piotr Kozioł"/>
+            <Border Margin="10" Grid.Row="1" BorderBrush="#FF252526" BorderThickness="1" >
+                <Grid Background="#FF3E3E40">
+                    <TextBlock Margin="5" Style="{StaticResource MainText}" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Piotr Kozioł"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" BorderBrush="#FF252526" BorderThickness="1" Margin="5" Padding="5">
-                <Grid >
-                    <TextBlock Style="{StaticResource MainText}" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Igor Kowalczyk"/>
+            <Border Margin="10" Grid.Row="2" BorderBrush="#FF252526" BorderThickness="1" >
+                <Grid Background="#FF3E3E40">
+                    <TextBlock Margin="5" Style="{StaticResource MainText}" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Igor Kowalczyk"/>
                 </Grid>
             </Border>
 

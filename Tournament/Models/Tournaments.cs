@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 //using System.Windows.Documents;
 
 namespace Tournament.Models
 
 {
-    public class Tournaments 
+    public class Tournaments
     {
         /// <summary>
         /// Gets or sets a int matchesPlayed value
@@ -131,150 +129,150 @@ namespace Tournament.Models
 
         public void SaveTournaments(string path)
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            System.IO.StreamWriter file = new System.IO.StreamWriter(path);
+
+
+            file.WriteLine("StartTournamentData");
+
+            file.WriteLine("MatchesPlayed: " + MatchesPlayed);
+            file.WriteLine("TeamCount: " + TeamCount);
+            file.WriteLine("Name: " + Name);
+            file.WriteLine("GameType: " + GameType);
+
+
+            // Referee_Data_Start
+            file.WriteLine("Referee_Data_Start: ");
+            foreach (var referee in RefereeList.RefereesList)
             {
-
-                file.WriteLine("StartTournamentData");
-
-                    file.WriteLine("MatchesPlayed: " + MatchesPlayed);
-                    file.WriteLine("TeamCount: " + TeamCount);
-                    file.WriteLine("Name: " + Name);
-                    file.WriteLine("GameType: " + GameType);
-
-
-                    // Referee_Data_Start
-                    file.WriteLine("Referee_Data_Start: ");
-                        foreach (var referee in RefereeList.RefereesList)
-                        {
-                            file.WriteLine("RefereeID: " + referee.ID);
-                            file.WriteLine("RefereeName: " + referee.Name);
-                            file.WriteLine("RefereeSurname: " + referee.Surname);
-                            file.WriteLine("EndReferee");
-                        }
-                    file.WriteLine("Referee_Data_End: ");
-
-                    // Matchs_History_Data_Start
-                    file.WriteLine("Matchs_History_Data_Start: ");
-                        foreach (var match in MatchHistory.GetMatchList)
-                        {
-                            file.WriteLine("StartMatchData");
-                            file.WriteLine("MatchID: " + match.MatchID);
-                            file.WriteLine("MatchRank: " + match.MatchRank);
-                            file.WriteLine("GameType: " + match.GameType);
-                            file.WriteLine("TeamA_ID: " + match.TeamA_ID);
-                            file.WriteLine("TeamB_ID: " + match.TeamB_ID);
-                            file.WriteLine("TeamAScore: " + match.TeamAScore);
-                            file.WriteLine("TeamBScore: " + match.TeamBScore);
-                            foreach (var player in match.TeamA.PlayersList.PlayersList)
-                            {
-                                file.WriteLine("TeamAPlayerID: " + player.ID);
-                            }
-                            foreach (var player in match.TeamB.PlayersList.PlayersList)
-                            {
-                                file.WriteLine("TeamBPlayerID: " + player.ID);
-                            }
-                            foreach (var referee in match.Referees)
-                            {
-                                file.WriteLine("RefereeID: " + referee.ID);
-                            }
-                            file.WriteLine("EndMatchData");
-                        }
-                    file.WriteLine("Matchs_History_Data_Start: ");
-
-                    //  Teams_Data_Start
-                    file.WriteLine("Teams_Data_Start: ");
-                        foreach (var team in TeamList.TeamsList)
-                        {
-                            file.WriteLine("StartTeamsData");
-                            file.WriteLine("TeamName: " + team.TeamName);
-                            file.WriteLine("TeamID: " + team.IdTeam);
-                            file.WriteLine("TeamsPointEarned: " + team.PointEarned);
-                            if (team != null && team.PlayersList != null && team.PlayersList.Count > 0)
-                            {
-                                file.WriteLine("Players");
-                                foreach (var player in team.PlayersList.PlayersList)
-                                {
-                                    file.WriteLine("PlayerID: " + player.ID);
-                                    file.WriteLine("PlayerName: " + player.Name);
-                                    file.WriteLine("PlayerSurname: " + player.Surname);
-                                    file.WriteLine("PlayerPoints: " + player.IndividualPoints);
-                                    file.WriteLine("EndPlayer");
-                                }
-                                file.WriteLine("EndTeam");
-                            }
-                            file.WriteLine("EndTeamsData");
-                        }
-                    file.WriteLine("Teams_Data_End: ");
-
-                    //  Semi_Data_Start
-                    file.WriteLine("Semi_Data_Start: ");
-                        foreach (var match in MatchHistory.GetMatchList)
-                        {
-                            file.WriteLine("StartMatchData");
-                            file.WriteLine("MatchID: " + match.MatchID);
-                            file.WriteLine("MatchRank: " + match.MatchRank);
-                            file.WriteLine("GameType: " + match.GameType);
-                            file.WriteLine("TeamA_ID: " + match.TeamA_ID);
-                            file.WriteLine("TeamB_ID: " + match.TeamB_ID);
-                            file.WriteLine("TeamAScore: " + match.TeamAScore);
-                            file.WriteLine("TeamBScore: " + match.TeamBScore);
-                            foreach (var player in match.TeamA.PlayersList.PlayersList)
-                            {
-                                file.WriteLine("TeamAPlayerID: " + player.ID);
-                            }
-                            foreach (var player in match.TeamB.PlayersList.PlayersList)
-                            {
-                                file.WriteLine("TeamBPlayerID: " + player.ID);
-                            }
-                            foreach (var referee in match.Referees)
-                            {
-                                file.WriteLine("RefereeID: " + referee.ID);
-                            }
-                            file.WriteLine("EndMatchData");
-                        }
-                    file.WriteLine("Semi_Data_End: ");
-
-                    //                                          Missing Player List???
-
-                    file.WriteLine("StartMatchData");
-                    file.WriteLine("MatchID: " + Final.MatchID);
-                    file.WriteLine("MatchRank: " + Final.MatchRank);
-                    file.WriteLine("GameType: " + Final.GameType);
-                    file.WriteLine("TeamA_ID: " + Final.TeamA_ID);
-                    file.WriteLine("TeamB_ID: " + Final.TeamB_ID);
-                    file.WriteLine("TeamAScore: " + Final.TeamAScore);
-                    file.WriteLine("TeamBScore: " + Final.TeamBScore);
-
-                    // Final_Mach_Data_Start
-                    file.WriteLine("Final_Mach_Start: ");
-
-                        file.WriteLine("MatchID: " + Final.MatchID);
-                        file.WriteLine("MatchRank: " + Final.MatchRank);
-                        file.WriteLine("GameType: " + Final.GameType);
-                        file.WriteLine("TeamA_ID: " + Final.TeamA_ID);
-                        file.WriteLine("TeamB_ID: " + Final.TeamB_ID);
-                        file.WriteLine("TeamAScore: " + Final.TeamAScore);
-                        file.WriteLine("TeamBScore: " + Final.TeamBScore);
-                        foreach (var player in Final.TeamA.PlayersList.PlayersList)
-                        {
-                            file.WriteLine("TeamAPlayerID: " + player.ID);
-                        }
-                        foreach (var player in Final.TeamB.PlayersList.PlayersList)
-                        {
-                            file.WriteLine("TeamBPlayerID: " + player.ID);
-                        }
-                        foreach (var referee in Final.Referees)
-                        {
-                            file.WriteLine("RefereeID: " + referee.ID);
-                        }
-                        file.WriteLine("Final_Mach_End: ");
-
-                    file.WriteLine("Final_Mach_End: ");
-
-
-                    file.WriteLine("EndTournamentData");
+                file.WriteLine("RefereeID: " + referee.ID);
+                file.WriteLine("RefereeName: " + referee.Name);
+                file.WriteLine("RefereeSurname: " + referee.Surname);
+                file.WriteLine("EndReferee");
             }
+            file.WriteLine("Referee_Data_End: ");
 
+            // Matchs_History_Data_Start
+            file.WriteLine("Matchs_History_Data_Start: ");
+            foreach (var match in MatchHistory.GetMatchList)
+            {
+                file.WriteLine("StartMatchData");
+                file.WriteLine("MatchID: " + match.MatchID);
+                file.WriteLine("MatchRank: " + match.MatchRank);
+                file.WriteLine("GameType: " + match.GameType);
+                file.WriteLine("TeamA_ID: " + match.TeamA_ID);
+                file.WriteLine("TeamB_ID: " + match.TeamB_ID);
+                file.WriteLine("TeamAScore: " + match.TeamAScore);
+                file.WriteLine("TeamBScore: " + match.TeamBScore);
+                foreach (var player in match.TeamA.PlayersList.PlayersList)
+                {
+                    file.WriteLine("TeamAPlayerID: " + player.ID);
+                }
+                foreach (var player in match.TeamB.PlayersList.PlayersList)
+                {
+                    file.WriteLine("TeamBPlayerID: " + player.ID);
+                }
+                foreach (var referee in match.Referees)
+                {
+                    file.WriteLine("RefereeID: " + referee.ID);
+                }
+                file.WriteLine("EndMatchData");
+            }
+            file.WriteLine("Matchs_History_Data_Start: ");
+
+            //  Teams_Data_Start
+            file.WriteLine("Teams_Data_Start: ");
+            foreach (var team in TeamList.TeamsList)
+            {
+                file.WriteLine("StartTeamsData");
+                file.WriteLine("TeamName: " + team.TeamName);
+                file.WriteLine("TeamID: " + team.IdTeam);
+                file.WriteLine("TeamsPointEarned: " + team.PointEarned);
+                if (team != null && team.PlayersList != null && team.PlayersList.Count > 0)
+                {
+                    file.WriteLine("Players");
+                    foreach (var player in team.PlayersList.PlayersList)
+                    {
+                        file.WriteLine("PlayerID: " + player.ID);
+                        file.WriteLine("PlayerName: " + player.Name);
+                        file.WriteLine("PlayerSurname: " + player.Surname);
+                        file.WriteLine("PlayerPoints: " + player.IndividualPoints);
+                        file.WriteLine("EndPlayer");
+                    }
+                    file.WriteLine("EndTeam");
+                }
+                file.WriteLine("EndTeamsData");
+            }
+            file.WriteLine("Teams_Data_End: ");
+
+            //  Semi_Data_Start
+            file.WriteLine("Semi_Data_Start: ");
+            foreach (var match in MatchHistory.GetMatchList)
+            {
+                file.WriteLine("StartMatchData");
+                file.WriteLine("MatchID: " + match.MatchID);
+                file.WriteLine("MatchRank: " + match.MatchRank);
+                file.WriteLine("GameType: " + match.GameType);
+                file.WriteLine("TeamA_ID: " + match.TeamA_ID);
+                file.WriteLine("TeamB_ID: " + match.TeamB_ID);
+                file.WriteLine("TeamAScore: " + match.TeamAScore);
+                file.WriteLine("TeamBScore: " + match.TeamBScore);
+                foreach (var player in match.TeamA.PlayersList.PlayersList)
+                {
+                    file.WriteLine("TeamAPlayerID: " + player.ID);
+                }
+                foreach (var player in match.TeamB.PlayersList.PlayersList)
+                {
+                    file.WriteLine("TeamBPlayerID: " + player.ID);
+                }
+                foreach (var referee in match.Referees)
+                {
+                    file.WriteLine("RefereeID: " + referee.ID);
+                }
+                file.WriteLine("EndMatchData");
+            }
+            file.WriteLine("Semi_Data_End: ");
+
+            //                                          Missing Player List???
+
+            file.WriteLine("StartMatchData");
+            file.WriteLine("MatchID: " + Final.MatchID);
+            file.WriteLine("MatchRank: " + Final.MatchRank);
+            file.WriteLine("GameType: " + Final.GameType);
+            file.WriteLine("TeamA_ID: " + Final.TeamA_ID);
+            file.WriteLine("TeamB_ID: " + Final.TeamB_ID);
+            file.WriteLine("TeamAScore: " + Final.TeamAScore);
+            file.WriteLine("TeamBScore: " + Final.TeamBScore);
+
+            // Final_Mach_Data_Start
+            file.WriteLine("Final_Match_Start: ");
+
+            file.WriteLine("MatchID: " + Final.MatchID);
+            file.WriteLine("MatchRank: " + Final.MatchRank);
+            file.WriteLine("GameType: " + Final.GameType);
+            file.WriteLine("TeamA_ID: " + Final.TeamA_ID);
+            file.WriteLine("TeamB_ID: " + Final.TeamB_ID);
+            file.WriteLine("TeamAScore: " + Final.TeamAScore);
+            file.WriteLine("TeamBScore: " + Final.TeamBScore);
+            foreach (var player in Final.TeamA.PlayersList.PlayersList)
+            {
+                file.WriteLine("TeamAPlayerID: " + player.ID);
+            }
+            foreach (var player in Final.TeamB.PlayersList.PlayersList)
+            {
+                file.WriteLine("TeamBPlayerID: " + player.ID);
+            }
+            foreach (var referee in Final.Referees)
+            {
+                file.WriteLine("RefereeID: " + referee.ID);
+            }
+            file.WriteLine("Final_Mach_End: ");
+
+            file.WriteLine("Final_Mach_End: ");
+
+
+            file.WriteLine("EndTournamentData");
+
+            file.Close();
         }
 
 
@@ -285,57 +283,58 @@ namespace Tournament.Models
 
                 int machPlayed;
                 int teamCount;
-                string name;
-                GameType gameType;
+                string name = string.Empty;
+                GameType gameType = 0;
                 RefereeList refereeList = new RefereeList();
-                MatchList matchList = new MatchList();
+                //MatchList matchList = new MatchList();
                 TeamList teamList = new TeamList();
-                MatchList Semi = new MatchList();
-                Match Final = null;
+                //MatchList Semi;
+                //Match Final;
 
 
-                using (System.IO.StreamReader file = new System.IO.StreamReader(path))
+                System.IO.StreamReader file = new System.IO.StreamReader(path);
+
+
+                string line;
+                while ((line = file.ReadLine()) != null)
                 {
-                    string line;
-                    while ((line = file.ReadLine()) != null)
+                    string[] words = line.Split(" ");
+                    switch (words[0])
                     {
-                        string[] words = line.Split(" ");
-                        switch (words[0])
-                        {
-                            case "MatchesPlayed: ":
-                                {
-                                    machPlayed = int.Parse(words[1]);
-                                    break;
-                                }
-                            case "TeamCount: ":
-                                {
-                                    teamCount = int.Parse(words[1]);
-                                    break;
-                                }
-                            case "Name: ":
-                                {
-                                    name = words[1];
-                                    break;
-                                }
-                            case "GameType: ":
-                                {
-                                    gameType = (GameType)Enum.Parse(typeof(GameType), words[1]);
-                                    break;
-                                }
+                        case "MatchesPlayed: ":
+                            {
+                                machPlayed = int.Parse(words[1]);
+                                break;
+                            }
+                        case "TeamCount: ":
+                            {
+                                teamCount = int.Parse(words[1]);
+                                break;
+                            }
+                        case "Name: ":
+                            {
+                                name = words[1];
+                                break;
+                            }
+                        case "GameType: ":
+                            {
+                                gameType = (GameType)Enum.Parse(typeof(GameType), words[1]);
+                                break;
+                            }
 
 
-                            case "EndTournamentData":
-                                {
-                                    var tournament = new Tournaments();
+                        case "EndTournamentData":
+                            {
+                                var tournament = new Tournaments(teamList, refereeList, gameType, name);
 
 
-                                    break;
-                                }
-                        }
-                        file.Close();
+                                break;
+                            }
                     }
-
+                    file.Close();
                 }
+
+
             }
         }
     }

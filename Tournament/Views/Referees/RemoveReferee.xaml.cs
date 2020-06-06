@@ -37,7 +37,7 @@ namespace Tournament.Views.Referees
                 refereesViewModel.Referees.RemoveReferee(id);
                 refereesViewModel.Referees.SaveRefereeList("refereesList.txt");
             }
-            NavigationService.Navigate(new ViewPlayers());
+            NavigationService.Navigate(new ViewPlayers(null));
         }
     }
 }

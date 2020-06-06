@@ -21,7 +21,7 @@
                    Text="Complete Team details." HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Border BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
                 HorizontalAlignment="Center" Width="401" Height="151"/>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="150" Background="#FF3E3E40">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="519" Height="244" Background="#FF3E3E40">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -33,7 +33,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="ID:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="IDTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center" />
+                    <TextBox x:Name="IDTextBox" Grid.Column="1" Margin="10,35,10,30" FontSize="20" TextAlignment="Center" />
                 </Grid>
             </Border>
             <Border Margin="5,2,5,5" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
@@ -43,10 +43,10 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="NameTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center"/>
+                    <TextBox x:Name="NameTextBox" Grid.Column="1" Margin="10,35,10,34" FontSize="27" TextAlignment="Center"/>
                 </Grid>
             </Border>
-            
+
         </Grid>
 
         <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Remove"/>

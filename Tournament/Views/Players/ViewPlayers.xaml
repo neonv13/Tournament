@@ -28,7 +28,7 @@
                    VerticalAlignment="Top" Margin="30,30,0,0" />
         <ListBox Margin="30,60,30,30" ItemsSource="{Binding Players.PlayersList}" 
                  HorizontalContentAlignment="Stretch" 
-                 Background="#FF3E3E40" Foreground="#FFF1F1F1"
+                 Background="#FF3E3E40" Foreground="#FFF1F1F1" x:Name="PlayesListBox"
                  BorderBrush="#FF252526">
             <ListBox.ItemTemplate>
                 <DataTemplate>

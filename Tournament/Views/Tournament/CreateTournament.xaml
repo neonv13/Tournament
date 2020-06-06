@@ -44,13 +44,13 @@
                             <Grid Margin="25">
 
                                 <TextBlock HorizontalAlignment="Left" Style="{StaticResource MainText}" Text="Tournament name"/>
-                                <TextBox HorizontalAlignment="Right" Width="150"/>
+                                <TextBox x:Name="TourName" HorizontalAlignment="Right" Width="150"/>
                             </Grid>
                         </Border>
                         <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5" Margin="5,2,5,10">
                             <Grid Margin="30">
                                 <TextBlock Margin="15,0,0,0" HorizontalAlignment="Left" Style="{StaticResource MainText}" Text="Game type"/>
-                                <TextBox HorizontalAlignment="Right" Width=" 150"/>
+                                <ComboBox x:Name="GameTypeComboBox" HorizontalAlignment="Right" Width=" 150"/>
                             </Grid>
                         </Border>
                     </StackPanel>
