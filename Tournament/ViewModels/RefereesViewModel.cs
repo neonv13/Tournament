@@ -13,7 +13,7 @@ namespace Tournament.ViewModels
         public RefereesViewModel()
         {
             Referees = new RefereeList();
-            Referees.LoadRefereeList("C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\Tournament\\bin\\Debug\\netcoreapp3.1\\refereesList.txt");
+            Referees.LoadRefereeList("refereesList.txt");
         }
 
         public void SaveRefereesViewModel()
