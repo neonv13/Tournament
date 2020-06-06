@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Models;
+using Tournament.ViewModels;
 using Tournament.Views.Teams;
 
 namespace Tournament.Views
@@ -19,22 +21,37 @@ namespace Tournament.Views
     /// </summary>
     public partial class TeamsView : Page
     {
-        public TeamsView()
+            
+        public TeamViewModel TeamsViewModel { get; set; }
+        public TeamsViewTeamsView TeamsViewTeamsView { get; set; }
+
+        public TeamsView(TeamViewModel teamViewModel)
         {
+            TeamsViewModel = teamViewModel;
+             
+            TeamsViewTeamsView = new TeamsViewTeamsView(TeamsViewModel);
             InitializeComponent();
         }
 
         private void Button_Click_AddTeam(object sender, RoutedEventArgs e)
         {
-            Teams.Content = new TeamsAddTeamView();
+            Teams.Content = new TeamsAddTeamView(TeamsViewModel, TeamsViewTeamsView);
+            TeamsViewTeamsView.Refresh();
+            TeamsViewModel.SaveTeamViewModel();
         }
         private void Button_Click_RemoveTeam(object sender, RoutedEventArgs e)
         {
-            Teams.Content = new TeamsRemoveTeamView();
+            Teams.Content = new TeamsRemoveTeamView(TeamsViewModel, TeamsViewTeamsView);
+            TeamsViewTeamsView.Refresh();
+            TeamsViewModel.SaveTeamViewModel();
+
         }
         private void Button_Click_ViewTeams(object sender, RoutedEventArgs e)
         {
-            Teams.Content = new TeamsViewTeamsView();
+            Teams.Content = TeamsViewTeamsView;
+            TeamsViewTeamsView.Refresh();
+
         }
+        
     }
 }

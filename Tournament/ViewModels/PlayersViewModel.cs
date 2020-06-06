@@ -7,22 +7,18 @@ using Tournament.Models;
 
 namespace Tournament.ViewModels
 {
-    class PlayersViewModel : INotifyPropertyChanged
+    public class PlayersViewModel : INotifyPropertyChanged
     {
-        private PlayerList players;
-        public  PlayerList Players 
-        {
-            get => players;
-            private set 
-            {
-                players = value;
-                OnPropertyChanged(); 
-            } 
-        }
+        public PlayerList Players { get; set; }
+       
         public PlayersViewModel()
         {
             Players = new PlayerList();
-            Players.LoadPlayersList("playersList.txt", "null");
+            Players.LoadPlayersList("C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\Tournament\\bin\\Debug\\netcoreapp3.1\\playersList.txt", "null");
+        }
+        public void SavePlayersViewModel()
+        {
+            Players.SavePlayersList("playersList.txt");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

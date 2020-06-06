@@ -4,21 +4,18 @@
 
     public class RefereeList
     {
-
-        private List<Referee> referees;
-        private int count;
+        public List<Referee> RefereesList { get; set; }
+        public int Count { get; set; }
 
         /// <summary>
         /// Initializes a new istance of RefereesList
         /// </summary>
         public RefereeList()
         {
-            referees = new List<Referee>();
+            RefereesList = new List<Referee>();
         }
-        /// <summary>
-        /// Gets Refrees List value
-        /// </summary>
-        public List<Referee> RefereesList { get => referees; }
+        
+        
 
         /// <summary>
         /// Adds Referee to RefereesList
@@ -42,17 +39,14 @@
             RefereesList.Add(referee);
         }
 
-        /// <summary>
-        /// Initializes a Count
-        /// </summary>
-        private int Count { get => count; set => count = value; }
+        
 
         /// <summary>
         /// Retruns a instance of Player that has given ID
         /// </summary>
         public Referee FindRefeereByID(int id)
         {
-            foreach (var referee in referees)
+            foreach (var referee in RefereesList)
             {
                 if (referee.ID == id)
                     return referee;
@@ -90,14 +84,13 @@
         /// </summary>
         public void LoadRefereeList(string path)
         {
-            RefereeList refereeList = new RefereeList();
-            using (System.IO.StreamReader file = new System.IO.StreamReader(path))
-            {
-                int id = 0;
-                string name = string.Empty;
-                string surname = string.Empty;
-                string text = string.Empty;
-                while ((text = file.ReadLine()) != null && text != "EndReferees")
+            System.IO.StreamReader file = new System.IO.StreamReader(path);
+            
+            int id = 0;
+            string name = string.Empty;
+            string surname = string.Empty;
+            string text;
+            while ((text = file.ReadLine()) != null && text != "EndReferees")
                 {
                     string[] words = text.Split(" ");
                     switch (words[0])
@@ -125,16 +118,15 @@
                                     {
                                         ID = id
                                     };
-                                    refereeList.AddReferee(referee);
+                                    RefereesList.Add(referee);
+                                    Count++;
                                 }
                                 break;
                             }
                     }
                 }
                 file.Close();
-            }
-            Count = refereeList.Count;
-            referees = refereeList.RefereesList;
+            
         }
     }
 }

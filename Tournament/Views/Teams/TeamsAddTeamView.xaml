@@ -23,15 +23,21 @@
                        HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Border Background="#FF3E3E40" BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
                 HorizontalAlignment="Center" Width="440" Height="196">
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="346" Height="80" Background="#FF3E3E40">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="346" Height="160" Background="#FF3E3E40">
                     <Border  Margin="5,5,5,2" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
-                            <TextBox x:Name="TeamName" Grid.Column="1" Margin="10,16,25,16" FontSize="30" TextAlignment="Center" />
+                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:" Style="{StaticResource MainText}"/>
+                            <TextBox x:Name="TeamName" Grid.Row="0" Grid.Column="1" Margin="10,16,25,16" FontSize="30" TextAlignment="Center" />
+                            <TextBlock Grid.Column="0" Grid.Row="1" Text="GameType:" Style="{StaticResource MainText}"/>
+                            <ComboBox x:Name="TeamGameType" Grid.Row="1" Grid.Column="1" Margin="10,16,25,16" FontSize="30"/>
                         </Grid>
                     </Border>
                 </Grid>

@@ -6,8 +6,10 @@ namespace Tournament.Models
 {
     public class Player : Person
     {
-        private int individualPoints;
-
+        public int IndividualPoints { get; set; }
+        /// <summary>
+        /// Creates new Instance of Player 
+        /// </summary>
         public Player(string name, string surname, List<Player> playerList) : base(name, surname, 0)
         {
             Random random = new Random();
@@ -33,15 +35,8 @@ namespace Tournament.Models
                 ID = randID;
         }
        
-        /// <summary>
-        /// Gets or sets IndividualPoints 
-        /// </summary>
-        public int IndividualPoints {
-            get => individualPoints;
-            set { 
-                individualPoints = value;
-                //OnPropertyChanged("IndividualPoints");
-            }
-        }
+      
+            
+        
     }
 }

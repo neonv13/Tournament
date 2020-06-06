@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Tournament.Models
 {
-    class League {
+    class League
+    {
+        public MatchList MatchesPlanned { get; set; }
 
-
-        private MatchList matchesPlanned;
         /// <summary>
         /// Initializes a League instance
         /// </summary>
@@ -39,7 +39,6 @@ namespace Tournament.Models
             }
         }
 
-        internal MatchList MatchesPlanned { get => matchesPlanned; set => matchesPlanned = value; }
 
         /// <summary>
         /// Return IEnumerable<Match> value of symulated matches

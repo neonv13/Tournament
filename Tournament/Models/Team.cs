@@ -5,18 +5,19 @@ using System.Collections.Generic;
 
 namespace Tournament.Models
 {
-    class Team
+    public class Team
     {
-        private int count;
-        private string teamName;
-        private int idTeam;
-        private PlayerList players;
-        private int pointEarned;
+        public int IdTeam { get; set; }
+        public string TeamName { get; set; }
+        public int PointEarned { get; set; }
+        public PlayerList PlayersList { get; set; }
+        public int Count { get; set; }
+        public GameType GameType { get; set; }
 
         /// <summary>
-        /// Create a new team
+        /// Creates a new Team Instance
         /// </summary>
-        public Team(string team_name, List<Team> teamLists) 
+        public Team(string team_name, List<Team> teamLists, GameType gameType) 
         {
             Random random = new Random();
             int randID;
@@ -38,51 +39,34 @@ namespace Tournament.Models
                     break;
                 }
             } while (FreeID == false);
+            PlayersList = new PlayerList();
             IdTeam = randID;
             PointEarned = 0;
             TeamName = team_name;
-            count = 0;
+            Count = 0;
+            GameType = gameType;
         }
         /// <summary>
         /// Create a new team with setted value of sets
         /// </summary>
-        public Team(string tName, int id, PlayerList players, int point)
+        public Team(string tName, int id, PlayerList players, int point, GameType gameType)
         {
-            this.teamName = tName;
-            this.idTeam = id;
-            this.players = players;
-            this.pointEarned = point;
+            TeamName = tName;
+            IdTeam = id;
+            PlayersList = players;
+            PointEarned = point;
+            GameType = gameType;
         }
-
-        /// <summary>
-        /// Initializes a TeamName
-        /// </summary>
-        public string TeamName { get => teamName; set => teamName = value; }
-
-
-        /// <summary>
-        /// Initializes a new istance of Players
-        /// </summary>
-        public PlayerList PlayersList { get => players; set => players = value; }
-
-
-        /// <summary>
-        /// Initializes a PointEarned
-        /// </summary>
-        public int PointEarned { get => pointEarned; set => pointEarned = value; }
-
-
-        /// <summary>
-        /// Initializes a IdTeam
-        /// </summary>
-        public int IdTeam { get => idTeam; set => idTeam = value; }
-
         /// <summary>
         /// Adds Player to PlayersList
         /// </summary>
         public void AddPlayer(Player player)
         {
-            PlayersList.PlayersList.Add(player);
+            if (!IsInTeam(player.ID))
+            {
+                PlayersList.PlayersList.Add(player);
+                Count++;
+            }
         }
    
         /// <summary>
@@ -90,42 +74,32 @@ namespace Tournament.Models
         /// </summary>
         public void RemovePlayer(int id)
         {
-            foreach(var player in PlayersList.PlayersList)
-            {
-                if(player.ID == id)
+                if(IsInTeam(id))
                 {
-                    PlayersList.PlayersList.Remove(player);
+                    PlayersList.PlayersList.Remove(FindPlayerByID(id));
                     Count--;
                 }
-            }
         }
 
-        /// <summary>
-        /// Checking if Teams have enough players
-        /// !!!!!!!!!!!!!!!!!!
-        /// For now 5 players ?? How it many it should be?
-        /// </summary>
-
-        public bool DoTheyCanPlay(PlayerList playerList)
+        public bool IsInTeam(int id)
         {
-            if (playerList.Count == 5)
+            foreach (Player player in PlayersList.PlayersList)
             {
-                return true;
+                if(player.ID == id)
+                    return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
-        public int Count 
+        public Player FindPlayerByID(int id)
         {
-            get => count;
-            private set => count = value;
+            foreach (Player player in PlayersList.PlayersList)
+            {
+                if (player.ID == id)
+                    return player;
+            }
+            return null;
+        
         }
-
     }
-
-
-
 }

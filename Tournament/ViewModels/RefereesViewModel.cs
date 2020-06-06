@@ -7,23 +7,23 @@ using Tournament.Models;
 
 namespace Tournament.ViewModels
 {
-    class RefereesViewModel : INotifyPropertyChanged
+    public class RefereesViewModel : INotifyPropertyChanged
     {
-        private RefereeList referees;
-        public RefereeList Referees
-        {
-            get => referees;
-            private set
-            { 
-                referees = value;
-                OnPropertyChanged();
-            }
-        }
+        public RefereeList Referees { get; set; }
         public RefereesViewModel()
         {
             Referees = new RefereeList();
             Referees.LoadRefereeList("refereesList.txt");
         }
+
+        public void SaveRefereesViewModel()
+        {
+            Referees.SaveRefereeList("refereesList.txt");
+        
+        }
+
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = "")
         {

@@ -20,7 +20,7 @@ namespace Tournament.Views
     /// </summary>
     public partial class PlayersView : Page
     {
-        public PlayersView()
+        public PlayersView(PlayersViewModel playersViewModel)
         {
             InitializeComponent();
         }
