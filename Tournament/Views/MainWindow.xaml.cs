@@ -69,7 +69,17 @@ namespace Tournament.Views
         }
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-
+            PlayersViewModel.SavePlayersViewModel();
+            TeamViewModel.SaveTeamViewModel();
+            RefereesViewModel.SaveRefereesViewModel();
+            TournamentViewModel.SaveViewModel();
+        }
+        private void Button_Click_Load(object sender, RoutedEventArgs e)
+        {
+            PlayersViewModel.LoadPlayersViewModel();
+            TeamViewModel.LoadTeamViewModel();
+            RefereesViewModel.LoadRefereesViewModel();
+            TournamentViewModel.LoadViewModel();
         }
         private void Button_Click_Authors(object sender, RoutedEventArgs e)
         {

@@ -36,15 +36,14 @@ namespace Tournament.Views.Teams
 
         private void Button_Click_Remove(object sender, RoutedEventArgs e)
         {
-            PlayersViewModel playersViewModel = new PlayersViewModel();
 
             int id = int.Parse(IDText.Text);
             string name = NameText.Text;
             string surname = SurnameText.Text;
-            Player player = playersViewModel.Players.FindByID(id);
+            Player player = Team.PlayersList.FindByID(id);
             if (player != null && player.Name == name && player.Surname == surname)
             {
-                if (Team.PlayersList.FindByID(id) != null)
+                if (player != null)
                 {
                     Team.PlayersList.Remove(player.ID);
                     TeamWindow.Refresh();

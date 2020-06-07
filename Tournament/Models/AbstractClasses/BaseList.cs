@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace Tournament.Models
 {
@@ -39,6 +40,7 @@ namespace Tournament.Models
         {
             if (FindByID(t.ID) == null)
             {
+
                 List.Add(t);
                 Count++;
             }
@@ -60,7 +62,6 @@ namespace Tournament.Models
         {
             System.Xml.Serialization.XmlSerializer reader =
                new System.Xml.Serialization.XmlSerializer(this.GetType());
-
             System.IO.StreamReader file = new System.IO.StreamReader(path);
             var obj = reader.Deserialize(file);
             file.Close();

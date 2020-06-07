@@ -26,8 +26,8 @@
             <Button Click="Button_Click_Teams" Content="Teams" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Players" Content ="Players" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Referees" Content = "Referees" Style="{StaticResource NormalButton}"/>
-            <Button Content = "Save" Style="{StaticResource NormalButton}"/>
-            <Button Content = "Load" Style="{StaticResource NormalButton}"/>
+            <Button Content = "Save" Click="Button_Click_Save" Style="{StaticResource NormalButton}"/>
+            <Button Content = "Load" Click="Button_Click_Load" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Authors" Content = "Authors" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Exit" Content="Exit" Style="{StaticResource NormalButton}"/>
         </StackPanel>
