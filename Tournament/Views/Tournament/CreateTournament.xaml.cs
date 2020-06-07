@@ -54,8 +54,8 @@ namespace Tournament.Views.Tournament
             {
                 TournamentViewModel.Tournaments.AddTournament(new Tournaments(teamList, refereeList, type, name));
                 TournamentViewModel.SaveViewModel();
-                ErrorWindow errorWindow = new ErrorWindow();
-                errorWindow.ErrorContent.Text = "Succesfully added team";
+                ErrorWindow errorWindow = new ErrorWindow() { Width = 350};
+                errorWindow.ErrorContent.Text = "Succesfully added Tourament";
                 errorWindow.Show();
                 ViewTournaments.TourListBox.Items.Refresh();
                 NavigationService.GoBack();
@@ -63,7 +63,7 @@ namespace Tournament.Views.Tournament
             else
             {
                 ErrorWindow errorWindow = new ErrorWindow();
-                errorWindow.ErrorContent.Text = "Choose Game Type";
+                errorWindow.ErrorContent.Text = "Choose Game Tournament";
             }
 
         }
