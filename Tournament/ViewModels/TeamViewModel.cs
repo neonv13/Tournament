@@ -16,7 +16,7 @@ namespace Tournament.ViewModels
         public TeamViewModel()
         {
             Teams = new TeamList();
-            Teams.LoadTeamsList("C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\Tournament\\bin\\Debug\\netcoreapp3.1\\teamsList.txt");
+            Teams.LoadTeamsList("teamsList.txt");
         }
         public void SaveTeamViewModel() 
         {

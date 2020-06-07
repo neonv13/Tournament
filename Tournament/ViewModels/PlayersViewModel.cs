@@ -14,7 +14,7 @@ namespace Tournament.ViewModels
         public PlayersViewModel()
         {
             Players = new PlayerList();
-            Players.LoadPlayersList("C:\\Users\\kamil\\OneDrive\\Pulpit\\ZadaniaPO\\Tournament\\Tournament\\bin\\Debug\\netcoreapp3.1\\playersList.txt", "null");
+            Players.LoadPlayersList("playersList.txt", "null");
         }
         public void SavePlayersViewModel()
         {

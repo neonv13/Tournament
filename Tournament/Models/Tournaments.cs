@@ -7,45 +7,25 @@ namespace Tournament.Models
 {
     public class Tournaments
     {
-        /// <summary>
-        /// Gets or sets a int matchesPlayed value
-        /// </summary>
+ 
         public int MatchesPlayed { get; set; }
-        /// <summary>
-        /// Gets or sets a int teamsCount value
-        /// </summary>
+
         public int TeamCount { get; set; }
-        /// <summary>
-        /// Gets or sets a string name value
-        /// </summary>
+
         public string Name { get; set; }
-        /// <summary>
-        /// Gets or sets a GameType game type
-        /// </summary>
+
         public GameType GameType { get; set; }
-        /// <summary>
-        /// Gets or sets a instance of RefereeList
-        /// </summary>
+
         public RefereeList RefereeList { get; set; }
-        /// <summary>
-        /// Gets or sets a instance of MatchList
-        /// </summary>
+
         public MatchList MatchHistory { get; set; }
-        /// <summary>
-        /// Gets or sets a instance of TeamList 
-        /// </summary>
+
         public TeamList TeamList { get; set; }
-        /// <summary>
-        /// Get/set SemiFinals results
-        /// </summary>
+
         public MatchList Semi { get; set; }
-        /// <summary>
-        /// Get/set Finals results
-        /// </summary>
+
         public Match Final { get; set; }
-        /// <summary>
-        /// Initializes a new instance of Tournament
-        /// </summary>
+
         public Tournaments(TeamList teamList, RefereeList refereeList, GameType gameType, string name)
         {
             TeamList = teamList;

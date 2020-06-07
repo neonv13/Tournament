@@ -16,7 +16,11 @@ namespace Tournament.Models
             Count = 0;
         }
 
-
+        public PlayerList(PlayerList playerlist)
+        {
+            PlayersList = playerlist.PlayersList;
+            Count = playerlist.Count;
+        }
 
         /// <summary>
         /// Retruns a instance of Player that has given ID
