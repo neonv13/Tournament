@@ -8,15 +8,32 @@ namespace Tournament.Models
     class TournamentList
     {
         public List<Tournaments> TournamentsList { get; set; }
+        public int Count { get; set; }
 
+
+        public TournamentList()
+        {
+            TournamentsList = new List<Tournaments>();
+        }
         public void AddTournament(Tournaments tour)
+        {
+            TournamentsList.Add(tour);
+            Count++;
+        }
+
+        public void RemoveTournament(int id)
         {
 
         }
 
-        public void RemoveTournament(Tournaments tour)
+        public Tournaments FindTournamentByID(int id)
         {
-
+            foreach (var tour in TournamentsList)
+            {
+                if (tour.ID == id)
+                    return tour;
+            }
+            return null;
         }
         public void SaveTournaments(string path)
         {
@@ -33,13 +50,7 @@ namespace Tournament.Models
 
                 // Referee_Data_Start
                 file.WriteLine("Referee_Data_Start: ");
-                foreach (var referee in tour.RefereeList.RefereesList)
-                {
-                    file.WriteLine("RefereeID: " + referee.ID);
-                    file.WriteLine("RefereeName: " + referee.Name);
-                    file.WriteLine("RefereeSurname: " + referee.Surname);
-                    file.WriteLine("EndReferee");
-                }
+                tour.RefereeList.SaveRefereeList(path);
                 file.WriteLine("Referee_Data_End: ");
 
                 // Matchs_History_Data_Start
