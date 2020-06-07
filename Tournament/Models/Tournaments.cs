@@ -7,7 +7,7 @@ namespace Tournament.Models
 {
     public class Tournaments
     {
- 
+        public int ID { get; set; }
         public int MatchesPlayed { get; set; }
 
         public int TeamCount { get; set; }
