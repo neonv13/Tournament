@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Tournament.Models
 {
-    class League
+    public class League
     {
         public MatchList MatchesPlanned { get; set; }
 
