@@ -18,11 +18,6 @@ namespace Tournament.Models
             TeamsList = new List<Team>();
         }
 
-        public TeamList(List<Team> listteam)
-        {
-            TeamsList = new List<Team>();
-            TeamsList = listteam;
-        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = "")
         {
