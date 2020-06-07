@@ -14,8 +14,12 @@
         {
             RefereesList = new List<Referee>();
         }
-        
-        
+
+        public RefereeList(List<Referee> listreferee)
+        {
+            RefereesList = new List<Referee>();
+            RefereesList = listreferee;
+        }
 
         /// <summary>
         /// Adds Referee to RefereesList
