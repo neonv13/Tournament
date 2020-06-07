@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,24 +22,35 @@ namespace Tournament.Views
     /// </summary>
     public partial class TournamentView : Page
     {
-        public TournamentViewModel Tournament { get; set; }
+        public TournamentViewModel TournamentViewModel { get; set; }
         public PlayersViewModel PlayersViewModel { get; set; }
         public TeamViewModel TeamViewModel { get; set; }
-        public TournamentView(TournamentViewModel tournament, PlayersViewModel playersViewModel, TeamViewModel teamViewModel)
+        public RefereesViewModel RefereesViewModel { get; set; }
+
+        public ViewTournaments ViewTournaments { get; set; }
+
+
+        public TournamentView(TournamentViewModel tournamentViewModel, PlayersViewModel playersViewModel,
+                              TeamViewModel teamViewModel, RefereesViewModel refereesViewModel)
         {
+            TournamentViewModel = tournamentViewModel;
+            PlayersViewModel = playersViewModel;
+            TeamViewModel = teamViewModel;
+            RefereesViewModel = refereesViewModel;
+            ViewTournaments = new ViewTournaments(TournamentViewModel);
             InitializeComponent();
         }
         private void Button_Click_NewTournament(object sender, RoutedEventArgs e)
         {
-            TourView.Content = new CreateTournament(Tournament);
+            TourView.Content = new CreateTournament(TournamentViewModel, TeamViewModel , RefereesViewModel, ViewTournaments);
         }
         private void Button_Click_DeleteTournament(object sender, RoutedEventArgs e)
         {
-            TourView.Content = new DeleteTournament();
+            TourView.Content = new DeleteTournament(TournamentViewModel);
         }
         private void Button_Click_ViewTournaments(object sender, RoutedEventArgs e)
         {
-            TourView.Content = new ViewTournaments();
+            TourView.Content = ViewTournaments;
         }
     }
 }

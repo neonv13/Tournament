@@ -19,9 +19,16 @@ namespace Tournament.Views.Tournament
     /// </summary>
     public partial class CreateTournament : Page
     {
+        public TeamViewModel TeamViewModel { get; set; }
+        public RefereesViewModel RefereesViewModel { get; set; }
+        public ViewTournaments ViewTournaments { get; set; }
         private TournamentViewModel TournamentViewModel { get; set; }
-        public CreateTournament(TournamentViewModel tournamentViewModel)
+        public CreateTournament(TournamentViewModel tournamentViewModel, TeamViewModel teamViewModel,
+                                RefereesViewModel refereesViewModel, ViewTournaments viewTournaments)
         {
+            ViewTournaments = viewTournaments;
+            RefereesViewModel = refereesViewModel;
+            TeamViewModel = teamViewModel;
             TournamentViewModel = tournamentViewModel;
             InitializeComponent();
             GameTypeComboBox.ItemsSource = new List<GameType> { GameType.DodgeBall, GameType.TugOfWar, GameType.Volleyball };
@@ -40,19 +47,21 @@ namespace Tournament.Views.Tournament
         {
             
         }
- /*
+ 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string name = TourName.Text;
+            RefereeList refereeList= null;
+            TeamList teamList = null;
 
             if (GameTypeComboBox.SelectedItem is GameType type)
             {
-                TournamentViewModel.Teams.AddTeam(new Team(name, TeamViewModel.Teams.TeamsList, type));
-                TeamViewModel.SaveTeamViewModel();
+                TournamentViewModel.Tournaments.AddTournament(new Tournaments(teamList,refereeList,type, name));
+                TournamentViewModel.SaveViewModel();
                 ErrorWindow errorWindow = new ErrorWindow();
                 errorWindow.ErrorContent.Text = "Succesfully added team";
                 errorWindow.Show();
-                TeamsViewTeamsView.MyListBox.Items.Refresh();
+                ViewTournaments.TourListBox.Items.Refresh();
                 NavigationService.GoBack();
             }
             else
@@ -62,6 +71,6 @@ namespace Tournament.Views.Tournament
             }
 
         }
-        */
+       
     }
 }

@@ -18,13 +18,16 @@
 
 
     <Grid Style="{StaticResource NormalView}">
+       
         <TextBlock Style="{StaticResource MainText}" Margin="30,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Complete new Tournament details"/>
+        <TextBlock Style="{StaticResource MainText}" Margin="485,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Choose Referees and Teams"/>
+        
         <Grid Margin="0,30,0,60 ">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,10,0,0" Height="25" VerticalAlignment="Top" Width="200">
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="128,595,128,0" Height="25" VerticalAlignment="Top" Width="200">
                 <Button Style="{StaticResource NormalButton}" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Margin="15,0,15,0" Content="Teams" Click="Button_Click_TeamsList"/>
                 <Button Style="{StaticResource NormalButton}" HorizontalAlignment="Center"
@@ -36,11 +39,11 @@
                     <Frame x:Name="ListsPlace" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </Border>
-            <Border Grid.Column="0" BorderBrush="#FF252526" BorderThickness="2"
-                    Width="400" Height="530" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Grid Background="#FF3E3E40">
+            <Border BorderBrush="#FF252526" BorderThickness="2"
+                    Width="435" Height="210" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid Background="#FF3E3E40" Height="200" >
                     <StackPanel >
-                        <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5" Margin="5,5,5,3">
+                        <Border BorderBrush="#FF252526" VerticalAlignment="Center" BorderThickness="1" Padding="5" Margin="5,5,5,3">
                             <Grid Margin="25">
 
                                 <TextBlock HorizontalAlignment="Left" Style="{StaticResource MainText}" Text="Tournament name"/>

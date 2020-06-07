@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.ViewModels;
 
 namespace Tournament.Views.Tournament
 {
@@ -18,9 +19,11 @@ namespace Tournament.Views.Tournament
     /// </summary>
     public partial class ViewTournaments : Page
     {
-        public ViewTournaments()
+        public TournamentViewModel tournamentViewModel { get; set; }
+        public ViewTournaments(TournamentViewModel tournamentViewModel)
         {
             InitializeComponent();
+            TourListBox.ItemsSource = tournamentViewModel.Tournaments.TournamentsList;
         }
         
     }

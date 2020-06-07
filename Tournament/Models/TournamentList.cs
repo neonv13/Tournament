@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Tournament.Models
 {
-    class TournamentList
+    public class TournamentList
     {
         public List<Tournaments> TournamentsList { get; set; }
         public void SaveTournaments(string path)

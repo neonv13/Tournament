@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tournament.ViewModels;
 
 namespace Tournament.Views.Tournament
 {
@@ -17,7 +18,7 @@ namespace Tournament.Views.Tournament
     /// </summary>
     public partial class DeleteTournament : Page
     {
-        public DeleteTournament()
+        public DeleteTournament(TournamentViewModel tournamentViewModel)
         {
             InitializeComponent();
         }
