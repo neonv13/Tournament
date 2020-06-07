@@ -20,8 +20,12 @@ namespace Tournament.Views.Referees
     /// </summary>
     public partial class AddReferee : Page
     {
-        public AddReferee()
+        public RefereesViewModel RefereesViewModel { get; set; }
+        public ViewReferees ViewReferees { get; set; }
+        public AddReferee(RefereesViewModel refereesViewModel, ViewReferees viewReferees)
         {
+            RefereesViewModel = refereesViewModel;
+            ViewReferees = viewReferees;
             InitializeComponent();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -30,8 +34,8 @@ namespace Tournament.Views.Referees
             string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
             refereesViewModel.Referees.AddReferee(new Referee(name, surname, refereesViewModel.Referees.RefereesList));
-            refereesViewModel.Referees.SaveRefereeList("refereesList.txt");
-            NavigationService.Navigate(new ViewReferees());
+            refereesViewModel.SaveRefereesViewModel();
+            NavigationService.Navigate(ViewReferees);
         }
     }
 }

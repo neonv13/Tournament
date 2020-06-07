@@ -20,8 +20,12 @@ namespace Tournament.Views.Referees
     /// </summary>
     public partial class RemoveReferee : Page
     {
-        public RemoveReferee()
+        public RefereesViewModel RefereesViewModel { get; set; }
+        public ViewReferees ViewReferees { get; set; }
+        public RemoveReferee(RefereesViewModel refereesViewModel, ViewReferees viewReferees)
         {
+            RefereesViewModel = refereesViewModel;
+            ViewReferees = viewReferees;
             InitializeComponent();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,9 +39,9 @@ namespace Tournament.Views.Referees
                 && refereesViewModel.Referees.FindRefereeByID(id).Surname == surname)
             {                     
                 refereesViewModel.Referees.RemoveReferee(id);
-                refereesViewModel.Referees.SaveRefereeList("refereesList.txt");
+                refereesViewModel.SaveRefereesViewModel();
             }
-            NavigationService.Navigate(new ViewPlayers(null));
+            NavigationService.Navigate(ViewReferees);
         }
     }
 }

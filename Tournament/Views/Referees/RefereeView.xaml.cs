@@ -19,22 +19,25 @@ namespace Tournament.Views.Referees
     /// </summary>
     public partial class RefereeView : Page
     {
-
+        public RefereesViewModel RefereesViewModel { get; set; }
+        public ViewReferees ViewReferees { get; set; }
         public RefereeView(RefereesViewModel refereesViewModel)
         {
+            RefereesViewModel = refereesViewModel;
+            ViewReferees = new ViewReferees(RefereesViewModel);
             InitializeComponent();
         }
         private void Button_Click_AddReferee(object sender, RoutedEventArgs e)
         {
-            Referees.Content = new AddReferee();
+            Referees.Content = new AddReferee(RefereesViewModel,ViewReferees);
         }
         private void Button_Click_RemoveReferee(object sender, RoutedEventArgs e)
         {
-            Referees.Content = new RemoveReferee();
+            Referees.Content = new RemoveReferee(RefereesViewModel, ViewReferees);
         }
         private void Button_Click_ViewReferees(object sender, RoutedEventArgs e)
         {
-            Referees.Content = new ViewReferees();
+            Referees.Content = ViewReferees;
         }
     }
 }

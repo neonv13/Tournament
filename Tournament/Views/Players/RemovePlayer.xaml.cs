@@ -20,8 +20,12 @@ namespace Tournament.Views
     /// </summary>
     public partial class RemovePlayer : Page
     {
-        public RemovePlayer()
+        public PlayersViewModel PlayersViewModel { get; set; }
+        public ViewPlayers ViewPlayers { get; set; }
+        public RemovePlayer(ViewPlayers viewPlayers, PlayersViewModel playersViewModel)
         {
+            ViewPlayers = viewPlayers;
+            PlayersViewModel = playersViewModel;
             InitializeComponent();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,9 +39,9 @@ namespace Tournament.Views
                 && playersViewModel.Players.FindPlayerByID(id).Surname == surname)
             {
                 playersViewModel.Players.RemovePlayer(id);
-                playersViewModel.Players.SavePlayersList("playersList.txt");
+                playersViewModel.SavePlayersViewModel();
             }
-            NavigationService.Navigate(new ViewPlayers(null));
+            NavigationService.Navigate(ViewPlayers);
         }
     }
 }

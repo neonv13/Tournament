@@ -24,6 +24,7 @@ namespace Tournament.Views.Players
         public ViewPlayers(PlayersViewModel playersViewModel)
         {
             InitializeComponent();
+            PlayesListBox.ItemsSource = PlayersViewModel.Players.PlayersList;
         }
 
     }

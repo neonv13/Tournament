@@ -17,16 +17,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Page.DataContext>
-        <ViewModels:PlayersViewModel/>
-    </Page.DataContext>
-
-
 
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Width="100" Text="Players List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="30,30,0,0" />
-        <ListBox Margin="30,60,30,30" ItemsSource="{Binding Players.PlayersList}" 
+        <ListBox Margin="30,60,30,30"  
                  HorizontalContentAlignment="Stretch" 
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" x:Name="PlayesListBox"
                  BorderBrush="#FF252526">

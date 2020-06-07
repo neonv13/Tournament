@@ -24,8 +24,12 @@ namespace Tournament.Views
     /// </summary>
     public partial class AddPlayer : Page
     {
-        public AddPlayer()
+        public PlayersViewModel PlayersViewModel { get; set; }
+        public ViewPlayers ViewPlayers { get; set; }
+        public AddPlayer(ViewPlayers viewPlayers,PlayersViewModel playersViewModel)
         {
+            ViewPlayers = viewPlayers;
+            PlayersViewModel = playersViewModel;
             InitializeComponent();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,8 +38,8 @@ namespace Tournament.Views
             string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
             playersViewModel.Players.AddPlayer(new Player(name,surname,playersViewModel.Players.PlayersList));
-            playersViewModel.Players.SavePlayersList("playersList.txt");
-            NavigationService.Navigate(new ViewPlayers(null));
+            playersViewModel.SavePlayersViewModel();
+            NavigationService.Navigate(ViewPlayers);
         }
     }
 }

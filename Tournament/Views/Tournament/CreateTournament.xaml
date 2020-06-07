@@ -60,7 +60,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="-200,0,0,20" Content="Save"/>
+        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="-200,0,0,20" Content="Add" Click="Button_Click_AddTournament"/>
         <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="200,0,0,20" Content="Cancel" Click="Button_Click_Close"/>
     </Grid>
 

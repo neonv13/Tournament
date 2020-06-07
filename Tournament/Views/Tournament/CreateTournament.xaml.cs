@@ -44,12 +44,12 @@ namespace Tournament.Views.Tournament
             NavigationService.Navigate(ViewTournaments);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_AddTournament(object sender, RoutedEventArgs e)
         {
             string name = TourName.Text;
             RefereeList refereeList = new RefereeList();
             TeamList teamList = new TeamList();
-
+            
             if (GameTypeComboBox.SelectedItem is GameType type)
             {
                 TournamentViewModel.Tournaments.AddTournament(new Tournaments(teamList, refereeList, type, name));
@@ -67,6 +67,5 @@ namespace Tournament.Views.Tournament
             }
 
         }
-
     }
 }

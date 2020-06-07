@@ -19,11 +19,12 @@ namespace Tournament.Views.Tournament
     /// </summary>
     public partial class ViewTournaments : Page
     {
-        public TournamentViewModel tournamentViewModel { get; set; }
+        public TournamentViewModel TournamentViewModel { get; set; }
         public ViewTournaments(TournamentViewModel tournamentViewModel)
         {
+            TournamentViewModel = tournamentViewModel;
             InitializeComponent();
-            TourListBox.ItemsSource = tournamentViewModel.Tournaments.TournamentsList;
+            TourListBox.ItemsSource = TournamentViewModel.Tournaments.TournamentsList;
         }
         
     }

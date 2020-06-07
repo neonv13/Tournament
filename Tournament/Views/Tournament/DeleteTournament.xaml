@@ -31,7 +31,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="ID:" Style="{StaticResource MainText}"/>
-                    <TextBox  Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center" />
+                    <TextBox x:Name="IDTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center" />
                 </Grid>
             </Border>
             <Border Margin="5,2,5,5" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
@@ -41,12 +41,12 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
-                    <TextBox  Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center"/>
+                    <TextBox x:Name="NameTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center"/>
                 </Grid>
             </Border>
         </Grid>
 
-        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Remove"/>
+        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Remove" Click="Button_Click_Remove"/>
         <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel" Click="Button_Click_Close"/>
     </Grid>
 </Page>

@@ -21,13 +21,10 @@
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Width="120" Text="Referees List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="30,30,0,0" />
-        <ListBox Margin="30,60,30,30" ItemsSource="{Binding Referees.RefereesList}" 
+        <ListBox Margin="30,60,30,30" x:Name="RefereeListBox"
                  HorizontalContentAlignment="Stretch" 
                  Background="#FF3E3E40" Foreground="#FFF1F1F1"
                  BorderBrush="#FF252526">
-            <ListBox.DataContext>
-                <ViewModels:RefereesViewModel/>
-            </ListBox.DataContext>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
