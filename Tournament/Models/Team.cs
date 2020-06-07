@@ -57,6 +57,14 @@ namespace Tournament.Models
             PointEarned = point;
             GameType = gameType;
         }
+
+        public Team(Team team)
+        {
+            IdTeam = team.IdTeam;
+            TeamName = team.TeamName;
+            PointEarned = team.PointEarned;
+            PlayersList = new PlayerList(team.PlayersList);
+        }
         /// <summary>
         /// Adds Player to PlayersList
         /// </summary>

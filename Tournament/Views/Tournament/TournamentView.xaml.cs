@@ -30,7 +30,7 @@ namespace Tournament.Views
         }
         private void Button_Click_NewTournament(object sender, RoutedEventArgs e)
         {
-            TourView.Content = new CreateTournament();
+            TourView.Content = new CreateTournament(Tournament);
         }
         private void Button_Click_DeleteTournament(object sender, RoutedEventArgs e)
         {
