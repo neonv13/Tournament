@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace Tournament.Models
 {
-    public class TournamentList
+    class TournamentList
     {
         public List<Tournaments> TournamentsList { get; set; }
         public int Count { get; set; }

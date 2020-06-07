@@ -1,6 +1,7 @@
 ﻿//using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Tournament.Models
 {
@@ -18,13 +19,13 @@ namespace Tournament.Models
             do
             {
                 randID = random.Next(0, 1000);
-                
+
                 if (playerList != null)
-                    {
-                        foreach (var player in playerList)
-                            if (randID == player.ID)
-                                FreeID = false;
-                    }
+                {
+                    foreach (var player in playerList)
+                        if (randID == player.ID)
+                            FreeID = false;
+                }
                 else
                 {
                     ID = randID;
@@ -34,9 +35,19 @@ namespace Tournament.Models
             if (FreeID)
                 ID = randID;
         }
-       
-      
-            
-        
+
+
+        /// <summary>
+        /// Saves Player to file from given path
+        /// </summary>
+        public void SavePlayer(StreamWriter file)
+        {
+            file.WriteLine("PlayerID: " + ID);
+            file.WriteLine("PlayerName: " + Name);
+            file.WriteLine("PlayerSurname: " + Surname);
+            file.WriteLine("PlayerPoints: " + IndividualPoints);
+            file.WriteLine("EndPlayer");
+        }
+
     }
 }

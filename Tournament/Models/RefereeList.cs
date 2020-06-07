@@ -75,11 +75,9 @@
 
             foreach (var referee in RefereesList)
             {
-                file.WriteLine("RefereeID: " + referee.ID);
-                file.WriteLine("RefereeName: " + referee.Name);
-                file.WriteLine("RefereeSurname: " + referee.Surname);
-                file.WriteLine("EndReferee");
+                referee.SaveReferee(file);
             }
+            file.WriteLine("EndReferees");
             file.Close();
 
         }
