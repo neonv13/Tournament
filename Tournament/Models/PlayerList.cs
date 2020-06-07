@@ -70,14 +70,10 @@ namespace Tournament.Models
 
             foreach (var player in PlayersList)
             {
-                file.WriteLine("PlayerID: " + player.ID);
-                file.WriteLine("PlayerName: " + player.Name);
-                file.WriteLine("PlayerSurname: " + player.Surname);
-                file.WriteLine("PlayerPoints: " + player.IndividualPoints);
-                file.WriteLine("EndPlayer");
+                player.SavePlayer(file);
             }
+            file.WriteLine("EndPlayers");
             file.Close();
-
         }
         /// <summary>
         /// Loads a PlayersList from a file from given path
@@ -93,7 +89,7 @@ namespace Tournament.Models
                     string surname = string.Empty;
                     int points = 0;
                     string text = string.Empty;
-                    while ((text = file.ReadLine()) != null && text != endstring)
+                    while ((text = file.ReadLine()) != null && text != "EndPlayers")
                     {
                         string[] words = text.Split(" ");
                         switch (words[0])

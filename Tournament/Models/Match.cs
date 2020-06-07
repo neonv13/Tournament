@@ -127,8 +127,39 @@ namespace Tournament.Models
             }
 
         }
-       
-        
+        /// <summary>
+        /// Saves a MatchList to specified file
+        /// </summary>
+        public void SaveMatchList(string path)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            {
+                    file.WriteLine("StartMatchData");
+                    file.WriteLine("MatchID: " + MatchID);
+                    file.WriteLine("MatchRank: " + MatchRank);
+                    file.WriteLine("GameType: " + GameType);
+                    file.WriteLine("TeamA_ID: " + TeamA_ID);
+                    file.WriteLine("TeamB_ID: " + TeamB_ID);
+                    file.WriteLine("TeamAScore: " + TeamAScore);
+                    file.WriteLine("TeamBScore: " + TeamBScore);
+                    foreach (var player in TeamA.PlayersList.PlayersList)
+                    {
+                        file.WriteLine("TeamAPlayerID: " + player.ID);
+                        file.WriteLine();
+                    }
+                    foreach (var player in TeamB.PlayersList.PlayersList)
+                    {
+                        file.WriteLine("TeamBPlayerID: " + player.ID);
+                    }
+                    foreach (var referee in Referees)
+                    {
+                        file.WriteLine("RefereeID: " + referee.ID);
+                    }
+                    file.WriteLine("EndMatchData");
+                file.Close();
+            };
+        }
+
     }
 
 

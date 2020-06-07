@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Tournament.Models
 {
@@ -31,6 +32,53 @@ namespace Tournament.Models
             } while (FreeID == false);
             if (FreeID)
                 ID = randID;
+        }
+        public void SaveReferee(StreamWriter file)
+        {
+
+                file.WriteLine("RefereeID: " + ID);
+                file.WriteLine("RefereeName: " + Name);
+                file.WriteLine("RefereeSurname: " + Surname);
+                file.WriteLine("EndReferee");
+        }
+        public Referee LoadReferee(StreamReader file)
+        {
+            int id = 0;
+            string name = string.Empty;
+            string surname = string.Empty;
+            string text;
+            while ((text = file.ReadLine()) != null && text != "EndReferee")
+            {
+                string[] words = text.Split(" ");
+                switch (words[0])
+                {
+                    case "RefereeID:":
+                        {
+                            id = int.Parse(words[1]);
+                            break;
+                        }
+                    case "RefereeName:":
+                        {
+                            name = words[1];
+                            break;
+                        }
+                    case "RefereeSurname:":
+                        {
+                            surname = words[1];
+                            break;
+                        }
+                    case "EndReferee":
+                        {
+
+                                Referee referee = new Referee(name, surname, null)
+                                {
+                                    ID = id
+                                };
+                                return referee;
+                        }
+                }
+            }
+            return null;
         }
     }
 }
