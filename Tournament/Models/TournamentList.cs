@@ -1,21 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace Tournament.Models
 {
     public class TournamentList
     {
         public List<Tournaments> TournamentsList { get; set; }
+        public int Count { get; set; }
 
+
+        public TournamentList()
+        {
+            TournamentsList = new List<Tournaments>();
+        }
         public void AddTournament(Tournaments tour)
+        {
+            TournamentsList.Add(tour);
+            Count++;
+        }
+
+        public void RemoveTournament(int id)
         {
 
         }
 
-        public void RemoveTournament(Tournaments tour)
+        public Tournaments FindTournamentByID(int id)
         {
-
+            foreach (var tour in TournamentsList)
+            {
+                if (tour.ID == id)
+                    return tour;
+            }
+            return null;
         }
         public void SaveTournaments(string path)
         {
@@ -32,13 +50,7 @@ namespace Tournament.Models
 
                 // Referee_Data_Start
                 file.WriteLine("Referee_Data_Start: ");
-                foreach (var referee in tour.RefereeList.RefereesList)
-                {
-                    file.WriteLine("RefereeID: " + referee.ID);
-                    file.WriteLine("RefereeName: " + referee.Name);
-                    file.WriteLine("RefereeSurname: " + referee.Surname);
-                    file.WriteLine("EndReferee");
-                }
+                tour.RefereeList.SaveRefereeList(path);
                 file.WriteLine("Referee_Data_End: ");
 
                 // Matchs_History_Data_Start
@@ -56,6 +68,9 @@ namespace Tournament.Models
                     foreach (var player in match.TeamA.PlayersList.PlayersList)
                     {
                         file.WriteLine("TeamAPlayerID: " + player.ID);
+                        file.WriteLine("TeamAPlayerName: " + player.Name);
+                        file.WriteLine("TeamAPlayerSurname: " + player.Surname);
+                        file.WriteLine("TeamAPlayerPoints: " + player.IndividualPoints);
                     }
                     foreach (var player in match.TeamB.PlayersList.PlayersList)
                     {
@@ -167,67 +182,8 @@ namespace Tournament.Models
         }
 
 
-        public void LoadTournament(string path)
-        {
-            if (path != null && path != string.Empty)
-            {
-
-                int machPlayed;
-                int teamCount;
-                string name = string.Empty;
-                GameType gameType = 0;
-                RefereeList refereeList = new RefereeList();
-                //MatchList matchList = new MatchList();
-                TeamList teamList = new TeamList();
-                //MatchList Semi;
-                //Match Final;
-
-
-                System.IO.StreamReader file = new System.IO.StreamReader(path);
-
-
-                string line;
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] words = line.Split(" ");
-                    switch (words[0])
-                    {
-                        case "MatchesPlayed: ":
-                            {
-                                machPlayed = int.Parse(words[1]);
-                                break;
-                            }
-                        case "TeamCount: ":
-                            {
-                                teamCount = int.Parse(words[1]);
-                                break;
-                            }
-                        case "Name: ":
-                            {
-                                name = words[1];
-                                break;
-                            }
-                        case "GameType: ":
-                            {
-                                gameType = (GameType)Enum.Parse(typeof(GameType), words[1]);
-                                break;
-                            }
-
-
-                        case "EndTournamentData":
-                            {
-                                var tournament = new Tournaments(teamList, refereeList, gameType, name);
-
-
-                                break;
-                            }
-                    }
-                    file.Close();
-                }
-
-
+      
             }
         }
-    }
-}
+
 

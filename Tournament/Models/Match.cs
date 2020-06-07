@@ -13,20 +13,26 @@ namespace Tournament.Models
     }
     public class Match
     {
-        private List<Referee> referees;
+        public int MatchID { get; set; }
+
+        public List<Referee> Referees { get; set; }
+
         public Team TeamA { get; set; }
         public Team TeamB { get; set; }
-        private int teamAScore;
-        private int teamBScore;
-        private int teamA_ID;
-        private int teamB_ID;
-        private GameType gameType;
-        private int matchID;
-        private MatchRank matchRank;
 
-        /// <summary>
-        /// Initializes a new instance of Match 
-        /// </summary> 
+        public MatchRank MatchRank { get; set; }
+
+        public GameType GameType { get; set; }
+
+        public int TeamAScore { get; set; }
+
+        public int TeamBScore { get; set; }
+
+        public int TeamA_ID { get; set; }
+
+        public int TeamB_ID { get; set; }
+
+
         public Match(Team A,
                     Team B,
                     RefereeList referees,
@@ -67,25 +73,18 @@ namespace Tournament.Models
 
         public Match(Match match)
         {
-            referees = match.Referees;
+            Referees = match.Referees;
             TeamA = match.TeamA;
             TeamB = match.TeamB;
-            teamAScore = match.TeamAScore;
-            teamBScore = match.TeamBScore;
-            teamA_ID = match.teamA_ID;
-            teamB_ID = match.TeamB_ID;
-            gameType = match.GameType;
-            matchID = match.MatchID;
-            matchRank = match.MatchRank;
+            TeamAScore = match.TeamAScore;
+            TeamBScore = match.TeamBScore;
+            TeamA_ID = match.TeamA_ID;
+            TeamB_ID = match.TeamB_ID;
+            GameType = match.GameType;
+            MatchID = match.MatchID;
+            MatchRank = match.MatchRank;
         }
-        /// <summary>
-        /// Gets a Referees List  of Match
-        /// </summary>
-        public List<Referee> Referees
-        {
-            get => referees;
-            private set => referees = value;
-        }
+
         /// <summary>
         /// Adds TeamAScore, TeamBScore and MatchID to Match. 
         /// Use when Match was read from file
@@ -98,14 +97,6 @@ namespace Tournament.Models
             MatchID = matchID;
         }
 
-        /// <summary>
-        /// Gets  a matchID value
-        /// </summary>
-        public int MatchID
-        {
-            get => matchID;
-            private set => matchID = value;
-        }
         /// <summary>
         /// Simulates results of match and 
         /// returns results(teamAscore,teamBscore) 
@@ -136,56 +127,7 @@ namespace Tournament.Models
             }
 
         }
-        /// <summary>
-        /// Gets a matchRank value
-        /// </summary>
-        public MatchRank MatchRank
-        {
-            get => matchRank;
-            private set => matchRank = value;
-        }
-        /// <summary>
-        /// Gets a GameType value of match
-        /// </summary>
-        public GameType GameType
-        {
-            get => gameType;
-            private set => gameType = value;
-        }
-        /// <summary>
-        /// Gets TeamAScore value
-        /// </summary>
-        public int TeamAScore
-        {
-            get => teamAScore;
-            private set => teamAScore = value;
-        }
-        /// <summary>
-        /// Gets TeamBScore value
-        /// </summary>
-        public int TeamBScore
-        {
-            get => teamBScore;
-            private set => teamBScore = value;
-        }
-        /// <summary>
-        /// Gets TeamA ID value
-        /// </summary>
-        public int TeamA_ID
-        {
-            get => teamA_ID;
-            private set => teamA_ID = value;
-
-        }
-        /// <summary>
-        /// Gets TeamB ID value
-        /// </summary>
-        public int TeamB_ID
-        {
-            get => teamB_ID;
-            private set => teamB_ID = value;
-
-        }
+       
         
     }
 
