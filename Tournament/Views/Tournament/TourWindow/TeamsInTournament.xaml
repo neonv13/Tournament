@@ -46,13 +46,13 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding IdTeam}" x:Name="IDTextBlock"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding IDTeam}" x:Name="IDTextBlock"/>
                         <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
                         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TeamName}"/>
                         <TextBlock Grid.Row="2" Grid.Column="0" Text="Game: "/>
                         <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PointEarned}"/>
                         <TextBlock Grid.Row="3" Grid.Column="0" Text="Points: "/>
-                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding GameType}"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding GameTypes}"/>
                         <TextBlock Grid.Row="4" Grid.Column="0" Text="Players: "/>
                         <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Count}"/>
                         <Button   Content="View" Width="50" Height="20" Grid.Row="4" Grid.Column="1" Margin="50,2,50,0"/>

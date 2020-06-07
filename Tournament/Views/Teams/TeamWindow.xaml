@@ -75,8 +75,8 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Margin="0,30,0,30">
-                <TextBlock Style="{StaticResource MainText}" x:Name="TeamIDTextBlock" Margin="10" Text="{Binding Team.IdTeam}"/>
-                <TextBlock Style="{StaticResource MainText}" x:Name="TeamGameTypeTextBlock" Margin="10" Text="{Binding Team.GameType}"/>
+                <TextBlock Style="{StaticResource MainText}" x:Name="TeamIDTextBlock" Margin="10" Text="{Binding Team.IDTeam}"/>
+                <TextBlock Style="{StaticResource MainText}" x:Name="TeamGameTypeTextBlock" Margin="10" Text="{Binding Team.GameTypes}"/>
                 <TextBlock Style="{StaticResource MainText}" x:Name="TeamPointsTextBlock" Margin="10" Text="{Binding Team.PointEarned}" />
                 <TextBlock Style="{StaticResource MainText}" x:Name="TeamCountTextBlock" Margin="10" Text="{Binding Team.Count}" />
             </StackPanel>

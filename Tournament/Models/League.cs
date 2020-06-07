@@ -10,7 +10,7 @@ namespace Tournament.Models
         /// <summary>
         /// Initializes a League instance
         /// </summary>
-        public League(TeamList teams, RefereeList referees, GameType gameType, MatchRank matchRank)
+        public League(TeamList teams, RefereeList referees, GameTypes gameType, MatchRanks matchRank)
         {
             if (teams.TeamsList.Count >= 2)
             {
@@ -27,7 +27,7 @@ namespace Tournament.Models
                         {
                             match = new Match(
                                 teamA, teamB, referees,
-                                matchRank, teamA.IdTeam, teamB.IdTeam, gameType,
+                                matchRank, teamA.IDTeam, teamB.IDTeam, gameType,
                                 MatchesPlanned.GetMatchList);
                             MatchesPlanned.AddMatch(match);
                         }

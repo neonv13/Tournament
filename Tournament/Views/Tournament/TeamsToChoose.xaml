@@ -18,7 +18,7 @@
     </Page.Resources>
 
     <Grid Width="360" Height="400">
-        <ListBox Background="#FF3E3E40" Foreground="#FFF1F1F1"
+        <ListBox Background="#FF3E3E40" Foreground="#FFF1F1F1" SelectionMode="Multiple"
                  BorderBrush="#FF252526" x:Name="TeamsListBox"
                  HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
@@ -37,13 +37,11 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding IdTeam}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding IDTeam}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TeamName}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Players: "/>
                             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Count}"/>
-                            <CheckBox HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2"/>
-                            
                         </Grid>
                     </Border>
                 </DataTemplate>

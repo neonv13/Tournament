@@ -7,7 +7,6 @@ namespace Tournament.Models
 {
     public class Player : Person
     {
-        public int IndividualPoints { get; set; }
         /// <summary>
         /// Creates new Instance of Player 
         /// </summary>
@@ -38,16 +37,20 @@ namespace Tournament.Models
 
 
         /// <summary>
-        /// Saves Player to file from given path
+        /// Saves Player to streamWriter from given path
         /// </summary>
-        public void SavePlayer(StreamWriter file)
+        public void SavePlayer(StreamWriter streamWriter)
         {
-            file.WriteLine("PlayerID: " + ID);
-            file.WriteLine("PlayerName: " + Name);
-            file.WriteLine("PlayerSurname: " + Surname);
-            file.WriteLine("PlayerPoints: " + IndividualPoints);
-            file.WriteLine("EndPlayer");
+            streamWriter.WriteLine("StartPlayer");
+            streamWriter.WriteLine("PlayerID: " + ID);
+            streamWriter.WriteLine("PlayerName: " + Name);
+            streamWriter.WriteLine("PlayerSurname: " + Surname);
+            streamWriter.WriteLine("EndPlayer");
         }
-
+        public Player LoadPlayer(StreamWriter streamWriter)
+        { 
+        
+        
+        }
     }
 }

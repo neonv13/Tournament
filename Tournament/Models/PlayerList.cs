@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace Tournament.Models
 {
@@ -62,26 +63,27 @@ namespace Tournament.Models
         }
 
         /// <summary>
-        /// Saves PlayersList to file form given path
+        /// Saves PlayersList to streamWriter form given path
         /// </summary>
-        public void SavePlayersList(string path)
+        public void SavePlayersList(StreamWriter streamWriter)
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter(path);
-
-            foreach (var player in PlayersList)
+            if (PlayersList.Count > 0)
             {
-                player.SavePlayer(file);
+                streamWriter.WriteLine("StartPlayers");
+                foreach (var player in PlayersList)
+                {
+                    player.SavePlayer(streamWriter);
+                }
+                streamWriter.WriteLine("EndPlayers");
             }
-            file.WriteLine("EndPlayers");
-            file.Close();
         }
         /// <summary>
-        /// Loads a PlayersList from a file from given path
+        /// Loads a PlayersList from a streamWriter from given path
         /// </summary>
         public void LoadPlayersList(string path, string endstring)
         {
             if (path != null && path != string.Empty)
-                using (System.IO.StreamReader file = new System.IO.StreamReader(path))
+                using (System.IO.StreamReader streamWriter = new System.IO.StreamReader(path))
                 {
 
                     int id = 0;
@@ -89,7 +91,7 @@ namespace Tournament.Models
                     string surname = string.Empty;
                     int points = 0;
                     string text = string.Empty;
-                    while ((text = file.ReadLine()) != null && text != "EndPlayers")
+                    while ((text = streamWriter.ReadLine()) != null && text != "EndPlayers")
                     {
                         string[] words = text.Split(" ");
                         switch (words[0])
@@ -130,7 +132,7 @@ namespace Tournament.Models
                                 }
                         }
                     }
-                    file.Close();
+                    streamWriter.Close();
                 }
         }
 

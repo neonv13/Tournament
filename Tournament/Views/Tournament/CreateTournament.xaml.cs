@@ -26,7 +26,7 @@ namespace Tournament.Views.Tournament
             TeamViewModel = teamViewModel;
             TournamentViewModel = tournamentViewModel;
             InitializeComponent();
-            GameTypeComboBox.ItemsSource = new List<GameType> { GameType.DodgeBall, GameType.TugOfWar, GameType.Volleyball };
+            GameTypeComboBox.ItemsSource = new List<GameTypes> { GameTypes.DodgeBall, GameTypes.TugOfWar, GameTypes.Volleyball };
             RefereesToChoose = new RefereesToChoose(RefereesViewModel);
             TeamsToChoose = new TeamsToChoose(TeamViewModel);
         }
@@ -47,19 +47,35 @@ namespace Tournament.Views.Tournament
         private void Button_Click_AddTournament(object sender, RoutedEventArgs e)
         {
             string name = TourName.Text;
+
             RefereeList refereeList = new RefereeList();
+
+            foreach (var item in RefereesToChoose.RefereesListBox.SelectedItems)
+            {
+                if (item is Referee referee)
+                    refereeList.AddReferee(referee);
+            }
+
             TeamList teamList = new TeamList();
-            
-            if (GameTypeComboBox.SelectedItem is GameType type)
+
+            foreach (var item in TeamsToChoose.TeamsListBox.SelectedItems)
+            {
+                if (item is Team team)
+                    teamList.AddTeam(team);
+            }
+
+            if (GameTypeComboBox.SelectedItem is GameTypes type && teamList.Count > 1 && refereeList.Count > 0)
             {
                 TournamentViewModel.Tournaments.AddTournament(new Tournaments(teamList, refereeList, type, name));
                 TournamentViewModel.SaveViewModel();
-                ErrorWindow errorWindow = new ErrorWindow() { Width = 350};
+                ErrorWindow errorWindow = new ErrorWindow() { Width = 350 };
                 errorWindow.ErrorContent.Text = "Succesfully added Tourament";
                 errorWindow.Show();
                 ViewTournaments.TourListBox.Items.Refresh();
-                NavigationService.GoBack();
+                NavigationService.Navigate(ViewTournaments);
             }
+
+
             else
             {
                 ErrorWindow errorWindow = new ErrorWindow();
@@ -69,3 +85,4 @@ namespace Tournament.Views.Tournament
         }
     }
 }
+

@@ -1,6 +1,7 @@
 ﻿namespace Tournament.Models
 {
     using System.Collections.Generic;
+    using System.IO;
 
     public class RefereeList
     {
@@ -41,6 +42,7 @@
         public void AddReferee(Referee referee)
         {
             RefereesList.Add(referee);
+            Count++;
         }
 
         
@@ -71,28 +73,35 @@
 
         public void SaveRefereeList(string path)
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter(path);
+            System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(path);
 
             foreach (var referee in RefereesList)
             {
-                referee.SaveReferee(file);
+                referee.SaveReferee(streamWriter);
             }
-            file.WriteLine("EndReferees");
-            file.Close();
-
+            streamWriter.WriteLine("EndReferees");
+            streamWriter.Close();
+        }
+        public void SaveRefereeList(StreamWriter streamWriter)
+        {
+            foreach (var referee in RefereesList)
+            {
+                referee.SaveReferee(streamWriter);
+            }
+            streamWriter.WriteLine("EndReferees");
         }
         /// <summary>
-        /// Loads RefereeList object from a specified file
+        /// Loads RefereeList object from a specified streamWriter
         /// </summary>
         public void LoadRefereeList(string path)
         {
-            System.IO.StreamReader file = new System.IO.StreamReader(path);
+            System.IO.StreamReader streamWriter = new System.IO.StreamReader(path);
             
             int id = 0;
             string name = string.Empty;
             string surname = string.Empty;
             string text;
-            while ((text = file.ReadLine()) != null && text != "EndReferees")
+            while ((text = streamWriter.ReadLine()) != null && text != "EndReferees")
                 {
                     string[] words = text.Split(" ");
                     switch (words[0])
@@ -127,7 +136,7 @@
                             }
                     }
                 }
-                file.Close();
+                streamWriter.Close();
             
         }
     }

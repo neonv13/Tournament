@@ -20,6 +20,16 @@ namespace Tournament.Models
             Surname = surname;
             ID = id;
         }
+        public void WriteXML(Person person)
+        {
+            System.Xml.Serialization.XmlSerializer writer =
+                new System.Xml.Serialization.XmlSerializer(typeof(Person));
+
+            System.IO.FileStream file = System.IO.File.Create(path);
+
+            writer.Serialize(file, overview);
+            file.Close();
+        }
     }
 
 }

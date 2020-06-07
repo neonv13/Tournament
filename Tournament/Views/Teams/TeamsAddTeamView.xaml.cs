@@ -21,7 +21,7 @@ namespace Tournament.Views
             TeamsViewTeamsView = teamsViewTeamsView;
             TeamViewModel = teamViewModel;
             InitializeComponent();
-            TeamGameType.ItemsSource = new List<GameType> { GameType.DodgeBall, GameType.TugOfWar, GameType.Volleyball };
+            TeamGameType.ItemsSource = new List<GameTypes> { GameTypes.DodgeBall, GameTypes.TugOfWar, GameTypes.Volleyball };
         }
 
 
@@ -29,7 +29,7 @@ namespace Tournament.Views
         {
             string name = TeamName.Text;
 
-            if (TeamGameType.SelectedItem is GameType type)
+            if (TeamGameType.SelectedItem is GameTypes type)
             {
                 TeamViewModel.Teams.AddTeam(new Team(name, TeamViewModel.Teams.TeamsList,type));
                 TeamViewModel.SaveTeamViewModel();

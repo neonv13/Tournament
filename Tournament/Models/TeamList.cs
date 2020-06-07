@@ -1,10 +1,8 @@
-﻿//using DocumentFormat.OpenXml.Office2010.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
-//using System.Windows.Documents;
 
 namespace Tournament.Models
 {
@@ -43,7 +41,7 @@ namespace Tournament.Models
         {
             foreach (var team in TeamsList)
             {
-                if (team.IdTeam == id)
+                if (team.IDTeam == id)
                     return team;
             }
 
@@ -66,34 +64,12 @@ namespace Tournament.Models
         /// <summary>
         /// Saves a  TeamsList
         /// </summary>
-        public void SaveTeamsList(string path)
+        public void SaveTeamsList(StreamWriter streamWriter)
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            foreach (var team in TeamsList)
             {
-                foreach (var team in TeamsList)
-                {
-                    file.WriteLine("StartTeamsData");
-                    file.WriteLine("TeamID: " + team.IdTeam);
-                    file.WriteLine("TeamName: " + team.TeamName);
-                    file.WriteLine("TeamGameType: " + team.GameType);
-                    file.WriteLine("TeamsPointEarned: " + team.PointEarned);
-                    if (team != null && team.PlayersList != null && team.PlayersList.PlayersList.Count > 0)
-                    {
-                        file.WriteLine("Players");
-                        foreach (var player in team.PlayersList.PlayersList)
-                        {
-                            file.WriteLine("PlayerID: " + player.ID);
-                            file.WriteLine("PlayerName: " + player.Name);
-                            file.WriteLine("PlayerSurname: " + player.Surname);
-                            file.WriteLine("PlayerPoints: " + player.IndividualPoints);
-                            file.WriteLine("EndPlayer");
-                        }
-                        file.WriteLine("EndTeam");
-                    }
-                    file.WriteLine("EndTeamsData");
-                }
-                file.Close();
-            };
+                team.SaveTeam(streamWriter);
+            }
         }
 
         /// <summary>
@@ -104,14 +80,14 @@ namespace Tournament.Models
             var players = new PlayerList();
             var teamsList = new List<Team>();
             int teamID = 0;
-            GameType teamGameType = 0;
+            GameTypes teamGameType = 0;
             string teamName = "";
             int teamPoint = 0;
 
-            System.IO.StreamReader file = new System.IO.StreamReader(path);
+            System.IO.StreamReader streamWriter = new System.IO.StreamReader(path);
 
             string line;
-            while ((line = file.ReadLine()) != null)
+            while ((line = streamWriter.ReadLine()) != null)
             {
                 string[] words = line.Split(" ");
                 switch (words[0])
@@ -133,13 +109,13 @@ namespace Tournament.Models
                         }
                     case "TeamsGameType:":
                         {
-                            teamGameType = (GameType)Enum.Parse(typeof(GameType), words[1]);
+                            teamGameType = (GameTypes)Enum.Parse(typeof(GameTypes), words[1]);
                             break;
                         }
                     case "Players":
                         {
                             string endstring = "End" + words[0];
-                            LoadPlayer(file, endstring, players);
+                            LoadPlayer(streamWriter, endstring, players);
                             break;
                         }
                     case "EndTeamsData":
@@ -153,19 +129,19 @@ namespace Tournament.Models
                 }
 
             }
-            file.Close();
+            streamWriter.Close();
             TeamsList = teamsList;
             Count = teamsList.Count;
         }
 
-        private void LoadPlayer(StreamReader file, string endstring, PlayerList players)
+        private void LoadPlayer(StreamReader streamWriter, string endstring, PlayerList players)
         {
             int id = 0;
             string name = string.Empty;
             string surname = string.Empty;
             int points = 0;
             string text;
-            while ((text = file.ReadLine()) != null && text != endstring)
+            while ((text = streamWriter.ReadLine()) != null && text != endstring)
             {
                 string[] words = text.Split(" ");
                 switch (words[0])

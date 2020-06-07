@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Tournament.Models;
@@ -18,7 +19,8 @@ namespace Tournament.ViewModels
         }
         public void SavePlayersViewModel()
         {
-            Players.SavePlayersList("playersList.txt");
+            StreamWriter streamWriter = new StreamWriter("playersList.txt");
+            Players.SavePlayersList(streamWriter);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

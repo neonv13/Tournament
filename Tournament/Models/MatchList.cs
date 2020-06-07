@@ -24,7 +24,7 @@ namespace Tournament.Models
             get => count;
             set => count = value;
         }
-        public List<Match> GetMatchList 
+        public List<Match> GetMatchList
         {
             get => matchList;
             set => matchList = value;
@@ -32,7 +32,7 @@ namespace Tournament.Models
         /// <summary>
         /// Adds a Match instance to MatchList instance
         /// </summary>
-        public void AddMatch(Match match) 
+        public void AddMatch(Match match)
         {
             if (!GetMatchList.Contains(match))
                 matchList.Add(match);
@@ -43,69 +43,44 @@ namespace Tournament.Models
         public void RemoveMatch(Match match)
         {
             if (Count > 0 && GetMatchList.Contains(match))
-                matchList.Remove(match);        
+                matchList.Remove(match);
         }
 
 
 
 
         /// <summary>
-        /// Saves a MatchList to specified file
+        /// Saves a MatchList to specified streamWriter
         /// </summary>
-        public void SaveMatchList(string path) 
+        public void SaveMatchList(StreamWriter streamWriter)
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
-            {
-                foreach(var match in GetMatchList)
-                {
-                    file.WriteLine("StartMatchData");
-                    file.WriteLine("MatchID: " + match.MatchID);
-                    file.WriteLine("MatchRank: " + match.MatchRank);
-                    file.WriteLine("GameType: " + match.GameType);
-                    file.WriteLine("TeamA_ID: " + match.TeamA_ID);
-                    file.WriteLine("TeamB_ID: " + match.TeamB_ID);
-                    file.WriteLine("TeamAScore: " + match.TeamAScore);
-                    file.WriteLine("TeamBScore: " + match.TeamBScore);
-                    foreach (var player in match.TeamA.PlayersList.PlayersList)
-                    {
-                        file.WriteLine("TeamAPlayerID: " + player.ID);
-                        file.WriteLine();
-                    }
-                    foreach (var player in match.TeamB.PlayersList.PlayersList)
-                    {
-                        file.WriteLine("TeamBPlayerID: " + player.ID);
-                    }
-                    foreach (var referee in match.Referees)
-                    {
-                        file.WriteLine("RefereeID: " + referee.ID);
-                    }
-                    file.WriteLine("EndMatchData");
-                }
-                file.Close();
-            };
+            streamWriter.WriteLine("StartMatchesList");
+            foreach (var match in GetMatchList)
+                match.SaveMatch(streamWriter);
+            streamWriter.WriteLine("EndMatchesList");
         }
 
         public List<Match> LoadMatchList(string path)
         {
             var matchList = new List<Match>();
-            var TeamA = new Team(string.Empty, null,0);
-            var TeamB = new Team(string.Empty, null,0);
+            var TeamA = new Team(string.Empty, null, 0);
+            var TeamB = new Team(string.Empty, null, 0);
             var referees = new RefereeList();
-            MatchRank matchRank = 0;
+            MatchRanks matchRank = 0;
             int teamA_ID = 0;
             int teamB_ID = 0;
-            GameType typeOfGame =0;
+            GameTypes typeOfGame = 0;
             int matchID = 0;
             int teamAScore = 0;
             int teamBScore = 0;
 
-            using (System.IO.StreamReader file = new System.IO.StreamReader(path)) 
+            using (System.IO.StreamReader streamWriter = new System.IO.StreamReader(path))
             {
                 string line;
-                while ((line = file.ReadLine() ) != null)
+                while ((line = streamWriter.ReadLine()) != null)
                 {
                     string[] words = line.Split(" ");
-                    if(words.Length > 1)
+                    if (words.Length > 1)
                         switch (words[0])
                         {
                             case "MatchID":
@@ -113,14 +88,14 @@ namespace Tournament.Models
                                     matchID = int.Parse(words[1]);
                                     break;
                                 }
-                            case "MatchRank":
+                            case "MatchRanks":
                                 {
-                                    matchRank = (MatchRank)Enum.Parse(typeof(MatchRank),words[1]);
+                                    matchRank = (MatchRanks)Enum.Parse(typeof(MatchRanks), words[1]);
                                     break;
                                 }
-                            case "GameType":
+                            case "GameTypes":
                                 {
-                                    typeOfGame = (GameType)Enum.Parse(typeof(GameType), words[1]);
+                                    typeOfGame = (GameTypes)Enum.Parse(typeof(GameTypes), words[1]);
                                     break;
                                 }
                             case "TeamA_ID":
@@ -146,13 +121,13 @@ namespace Tournament.Models
                             case "TeamA":
                                 {
                                     string endstring = "End" + words[0];
-                                    LoadPlayer(file, endstring, TeamA.PlayersList);
+                                    LoadPlayer(streamWriter, endstring, TeamA.PlayersList);
                                     break;
                                 }
                             case "TeamB":
                                 {
                                     string endstring = "End" + words[0];
-                                    LoadPlayer(file, endstring, TeamB.PlayersList);
+                                    LoadPlayer(streamWriter, endstring, TeamB.PlayersList);
                                     break;
                                 }
                             case "Referee":
@@ -165,20 +140,19 @@ namespace Tournament.Models
                                 {
 
                                     var match = new Match(TeamA, TeamB, referees, matchRank, teamA_ID, teamB_ID, typeOfGame, GetMatchList);
-
-                                    match.ReadMatch(teamAScore,teamBScore,matchID);
+                                    // nsadadfg
                                     matchList.Add(match);
                                     break;
                                 }
                         }
 
                 }
-                file.Close();
+                streamWriter.Close();
             };
             return matchList;
         }
 
-        private void LoadPlayer(StreamReader file, string endstring, PlayerList playersList)
+        private void LoadPlayer(StreamReader streamWriter, string endstring, PlayerList playersList)
         {
             throw new NotImplementedException();
         }

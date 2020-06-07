@@ -36,10 +36,10 @@ namespace Tournament.Views.Teams
             if (Team.PlayersList != null && Team.PlayersList.PlayersList != null)
                 PlayersListBox.ItemsSource = Team.PlayersList.PlayersList;
             TopTextBlock.Text = Team.TeamName;
-            TeamIDTextBlock.Text = Team.IdTeam.ToString();
+            TeamIDTextBlock.Text = Team.IDTeam.ToString();
             TeamCountTextBlock.Text = Team.Count.ToString();
             TeamPointsTextBlock.Text = Team.PointEarned.ToString();
-            TeamGameTypeTextBlock.Text = Team.GameType.ToString();
+            TeamGameTypeTextBlock.Text = Team.GameTypes.ToString();
         }
         private void Button_Click_AddPlayerToTeam(object sender, RoutedEventArgs e)
         {
@@ -61,7 +61,7 @@ namespace Tournament.Views.Teams
             TeamPointsTextBlock.Text = null;
             TeamPointsTextBlock.Text = Team.PointEarned.ToString();
             TeamGameTypeTextBlock.Text = null;
-            TeamGameTypeTextBlock.Text = Team.GameType.ToString();
+            TeamGameTypeTextBlock.Text = Team.GameTypes.ToString();
         }
         #region
 

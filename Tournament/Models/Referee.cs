@@ -33,21 +33,21 @@ namespace Tournament.Models
             if (FreeID)
                 ID = randID;
         }
-        public void SaveReferee(StreamWriter file)
+        public void SaveReferee(StreamWriter streamWriter)
         {
-
-                file.WriteLine("RefereeID: " + ID);
-                file.WriteLine("RefereeName: " + Name);
-                file.WriteLine("RefereeSurname: " + Surname);
-                file.WriteLine("EndReferee");
+            streamWriter.WriteLine("StartReferee");
+            streamWriter.WriteLine("RefereeID: " + ID);
+            streamWriter.WriteLine("RefereeName: " + Name);
+            streamWriter.WriteLine("RefereeSurname: " + Surname);
+            streamWriter.WriteLine("EndReferee");
         }
-        public Referee LoadReferee(StreamReader file)
+        public Referee LoadReferee(StreamReader streamWriter)
         {
             int id = 0;
             string name = string.Empty;
             string surname = string.Empty;
             string text;
-            while ((text = file.ReadLine()) != null && text != "EndReferee")
+            while ((text = streamWriter.ReadLine()) != null && text != "EndReferee")
             {
                 string[] words = text.Split(" ");
                 switch (words[0])
@@ -70,11 +70,11 @@ namespace Tournament.Models
                     case "EndReferee":
                         {
 
-                                Referee referee = new Referee(name, surname, null)
-                                {
-                                    ID = id
-                                };
-                                return referee;
+                            Referee referee = new Referee(name, surname, null)
+                            {
+                                ID = id
+                            };
+                            return referee;
                         }
                 }
             }

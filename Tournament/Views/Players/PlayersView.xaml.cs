@@ -40,7 +40,7 @@ namespace Tournament.Views
         }
         private void Button_Click_ViewPlayers(object sender, RoutedEventArgs e)
         {
-            PlayerView.Content = PlayersViewModel;
+            PlayerView.Content = ViewPlayers;
         }
 
     }

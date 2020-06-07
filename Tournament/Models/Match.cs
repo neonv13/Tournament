@@ -1,52 +1,38 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Office2010.PowerPoint;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using Tournament.Views;
 
 namespace Tournament.Models
 {
-    public enum MatchRank
-    {
-        GroupStage, Semifinal, Final
-    }
-    public enum GameType
-    {
-        Volleyball, TugOfWar, DodgeBall
-    }
+    
+    
     public class Match
     {
+        #region Properties
         public int MatchID { get; set; }
-
-        public List<Referee> Referees { get; set; }
-
+        public RefereeList Referees { get; set; }
         public Team TeamA { get; set; }
         public Team TeamB { get; set; }
-
-        public MatchRank MatchRank { get; set; }
-
-        public GameType GameType { get; set; }
-
+        public MatchRanks MatchRanks { get; set; }
+        public GameTypes GameTypes { get; set; }
         public int TeamAScore { get; set; }
-
         public int TeamBScore { get; set; }
-
         public int TeamA_ID { get; set; }
-
         public int TeamB_ID { get; set; }
-
-
-        public Match(Team A,
-                    Team B,
-                    RefereeList referees,
-                    MatchRank matchRank, int teamA_ID,
-                    int teamB_ID, GameType gameType, List<Match> matchList)
+        #endregion
+        #region Creators
+        public Match(Team A,Team B,RefereeList referees,MatchRanks matchRank, int teamA_ID,
+                     int teamB_ID, GameTypes gameType, List<Match> matchList)
         {
-
             Random random = new Random();
             int randID;
             bool FreeID = true;
             do
             {
                 randID = random.Next(0, 1000);
-                if (matchList != null)
+                if (matchList.Count > 0)
                 {
                     foreach (var match in matchList)
                         if (randID == match.MatchID)
@@ -55,20 +41,17 @@ namespace Tournament.Models
                 else
                 {
                     MatchID = randID;
-                    FreeID = false;
                     break;
                 }
             } while (FreeID == false);
-            if (FreeID)
-                MatchID = randID;
 
             TeamA = A;
             TeamB = B;
-            Referees = referees.RefereesList;
+            Referees = referees;
             TeamA_ID = teamA_ID;
             TeamB_ID = teamB_ID;
-            GameType = gameType;
-            MatchRank = matchRank;
+            GameTypes = gameType;
+            MatchRanks = matchRank;
         }
 
         public Match(Match match)
@@ -80,22 +63,14 @@ namespace Tournament.Models
             TeamBScore = match.TeamBScore;
             TeamA_ID = match.TeamA_ID;
             TeamB_ID = match.TeamB_ID;
-            GameType = match.GameType;
+            GameTypes = match.GameTypes;
             MatchID = match.MatchID;
-            MatchRank = match.MatchRank;
+            MatchRanks = match.MatchRanks;
         }
+        #endregion
 
-        /// <summary>
-        /// Adds TeamAScore, TeamBScore and MatchID to Match. 
-        /// Use when Match was read from file
-        /// and you want to add missing fields 
-        /// </summary>
-        public void ReadMatch(int teamAScore, int teamBScore, int matchID)
-        {
-            TeamAScore = teamAScore;
-            TeamBScore = teamBScore;
-            MatchID = matchID;
-        }
+        #region Methods
+       
 
         /// <summary>
         /// Simulates results of match and 
@@ -127,39 +102,26 @@ namespace Tournament.Models
             }
 
         }
-        /// <summary>
-        /// Saves a MatchList to specified file
-        /// </summary>
-        public void SaveMatchList(string path)
-        {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
-            {
-                    file.WriteLine("StartMatchData");
-                    file.WriteLine("MatchID: " + MatchID);
-                    file.WriteLine("MatchRank: " + MatchRank);
-                    file.WriteLine("GameType: " + GameType);
-                    file.WriteLine("TeamA_ID: " + TeamA_ID);
-                    file.WriteLine("TeamB_ID: " + TeamB_ID);
-                    file.WriteLine("TeamAScore: " + TeamAScore);
-                    file.WriteLine("TeamBScore: " + TeamBScore);
-                    foreach (var player in TeamA.PlayersList.PlayersList)
-                    {
-                        file.WriteLine("TeamAPlayerID: " + player.ID);
-                        file.WriteLine();
-                    }
-                    foreach (var player in TeamB.PlayersList.PlayersList)
-                    {
-                        file.WriteLine("TeamBPlayerID: " + player.ID);
-                    }
-                    foreach (var referee in Referees)
-                    {
-                        file.WriteLine("RefereeID: " + referee.ID);
-                    }
-                    file.WriteLine("EndMatchData");
-                file.Close();
-            };
-        }
+        #endregion
 
+        #region Save/Load
+        /// <summary>
+        /// Saves a MatchList to specified streamWriter
+        /// </summary>
+        public void SaveMatch(StreamWriter streamWriter)
+        {
+            streamWriter.WriteLine("StartMatchData");
+            streamWriter.WriteLine("MatchID: " + MatchID);
+            streamWriter.WriteLine("MatchRanks: " + MatchRanks);
+            streamWriter.WriteLine("GameTypes: " + GameTypes);
+            streamWriter.WriteLine("TeamAScore: " + TeamAScore);
+            streamWriter.WriteLine("TeamBScore: " + TeamBScore);
+            TeamA.SaveTeam(streamWriter);
+            TeamB.SaveTeam(streamWriter);
+            Referees.SaveRefereeList(streamWriter);
+            streamWriter.WriteLine("EndMatchData");
+        }
+        #endregion
     }
 
 
