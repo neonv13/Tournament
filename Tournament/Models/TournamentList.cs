@@ -7,6 +7,16 @@ namespace Tournament.Models
     public class TournamentList
     {
         public List<Tournaments> TournamentsList { get; set; }
+
+        public void AddTournament(Tournaments tour)
+        {
+
+        }
+
+        public void RemoveTournament(Tournaments tour)
+        {
+
+        }
         public void SaveTournaments(string path)
         {
             System.IO.StreamWriter file = new System.IO.StreamWriter(path);
