@@ -24,12 +24,13 @@ namespace Tournament.Views
             
         public TeamViewModel TeamsViewModel { get; set; }
         public TeamsViewTeamsView TeamsViewTeamsView { get; set; }
+        public PlayersViewModel PlayersViewModel { get; set; }
 
-        public TeamsView(TeamViewModel teamViewModel)
+        public TeamsView(TeamViewModel teamViewModel, PlayersViewModel playersViewModel)
         {
             TeamsViewModel = teamViewModel;
-             
-            TeamsViewTeamsView = new TeamsViewTeamsView(TeamsViewModel);
+            PlayersViewModel = playersViewModel;
+            TeamsViewTeamsView = new TeamsViewTeamsView(TeamsViewModel, PlayersViewModel);
             InitializeComponent();
         }
 

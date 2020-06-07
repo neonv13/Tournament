@@ -37,7 +37,7 @@ namespace Tournament.Views
             PlayersViewModel playersViewModel = new PlayersViewModel();
             string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
-            playersViewModel.Players.AddPlayer(new Player(name,surname,playersViewModel.Players.PlayersList));
+            playersViewModel.Players.Add(new Player() {Name = name, Surname= surname });
             playersViewModel.SavePlayersViewModel();
             NavigationService.Navigate(ViewPlayers);
         }

@@ -11,11 +11,15 @@ namespace Tournament.ViewModels
         public TournamentViewModel()
         {
             Tournaments = new TournamentList();
-            //Tournaments.LoadTournament("tournamentsList.txt");
+            
         }
         public void SaveViewModel()
         {
-            Tournaments.SaveTournaments("tournamentsList.txt");
+            Tournaments.WriteXML("tournamentsList.xml");
+        }
+        public void LoadViewModel() 
+        {
+            Tournaments.ReadXML("tournamentsList.xml");
         }
     }
 }

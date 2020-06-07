@@ -12,5 +12,11 @@ namespace Tournament.Models
             List = new List<Player>();
             Count = 0;
         }
+        public override void SetObj(object obj)
+        {
+            PlayerList list = (PlayerList)obj;
+            List = list.List;
+            Count = list.Count;
+        }
     }
 }

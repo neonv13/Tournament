@@ -24,7 +24,7 @@ namespace Tournament.Views.Tournament
         {
             TeamViewModel = teamViewModel;
             InitializeComponent();
-            TeamsListBox.ItemsSource = TeamViewModel.Teams.TeamsList;
+            TeamsListBox.ItemsSource = TeamViewModel.Teams.List;
         }
     }
 }

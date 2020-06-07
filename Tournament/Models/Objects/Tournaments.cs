@@ -24,7 +24,7 @@ namespace Tournament.Models
         
         
         }
-        
+        /*
         public void StartSimulateTournament()
         {
             League league = new League(TeamList, RefereeList, GameTypes, MatchRanks.GroupStage);
@@ -112,7 +112,7 @@ namespace Tournament.Models
 
         }
         
-
+        */
 
 
     }

@@ -41,7 +41,7 @@ namespace Tournament.Views
             MatchesViewModel = new MatchesViewModel();
             InitializeComponent();
             TournamentView = new TournamentView(TournamentViewModel, PlayersViewModel, TeamViewModel, RefereesViewModel);
-            TeamsView = new TeamsView(TeamViewModel);
+            TeamsView = new TeamsView(TeamViewModel,PlayersViewModel);
             MatchesView = new MatchesView(MatchesViewModel);
             PlayersView = new PlayersView(PlayersViewModel);
             RefereeView = new RefereeView(RefereesViewModel);

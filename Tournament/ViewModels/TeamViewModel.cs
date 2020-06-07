@@ -9,27 +9,23 @@ using Tournament.Views;
 
 namespace Tournament.ViewModels 
 {
-    public class TeamViewModel : INotifyPropertyChanged
+    public class TeamViewModel 
     {
         public TeamList Teams { get; set; }
         
         public TeamViewModel()
         {
             Teams = new TeamList();
-            Teams.LoadTeamsList("teamsList.txt");
+            
         }
         public void SaveTeamViewModel() 
         {
-            Teams.SaveTeamsList("teamsList.txt");
+            Teams.WriteXML("teamsList.xml");
         }
-       
-        #region
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = "")
+        public void LoadTeamViewModel()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            Teams.ReadXML("teamsList.xml");
         }
-        #endregion
+
     }
 }

@@ -25,9 +25,11 @@ namespace Tournament.Views.Teams
         public TeamViewModel TeamViewModel { get; set; }
         public Team Team{ get; set; }
         public TeamWindow TeamWindow { get; set; }
+        public PlayersViewModel PlayersViewModel { get; set; }
 
-        public AddPlayerToTeamWindow(Team team, TeamWindow teamWindow, TeamViewModel teamViewModel)
+        public AddPlayerToTeamWindow(Team team, TeamWindow teamWindow, TeamViewModel teamViewModel, PlayersViewModel playersViewModel)
         {
+            PlayersViewModel = playersViewModel;
             TeamWindow = teamWindow;
             TeamViewModel = teamViewModel;
             Team = team;
@@ -36,17 +38,15 @@ namespace Tournament.Views.Teams
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
         {
-            PlayersViewModel playersViewModel = new PlayersViewModel();
-            
             int id = int.Parse(IDText.Text);
             string name = NameText.Text;
             string surname = SurnameText.Text;
-            Player player = playersViewModel.Players.FindPlayerByID(id);
+            Player player = PlayersViewModel.Players.FindByID(id);
             if (player != null &&  player.Name == name && player.Surname == surname)
             {
-                if (!Team.IsInTeam(id))
+                if (Team.PlayersList.FindByID(id) == null)
                 {
-                    Team.AddPlayer(player);
+                    Team.PlayersList.Add(player);
                     TeamWindow.Refresh();
                     TeamViewModel.SaveTeamViewModel();
                     this.Close();
@@ -55,7 +55,6 @@ namespace Tournament.Views.Teams
                 {
                     ErrorWindow errorWindow = new ErrorWindow
                     {
-                        Height = 300,
                         Width = 500
                     };
                     errorWindow.ErrorContent.Text = "This player is already in this team";
@@ -64,7 +63,10 @@ namespace Tournament.Views.Teams
             }
             else
             {
-                ErrorWindow errorWindow = new ErrorWindow();
+                ErrorWindow errorWindow = new ErrorWindow()
+                {
+                    Width = 500
+                }; 
                 errorWindow.Show();
             }
         }

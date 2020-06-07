@@ -31,13 +31,13 @@ namespace Tournament.Views
 
             if (TeamGameType.SelectedItem is GameTypes type)
             {
-                TeamViewModel.Teams.AddTeam(new Team(name, TeamViewModel.Teams.TeamsList,type));
+                TeamViewModel.Teams.Add(new Team() {Name =  name, ID = 12,GameTypes =  type });
                 TeamViewModel.SaveTeamViewModel();
                 ErrorWindow errorWindow = new ErrorWindow();
                 errorWindow.ErrorContent.Text = "Succesfully added team";
                 errorWindow.Show();
                 TeamsViewTeamsView.MyListBox.Items.Refresh();
-                NavigationService.GoBack();
+                NavigationService.Navigate(TeamsViewTeamsView);
             }
             else
             {

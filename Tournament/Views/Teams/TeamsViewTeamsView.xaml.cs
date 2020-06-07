@@ -20,12 +20,14 @@ namespace Tournament.Views.Teams
     /// <summary>
     /// Interaction logic for TeamsViewTeamsView.xaml
     /// </summary>
-    public partial class TeamsViewTeamsView : Page, INotifyPropertyChanged
+    public partial class TeamsViewTeamsView : Page
     {
+        public PlayersViewModel PlayersViewModel { get; set; }
         public TeamViewModel TeamViewModel { get; set; }
-        public TeamsViewTeamsView(TeamViewModel teamViewModel)
+        public TeamsViewTeamsView(TeamViewModel teamViewModel, PlayersViewModel playersViewModel)
         {
             TeamViewModel = teamViewModel;
+            PlayersViewModel = playersViewModel;
             InitializeComponent();
         }
 
@@ -33,20 +35,16 @@ namespace Tournament.Views.Teams
         {
             if (MyListBox.SelectedItem is Team team)
             {
-                TeamWindow teamWindow = new TeamWindow(team, TeamViewModel);
+                TeamWindow teamWindow = new TeamWindow(team, TeamViewModel, PlayersViewModel);
                 teamWindow.Show();
             }
         }
         public void Refresh()
         {
             MyListBox.ItemsSource = null;
-            MyListBox.ItemsSource = TeamViewModel.Teams.TeamsList;
+            MyListBox.ItemsSource = TeamViewModel.Teams.List;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+       
     }
 }

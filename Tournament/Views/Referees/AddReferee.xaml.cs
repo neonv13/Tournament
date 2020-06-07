@@ -33,7 +33,7 @@ namespace Tournament.Views.Referees
             RefereesViewModel refereesViewModel = new RefereesViewModel();
             string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
-            refereesViewModel.Referees.AddReferee(new Referee(name, surname, refereesViewModel.Referees.RefereesList));
+            refereesViewModel.Referees.Add(new Referee() { Name= name,Surname= surname,ID =123});
             refereesViewModel.SaveRefereesViewModel();
             NavigationService.Navigate(ViewReferees);
         }

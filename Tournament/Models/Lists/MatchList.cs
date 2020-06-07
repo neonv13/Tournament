@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Math;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -13,6 +14,13 @@ namespace Tournament.Models
         {
             List = new List<Match>();
             Count = 0;
+        }
+
+        public override void SetObj(object obj)
+        {
+            MatchList list = (MatchList)obj;
+            List = list.List;
+            Count = list.Count;
         }
     }
 }

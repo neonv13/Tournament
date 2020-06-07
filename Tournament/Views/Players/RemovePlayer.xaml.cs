@@ -34,11 +34,11 @@ namespace Tournament.Views
             int id = int.Parse(IDTextBox.Text);
             string name= NameTextBox.Text;
             string surname = SurnameTextBox.Text;
-            if (playersViewModel.Players.FindPlayerByID(id) != null
-                && playersViewModel.Players.FindPlayerByID(id).Name == name 
-                && playersViewModel.Players.FindPlayerByID(id).Surname == surname)
+            if (playersViewModel.Players.FindByID(id) != null
+                && playersViewModel.Players.FindByID(id).Name == name 
+                && playersViewModel.Players.FindByID(id).Surname == surname)
             {
-                playersViewModel.Players.RemovePlayer(id);
+                playersViewModel.Players.Remove(id);
                 playersViewModel.SavePlayersViewModel();
             }
             NavigationService.Navigate(ViewPlayers);

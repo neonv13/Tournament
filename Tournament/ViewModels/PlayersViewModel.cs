@@ -8,29 +8,26 @@ using Tournament.Models;
 
 namespace Tournament.ViewModels
 {
-    public class PlayersViewModel : INotifyPropertyChanged
+    public class PlayersViewModel 
     {
         public PlayerList Players { get; set; }
        
         public PlayersViewModel()
         {
             Players = new PlayerList();
-            Players.LoadPlayersList("playersList.txt", "null");
+           
         }
         public void SavePlayersViewModel()
         {
-            StreamWriter streamWriter = new StreamWriter("playersList.txt");
-            Players.SavePlayersList(streamWriter);
+            Players.WriteXML("playersList.xml");
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = "")
+        public void LoadPlayersViewModel()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            Players.ReadXML("playersList.xml");
         }
 
 
-        
 
     }
 }

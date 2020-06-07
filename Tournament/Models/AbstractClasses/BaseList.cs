@@ -43,6 +43,33 @@ namespace Tournament.Models
                 Count++;
             }
         }
+        public void WriteXML(string path)
+        {
+            System.Xml.Serialization.XmlSerializer writer =
+                new System.Xml.Serialization.XmlSerializer(this.GetType());
 
+            System.IO.FileStream file = System.IO.File.Create(path);
+
+            writer.Serialize(file, this);
+            file.Close();
+        }
+        /// <summary>
+        /// Reads XML file and makes this Instance with Data
+        /// </summary>
+        public void ReadXML(string path)
+        {
+            System.Xml.Serialization.XmlSerializer reader =
+               new System.Xml.Serialization.XmlSerializer(this.GetType());
+
+            System.IO.StreamReader file = new System.IO.StreamReader(path);
+            var obj = reader.Deserialize(file);
+            file.Close();
+            SetObj(obj);
+        }
+        /// <summary>
+        /// Refills this Instance with obj Properies
+        /// </summary>
+        public abstract void SetObj(object obj);
+        
     }
 }

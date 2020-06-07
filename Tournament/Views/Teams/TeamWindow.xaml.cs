@@ -23,27 +23,29 @@ namespace Tournament.Views.Teams
     {
         public Team Team { get; set; }
         public TeamViewModel TeamViewModel { get; set; }
+        public PlayersViewModel PlayersViewModel { get; set; }
        
-        public TeamWindow(Team team, TeamViewModel teamViewModel)
+        public TeamWindow(Team team, TeamViewModel teamViewModel, PlayersViewModel playersViewModel)
         {
             Team = team;
+            PlayersViewModel = playersViewModel;
             TeamViewModel = teamViewModel;
             InitializeComponent();
             XMLData();
         }
         private void XMLData() 
         {
-            if (Team.PlayersList != null && Team.PlayersList.PlayersList != null)
-                PlayersListBox.ItemsSource = Team.PlayersList.PlayersList;
-            TopTextBlock.Text = Team.TeamName;
-            TeamIDTextBlock.Text = Team.IDTeam.ToString();
-            TeamCountTextBlock.Text = Team.Count.ToString();
+            if (Team.PlayersList != null && Team.PlayersList.List != null)
+                PlayersListBox.ItemsSource = Team.PlayersList.List;
+            TopTextBlock.Text = Team.Name;
+            TeamIDTextBlock.Text = Team.ID.ToString();
+            TeamCountTextBlock.Text = Team.PlayersList.Count.ToString();
             TeamPointsTextBlock.Text = Team.PointEarned.ToString();
             TeamGameTypeTextBlock.Text = Team.GameTypes.ToString();
         }
         private void Button_Click_AddPlayerToTeam(object sender, RoutedEventArgs e)
         {
-            AddPlayerToTeamWindow addPlayerToTeamWindow = new AddPlayerToTeamWindow(Team, this, TeamViewModel);
+            AddPlayerToTeamWindow addPlayerToTeamWindow = new AddPlayerToTeamWindow(Team, this, TeamViewModel, PlayersViewModel);
             addPlayerToTeamWindow.Show();
             Refresh();
         }
@@ -57,7 +59,7 @@ namespace Tournament.Views.Teams
         {
             PlayersListBox.Items.Refresh();
             TeamCountTextBlock.Text = null;
-            TeamCountTextBlock.Text = Team.Count.ToString();
+            TeamCountTextBlock.Text = Team.PlayersList.Count.ToString();
             TeamPointsTextBlock.Text = null;
             TeamPointsTextBlock.Text = Team.PointEarned.ToString();
             TeamGameTypeTextBlock.Text = null;

@@ -13,6 +13,12 @@ namespace Tournament.Models
            Count = 0;
         }
 
+        public override void SetObj(object obj)
+        {
+            TournamentList list = (TournamentList)obj;
+            List = list.List;
+            Count = list.Count;
+        }
     }
 }
 

@@ -35,11 +35,11 @@ namespace Tournament.Views.Teams
         {
             int id = int.Parse(IDTextBox.Text);
             string name = NameTextBox.Text;
-            Team team = TeamViewModel.Teams.FindTeamByID(id);
-            if (team != null && team.TeamName == name)
+            Team team = TeamViewModel.Teams.FindByID(id);
+            if (team != null && team.Name == name)
             {
-                TeamViewModel.Teams.RemoveTeam(id);
-                TeamViewModel.Teams.SaveTeamsList("teamsList.txt");
+                TeamViewModel.Teams.Remove(id);
+                TeamViewModel.Teams.WriteXML("teamsList.xml");
             }
             else
             {

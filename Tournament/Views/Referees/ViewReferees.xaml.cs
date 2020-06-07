@@ -24,7 +24,7 @@ namespace Tournament.Views.Referees
         {
             RefereesViewModel = refereesViewModel;
             InitializeComponent();
-            RefereeListBox.ItemsSource = RefereesViewModel.Referees.RefereesList;
+            RefereeListBox.ItemsSource = RefereesViewModel.Referees.List;
         }
     }
 }

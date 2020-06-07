@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Models;
 using Tournament.ViewModels;
 using Tournament.Views.Players;
 
@@ -34,11 +35,10 @@ namespace Tournament.Views.Referees
             int id = int.Parse(IDTextBox.Text);
             string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
-            if (refereesViewModel.Referees.FindRefereeByID(id) != null 
-                && refereesViewModel.Referees.FindRefereeByID(id).Name == name 
-                && refereesViewModel.Referees.FindRefereeByID(id).Surname == surname)
+            Referee referee = refereesViewModel.Referees.FindByID(id);
+            if (referee != null && referee.Name == name && referee.Surname == surname)
             {                     
-                refereesViewModel.Referees.RemoveReferee(id);
+                refereesViewModel.Referees.Remove(id);
                 refereesViewModel.SaveRefereesViewModel();
             }
             NavigationService.Navigate(ViewReferees);

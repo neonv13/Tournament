@@ -13,6 +13,12 @@
            List = new List<Referee>();
            Count = 0;
         }
-       
+
+        public override void SetObj(object obj)
+        {
+            RefereeList list = (RefereeList)obj;
+            List = list.List;
+            Count = list.Count;
+        }
     }
 }

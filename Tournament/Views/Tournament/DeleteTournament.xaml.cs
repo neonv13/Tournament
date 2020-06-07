@@ -36,10 +36,10 @@ namespace Tournament.Views.Tournament
         {
             int id = int.Parse(IDTextBox.Text);
             string name = NameTextBox.Text;
-            Tournaments tour = TournamentViewModel.Tournaments.FindTournamentByID(id);
+            Tournaments tour = TournamentViewModel.Tournaments.FindByID(id);
             if (tour != null && tour.Name == name)
             {
-                TournamentViewModel.Tournaments.RemoveTournament(id);
+                TournamentViewModel.Tournaments.Remove(id);
                 TournamentViewModel.SaveViewModel();
             }
             else

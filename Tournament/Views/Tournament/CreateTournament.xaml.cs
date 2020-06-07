@@ -53,7 +53,7 @@ namespace Tournament.Views.Tournament
             foreach (var item in RefereesToChoose.RefereesListBox.SelectedItems)
             {
                 if (item is Referee referee)
-                    refereeList.AddReferee(referee);
+                    refereeList.Add(referee);
             }
 
             TeamList teamList = new TeamList();
@@ -61,12 +61,12 @@ namespace Tournament.Views.Tournament
             foreach (var item in TeamsToChoose.TeamsListBox.SelectedItems)
             {
                 if (item is Team team)
-                    teamList.AddTeam(team);
+                    teamList.Add(team);
             }
 
             if (GameTypeComboBox.SelectedItem is GameTypes type && teamList.Count > 1 && refereeList.Count > 0)
             {
-                TournamentViewModel.Tournaments.AddTournament(new Tournaments(teamList, refereeList, type, name));
+                TournamentViewModel.Tournaments.Add(new Tournaments() { TeamList = teamList, RefereeList = refereeList, GameTypes = type, Name= name });
                 TournamentViewModel.SaveViewModel();
                 ErrorWindow errorWindow = new ErrorWindow() { Width = 350 };
                 errorWindow.ErrorContent.Text = "Succesfully added Tourament";

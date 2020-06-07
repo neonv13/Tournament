@@ -24,7 +24,7 @@ namespace Tournament.Views.Tournament
         {
             TournamentViewModel = tournamentViewModel;
             InitializeComponent();
-            TourListBox.ItemsSource = TournamentViewModel.Tournaments.TournamentsList;
+            TourListBox.ItemsSource = TournamentViewModel.Tournaments.List;
         }
         
     }

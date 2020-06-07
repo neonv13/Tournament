@@ -41,12 +41,12 @@ namespace Tournament.Views.Teams
             int id = int.Parse(IDText.Text);
             string name = NameText.Text;
             string surname = SurnameText.Text;
-            Player player = playersViewModel.Players.FindPlayerByID(id);
+            Player player = playersViewModel.Players.FindByID(id);
             if (player != null && player.Name == name && player.Surname == surname)
             {
-                if (Team.IsInTeam(id))
+                if (Team.PlayersList.FindByID(id) != null)
                 {
-                    Team.RemovePlayer(player.ID);
+                    Team.PlayersList.Remove(player.ID);
                     TeamWindow.Refresh();
                     TeamViewModel.SaveTeamViewModel();
                     this.Close();
