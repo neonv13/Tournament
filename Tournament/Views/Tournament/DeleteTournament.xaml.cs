@@ -18,13 +18,17 @@ namespace Tournament.Views.Tournament
     /// </summary>
     public partial class DeleteTournament : Page
     {
-        public DeleteTournament(TournamentViewModel tournamentViewModel)
+        public TournamentViewModel TournamentViewModel {get;set; }
+        public ViewTournaments ViewTournaments { get; set; }
+        public DeleteTournament(TournamentViewModel tournamentViewModel, ViewTournaments viewTournaments)
         {
+            ViewTournaments = viewTournaments;
+            TournamentViewModel = tournamentViewModel;
             InitializeComponent();
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
-            
+            NavigationService.Navigate(ViewTournaments);
         }
     }
 }

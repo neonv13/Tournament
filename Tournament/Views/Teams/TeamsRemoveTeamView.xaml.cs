@@ -49,5 +49,11 @@ namespace Tournament.Views.Teams
             }
             NavigationService.Navigate(TeamsViewTeamsView);
         }
+        private void Button_Click_Cancel(object sender, RoutedEventArgs e)
+        {
+            TeamsViewTeamsView.MyListBox.Items.Refresh();
+            NavigationService.Navigate(TeamsViewTeamsView);
+        }
     }
+
 }

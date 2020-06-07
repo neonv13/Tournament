@@ -22,9 +22,9 @@
                    Text="Name new team" Margin="180,95,0,0"
                        HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Border Background="#FF3E3E40" BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
-                HorizontalAlignment="Center" Width="600" Height="326">
+                HorizontalAlignment="Center" Width="520" Height="281">
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="198" Background="#FF3E3E40">
-                    <Border  Margin="-59,-34,-56,-45" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
+                    <Border  Margin="-58,-39,-58,-40" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
                         <Grid Margin="-36,-23,-36,-22">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -42,7 +42,8 @@
                     </Border>
                 </Grid>
             </Border>
-            <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Save"/>
+            <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Save"/>
+            <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel"/>
         </Grid>
     </Grid>
 </Page>

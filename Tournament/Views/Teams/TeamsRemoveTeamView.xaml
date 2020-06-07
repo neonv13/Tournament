@@ -48,7 +48,7 @@
             </Border>
 
         </Grid>
-
-        <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Remove"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Remove"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel"/>
     </Grid>
 </Page>

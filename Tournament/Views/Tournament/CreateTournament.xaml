@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tournament.Views.Tournament"
         mc:Ignorable="d"
-        Title="CreateTournament" Height="720" Width="911">
+        Title="CreateTournament" Height="630" Width="911">
 
     <Page.Resources>
         <ResourceDictionary>
@@ -18,25 +18,25 @@
 
 
     <Grid Style="{StaticResource NormalView}">
-       
+
         <TextBlock Style="{StaticResource MainText}" Margin="30,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Complete new Tournament details"/>
         <TextBlock Style="{StaticResource MainText}" Margin="485,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Choose Referees and Teams"/>
-        
-        <Grid Margin="0,30,0,60 ">
+
+        <Grid Margin="0,30,0,80 ">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="128,595,128,0" Height="25" VerticalAlignment="Top" Width="200">
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="128,480,128,0" Height="25" VerticalAlignment="Top" Width="200">
                 <Button Style="{StaticResource NormalButton}" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Margin="15,0,15,0" Content="Teams" Click="Button_Click_TeamsList"/>
                 <Button Style="{StaticResource NormalButton}" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Margin="15,0,15,0" Content="Referees" Click="Button_Click_RefereesList"/>
             </StackPanel>
             <Border Grid.Column="1" BorderBrush="#FF252526" BorderThickness="1" 
-                 Width="400" Height="530" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF3E3E40">
-                    <Frame x:Name="ListsPlace" NavigationUIVisibility="Hidden"/>
+                 Width="361" Height="401" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid Background="#FF3E3E40" >
+                    <Frame x:Name="ListsPlace" Width="360" Height="400" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </Border>
             <Border BorderBrush="#FF252526" BorderThickness="2"
@@ -60,8 +60,8 @@
                 </Grid>
             </Border>
         </Grid>
-        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Save"/>
-        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel" Click="Button_Click_Close"/>
+        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="-200,0,0,20" Content="Save"/>
+        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="200,0,0,20" Content="Cancel" Click="Button_Click_Close"/>
     </Grid>
 
 </Page>

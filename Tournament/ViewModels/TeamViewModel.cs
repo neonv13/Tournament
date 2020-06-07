@@ -22,7 +22,6 @@ namespace Tournament.ViewModels
         {
             Teams.SaveTeamsList("teamsList.txt");
         }
-        public Team Team { get; set; }
        
         #region
 

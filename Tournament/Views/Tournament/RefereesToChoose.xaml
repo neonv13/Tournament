@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Tournament.Views.Tournament"
       xmlns:ViewModels="clr-namespace:Tournament.ViewModels" x:Class="Tournament.Views.Tournament.RefereesToChoose"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="400" d:DesignWidth="360"
       Title="RefereesToChoose">
 
     <Page.Resources>
@@ -17,13 +17,10 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Page.DataContext>
-        <ViewModels:RefereesViewModel/>
-    </Page.DataContext>
 
-    <Grid Style="{StaticResource NormalView}">
+    <Grid Width="360" Height="400" Style="{StaticResource NormalView}">
         <ListBox Background="#FF3E3E40" Foreground="#FFF1F1F1"
-                 BorderBrush="#FF252526" ItemsSource="{Binding Referees.RefereesList}"
+                 BorderBrush="#FF252526" x:Name="RefereesListBox"
                  HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>

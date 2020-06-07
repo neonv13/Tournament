@@ -46,7 +46,7 @@ namespace Tournament.Views
         }
         private void Button_Click_DeleteTournament(object sender, RoutedEventArgs e)
         {
-            TourView.Content = new DeleteTournament(TournamentViewModel);
+            TourView.Content = new DeleteTournament(TournamentViewModel, ViewTournaments);
         }
         private void Button_Click_ViewTournaments(object sender, RoutedEventArgs e)
         {

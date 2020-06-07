@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.ViewModels;
 
 namespace Tournament.Views.Tournament
 {
@@ -18,9 +19,13 @@ namespace Tournament.Views.Tournament
     /// </summary>
     public partial class RefereesToChoose : Page
     {
-        public RefereesToChoose()
+        public RefereesViewModel RefereesViewModel { get; set; }
+
+        public RefereesToChoose(RefereesViewModel refereesViewModel)
         {
+            RefereesViewModel = refereesViewModel;
             InitializeComponent();
+            RefereesListBox.ItemsSource = RefereesViewModel.Referees.RefereesList;
         }
     }
 }

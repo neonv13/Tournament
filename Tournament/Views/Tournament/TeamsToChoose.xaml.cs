@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.ViewModels;
 
 namespace Tournament.Views.Tournament
 {
@@ -18,9 +19,12 @@ namespace Tournament.Views.Tournament
     /// </summary>
     public partial class TeamsToChoose : Page
     {
-        public TeamsToChoose()
+        public TeamViewModel TeamViewModel { get; set; }
+        public TeamsToChoose(TeamViewModel teamViewModel)
         {
+            TeamViewModel = teamViewModel;
             InitializeComponent();
+            TeamsListBox.ItemsSource = TeamViewModel.Teams.TeamsList;
         }
     }
 }
