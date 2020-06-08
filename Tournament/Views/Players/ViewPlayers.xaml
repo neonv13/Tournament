@@ -21,9 +21,12 @@
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Width="100" Text="Players List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="30,30,0,0" />
-        <ListBox Margin="30,60,30,30" HorizontalContentAlignment="Stretch" 
+        <ListBox Margin="30,60,30,30" HorizontalContentAlignment="Stretch" Width="700"
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" x:Name="PlayesListBox"
                  BorderBrush="#FF252526">
+            <ListBox.DataContext>
+                <ViewModels:PlayersViewModel/>
+            </ListBox.DataContext>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">

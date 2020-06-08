@@ -25,7 +25,6 @@
                  Width="700" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" MouseDoubleClick="MyListBox_MouseDoubleClick"
                  BorderBrush="#FF252526" x:Name="MyListBox" HorizontalAlignment="Stretch">
-
             <ListBox.ItemTemplate  >
                 <DataTemplate  >
                     <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5" Width="650" Margin="15"  HorizontalAlignment="Center" >

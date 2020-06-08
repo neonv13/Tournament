@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace Tournament.Models
 {
+    using System.Collections.Generic;
     public class TournamentList : BaseList<Tournaments>
     {
         /// <summary>
@@ -9,8 +9,8 @@ namespace Tournament.Models
         /// </summary>
         public TournamentList()
         {
-           List = new List<Tournaments>();
-           Count = 0;
+            List = new List<Tournaments>();
+            Count = 0;
         }
 
         public override void SetObj(object obj)

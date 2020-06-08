@@ -32,6 +32,7 @@ namespace Tournament.Views
             PlayersViewModel = playersViewModel;
             ViewTeams = new ViewTeams(TeamsViewModel, PlayersViewModel);
             InitializeComponent();
+            Teams.Content = ViewTeams;
         }
 
         private void Button_Click_AddTeam(object sender, RoutedEventArgs e)

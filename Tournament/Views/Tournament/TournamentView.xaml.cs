@@ -39,6 +39,7 @@ namespace Tournament.Views
             RefereesViewModel = refereesViewModel;
             ViewTournaments = new ViewTournaments(TournamentViewModel);
             InitializeComponent();
+            TourView.Content = ViewTournaments;
         }
         private void Button_Click_NewTournament(object sender, RoutedEventArgs e)
         {
@@ -51,6 +52,11 @@ namespace Tournament.Views
         private void Button_Click_ViewTournaments(object sender, RoutedEventArgs e)
         {
             TourView.Content = ViewTournaments;
+        }
+        public void Refresh() 
+        {
+            ViewTournaments.TourListBox.ItemsSource = null;
+            ViewTournaments.TourListBox.ItemsSource = TournamentViewModel.Tournaments.List;
         }
     }
 }

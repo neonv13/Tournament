@@ -37,9 +37,13 @@ namespace Tournament.ViewModels
         public void LoadAll() 
         {
             PlayersViewModel.LoadPlayersViewModel();
+            PlayersView.ViewPlayers.Refresh();
             TeamViewModel.LoadTeamViewModel();
+            TeamsView.ViewTeams.Refresh();
             RefereesViewModel.LoadRefereesViewModel();
+            RefereeView.ViewReferees.Refresh();
             TournamentViewModel.LoadViewModel();
+            TournamentView.Refresh();
         }
     }
 }

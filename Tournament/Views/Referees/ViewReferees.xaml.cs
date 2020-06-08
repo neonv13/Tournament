@@ -31,10 +31,12 @@ namespace Tournament.Views.Referees
                 RefereeListBox.ItemsSource = RefereesViewModel.Referees.List;
             else
                 RefereeListBox.ItemsSource = RefereeList.List;
+            
         }
         public void Refresh()
         {
-            RefereeListBox.Items.Refresh();
+            RefereeListBox.ItemsSource = null;
+            RefereeListBox.ItemsSource = RefereesViewModel.Referees.List;
         }
     }
 }

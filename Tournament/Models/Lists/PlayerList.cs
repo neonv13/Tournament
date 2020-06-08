@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace Tournament.Models
 {
+    using System.Collections.Generic;
     public class PlayerList : BaseList<Player>
     {
         /// <summary>

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Runtime.CompilerServices;
-
+﻿
 namespace Tournament.Models
 {
+    using System.Collections.Generic;
     public class TeamList : BaseList<Team>
     {
         /// <summary>

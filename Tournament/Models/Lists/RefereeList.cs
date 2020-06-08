@@ -1,7 +1,6 @@
 ﻿namespace Tournament.Models
 {
     using System.Collections.Generic;
-    using System.IO;
 
     public class RefereeList : BaseList<Referee>
     {
@@ -10,8 +9,8 @@
         /// </summary>
         public RefereeList()
         {
-           List = new List<Referee>();
-           Count = 0;
+            List = new List<Referee>();
+            Count = 0;
         }
 
         public override void SetObj(object obj)

@@ -1,10 +1,7 @@
-﻿using DocumentFormat.OpenXml.Math;
-using System;
-using System.Collections.Generic;
-using System.IO;
-
+﻿
 namespace Tournament.Models
 {
+    using System.Collections.Generic;
     public class MatchList : BaseList<Match>
     {
         /// <summary>

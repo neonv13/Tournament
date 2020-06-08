@@ -28,6 +28,7 @@ namespace Tournament.Views
             PlayersViewModel = playersViewModel;
             ViewPlayers = new ViewPlayers(PlayersViewModel); 
             InitializeComponent();
+            PlayerView.Content = ViewPlayers;
         }
 
         private void Button_Click_AddPlayer(object sender, RoutedEventArgs e)
@@ -40,6 +41,7 @@ namespace Tournament.Views
         }
         private void Button_Click_ViewPlayers(object sender, RoutedEventArgs e)
         {
+            ViewPlayers.Refresh();
             PlayerView.Content = ViewPlayers;
         }
 

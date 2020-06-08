@@ -26,7 +26,7 @@
                   VerticalAlignment="Top"  />
         </Grid>
         <ListBox Margin="30,35,414,30" x:Name="PlannedMatches"
-            HorizontalContentAlignment="Stretch" 
+            HorizontalContentAlignment="Stretch"  Width="700"
             Background="#FF3E3E40" Foreground="#FFF1F1F1"
             BorderBrush="#FF252526">
 
