@@ -1,12 +1,13 @@
-﻿<Window x:Class="Tournament.Views.Matches.ChooseTournamentWindow"
+﻿<Window x:Class="Tournament.Views.ErrorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tournament.Views.Matches"
+        xmlns:local="clr-namespace:Tournament.Views"
         mc:Ignorable="d"
-        Title="ChooseTournament" Height="450" Width="800">
-
+        Title="ErrorWindow" Height="200" Width="300"
+        Topmost="True">
+            
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,10 +15,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
+    
     <Grid Style="{StaticResource NormalView}">
-        <StackPanel Orientation="Horizontal" Style="{StaticResource Header}">
-            <TextBlock Style="{StaticResource MainText}" Margin="30,0,0,0" Text="Choose one Tournament from available:"/>
-        </StackPanel>
+        <TextBlock Style="{StaticResource MainText}" x:Name="ErrorContent" Text="Wrong Name, Surname or ID!" Margin="20" VerticalAlignment="Top" />
+        <Button Style="{StaticResource WindowButton}" Margin="0,120,0,0" VerticalAlignment="Top" Content="OK" Click="Button_Click"/>
     </Grid>
 </Window>

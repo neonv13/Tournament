@@ -8,19 +8,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Tournament.Views
 {
     /// <summary>
-    /// Interaction logic for MatchesView.xaml
+    /// Interaction logic for ErrorWindow.xaml
     /// </summary>
-    public partial class MatchesView : Page
+    public partial class ErrorWindow : Window
     {
-        public MatchesView()
+        public ErrorWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

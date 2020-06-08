@@ -5,17 +5,21 @@ using Tournament.Models;
 
 namespace Tournament.ViewModels
 {
-    class TournamentViewModel
+    public class TournamentViewModel
     {
-        public List<Tournaments> Tournaments { get; private set; }
+        public TournamentList Tournaments { get; private set; }
         public TournamentViewModel()
         {
-            Tournaments = new List<Tournaments>();
-            Tournaments.Add(new Tournaments(null,null, GameType.Volleyball, "Jacusie"));
-            Tournaments.Add(new Tournaments(null,null, GameType.DodgeBall,  "Paliki4"));
-            Tournaments.Add(new Tournaments(null,null, GameType.Volleyball, "ios435y"));
-            Tournaments.Add(new Tournaments(null,null, GameType.TugOfWar,   "anuze43"));
-
+            Tournaments = new TournamentList();
+            
+        }
+        public void SaveViewModel()
+        {
+            Tournaments.WriteXML("tournamentsList.xml");
+        }
+        public void LoadViewModel() 
+        {
+            Tournaments.ReadXML("tournamentsList.xml");
         }
     }
 }
