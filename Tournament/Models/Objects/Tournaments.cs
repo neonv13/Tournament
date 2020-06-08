@@ -1,4 +1,5 @@
-﻿using System.DirectoryServices;
+﻿using System.Collections.Generic;
+using System.DirectoryServices;
 
 namespace Tournament.Models
 
@@ -46,7 +47,7 @@ namespace Tournament.Models
             FinalB = new Team();
             Winner = new Team();
         }
-        /*
+
         public void CreateMatchesPlanned()
         {
             if (TeamList.Count >= 2)
@@ -76,17 +77,30 @@ namespace Tournament.Models
 
         public void CreateSemi()
         {
+            this.SortTeamsPoints();
+            SemiA = TeamList.List[0];
+            SemiB = TeamList.List[1];
+            SemiC = TeamList.List[2];
+            SemiD = TeamList.List[3];
+        }
+        public void SortTeamsPoints()
+        {
+            int id = 0;
             TeamList help = new TeamList();
             foreach (var team in TeamList.List)
             {
-                for (int i = 0; i < 4; ++i)
+                if(id ==0)
                 {
-                    if(team.PointEarned>=help.List[i].PointEarned)
-                    {
-                        if()
-                    }
+                    id = team.ID;
                 }
+                foreach(var team2 in TeamList.List)
+                {
+                    if (team.PointEarned < team2.PointEarned && TeamList.FindByID(id).PointEarned < team2.PointEarned)
+                        id = team2.ID;
+                }
+                help.List.Add(TeamList.FindByID(id));
             }
+            help.Count = help.List.Count;
         }
         public void SymulateGroupStage()
         {
@@ -188,8 +202,8 @@ namespace Tournament.Models
 
         }
         
-        
         */
+
+
     }
-}
 
