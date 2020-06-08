@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Tournament.Models.Enums;
 using Tournament.Views;
 
 namespace Tournament.Models
@@ -17,10 +16,10 @@ namespace Tournament.Models
         public PlayerList PlayersPlayingInTeamB { get; set; }
         public MatchRanks MatchRanks { get; set; }
         public GameTypes GameTypes { get; set; }
-        public Past_Future Past_Future { get; set; }
         public int TeamAScore { get; set; }
         public int TeamBScore { get; set; }
-        
+        public int TeamA_ID { get; set; }
+        public int TeamB_ID { get; set; }
         #endregion
 
         public Match() 
@@ -47,20 +46,26 @@ namespace Tournament.Models
             {
                 case (1):
                     {
-                        TeamA.PointEarned = TeamAScore = 3;
-                        TeamB.PointEarned = TeamBScore = 0;
+                        TeamAScore = 3;
+                        TeamBScore = 0;
+                        TeamA.PointEarned += TeamAScore;
+                        TeamB.PointEarned += TeamBScore;
                         break;
                     }
                 case (2):
                     {
-                        TeamA.PointEarned = TeamAScore = 1;
-                        TeamB.PointEarned = TeamBScore = 1;
+                        TeamAScore = 1;
+                        TeamBScore = 1;
+                        TeamA.PointEarned += TeamAScore;
+                        TeamB.PointEarned += TeamBScore;
                         break;
                     }
                 case (3):
                     {
-                        TeamA.PointEarned = TeamAScore = 0;
-                        TeamB.PointEarned = TeamBScore = 3;
+                        TeamAScore = 0;
+                        TeamBScore = 3;
+                        TeamA.PointEarned += TeamAScore;
+                        TeamB.PointEarned += TeamBScore;
                         break;
                     }
             }
