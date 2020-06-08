@@ -24,7 +24,7 @@ namespace Tournament.Views.Referees
         public RefereeView(RefereesViewModel refereesViewModel)
         {
             RefereesViewModel = refereesViewModel;
-            ViewReferees = new ViewReferees(RefereesViewModel);
+            ViewReferees = new ViewReferees(RefereesViewModel,null);
             InitializeComponent();
         }
         private void Button_Click_AddReferee(object sender, RoutedEventArgs e)

@@ -39,11 +39,11 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

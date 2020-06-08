@@ -14,37 +14,39 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tournament.Models;
 using Tournament.ViewModels;
+using Tournament.Views.Tournament.TourWindow;
 
 namespace Tournament.Views.Teams
 {
     /// <summary>
     /// Interaction logic for TeamsViewTeamsView.xaml
     /// </summary>
-    public partial class TeamsViewTeamsView : Page
+    public partial class ViewTeams : Page
     {
         public PlayersViewModel PlayersViewModel { get; set; }
         public TeamViewModel TeamViewModel { get; set; }
-        public TeamsViewTeamsView(TeamViewModel teamViewModel, PlayersViewModel playersViewModel)
+        public ViewTeams(TeamViewModel teamViewModel, PlayersViewModel playersViewModel)
         {
             TeamViewModel = teamViewModel;
             PlayersViewModel = playersViewModel;
             InitializeComponent();
+            MyListBox.ItemsSource = TeamViewModel.Teams.List;
         }
 
-        private void Button_Click_ViewTeam(object sender, RoutedEventArgs e)
-        {
-            if (MyListBox.SelectedItem is Team team)
-            {
-                TeamWindow teamWindow = new TeamWindow(team, TeamViewModel, PlayersViewModel);
-                teamWindow.Show();
-            }
-        }
         public void Refresh()
         {
             MyListBox.ItemsSource = null;
             MyListBox.ItemsSource = TeamViewModel.Teams.List;
         }
 
-       
+        private void MyListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (MyListBox.SelectedItem is Team team)
+            {
+
+                TeamWindow teamWindow = new TeamWindow(team, TeamViewModel, PlayersViewModel);
+                teamWindow.Show();
+            }
+        }
     }
 }

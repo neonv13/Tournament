@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -40,10 +41,21 @@ namespace Tournament.Models
         {
             if (FindByID(t.ID) == null)
             {
-
+                if(t.ID < 0 )
+                    t.ID = MakeID();
                 List.Add(t);
                 Count++;
             }
+        }
+        public int MakeID()
+        {
+            Random random = new Random();
+            var b = random.Next(1000);
+            while(FindByID(b) != null)
+            {
+                b = random.Next(1000);
+            }
+            return b;
         }
         public void WriteXML(string path)
         {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tournament.Views"
         mc:Ignorable="d"
-         Title="AddPlayer" Height="320" Width="560">
+         Title="AddPlayer" Height="650" Width="912">
 
     <Page.Resources>
         <ResourceDictionary>
@@ -19,45 +19,46 @@
             <TextBlock Style="{StaticResource MainText}" Margin="80,50,0,0" 
                    Text="Complete personal details." HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Border BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
-                HorizontalAlignment="Center" Width="401" Height="151"/>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="150" Background="#FF3E3E40">
+                HorizontalAlignment="Center" Width="630" Height="400" Background="#FF3E3E40"/>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="300">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Border  Margin="5,5,5,2" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
+            <Border  Margin="10" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="ID:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="IDTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center" />
+                    <TextBox x:Name="IDTextBox" Grid.Column="1" Margin="20,20,20,20" FontSize="20" TextAlignment="Center" />
                 </Grid>
             </Border>
-            <Border Margin="5,2,5,5" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
+            <Border Margin="10" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="NameTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center"/>
+                    <TextBox x:Name="NameTextBox" Grid.Column="1" Margin="20,20,20,20" FontSize="20" TextAlignment="Center"/>
                 </Grid>
             </Border>
-            <Border  Margin="5,5,5,2" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="2">
+            <Border  Margin="10" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="2">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Surame:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="SurnameTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center" />
+                    <TextBox x:Name="SurnameTextBox" Grid.Column="1" Margin="20,20,20,20" FontSize="20" TextAlignment="Center" />
                 </Grid>
             </Border>
         </Grid>
 
-        <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Remove"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click_RemovePlayer" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Remove"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel"/>
     </Grid>
 </Page>

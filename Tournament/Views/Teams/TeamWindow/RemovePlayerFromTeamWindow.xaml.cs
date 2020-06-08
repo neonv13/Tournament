@@ -47,7 +47,7 @@ namespace Tournament.Views.Teams
                 {
                     Team.PlayersList.Remove(player.ID);
                     TeamWindow.Refresh();
-                    TeamViewModel.SaveTeamViewModel();
+                    //TeamViewModel.SaveTeamViewModel();
                     this.Close();
                 }
                 else

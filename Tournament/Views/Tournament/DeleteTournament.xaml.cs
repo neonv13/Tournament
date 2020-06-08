@@ -40,7 +40,7 @@ namespace Tournament.Views.Tournament
             if (tour != null && tour.Name == name)
             {
                 TournamentViewModel.Tournaments.Remove(id);
-                TournamentViewModel.SaveViewModel();
+                //TournamentViewModel.SaveViewModel();
             }
             else
             {

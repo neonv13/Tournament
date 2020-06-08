@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Models;
 
 namespace Tournament.Views.Tournament.TourWindow
 {
@@ -18,9 +19,11 @@ namespace Tournament.Views.Tournament.TourWindow
     /// </summary>
     public partial class Matches : Page
     {
-        public Matches()
+        public Matches(MatchList Planned,MatchList History)
         {
             InitializeComponent();
+            PlannedMatches.ItemsSource = Planned.List;
+            MatchHistory.ItemsSource = History.List;
         }
     }
 }

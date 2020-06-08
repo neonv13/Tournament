@@ -49,6 +49,11 @@ namespace Tournament.Views.Tournament
             string name = TourName.Text;
 
             RefereeList refereeList = new RefereeList();
+            bool AreTeamsValid;
+            bool AreRefereesValid;
+            bool IsTypeValid;
+            TeamList teamList = new TeamList();
+            GameTypes type;
 
             foreach (var item in RefereesToChoose.RefereesListBox.SelectedItems)
             {
@@ -56,32 +61,57 @@ namespace Tournament.Views.Tournament
                     refereeList.Add(referee);
             }
 
-            TeamList teamList = new TeamList();
-
             foreach (var item in TeamsToChoose.TeamsListBox.SelectedItems)
             {
                 if (item is Team team)
                     teamList.Add(team);
             }
-
-            if (GameTypeComboBox.SelectedItem is GameTypes type && teamList.Count > 1 && refereeList.Count > 0)
+            if (GameTypeComboBox.SelectedItem is GameTypes types)
             {
-                TournamentViewModel.Tournaments.Add(new Tournaments() { TeamList = teamList, RefereeList = refereeList, GameTypes = type, Name= name });
-                TournamentViewModel.SaveViewModel();
+                type = types;
+                IsTypeValid = true;
+            }
+            else 
+            {
+                ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.ErrorContent.Text = "Choose Game Type";
+                errorWindow.Show();
+                return;
+            }
+           
+            if (refereeList.Count > 0)
+            {
+                AreRefereesValid = true;
+            }
+            else
+            {
+                ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.ErrorContent.Text = "Choose at least one Referee";
+                errorWindow.Show();
+                return;
+            }
+            if (teamList.Count >= 2)
+            {
+                AreTeamsValid = true;
+            }
+            else 
+            {
+                ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.ErrorContent.Text = "Choose at least two Teams";
+                errorWindow.Show();
+                return;
+            }
+            
+
+            if (IsTypeValid && AreTeamsValid && AreRefereesValid)
+            {
+                TournamentViewModel.Tournaments.Add(new Tournaments() { TeamList = teamList, RefereeList = refereeList, GameTypes = type, Name= name, ID=-1 });
                 ErrorWindow errorWindow = new ErrorWindow() { Width = 350 };
                 errorWindow.ErrorContent.Text = "Succesfully added Tourament";
                 errorWindow.Show();
                 ViewTournaments.TourListBox.Items.Refresh();
                 NavigationService.Navigate(ViewTournaments);
             }
-
-
-            else
-            {
-                ErrorWindow errorWindow = new ErrorWindow();
-                errorWindow.ErrorContent.Text = "Choose Game Tournament";
-            }
-
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tournament.Views.Tournament"
         mc:Ignorable="d"
-        Title="DeleteTournament" Height="270" Width="480">
+        Title="DeleteTournament" Height="650" Width="912">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,30 +18,30 @@
             <TextBlock Style="{StaticResource MainText}" Margin="40,20,0,0" 
                    Text="Complete Tournament details." HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Border BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
-                HorizontalAlignment="Center" Width="401" Height="151"/>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="150" Background="#FF3E3E40">
+                HorizontalAlignment="Center" Width="650" Height="400" Background="#FF3E3E40"/>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="200" >
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Border  Margin="5,5,5,2" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
+            <Border  Margin="10" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="ID:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="IDTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center" />
+                    <TextBox x:Name="IDTextBox" Grid.Column="1" Margin="20" FontSize="20" TextAlignment="Center" />
                 </Grid>
             </Border>
-            <Border Margin="5,2,5,5" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
+            <Border Margin="10" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="NameTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center"/>
+                    <TextBox x:Name="NameTextBox" Grid.Column="1" Margin="20" FontSize="20" TextAlignment="Center"/>
                 </Grid>
             </Border>
         </Grid>

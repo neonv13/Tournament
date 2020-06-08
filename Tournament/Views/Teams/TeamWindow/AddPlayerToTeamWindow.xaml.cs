@@ -48,7 +48,7 @@ namespace Tournament.Views.Teams
                 {
                     Team.PlayersList.Add(player);
                     TeamWindow.Refresh();
-                    TeamViewModel.SaveTeamViewModel();
+                  //  TeamViewModel.SaveTeamViewModel();
                     this.Close();
                 }
                 else

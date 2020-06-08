@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-//using System.Windows.Documents;
 
 namespace Tournament.Models
 
@@ -13,6 +12,7 @@ namespace Tournament.Models
         public GameTypes GameTypes { get; set; }
         public RefereeList RefereeList { get; set; }
         public MatchList MatchHistory { get; set; }
+        public MatchList MatchPlanned { get; set; }
         public TeamList TeamList { get; set; }
         public MatchList Semi { get; set; }
         public Match Final { get; set; }
@@ -20,9 +20,16 @@ namespace Tournament.Models
 
 
         public Tournaments() 
-        { 
-        
-        
+        {
+            MatchesPlayed = 0;
+            NumberOfTeams = 0;
+            RefereeList = new RefereeList();
+            MatchHistory = new MatchList();
+            MatchPlanned = new MatchList();
+            TeamList= new TeamList();
+            Semi = new MatchList();
+            Final = new Match();
+            Winner = new Team();
         }
         /*
         public void StartSimulateTournament()

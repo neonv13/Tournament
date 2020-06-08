@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Tournament.Models;
 using Tournament.ViewModels;
-using Tournament.Views.Players;
 
 namespace Tournament.Views.Referees
 {
@@ -29,18 +19,74 @@ namespace Tournament.Views.Referees
             ViewReferees = viewReferees;
             InitializeComponent();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_RemoveReferee(object sender, RoutedEventArgs e)
         {
-            RefereesViewModel refereesViewModel = new RefereesViewModel();
             int id = int.Parse(IDTextBox.Text);
             string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
-            Referee referee = refereesViewModel.Referees.FindByID(id);
-            if (referee != null && referee.Name == name && referee.Surname == surname)
-            {                     
-                refereesViewModel.Referees.Remove(id);
-                refereesViewModel.SaveRefereesViewModel();
+            Referee referee = RefereesViewModel.Referees.FindByID(id);
+            bool IsNameValid;
+            bool IsSurameValid;
+            bool IsRefereeValid;
+            bool IsIDValid;
+            if (id >= 0)
+            {
+                IsIDValid = true;
             }
+            else 
+            {
+                ErrorWindow errorNameWindow = new ErrorWindow();
+                errorNameWindow.ErrorContent.Text = "Please enter the ID";
+                errorNameWindow.Show();
+                return;
+            }
+            if (name != string.Empty)
+                IsNameValid = true;
+            else
+            {
+                ErrorWindow errorNameWindow = new ErrorWindow();
+                errorNameWindow.ErrorContent.Text = "Please enter the Name";
+                errorNameWindow.Show();
+                return;
+            }
+
+            if (surname != string.Empty)
+                IsSurameValid = true;
+            else
+            {
+                ErrorWindow errorSurnameWindow = new ErrorWindow();
+                errorSurnameWindow.ErrorContent.Text = "Please enter the Surname";
+                errorSurnameWindow.Show();
+                return;
+
+            }
+
+            if (referee != null)
+            {
+                IsRefereeValid = true;
+            }
+            else
+            {
+                ErrorWindow errorSurnameWindow = new ErrorWindow() { Width = Width + 200 };
+                errorSurnameWindow.ErrorContent.Text = "There is no such referee in the database";
+                errorSurnameWindow.Show();
+                return;
+
+            }
+
+            if (IsNameValid && IsRefereeValid && IsSurameValid && IsIDValid)
+            {
+                RefereesViewModel.Referees.Remove(id);
+                ViewReferees.Refresh();
+                NavigationService.Navigate(ViewReferees);
+                ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.ErrorContent.Text = "Succesfully removed Referee";
+                errorWindow.Show();
+            }
+        }
+        private void Button_Click_Cancel(object sender, RoutedEventArgs e)
+        {
+            ViewReferees.Refresh();
             NavigationService.Navigate(ViewReferees);
         }
     }

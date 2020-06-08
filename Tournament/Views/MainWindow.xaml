@@ -22,7 +22,6 @@
                 <TextBlock Style="{StaticResource MainText}" Text="Tournament" FontStyle="Italic" Foreground="#01a6fa"/>
             </StackPanel>
             <Button Click="Button_Click_Tournament" Content ="Tournament" Style="{StaticResource NormalButton}"/>
-            <Button Click="Button_Click_Matches" Content = "Matches" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Teams" Content="Teams" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Players" Content ="Players" Style="{StaticResource NormalButton}"/>
             <Button Click="Button_Click_Referees" Content = "Referees" Style="{StaticResource NormalButton}"/>

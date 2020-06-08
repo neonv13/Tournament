@@ -1,6 +1,4 @@
-﻿//using System.Windows.Documents;
-
-namespace Tournament.Models
+﻿namespace Tournament.Models
 {
     public class Team : BaseObject
     {
@@ -16,6 +14,7 @@ namespace Tournament.Models
         {
             PlayersList = new PlayerList();
             GamesPlayed = 0;
+            PointEarned = 0;
         }
     }
 }

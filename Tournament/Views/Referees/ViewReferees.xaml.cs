@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Models;
 using Tournament.ViewModels;
 
 namespace Tournament.Views.Referees
@@ -20,11 +22,19 @@ namespace Tournament.Views.Referees
     public partial class ViewReferees : Page
     {
         public RefereesViewModel RefereesViewModel { get; set; }
-        public ViewReferees(RefereesViewModel refereesViewModel)
+        public RefereeList RefereeList { get; set; }
+        public ViewReferees(RefereesViewModel refereesViewModel, RefereeList refereeList)
         {
             RefereesViewModel = refereesViewModel;
             InitializeComponent();
-            RefereeListBox.ItemsSource = RefereesViewModel.Referees.List;
+            if (refereeList == null)
+                RefereeListBox.ItemsSource = RefereesViewModel.Referees.List;
+            else
+                RefereeListBox.ItemsSource = RefereeList.List;
+        }
+        public void Refresh()
+        {
+            RefereeListBox.Items.Refresh();
         }
     }
 }

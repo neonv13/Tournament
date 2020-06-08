@@ -6,6 +6,6 @@ namespace Tournament.Models
 {
     public enum GameTypes
     {
-        Volleyball, TugOfWar, DodgeBall
+       Off=0, Volleyball = 1, TugOfWar = 2, DodgeBall = 3
     }
 }

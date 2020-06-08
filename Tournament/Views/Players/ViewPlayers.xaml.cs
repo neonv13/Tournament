@@ -27,6 +27,10 @@ namespace Tournament.Views.Players
             InitializeComponent();
             PlayesListBox.ItemsSource = PlayersViewModel.Players.List;
         }
+        public void Refresh()
+        {
+            PlayesListBox.Items.Refresh();
+        }
 
     }
 }

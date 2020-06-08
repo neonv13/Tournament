@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Tournament.Models;
 using Tournament.ViewModels;
+using Tournament.Views.Tournament.TourWindow;
 
 namespace Tournament.Views.Tournament
 {
@@ -19,6 +11,9 @@ namespace Tournament.Views.Tournament
     /// </summary>
     public partial class ViewTournaments : Page
     {
+        public PlayersViewModel PlayersViewModel { get; set; }
+        public TeamViewModel TeamViewModel { get; set; }
+        public RefereesViewModel RefereesViewModel { get; set; }
         public TournamentViewModel TournamentViewModel { get; set; }
         public ViewTournaments(TournamentViewModel tournamentViewModel)
         {
@@ -26,6 +21,14 @@ namespace Tournament.Views.Tournament
             InitializeComponent();
             TourListBox.ItemsSource = TournamentViewModel.Tournaments.List;
         }
-        
+
+        private void TourListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (TourListBox.SelectedItem is Tournaments tour)
+            {
+                TournamentWindow tournamentWindow = new TournamentWindow(PlayersViewModel, TeamViewModel,TournamentViewModel, tour);
+                tournamentWindow.Show();
+            }
+        }
     }
 }

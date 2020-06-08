@@ -10,17 +10,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament.Models;
 
 namespace Tournament.Views.Tournament.TourWindow
 {
     /// <summary>
-    /// Interaction logic for Referees.xaml
+    /// Interaction logic for TourInfo.xaml
     /// </summary>
-    public partial class Referees : Page
+    public partial class TourInfo : Page
     {
-        public Referees()
+        public Tournaments Tournaments { get; set; }
+
+        public TourInfo(Tournaments tournaments)
         {
+            Tournaments = tournaments;
             InitializeComponent();
         }
+        
     }
 }

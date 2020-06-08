@@ -10,76 +10,36 @@ namespace Tournament.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        private TeamViewModel teamViewModel;
-        private PlayersViewModel playersViewModel;
-        private RefereesViewModel refereesViewModel;
-        private TournamentViewModel tournamentViewModel;
-        private MatchesViewModel matchesViewModel;
-        private TournamentView tournamentView;
-        private TeamsView teamsView;
-        private MatchesView matchesView;
-        private PlayersView playersView;
-        private RefereeView refereeView;
-
-        public TeamViewModel TeamViewModel { get => teamViewModel; set => teamViewModel = value; }
-        public PlayersViewModel PlayersViewModel { get => playersViewModel; set => playersViewModel = value; }
-        public RefereesViewModel RefereesViewModel { get => refereesViewModel; set => refereesViewModel = value; }
-        public TournamentViewModel TournamentViewModel { get => tournamentViewModel; set => tournamentViewModel = value; }
-        public MatchesViewModel MatchesViewModel { get => matchesViewModel; set => matchesViewModel = value;}
-        public TournamentView TournamentView { get => tournamentView; set => tournamentView = value; }
-        public TeamsView TeamsView { get => teamsView; set => teamsView = value; }
-        public MatchesView MatchesView { get => matchesView; set => matchesView = value; }
-        public PlayersView PlayersView { get => playersView; set => playersView = value; }
-        public RefereeView RefereeView { get => refereeView; set => refereeView = value; }
-
+        MainViewModel MainViewModel { get; set; }
         public MainWindow()
         {
-            TeamViewModel = new TeamViewModel();
-            PlayersViewModel = new PlayersViewModel();
-            RefereesViewModel = new RefereesViewModel();
-            TournamentViewModel = new TournamentViewModel();
-            MatchesViewModel = new MatchesViewModel();
+            MainViewModel = new MainViewModel();
             InitializeComponent();
-            TournamentView = new TournamentView(TournamentViewModel, PlayersViewModel, TeamViewModel, RefereesViewModel);
-            TeamsView = new TeamsView(TeamViewModel,PlayersViewModel);
-            MatchesView = new MatchesView(MatchesViewModel);
-            PlayersView = new PlayersView(PlayersViewModel);
-            RefereeView = new RefereeView(RefereesViewModel);
         }
 
         private void Button_Click_Tournament(object sender, RoutedEventArgs e)
         {
-            Main.Content = TournamentView;
+            Main.Content = MainViewModel.TournamentView;
         }
         private void Button_Click_Teams(object sender, RoutedEventArgs e)
         {
-            Main.Content = TeamsView;
-        }
-        private void Button_Click_Matches(object sender, RoutedEventArgs e)
-        {
-            Main.Content = MatchesView;
+            Main.Content = MainViewModel.TeamsView;
         }
         private void Button_Click_Players(object sender, RoutedEventArgs e)
         {
-            Main.Content = PlayersView;
+            Main.Content = MainViewModel.PlayersView;
         }
         private void Button_Click_Referees(object sender, RoutedEventArgs e)
         {
-            Main.Content = RefereeView;
+            Main.Content = MainViewModel.RefereeView;
         }
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-            PlayersViewModel.SavePlayersViewModel();
-            TeamViewModel.SaveTeamViewModel();
-            RefereesViewModel.SaveRefereesViewModel();
-            TournamentViewModel.SaveViewModel();
+            MainViewModel.SaveAll();
         }
         private void Button_Click_Load(object sender, RoutedEventArgs e)
         {
-            PlayersViewModel.LoadPlayersViewModel();
-            TeamViewModel.LoadTeamViewModel();
-            RefereesViewModel.LoadRefereesViewModel();
-            TournamentViewModel.LoadViewModel();
+            MainViewModel.LoadAll();
         }
         private void Button_Click_Authors(object sender, RoutedEventArgs e)
         {

@@ -19,44 +19,53 @@
 
     <Grid Style="{StaticResource NormalView}">
 
-        <TextBlock Style="{StaticResource MainText}" Margin="30,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Complete new Tournament details"/>
-        <TextBlock Style="{StaticResource MainText}" Margin="485,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Choose Referees and Teams"/>
+        <TextBlock Style="{StaticResource MainText}" Margin="36,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Complete new Tournament details"/>
+        <TextBlock Style="{StaticResource MainText}" FontSize="17"  Margin="503,79,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Choose Referees and Teams"/>
 
         <Grid Margin="0,30,0,80 ">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="128,480,128,0" Height="25" VerticalAlignment="Top" Width="200">
+            <StackPanel Orientation="Horizontal" Margin="128,80,128,0" Height="24" VerticalAlignment="Top" Width="200" Grid.Column="1">
                 <Button Style="{StaticResource NormalButton}" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Margin="15,0,15,0" Content="Teams" Click="Button_Click_TeamsList"/>
                 <Button Style="{StaticResource NormalButton}" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Margin="15,0,15,0" Content="Referees" Click="Button_Click_RefereesList"/>
             </StackPanel>
             <Border Grid.Column="1" BorderBrush="#FF252526" BorderThickness="1" 
-                 Width="361" Height="401" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Grid Background="#FF3E3E40" >
-                    <Frame x:Name="ListsPlace" Width="360" Height="400" NavigationUIVisibility="Hidden"/>
+                 Width="361" Height="401" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,109,0,0">
+                <Grid Background="#FF3E3E40" Margin="1,1,-1,-1" >
+                    <Frame x:Name="ListsPlace" Width="360" Height="400" NavigationUIVisibility="Hidden" Margin="0,0,-1,-1"/>
                 </Grid>
             </Border>
-            <Border BorderBrush="#FF252526" BorderThickness="2"
-                    Width="435" Height="210" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Grid Background="#FF3E3E40" Height="200" >
-                    <StackPanel >
-                        <Border BorderBrush="#FF252526" VerticalAlignment="Center" BorderThickness="1" Padding="5" Margin="5,5,5,3">
-                            <Grid Margin="25">
-
-                                <TextBlock HorizontalAlignment="Left" Style="{StaticResource MainText}" Text="Tournament name"/>
-                                <TextBox x:Name="TourName" HorizontalAlignment="Right" Width="150"/>
-                            </Grid>
-                        </Border>
-                        <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5" Margin="5,2,5,10">
-                            <Grid Margin="30">
-                                <TextBlock Margin="15,0,0,0" HorizontalAlignment="Left" Style="{StaticResource MainText}" Text="Game type"/>
-                                <ComboBox x:Name="GameTypeComboBox" HorizontalAlignment="Right" Width=" 150"/>
-                            </Grid>
-                        </Border>
-                    </StackPanel>
+            <Border BorderBrush="#FF252526" BorderThickness="1" Margin="20"
+                    Width="435" Height="301" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid Background="#FF3E3E40" Height="300" Width="434" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="20" Grid.Row="0" BorderBrush="#FF252526" BorderThickness="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" Text="Tournament name"/>
+                            <TextBox Grid.Column="1" x:Name="TourName" Margin="20,30,20,30"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="20" Grid.Row="1" BorderBrush="#FF252526" BorderThickness="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" Text="Game type"/>
+                            <ComboBox Grid.Column="1" x:Name="GameTypeComboBox" Margin="20,30,20,30" />
+                        </Grid>
+                    </Border>
                 </Grid>
             </Border>
         </Grid>

@@ -19,7 +19,7 @@
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Width="170" Text="Tournaments List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="60,30,0,0" />
-        <ListBox Margin="60,60,60,30" ItemsSource="{Binding Tournaments}" 
+        <ListBox Margin="60,60,60,30" ItemsSource="{Binding Tournaments}" MouseDoubleClick="TourListBox_MouseDoubleClick"
                  HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto"
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" x:Name="TourListBox"
                  BorderBrush="#FF252526">

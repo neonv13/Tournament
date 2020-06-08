@@ -16,15 +16,17 @@
     
     <Grid Style="{StaticResource NormalView}">
         <StackPanel Style="{StaticResource Header }">
-            <TextBlock Style="{StaticResource MainText}" Text="VollleyBallTour"/>
+            <TextBlock Style="{StaticResource MainText}" x:Name="TitleTour"/>
         </StackPanel>
         <Frame x:Name="Main" NavigationUIVisibility="Hidden" Margin="0,50,0,0"/>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,30,0,0">
-            <Button Style="{StaticResource NormalButton}" Content="Teams"  
+            <Button Style="{StaticResource NormalButton}" Content="TourInfo" Click="Button_Click_TourInfo" 
                     HorizontalAlignment="Left" Margin="30,0,0,0"/>
-            <Button Style="{StaticResource NormalButton}" Content="Matches"  
+            <Button Style="{StaticResource NormalButton}" Content="Teams" Click="Button_Click_Teams" 
+                    HorizontalAlignment="Left" Margin="30,0,0,0"/>
+            <Button Style="{StaticResource NormalButton}" Content="Matches" Click="Button_Click_Matches" 
                     HorizontalAlignment="Left" Margin="60,0,0,0"/>
-            <Button Style="{StaticResource NormalButton}" Content="Referees" Width="85"  
+            <Button Style="{StaticResource NormalButton}" Content="Referees" Width="85"  Click="Button_Click_Referees"
                     HorizontalAlignment="Left" Margin="60,0,0,0"/>
         </StackPanel>
     </Grid>

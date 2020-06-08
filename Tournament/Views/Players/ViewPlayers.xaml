@@ -21,8 +21,7 @@
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Width="100" Text="Players List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="30,30,0,0" />
-        <ListBox Margin="30,60,30,30"  
-                 HorizontalContentAlignment="Stretch" 
+        <ListBox Margin="30,60,30,30" HorizontalContentAlignment="Stretch" 
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" x:Name="PlayesListBox"
                  BorderBrush="#FF252526">
             <ListBox.ItemTemplate>
@@ -39,11 +38,11 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

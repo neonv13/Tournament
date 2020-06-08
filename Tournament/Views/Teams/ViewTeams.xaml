@@ -4,9 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Tournament.Views.Teams"
-      xmlns:ViewModels="clr-namespace:Tournament.ViewModels" xmlns:Models="clr-namespace:Tournament.Models" x:Class="Tournament.Views.Teams.TeamsViewTeamsView"
+      xmlns:ViewModels="clr-namespace:Tournament.ViewModels" xmlns:Models="clr-namespace:Tournament.Models"
+      x:Class="Tournament.Views.Teams.ViewTeams"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="912"
       Title="TeamsViewTeamsView">
 
     <Page.Resources>
@@ -16,23 +17,18 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Page.DataContext>
-        <ViewModels:TeamViewModel/>
-    </Page.DataContext>
-
-
 
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Width="100" Text="Teams List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="60,30,0,0" />
-        <ListBox Margin="30,60,30,30" ItemsSource="{Binding Teams.TeamsList, Mode=TwoWay, UpdateSourceTrigger=Explicit}" 
+        <ListBox Margin="30,60,30,30" 
                  Width="700" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 Background="#FF3E3E40" Foreground="#FFF1F1F1" 
+                 Background="#FF3E3E40" Foreground="#FFF1F1F1" MouseDoubleClick="MyListBox_MouseDoubleClick"
                  BorderBrush="#FF252526" x:Name="MyListBox" HorizontalAlignment="Stretch">
 
-            <ListBox.ItemTemplate >
-                <DataTemplate >
-                    <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5" Width="670" Margin="10" >
+            <ListBox.ItemTemplate  >
+                <DataTemplate  >
+                    <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5" Width="650" Margin="15"  HorizontalAlignment="Center" >
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -47,16 +43,15 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding IDTeam}" x:Name="IDTextBlock"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}" x:Name="IDTextBlock"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TeamName}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Game: "/>
                             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PointEarned}"/>
                             <TextBlock Grid.Row="3" Grid.Column="0" Text="Points: "/>
                             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding GameTypes}"/>
                             <TextBlock Grid.Row="4" Grid.Column="0" Text="Players: "/>
-                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Count}"/>
-                            <Button Click="Button_Click_ViewTeam"  Content="View" Width="50" Height="20" Grid.Row="4" Grid.Column="1" Margin="50,2,50,0"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding PlayersList.Count}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

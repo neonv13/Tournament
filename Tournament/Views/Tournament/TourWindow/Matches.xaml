@@ -25,7 +25,7 @@
             <TextBlock Style="{StaticResource MainText}" Margin="416,0,0,0" Width="160" Text="Match History:"  HorizontalAlignment="Left" 
                   VerticalAlignment="Top"  />
         </Grid>
-        <ListBox Margin="30,35,414,30" ItemsSource="{Binding }" 
+        <ListBox Margin="30,35,414,30" x:Name="PlannedMatches"
             HorizontalContentAlignment="Stretch" 
             Background="#FF3E3E40" Foreground="#FFF1F1F1"
             BorderBrush="#FF252526">
@@ -54,7 +54,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Margin="414,35,30,30" ItemsSource="{Binding }" 
+        <ListBox Margin="414,35,30,30"  x:Name="MatchHistory"
             HorizontalContentAlignment="Stretch" 
             Background="#FF3E3E40" Foreground="#FFF1F1F1"
             BorderBrush="#FF252526">

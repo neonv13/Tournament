@@ -23,35 +23,31 @@ namespace Tournament.Views
     {
             
         public TeamViewModel TeamsViewModel { get; set; }
-        public TeamsViewTeamsView TeamsViewTeamsView { get; set; }
+        public ViewTeams ViewTeams { get; set; }
         public PlayersViewModel PlayersViewModel { get; set; }
 
         public TeamsView(TeamViewModel teamViewModel, PlayersViewModel playersViewModel)
         {
             TeamsViewModel = teamViewModel;
             PlayersViewModel = playersViewModel;
-            TeamsViewTeamsView = new TeamsViewTeamsView(TeamsViewModel, PlayersViewModel);
+            ViewTeams = new ViewTeams(TeamsViewModel, PlayersViewModel);
             InitializeComponent();
         }
 
         private void Button_Click_AddTeam(object sender, RoutedEventArgs e)
         {
-            Teams.Content = new TeamsAddTeamView(TeamsViewModel, TeamsViewTeamsView);
-            TeamsViewTeamsView.Refresh();
-            TeamsViewModel.SaveTeamViewModel();
+            Teams.Content = new AddTeam(TeamsViewModel, ViewTeams);
+            ViewTeams.Refresh();
         }
         private void Button_Click_RemoveTeam(object sender, RoutedEventArgs e)
         {
-            Teams.Content = new TeamsRemoveTeamView(TeamsViewModel, TeamsViewTeamsView);
-            TeamsViewTeamsView.Refresh();
-            TeamsViewModel.SaveTeamViewModel();
-
+            Teams.Content = new RemoveTeam(TeamsViewModel, ViewTeams);
+            ViewTeams.Refresh();
         }
         private void Button_Click_ViewTeams(object sender, RoutedEventArgs e)
         {
-            Teams.Content = TeamsViewTeamsView;
-            TeamsViewTeamsView.Refresh();
-
+            Teams.Content = ViewTeams;
+            ViewTeams.Refresh();
         }
         
     }

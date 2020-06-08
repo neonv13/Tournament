@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Tournament.Views.Referees"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="912"
       Title="RemoveReferee">
 
     <Page.Resources>
@@ -19,46 +19,47 @@
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Style="{StaticResource MainText}" Margin="80,50,0,0" 
                    Text="Complete personal details." HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Border BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
-                HorizontalAlignment="Center" Width="401" Height="151"/>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="150" Background="#FF3E3E40">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Border  Margin="5,5,5,2" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="ID:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="IDTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center" />
-                </Grid>
-            </Border>
-            <Border Margin="5,2,5,5" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="NameTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center"/>
-                </Grid>
-            </Border>
-            <Border  Margin="5,5,5,2" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="2">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Surame:" Style="{StaticResource MainText}"/>
-                    <TextBox x:Name="SurnameTextBox" Grid.Column="1" Margin="5" FontSize="27" TextAlignment="Center" />
-                </Grid>
-            </Border>
-        </Grid>
-
-        <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="0,0,0,10" Content="Remove"/>
+        <Border Background="#FF3E3E40" BorderBrush="#FF252526" BorderThickness="1" VerticalAlignment="Center"
+                HorizontalAlignment="Center" Width="630" Height="400">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="300" Background="#FF3E3E40">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border  Margin="10" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="ID:" Style="{StaticResource MainText}"/>
+                        <TextBox x:Name="IDTextBox" Grid.Column="1" FontSize="20" TextAlignment="Center" Margin="20"/>
+                    </Grid>
+                </Border>
+                <Border Margin="10" BorderBrush="#FF252526" BorderThickness="1" Grid.Row="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Name:" Style="{StaticResource MainText}"/>
+                        <TextBox x:Name="NameTextBox" Grid.Column="1" Margin="20" FontSize="20" TextAlignment="Center"/>
+                    </Grid>
+                </Border>
+                <Border Margin="10"  BorderBrush="#FF252526" BorderThickness="1" Grid.Row="2">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Surame:" Style="{StaticResource MainText}"/>
+                        <TextBox x:Name="SurnameTextBox" Grid.Column="1" Margin="20" FontSize="20" TextAlignment="Center" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click_RemoveReferee" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Remove"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel"/>
     </Grid>
 </Page>

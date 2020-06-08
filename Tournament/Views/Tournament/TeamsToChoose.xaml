@@ -37,11 +37,11 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding IDTeam}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TeamName}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Players: "/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Count}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PlayerList.Count}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
