@@ -25,7 +25,7 @@
             <TextBlock Style="{StaticResource MainText}" Margin="416,0,0,0" Width="160" Text="Match History:"  HorizontalAlignment="Left" 
                   VerticalAlignment="Top"  />
         </Grid>
-        <ListBox Margin="30,35,414,30" x:Name="PlannedMatches"
+        <ListBox Margin="30,35,414,30" x:Name="PlannedMatches" MouseDoubleClick="PlannedMatches_MouseDoubleClick"
             HorizontalContentAlignment="Stretch"  Width="700"
             Background="#FF3E3E40" Foreground="#FFF1F1F1"
             BorderBrush="#FF252526">
@@ -44,17 +44,17 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Margin="414,35,30,30"  x:Name="MatchHistory"
+        <ListBox Margin="414,35,30,30"  x:Name="MatchHistory" MouseDoubleClick="MatchHistory_MouseDoubleClick"
             HorizontalContentAlignment="Stretch" 
             Background="#FF3E3E40" Foreground="#FFF1F1F1"
             BorderBrush="#FF252526">
@@ -73,11 +73,11 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

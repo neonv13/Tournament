@@ -25,5 +25,23 @@ namespace Tournament.Views.Tournament.TourWindow
             PlannedMatches.ItemsSource = Planned.List;
             MatchHistory.ItemsSource = History.List;
         }
+
+        private void PlannedMatches_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(PlannedMatches.SelectedItem is Match match)
+            {
+                MatchProgression matchProgression = new MatchProgression(match);
+                matchProgression.Show();
+            }
+        }
+
+        private void MatchHistory_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (MatchHistory.SelectedItem is Match match)
+            {
+                MatchProgression matchProgression = new MatchProgression(match);
+                matchProgression.Show();
+            }
+        }
     }
 }
