@@ -23,7 +23,7 @@
     <Grid Style="{StaticResource NormalView}">
         <TextBlock Width="170" Text="Tournaments List:"  HorizontalAlignment="Left" Style="{StaticResource MainText}"
                    VerticalAlignment="Top" Margin="60,30,0,0" />
-        <ListBox Margin="60,60,60,30" ItemsSource="{Binding Tournaments}" MouseDoubleClick="TourListBox_MouseDoubleClick"
+        <ListBox Margin="60,60,40,30" ItemsSource="{Binding Tournaments}" MouseDoubleClick="TourListBox_MouseDoubleClick"
                  HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto"
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" x:Name="TourListBox" Width="700"
                  BorderBrush="#FF252526">
@@ -35,18 +35,21 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Teams: "/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TeamCount}"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Played Matches: "/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding MatchesPlayed}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Teams: "/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding TeamList.Count}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Played Matches: "/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding MatchesPlayed}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
