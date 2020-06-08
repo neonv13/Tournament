@@ -16,133 +16,168 @@
     </Page.Resources>
 
     <Grid Style="{StaticResource NormalView}">
-        <Grid Margin="20,60,20,20">
+        <Grid Margin="20,30,20,20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="1" Text="ScoreBoard" VerticalAlignment="Top"  Style="{StaticResource MainText}"/>
-            <ListBox Grid.Column="1" Margin="10,30,10,0" ScrollViewer.VerticalScrollBarVisibility="Auto"
+            <ListBox Grid.Column="1" Margin="20,30,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto"
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" 
-                 BorderBrush="#FF252526" x:Name="ScoreBoard" HorizontalAlignment="Stretch">
+                 BorderBrush="#FF252526" x:Name="ScoreBoard" HorizontalAlignment="Stretch" SelectionChanged="ScoreBoard_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border>
-                            <Grid >
-
+                            <Grid>
+                                <TextBlock Text="Team:P"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Grid Grid.Column="0" Margin="0,0,0,380">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Tournament ID:" Width="150"/>
-                    <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TourID"  Width="50"/>
-                </Grid>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Matches Played:" Width="150"/>
-                    <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="NumberOfPlannedMatches" Width="50"/>
-                </Grid>
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Match Planned:" Width="150"/>
-                    <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="NumberOfPlayedMatches" Width="50"/>
-                </Grid>
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Final:" />
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsFinalA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                        <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamFinalA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                    </Grid >
-                    <Grid Grid.Column="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsFinalB" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                        <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamFinalB" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Grid.Column="0" Margin="0,30,0,0" BorderBrush="#FF252526" BorderThickness="1"  Background="#FF3E3E40">
+                <Grid Margin="0,15,0,15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="10" Grid.Row="0" BorderThickness="1" BorderBrush="#FF252526" >
+                        <Grid Margin="1">           
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Tournament ID:" Width="150"/>
+                            <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TourID"  Width="50"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10" Grid.Row="1" BorderThickness="1" BorderBrush="#FF252526" >
+                        <Grid Margin="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Tournament ID:" Width="150"/>
+                            <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="GameType"  Width="120"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10" Grid.Row="2" BorderThickness="1" BorderBrush="#FF252526" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Matches Played:" Width="150"/>
+                            <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="NumberOfPlannedMatches" Width="50"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10" Grid.Row="3" BorderThickness="1" BorderBrush="#FF252526" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Match Planned:" Width="150"/>
+                            <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="NumberOfPlayedMatches" Width="50"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10" Grid.Row="4" BorderThickness="1" BorderBrush="#FF252526" >
+                        <Grid Margin="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Winner" Width="150"/>
+                            <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="Winner"  Width="150"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10" Grid.Row="5" BorderThickness="1" BorderBrush="#FF252526" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Final:" />
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsFinalA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamFinalA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                            </Grid >
+                            <Grid Grid.Column="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsFinalB" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamFinalB" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
 
-                    </Grid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10" Grid.Row="6" BorderThickness="1" BorderBrush="#FF252526" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Semi:" />
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsSemiA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamSemiA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                            </Grid >
+                            <Grid Grid.Column="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsSemiB" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamSemiB" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10" Grid.Row="7" BorderThickness="1" BorderBrush="#FF252526" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Semi:" />
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsSemiC" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamSemiC" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                            </Grid >
+                            <Grid Grid.Column="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsSemiD" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamSemiD" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                            </Grid>
+                        </Grid>
+                    </Border>
                 </Grid>
-                <Grid Grid.Row="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Final:" />
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsSemiA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                        <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamSemiA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                    </Grid >
-                    <Grid Grid.Column="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsSemiB" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                        <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamSemiB" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                    </Grid>
-                </Grid>
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Final:" />
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsSemiC" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                        <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamSemiC" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                    </Grid >
-                    <Grid Grid.Column="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource MainText}" x:Name="PointsSemiD" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                        <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="TeamSemiD" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-
-                    </Grid>
-                </Grid>
-            </Grid>
+            </Border>
         </Grid>
     </Grid>
 </Page>

@@ -29,19 +29,25 @@ namespace Tournament.Views.Tournament.TourWindow
             NumberOfPlayedMatches.Text = Tournaments.MatchHistory.Count.ToString();
             TourID.Text = Tournaments.ID.ToString();
 
-            PointsFinalA.Text= Tournaments.FinalAResoult.ToString;
-            PointsFinalB.Text= Tournaments.FinalBResoult.ToString;
+            PointsFinalA.Text= Tournaments.FinalAResult.ToString();
+            PointsFinalB.Text= Tournaments.FinalBResult.ToString();
+
             TeamFinalA.Text= Tournaments.FinalA.Name;
             TeamFinalB.Text= Tournaments.FinalB.Name;
 
-            PointsSemiA.Text= Tournaments.SemiAResoult.ToString;
-            PointsSemiB.Text= Tournaments.SemiBResoult.ToString;
-            PointsSemiC.Text= Tournaments.SemiCResoult.ToString;
-            PointsSemiD.Text= Tournaments.SemiDResoult.ToString;
+            PointsSemiA.Text= Tournaments.SemiAResult.ToString();
+            PointsSemiB.Text= Tournaments.SemiBResult.ToString();
+            PointsSemiC.Text= Tournaments.SemiCResult.ToString();
+            PointsSemiD.Text= Tournaments.SemiDResult.ToString();
+
             TeamSemiA.Text= Tournaments.SemiA.Name;
             TeamSemiB.Text= Tournaments.SemiB.Name;
-            TeamSemiC.Text= Tournaments.Semic.Name;
+            TeamSemiC.Text= Tournaments.SemiC.Name;
             TeamSemiD.Text= Tournaments.SemiD.Name;
+
+            Winner.Text = Tournaments.Winner.Name.ToString();
+
+            GameType.Text = Tournaments.GameTypes.ToString();
                 
         }
         

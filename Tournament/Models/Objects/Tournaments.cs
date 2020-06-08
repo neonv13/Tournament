@@ -46,7 +46,7 @@ namespace Tournament.Models
             FinalB = new Team();
             Winner = new Team();
         }
-
+        /*
         public void CreateMatchesPlanned()
         {
             if (TeamList.Count >= 2)
@@ -188,8 +188,8 @@ namespace Tournament.Models
 
         }
         
+        
         */
-
-
     }
+}
 
