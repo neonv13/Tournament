@@ -25,6 +25,7 @@ namespace Tournament.Models
             RefereeList = new RefereeList();
             TeamA = new Team();
             TeamB = new Team();
+            ID = -1;
         }
 
 

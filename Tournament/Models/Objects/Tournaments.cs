@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.DirectoryServices;
 
 namespace Tournament.Models
 
 {
     public class Tournaments : BaseObject
     {
+        #region Properties
         public int MatchesPlayed { get; set; }
         public int NumberOfTeams { get; set; }
         public GameTypes GameTypes { get; set; }
@@ -16,21 +15,91 @@ namespace Tournament.Models
         public TeamList TeamList { get; set; }
         public MatchList Semi { get; set; }
         public Match Final { get; set; }
+        public Team SemiA { get; set; }
+        public Team SemiB { get; set; }
+        public Team SemiC { get; set; }
+        public Team SemiD { get; set; }
+        public Team FinalA { get; set; }
+        public Team FinalB { get; set; }
+        public int SemiAResult { get; set; }
+        public int SemiBResult { get; set; }
+        public int SemiCResult { get; set; }
+        public int SemiDResult { get; set; }
+        public int FinalAResult { get; set; }
+        public int FinalBResult { get; set; }
         public Team Winner { get; set; }
+        #endregion
 
-
-        public Tournaments() 
+        public Tournaments()
         {
             MatchesPlayed = 0;
             NumberOfTeams = 0;
             RefereeList = new RefereeList();
             MatchHistory = new MatchList();
             MatchPlanned = new MatchList();
-            TeamList= new TeamList();
-            Semi = new MatchList();
-            Final = new Match();
+            TeamList = new TeamList();
+            SemiA = new Team();
+            SemiB = new Team();
+            SemiC = new Team();
+            SemiD = new Team();
+            FinalA = new Team();
+            FinalB = new Team();
             Winner = new Team();
         }
+
+        public void CreateMatchesPlanned()
+        {
+            if (TeamList.Count >= 2)
+            {
+                int i = 0;
+                int j;
+                Match match;
+                foreach (var teamA in TeamList.List)
+                {
+                    j = 0;
+                    foreach (var teamB in TeamList.List)
+                    {
+                        if (j > i)
+                        {
+                            match = new Match() { TeamA = teamA, TeamB = teamB, RefereeList = RefereeList, 
+                                TeamA_ID = teamA.ID, 
+                                TeamB_ID = teamB.ID, GameTypes = GameTypes, 
+                                MatchRanks= MatchRanks.GroupStage};
+                            MatchPlanned.Add(match);
+                        }
+                        j++;
+                    }
+                    i++;
+                }
+            }
+        }
+
+        public void CreateSemi()
+        {
+            TeamList help = new TeamList();
+            foreach (var team in TeamList.List)
+            {
+                for (int i = 0; i < 4; ++i)
+                {
+                    if(team.PointEarned>=help.List[i].PointEarned)
+                    {
+                        if()
+                    }
+                }
+            }
+        }
+        public void SymulateGroupStage()
+        {
+            this.CreateMatchesPlanned();
+            foreach (var match in MatchPlanned.List)
+            {
+                match.SymulateGame();
+                MatchHistory.Add(match);
+                MatchPlanned.Remove(match.ID);
+                MatchesPlayed++;
+            }
+        }
+    }
         /*
         public void StartSimulateTournament()
         {
@@ -123,5 +192,4 @@ namespace Tournament.Models
 
 
     }
-}
 
