@@ -24,7 +24,7 @@
             <TextBlock Grid.Column="1" Text="ScoreBoard" VerticalAlignment="Top"  Style="{StaticResource MainText}"/>
             <ListBox Grid.Column="1" Margin="20,30,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto"
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" 
-                 BorderBrush="#FF252526" x:Name="ScoreBoard" HorizontalAlignment="Stretch" SelectionChanged="ScoreBoard_SelectionChanged">
+                 BorderBrush="#FF252526" x:Name="ScoreBoard" HorizontalAlignment="Stretch" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border>
@@ -63,7 +63,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Tournament ID:" Width="150"/>
+                            <TextBlock Grid.Column="0" Style="{StaticResource MainText}" HorizontalAlignment="Left" Margin="15,0,0,0" Text="Game Type:" Width="150"/>
                             <TextBlock Grid.Column="1" Style="{StaticResource MainText}" x:Name="GameType"  Width="120"/>
                         </Grid>
                     </Border>

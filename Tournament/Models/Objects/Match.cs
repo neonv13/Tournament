@@ -13,6 +13,8 @@ namespace Tournament.Models
         public RefereeList RefereeList { get; set; }
         public Team TeamA { get; set; }
         public Team TeamB { get; set; }
+        public PlayerList PlayersPlayingInTeamA { get; set; }
+        public PlayerList PlayersPlayingInTeamB { get; set; }
         public MatchRanks MatchRanks { get; set; }
         public GameTypes GameTypes { get; set; }
         public Past_Future Past_Future { get; set; }

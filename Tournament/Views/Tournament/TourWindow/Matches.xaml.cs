@@ -19,6 +19,8 @@ namespace Tournament.Views.Tournament.TourWindow
     /// </summary>
     public partial class Matches : Page
     {
+        public MatchList Planned { get; set; }
+        public MatchList History { get; set; }
         public Matches(MatchList Planned,MatchList History)
         {
             InitializeComponent();
@@ -30,7 +32,7 @@ namespace Tournament.Views.Tournament.TourWindow
         {
             if(PlannedMatches.SelectedItem is Match match)
             {
-                MatchProgression matchProgression = new MatchProgression(match);
+                MatchProgression matchProgression = new MatchProgression(match,Planned,History);
                 matchProgression.Show();
             }
         }
@@ -39,7 +41,7 @@ namespace Tournament.Views.Tournament.TourWindow
         {
             if (MatchHistory.SelectedItem is Match match)
             {
-                MatchProgression matchProgression = new MatchProgression(match);
+                MatchProgression matchProgression = new MatchProgression(match,Planned,History);
                 matchProgression.Show();
             }
         }

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Tournament.Views.Tournament.TourWindow"
         mc:Ignorable="d"
         Title="MatchProgression" Height="450" Width="800">
+    
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -13,10 +14,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    
     <Grid Style="{StaticResource NormalView}">
         <StackPanel Style="{StaticResource Header}" Orientation="Horizontal">
             <TextBlock Style="{StaticResource MainText}" Width=" 100" x:Name="MatchRank"/>
-            <TextBlock Style="{StaticResource MainText}" Width=" 100"/>
+            <TextBlock Style="{StaticResource MainText}" Width="84"/>
             <TextBlock Style="{StaticResource MainText}" Width=" 100" x:Name="TeamA"/>
             <TextBlock Style="{StaticResource MainText}" Width=" 100" x:Name="ResultA"/>
             <TextBlock Style="{StaticResource MainText}" Width=" 30" TextAlignment="Center" Text=":"/>
@@ -24,13 +26,94 @@
             <TextBlock Style="{StaticResource MainText}" Width=" 100" x:Name="TeamB"/>
         </StackPanel>
         <Grid Margin="0,30,0,0">
-            
-
-
-
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Style="{StaticResource MainText}" Text="Choose Players"/>
+                    <ListBox Grid.Row="1" x:Name="TeamAPlayers" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 Background="#FF3E3E40" Foreground="#FFF1F1F1" 
+                 BorderBrush="#FF252526" Margin="10" HorizontalAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname}"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+                        <TextBlock Style="{StaticResource MainText}" Text="Scored Points" Width="130"/>
+                        <TextBox Width="50" Margin="10" x:Name="ScoredTeamA"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Style="{StaticResource MainText}" Text="Choose Players"/>
+                    <ListBox Grid.Row="1" x:Name="TeamBPlayers" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 Background="#FF3E3E40" Foreground="#FFF1F1F1" HorizontalAlignment="Stretch"
+                 BorderBrush="#FF252526" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname}"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2">
+                        <TextBox Width="50" Margin="10" x:Name="ScoredTeamB"/>
+                        <TextBlock Style="{StaticResource MainText}" Text="Scored Points" Width="130"/>
+                        <Button Style="{StaticResource WindowButton}" Margin="10" Content="Save" Click="Button_Click_Save"/>
+                        <Button Style="{StaticResource WindowButton}" Margin="10" Content="Cancel" Click="Button_Click_Cancel"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </Grid>
-        
-        
-        
     </Grid>
 </Window>
