@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Tournament.Models
+﻿namespace Tournament.Models
 {
     public enum MatchRanks
     {
-        GroupStage, Semifinal, Final
+        Off = 0, GroupStage = 1, Semifinal = 2, Final = 3
     }
 }
