@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Tournament.Models.Enums;
 using Tournament.Views;
 
 namespace Tournament.Models
@@ -18,8 +19,7 @@ namespace Tournament.Models
         public GameTypes GameTypes { get; set; }
         public int TeamAScore { get; set; }
         public int TeamBScore { get; set; }
-        public int TeamA_ID { get; set; }
-        public int TeamB_ID { get; set; }
+        public Past_Future Past_Future { get; set; }
         #endregion
 
         public Match() 
@@ -27,10 +27,14 @@ namespace Tournament.Models
             RefereeList = new RefereeList();
             TeamA = new Team();
             TeamB = new Team();
+            PlayersPlayingInTeamA = new PlayerList();
+            PlayersPlayingInTeamB = new PlayerList();
+            MatchRanks = MatchRanks.Off;
+            GameTypes = GameTypes.Off;
             ID = -1;
+            TeamAScore = 0;
+            TeamBScore = 0;
         }
-
-
 
         #region Methods
        
@@ -69,7 +73,7 @@ namespace Tournament.Models
                         break;
                     }
             }
-
+            Past_Future = Past_Future.Past;
         }
         #endregion
 

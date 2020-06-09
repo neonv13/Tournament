@@ -46,9 +46,9 @@
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Game: "/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PointEarned}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding GameTypes}"/>
                             <TextBlock Grid.Row="3" Grid.Column="0" Text="Points: "/>
-                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding GameTypes}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding PointEarned}"/>
                             <TextBlock Grid.Row="4" Grid.Column="0" Text="Players: "/>
                             <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding PlayersList.Count}"/>
                         </Grid>

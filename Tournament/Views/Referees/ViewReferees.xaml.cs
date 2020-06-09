@@ -23,20 +23,25 @@ namespace Tournament.Views.Referees
     {
         public RefereesViewModel RefereesViewModel { get; set; }
         public RefereeList RefereeList { get; set; }
-        public ViewReferees(RefereesViewModel refereesViewModel, RefereeList refereeList)
+        public ViewReferees(RefereesViewModel refereesViewModel)
         {
             RefereesViewModel = refereesViewModel;
+            RefereeList = RefereesViewModel.Referees;
             InitializeComponent();
-            if (refereeList == null)
-                RefereeListBox.ItemsSource = RefereesViewModel.Referees.List;
-            else
-                RefereeListBox.ItemsSource = RefereeList.List;
+            RefereeListBox.ItemsSource = RefereeList.List;
             
         }
+        public ViewReferees( RefereeList refereeList) 
+        {
+            RefereeList = refereeList;
+            InitializeComponent();
+            RefereeListBox.ItemsSource = RefereeList.List;
+        }
+
         public void Refresh()
         {
             RefereeListBox.ItemsSource = null;
-            RefereeListBox.ItemsSource = RefereesViewModel.Referees.List;
+            RefereeListBox.ItemsSource = RefereeList.List;
         }
     }
 }

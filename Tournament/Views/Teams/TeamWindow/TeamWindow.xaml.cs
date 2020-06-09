@@ -24,6 +24,7 @@ namespace Tournament.Views.Teams
         public Team Team { get; set; }
         public TeamViewModel TeamViewModel { get; set; }
         public PlayersViewModel PlayersViewModel { get; set; }
+        public TeamList TeamList { get; set; }
        
         public TeamWindow(Team team, TeamViewModel teamViewModel, PlayersViewModel playersViewModel)
         {
@@ -31,6 +32,12 @@ namespace Tournament.Views.Teams
             PlayersViewModel = playersViewModel;
             TeamViewModel = teamViewModel;
             InitializeComponent();
+            XMLData();
+        }
+        public TeamWindow(Team team)
+        {
+            InitializeComponent();
+            Team = team;
             XMLData();
         }
         private void XMLData() 

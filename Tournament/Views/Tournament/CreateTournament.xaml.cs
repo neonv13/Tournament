@@ -105,7 +105,10 @@ namespace Tournament.Views.Tournament
 
             if (IsTypeValid && AreTeamsValid && AreRefereesValid)
             {
-                TournamentViewModel.Tournaments.Add(new Tournaments() { TeamList = teamList, RefereeList = refereeList, GameTypes = type, Name= name, ID=-1 });
+                Tournaments tournament = new Tournaments() { TeamList = teamList, RefereeList = refereeList, GameTypes = type, Name = name, ID = -1 };
+                tournament.CreateMatchesPlanned();
+                TournamentViewModel.Tournaments.Add(tournament);
+
                 ErrorWindow errorWindow = new ErrorWindow() { Width = 350 };
                 errorWindow.ErrorContent.Text = "Succesfully added Tourament";
                 errorWindow.Show();

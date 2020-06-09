@@ -25,14 +25,21 @@ namespace Tournament.Views.Teams
     {
         public PlayersViewModel PlayersViewModel { get; set; }
         public TeamViewModel TeamViewModel { get; set; }
+        public TeamList TeamList { get; set; }
         public ViewTeams(TeamViewModel teamViewModel, PlayersViewModel playersViewModel)
         {
             TeamViewModel = teamViewModel;
             PlayersViewModel = playersViewModel;
             InitializeComponent();
-            MyListBox.ItemsSource = TeamViewModel.Teams.List;
+            TeamList = TeamViewModel.Teams;
+            MyListBox.ItemsSource = TeamList.List;
         }
-
+        public ViewTeams(TeamList teamList)
+        {
+            TeamList = teamList;
+            InitializeComponent();
+            MyListBox.ItemsSource = TeamList.List;
+        }
         public void Refresh()
         {
             MyListBox.ItemsSource = null;
@@ -41,11 +48,23 @@ namespace Tournament.Views.Teams
 
         private void MyListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (MyListBox.SelectedItem is Team team)
+            if (TeamViewModel == null)
             {
+                if (MyListBox.SelectedItem is Team team)
+                {
 
-                TeamWindow teamWindow = new TeamWindow(team, TeamViewModel, PlayersViewModel);
-                teamWindow.Show();
+                    TeamWindow teamWindow = new TeamWindow(team);
+                    teamWindow.Show();
+                }
+            }
+            else
+            {
+                if (MyListBox.SelectedItem is Team team)
+                {
+
+                    TeamWindow teamWindow = new TeamWindow(team, TeamViewModel, PlayersViewModel);
+                    teamWindow.Show();
+                }
             }
         }
     }

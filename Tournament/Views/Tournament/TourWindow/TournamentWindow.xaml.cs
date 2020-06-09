@@ -40,12 +40,12 @@ namespace Tournament.Views.Tournament.TourWindow
 
         private void Button_Click_Teams(object sender, RoutedEventArgs e)
         {
-            Main.Content = new ViewTeams(TeamViewModel,PlayersViewModel);
+            Main.Content = new ViewTeams(Tournaments.TeamList);
         }
 
         private void Button_Click_Referees(object sender, RoutedEventArgs e)
         {
-            Main.Content = new ViewReferees(null,Tournaments.RefereeList);
+            Main.Content = new ViewReferees(Tournaments.RefereeList);
         }
 
         private void Button_Click_Matches(object sender, RoutedEventArgs e)
@@ -54,6 +54,7 @@ namespace Tournament.Views.Tournament.TourWindow
         }
         public void Button_Click_TourInfo(object sender, RoutedEventArgs e)
         {
+            TourInfo.Refresh();
             Main.Content = TourInfo;
         }
 

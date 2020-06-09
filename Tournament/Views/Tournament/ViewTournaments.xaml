@@ -36,6 +36,7 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -46,10 +47,12 @@
                             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Teams: "/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding TeamList.Count}"/>
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Played Matches: "/>
-                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding MatchesPlayed}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Game Type: "/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding GameTypes}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Teams: "/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TeamList.Count}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Played Matches: "/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding MatchesPlayed}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

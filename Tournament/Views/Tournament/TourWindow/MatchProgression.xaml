@@ -17,7 +17,7 @@
     
     <Grid Style="{StaticResource NormalView}">
         <StackPanel Style="{StaticResource Header}" Orientation="Horizontal">
-            <TextBlock Style="{StaticResource MainText}" Width=" 100" x:Name="MatchRank"/>
+            <TextBlock Style="{StaticResource MainText}" Width=" 150" x:Name="MatchRank"/>
             <TextBlock Style="{StaticResource MainText}" Width="84"/>
             <TextBlock Style="{StaticResource MainText}" Width=" 100" x:Name="TeamA"/>
             <TextBlock Style="{StaticResource MainText}" Width=" 100" x:Name="ResultA"/>
@@ -40,7 +40,7 @@
                     <TextBlock Grid.Row="0" Style="{StaticResource MainText}" Text="Choose Players"/>
                     <ListBox Grid.Row="1" x:Name="TeamAPlayers" ScrollViewer.VerticalScrollBarVisibility="Auto"
                  Background="#FF3E3E40" Foreground="#FFF1F1F1" 
-                 BorderBrush="#FF252526" Margin="10" HorizontalAlignment="Stretch">
+                 BorderBrush="#FF252526" Margin="10" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
