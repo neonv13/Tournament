@@ -34,27 +34,19 @@
                 <DataTemplate>
                     <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding TeamA.Name}"/>
-                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding TeamB.Name}"/>
+                                    <TextBlock Text="{Binding TeamA.Name}"/>
+                                    <TextBlock Text="  :  "/>
+                                    <TextBlock Text="{Binding TeamB.Name}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
+                                    <TextBlock Text="ID: "/>
+                                    <TextBlock Text="{Binding ID}"/>
                                 </StackPanel>
-                                <StackPanel>
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Game Rank: "/>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding GameRanks}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Game Rank: "/>
+                                    <TextBlock Text="{Binding MatchRanks}"/>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
@@ -62,30 +54,29 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Margin="414,35,30,30"  x:Name="MatchHistory" MouseDoubleClick="MatchHistory_MouseDoubleClick"
-            HorizontalContentAlignment="Stretch" 
-            Background="#FF3E3E40" Foreground="#FFF1F1F1"
-            BorderBrush="#FF252526">
-
+        <ListBox Margin="414,35,30,30"  x:Name="MatchHistory"  HorizontalContentAlignment="Stretch" 
+            Background="#FF3E3E40" Foreground="#FFF1F1F1" BorderBrush="#FF252526">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ID}"/>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Surname"/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Surname}"/>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding TeamA.Name}"/>
+                                    <TextBlock Text="{Binding TeamAScore}"/>
+                                    <TextBlock Text="  :  "/>
+                                    <TextBlock Text="{Binding TeamBScore}" />
+                                    <TextBlock Text="{Binding TeamB.Name}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="ID: "/>
+                                    <TextBlock Text="{Binding ID}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Game Rank: "/>
+                                    <TextBlock Text="{Binding MatchRanks}"/>
+                                </StackPanel>
+                            </StackPanel>
                         </Grid>
                     </Border>
                 </DataTemplate>

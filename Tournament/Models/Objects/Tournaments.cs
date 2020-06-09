@@ -7,15 +7,11 @@ namespace Tournament.Models
     public class Tournaments : BaseObject
     {
         #region Properties
-        public int MatchesPlayed { get; set; }
-        public int NumberOfTeams { get; set; }
         public GameTypes GameTypes { get; set; }
         public RefereeList RefereeList { get; set; }
         public MatchList MatchHistory { get; set; }
         public MatchList MatchPlanned { get; set; }
         public TeamList TeamList { get; set; }
-        public MatchList Semi { get; set; }
-        public Match Final { get; set; }
         public Team SemiA { get; set; }
         public Team SemiB { get; set; }
         public Team SemiC { get; set; }
@@ -34,8 +30,6 @@ namespace Tournament.Models
 
         public Tournaments()
         {
-            MatchesPlayed = 0;
-            NumberOfTeams = 0;
             RefereeList = new RefereeList();
             MatchHistory = new MatchList();
             MatchPlanned = new MatchList();
@@ -131,7 +125,7 @@ namespace Tournament.Models
             {
                 match.SymulateGame();
                 MatchHistory.Add(match);
-                MatchesPlayed++;
+                MatchHistory.Count++;
                 MatchPlanned.Count--;
             }
             MatchPlanned.List = new List<Match>();

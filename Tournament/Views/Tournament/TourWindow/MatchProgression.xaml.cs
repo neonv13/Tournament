@@ -23,11 +23,11 @@ namespace Tournament.Views.Tournament.TourWindow
             TeamA.Text = Match.TeamA.Name.ToString();
             TeamB.Text = Match.TeamB.Name.ToString();
             TeamAPlayers.ItemsSource = match.TeamA.PlayersList.List;
-            TeamBPlayers.ItemsSource = match.TeamA.PlayersList.List;
+            TeamBPlayers.ItemsSource = match.TeamB.PlayersList.List;
         }
         public void Error(string text)
         {
-            ErrorWindow errorWindow = new ErrorWindow();
+            ErrorWindow errorWindow = new ErrorWindow() { Width = 400 };
             errorWindow.ErrorContent.Text = text;
             errorWindow.Show();
         }

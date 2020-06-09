@@ -21,8 +21,10 @@ namespace Tournament.Views.Tournament.TourWindow
     {
         public MatchList Planned { get; set; }
         public MatchList History { get; set; }
-        public Matches(MatchList Planned,MatchList History)
+        public Matches(MatchList planned,MatchList history)
         {
+            Planned = planned;
+            History = history;
             InitializeComponent();
             PlannedMatches.ItemsSource = Planned.List;
             MatchHistory.ItemsSource = History.List;
@@ -31,15 +33,6 @@ namespace Tournament.Views.Tournament.TourWindow
         private void PlannedMatches_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if(PlannedMatches.SelectedItem is Match match)
-            {
-                MatchProgression matchProgression = new MatchProgression(match,Planned,History);
-                matchProgression.Show();
-            }
-        }
-
-        private void MatchHistory_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (MatchHistory.SelectedItem is Match match)
             {
                 MatchProgression matchProgression = new MatchProgression(match,Planned,History);
                 matchProgression.Show();
