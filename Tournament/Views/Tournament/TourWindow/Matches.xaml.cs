@@ -28,11 +28,12 @@ namespace Tournament.Views.Tournament.TourWindow
             InitializeComponent();
             PlannedMatches.ItemsSource = Planned.List;
             MatchHistory.ItemsSource = History.List;
+            
         }
 
         private void PlannedMatches_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(PlannedMatches.SelectedItem is Match match)
+            if(PlannedMatches.SelectedItem is Match match && match.MatchRanks != MatchRanks.GroupStage)
             {
                 MatchProgression matchProgression = new MatchProgression(match,Planned,History);
                 matchProgression.Show();

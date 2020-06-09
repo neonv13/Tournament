@@ -15,6 +15,14 @@ namespace Tournament.Views.Tournament.TourWindow
             Tournaments = tournaments;
             InitializeComponent();
             Refresh();
+            if (Tournaments.WasGroupStageCreated)
+                Create.IsEnabled = false;
+            if (Tournaments.WasGroupStageSymulated || !Tournaments.WasGroupStageCreated)
+                Symulate.IsEnabled = false;
+            if (!Tournaments.WasGroupStageSymulated || !Tournaments.WasGroupStageCreated || Tournaments.WasSemiCreated || Tournaments.WasFinalCreated)
+                CreateSemi.IsEnabled = false;
+            if (!Tournaments.WasGroupStageSymulated || !Tournaments.WasGroupStageCreated || !Tournaments.WasSemiCreated)
+                CreateFinal.IsEnabled = false;
         }
         public void Refresh()
         {
@@ -26,48 +34,6 @@ namespace Tournament.Views.Tournament.TourWindow
             NumberOfPlannedMatches.Text = Tournaments.MatchPlanned.Count.ToString();
             NumberOfPlayedMatches.Text = Tournaments.MatchHistory.Count.ToString();
 
-            PointsFinalA.Text = null;
-            PointsFinalB.Text = null;
-            if (Tournaments.FinalA != null)
-            {
-                PointsFinalA.Text = Tournaments.FinalAResult.ToString();
-                PointsFinalB.Text = Tournaments.FinalBResult.ToString();
-            }
-
-            TeamFinalA.Text = null;
-            TeamFinalB.Text = null;
-            if (Tournaments.FinalA != null)
-            {
-                TeamFinalA.Text = Tournaments.FinalA.Name;
-                TeamFinalB.Text = Tournaments.FinalB.Name;
-            }
-            PointsSemiA.Text = null;
-            PointsSemiB.Text = null;
-            PointsSemiC.Text = null;
-            PointsSemiD.Text = null;
-
-            TeamSemiA.Text = null;
-            TeamSemiB.Text = null;
-            TeamSemiC.Text = null;
-            TeamSemiD.Text = null;
-            if (Tournaments.SemiA != null)
-            {
-                PointsSemiA.Text = Tournaments.SemiAResult.ToString();
-                PointsSemiB.Text = Tournaments.SemiBResult.ToString();
-                PointsSemiC.Text = Tournaments.SemiCResult.ToString();
-                PointsSemiD.Text = Tournaments.SemiDResult.ToString();
-
-                TeamSemiA.Text = Tournaments.SemiA.Name;
-                TeamSemiB.Text = Tournaments.SemiB.Name;
-                TeamSemiC.Text = Tournaments.SemiC.Name;
-                TeamSemiD.Text = Tournaments.SemiD.Name;
-            }
-            
-
-            Winner.Text = null;
-            if(Tournaments.Winner !=null)
-                Winner.Text = Tournaments.Winner.Name.ToString();
-
             GameType.Text = null;
             GameType.Text = Tournaments.GameTypes.ToString() ;
 
@@ -76,15 +42,71 @@ namespace Tournament.Views.Tournament.TourWindow
             ScoreBoard.ItemsSource = Tournaments.RankingTeam;
 
         }
-
+        public void Error(string text)
+        {
+            ErrorWindow errorWindow = new ErrorWindow() { Width = 500 };
+            errorWindow.ErrorContent.Text = text;
+            errorWindow.Show();
+        }
         private void Button_Click_SymulateGroupStage(object sender, System.Windows.RoutedEventArgs e)
         {
-            Tournaments.SymulateGroupStage();
-            Refresh();
-            ErrorWindow errorWindow = new ErrorWindow();
-            errorWindow.ErrorContent.Text = "GroupStage was symulated";
-            errorWindow.Show();
-
+            if (!Tournaments.WasGroupStageSymulated && Tournaments.WasGroupStageCreated)
+            {
+                Tournaments.SymulateGroupStage();
+                Symulate.IsEnabled = false;
+                Create.IsEnabled = false;
+                Tournaments.WasGroupStageSymulated = true;
+                Tournaments.WasGroupStageCreated = true;
+                if (Tournaments.TeamList.Count >= 4)
+                    CreateSemi.IsEnabled = true;
+                else if(Tournaments.TeamList.Count >=2 && Tournaments.TeamList.Count < 4)
+                {
+                    CreateFinal.IsEnabled = true;
+                }
+                Refresh();
+                Error("GroupStage was succesfully symulated!");
+            }
+        }
+        private void Button_Click_CreateGroupStage(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (!Tournaments.WasGroupStageCreated)
+            {
+                Tournaments.CreateGroupStage();
+                Create.IsEnabled = false;
+                Symulate.IsEnabled = true;
+                Tournaments.WasGroupStageCreated = true;
+                Refresh();
+                Error("GroupStage was succesfully created!");
+            }
+        }
+        private void Button_Click_CreateSemi(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (!Tournaments.WasSemiCreated)
+            {
+                Tournaments.CreateSemi();
+                CreateSemi.IsEnabled = false;
+                CreateFinal.IsEnabled = true;
+                Tournaments.WasSemiCreated = true;
+                Tournaments.WasGroupStageSymulated = true;
+                Tournaments.WasGroupStageCreated = true;
+                Refresh();
+                Error("Semifinal was succesfully created!");
+            }
+        }
+        private void Button_Click_CreateFinal(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (!Tournaments.WasFinalCreated)
+            {
+                Tournaments.CreateFinal();
+                CreateFinal.IsEnabled = false;
+                CreateSemi.IsEnabled = false;
+                Tournaments.WasSemiCreated = true;
+                Tournaments.WasGroupStageSymulated = true;
+                Tournaments.WasGroupStageCreated = true;
+                Tournaments.WasFinalCreated = true;
+                Refresh();
+                Error("Final was succesfully created!");
+            }
         }
     }
 }

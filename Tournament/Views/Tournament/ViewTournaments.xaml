@@ -52,7 +52,7 @@
                             <TextBlock Grid.Row="3" Grid.Column="0" Text="Teams: "/>
                             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TeamList.Count}"/>
                             <TextBlock Grid.Row="4" Grid.Column="0" Text="Played Matches: "/>
-                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding MatchesPlayed}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding MatchHistory.Count}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

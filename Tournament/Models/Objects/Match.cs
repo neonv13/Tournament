@@ -39,10 +39,7 @@ namespace Tournament.Models
         #region Methods
        
 
-        /// <summary>
-        /// Simulates results of match and 
-        /// returns results(teamAscore,teamBscore) 
-        /// </summary>
+        
         public void SymulateGame()
         {
             Random random = new Random();
@@ -53,7 +50,6 @@ namespace Tournament.Models
                         TeamAScore = 3;
                         TeamBScore = 0;
                         TeamA.PointEarned += TeamAScore;
-                        TeamB.PointEarned += TeamBScore;
                         break;
                     }
                 case (2):
@@ -68,7 +64,6 @@ namespace Tournament.Models
                     {
                         TeamAScore = 0;
                         TeamBScore = 3;
-                        TeamA.PointEarned += TeamAScore;
                         TeamB.PointEarned += TeamBScore;
                         break;
                     }

@@ -106,7 +106,6 @@ namespace Tournament.Views.Tournament
             if (IsTypeValid && AreTeamsValid && AreRefereesValid)
             {
                 Tournaments tournament = new Tournaments() { TeamList = teamList, RefereeList = refereeList, GameTypes = type, Name = name, ID = -1 };
-                tournament.CreateMatchesPlanned();
                 TournamentViewModel.Tournaments.Add(tournament);
 
                 ErrorWindow errorWindow = new ErrorWindow() { Width = 350 };
@@ -116,6 +115,8 @@ namespace Tournament.Views.Tournament
                 NavigationService.Navigate(ViewTournaments);
             }
         }
+
+        
     }
 }
 

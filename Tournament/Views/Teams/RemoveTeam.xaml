@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Tournament.Views.Teams"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="912"
+      d:DesignHeight="670" d:DesignWidth="912"
       Title="RemoveTeam">
 
     <Page.Resources>
@@ -48,7 +48,7 @@
                 </Border>
             </Grid>
         </Border>
-        <Button Style="{StaticResource WindowButton}" Click="Button_Click_RemoveTeam" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Remove"/>
-        <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click_RemoveTeam" HorizontalAlignment="Center" Margin="-200,0,0,20" Content="Remove"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,20" Content="Cancel"/>
     </Grid>
 </Page>

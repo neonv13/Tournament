@@ -39,8 +39,8 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Style="{StaticResource MainText}" Text="Choose Players"/>
                     <ListBox Grid.Row="1" x:Name="TeamAPlayers" ScrollViewer.VerticalScrollBarVisibility="Auto"
-                 Background="#FF3E3E40" Foreground="#FFF1F1F1" SelectionMode="Multiple"
-                 BorderBrush="#FF252526" Margin="10" HorizontalContentAlignment="Stretch">
+                             Background="#FF3E3E40" Foreground="#FFF1F1F1" SelectionMode="Multiple"
+                              BorderBrush="#FF252526" Margin="10" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">

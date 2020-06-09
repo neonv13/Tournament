@@ -124,6 +124,21 @@ namespace Tournament.Views.Tournament.TourWindow
 
                 Planned.Remove(Match.ID);
                 Match.Past_Future = Past_Future.Past;
+                Match.TeamAScore = TeamAScore;
+                Match.TeamBScore = TeamBScore;
+                if (TeamAScore == TeamBScore)
+                {
+                    Match.TeamA.PointEarned += 1;
+                    Match.TeamB.PointEarned += 1;
+                }
+                else if (TeamAScore>TeamBScore)
+                {
+                    Match.TeamA.PointEarned += 3;
+                }
+                else
+                {
+                    Match.TeamB.PointEarned += 3;
+                }
                 History.Add(Match);
                 Error("Succesfully saved match details");
                 Close();

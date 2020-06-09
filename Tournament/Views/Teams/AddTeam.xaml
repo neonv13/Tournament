@@ -53,8 +53,8 @@
 
 
             </Border>
-            <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Save"/>
-            <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel"/>
+            <Button Style="{StaticResource WindowButton}" Click="Button_Click" HorizontalAlignment="Center" Margin="-200,0,0,20" Content="Save"/>
+            <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,20" Content="Cancel"/>
         </Grid>
     </Grid>
 </Page>

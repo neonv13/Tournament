@@ -7,6 +7,10 @@ namespace Tournament.Models
     public class Tournaments : BaseObject
     {
         #region Properties
+        public bool WasFinalCreated { get; set; }
+        public bool WasSemiCreated { get; set; }
+        public bool WasGroupStageSymulated { get; set; }
+        public bool WasGroupStageCreated { get; set; }
         public GameTypes GameTypes { get; set; }
         public RefereeList RefereeList { get; set; }
         public MatchList MatchHistory { get; set; }
@@ -48,9 +52,13 @@ namespace Tournament.Models
             SemiDResult = 0;
             FinalAResult = 0;
             FinalBResult = 0;
+            WasGroupStageSymulated = false;
+            WasGroupStageCreated = false;
+            WasSemiCreated = false;
+            WasFinalCreated = false;
         }
 
-        public void CreateMatchesPlanned()
+        public void CreateGroupStage()
         {
             if (TeamList.Count >= 2)
             {
@@ -79,40 +87,55 @@ namespace Tournament.Models
                     }
                     i++;
                 }
+                WasGroupStageCreated = true;
             }
         }
 
-        public bool CreateSemi()
+        public void CreateSemi()
         {
             SortTeamsPoints();
             if (RankingTeam.Count >= 4)
             {
-                SemiA = RankingTeam[0];
-                SemiB = RankingTeam[1];
-                SemiC = RankingTeam[2];
-                SemiD = RankingTeam[3];
-                return true;
-            }
-            else
-            {
-                SemiA = null;
-                SemiB = null;
-                SemiC = null;
-                SemiD = null;
-                return false;
+                Match match = new Match()
+                {
+                    TeamA = RankingTeam[0],
+                    TeamB = RankingTeam[1],
+                    RefereeList = RefereeList,
+                    GameTypes = GameTypes,
+                    MatchRanks = MatchRanks.Semifinal
+                };
+                MatchPlanned.Add(match);
+
+                match = new Match()
+                {
+                    TeamA = RankingTeam[2],
+                    TeamB = RankingTeam[3],
+                    RefereeList = RefereeList,
+                    GameTypes = GameTypes,
+                    MatchRanks = MatchRanks.Semifinal
+                };
+                MatchPlanned.Add(match);
+                WasSemiCreated = true;
             }
         }
-        public bool CreateFinal()
+        public void CreateFinal()
         {
             SortTeamsPoints();
             if (RankingTeam.Count >= 2)
             {
                 FinalA = RankingTeam[0];
                 FinalB = RankingTeam[1];
-
-                return true;
+                Match match = new Match()
+                {
+                    TeamA = FinalA,
+                    TeamB = FinalB,
+                    RefereeList = RefereeList,
+                    GameTypes = GameTypes,
+                    MatchRanks = MatchRanks.Final
+                };
+                MatchPlanned.Add(match);
+                WasFinalCreated = true;
             }
-            return false;
         }
         public void SortTeamsPoints()
         {
@@ -120,7 +143,6 @@ namespace Tournament.Models
         }
         public void SymulateGroupStage()
         {
-            CreateMatchesPlanned();
             foreach (var match in MatchPlanned.List)
             {
                 match.SymulateGame();
@@ -128,7 +150,23 @@ namespace Tournament.Models
                 MatchHistory.Count++;
                 MatchPlanned.Count--;
             }
+
             MatchPlanned.List = new List<Match>();
+            WasGroupStageSymulated = true;
+            SortTeamsPoints();
+            if (TeamList.Count >= 4)
+            {
+                SemiA = RankingTeam[0];
+                SemiB = RankingTeam[1];
+                SemiC = RankingTeam[2];
+                SemiD = RankingTeam[3];
+            }
+
+            else if (TeamList.Count >= 2)
+            {
+                FinalA = RankingTeam[0];
+                FinalB = RankingTeam[1];
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tournament.Views.Tournament"
         mc:Ignorable="d"
-        Title="DeleteTournament" Height="650" Width="912">
+        Title="DeleteTournament" Height="630" Width="912">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -46,7 +46,7 @@
             </Border>
         </Grid>
 
-        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Remove" Click="Button_Click_Remove"/>
-        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel" Click="Button_Click_Close"/>
+        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="-200,0,0,20" Content="Remove" Click="Button_Click_Remove"/>
+        <Button Style="{StaticResource WindowButton}" HorizontalAlignment="Center" Margin="200,0,0,20" Content="Cancel" Click="Button_Click_Close"/>
     </Grid>
 </Page>

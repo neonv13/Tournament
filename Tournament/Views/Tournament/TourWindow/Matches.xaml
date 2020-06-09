@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Tournament.Views.Tournament.TourWindow"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="912"
       Title="Matches">
 
     <Page.Resources>
@@ -19,68 +19,83 @@
 
 
     <Grid Style="{StaticResource NormalView}">
-        <Grid Height="30" VerticalAlignment="Top" Background="#FF2D2D30" >
-            <TextBlock Style="{StaticResource MainText}" Width="160" Text="Planned Matches:"  HorizontalAlignment="Left" 
-                  VerticalAlignment="Top" Margin="30,0,0,0" />
-            <TextBlock Style="{StaticResource MainText}" Margin="416,0,0,0" Width="160" Text="Match History:"  HorizontalAlignment="Left" 
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Style="{StaticResource MainText}" Width="160" Text="Match Planned:"  
                   VerticalAlignment="Top"  />
+                <ListBox Grid.Row="1" x:Name="PlannedMatches" HorizontalContentAlignment="Stretch" Margin="10"
+                Background="#FF3E3E40" Foreground="#FFF1F1F1" BorderBrush="#FF252526" MouseDoubleClick="PlannedMatches_MouseDoubleClick">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
+                                <Grid>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding TeamA.Name}"/>
+                                            <TextBlock Text="  :  "/>
+                                            <TextBlock Text="{Binding TeamB.Name}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="ID: "/>
+                                            <TextBlock Text="{Binding ID}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Game Rank: "/>
+                                            <TextBlock Text="{Binding MatchRanks}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Style="{StaticResource MainText}" Width="160" Text="Match History:"  
+                  VerticalAlignment="Top"  />
+                <ListBox Grid.Row="1" x:Name="MatchHistory"  HorizontalContentAlignment="Stretch" Margin="10"
+                         Background="#FF3E3E40" Foreground="#FFF1F1F1" BorderBrush="#FF252526">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
+                                <Grid>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding TeamA.Name}"/>
+                                            <TextBlock Text="  "/>
+                                            <TextBlock Text="{Binding TeamAScore}"/>
+                                            <TextBlock Text="  :  "/>
+                                            <TextBlock Text="{Binding TeamBScore}" />
+                                            <TextBlock Text="  "/>
+                                            <TextBlock Text="{Binding TeamB.Name}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="ID: "/>
+                                            <TextBlock Text="{Binding ID}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Game Rank: "/>
+                                            <TextBlock Text="{Binding MatchRanks}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
         </Grid>
-        <ListBox Margin="30,35,414,30" x:Name="PlannedMatches" MouseDoubleClick="PlannedMatches_MouseDoubleClick"
-            HorizontalContentAlignment="Stretch"  Width="700"
-            Background="#FF3E3E40" Foreground="#FFF1F1F1"
-            BorderBrush="#FF252526">
-
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
-                        <Grid>
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding TeamA.Name}"/>
-                                    <TextBlock Text="  :  "/>
-                                    <TextBlock Text="{Binding TeamB.Name}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="ID: "/>
-                                    <TextBlock Text="{Binding ID}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Game Rank: "/>
-                                    <TextBlock Text="{Binding MatchRanks}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <ListBox Margin="414,35,30,30"  x:Name="MatchHistory"  HorizontalContentAlignment="Stretch" 
-            Background="#FF3E3E40" Foreground="#FFF1F1F1" BorderBrush="#FF252526">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="#FF252526" BorderThickness="1" Padding="5">
-                        <Grid>
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding TeamA.Name}"/>
-                                    <TextBlock Text="{Binding TeamAScore}"/>
-                                    <TextBlock Text="  :  "/>
-                                    <TextBlock Text="{Binding TeamBScore}" />
-                                    <TextBlock Text="{Binding TeamB.Name}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="ID: "/>
-                                    <TextBlock Text="{Binding ID}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Game Rank: "/>
-                                    <TextBlock Text="{Binding MatchRanks}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
     </Grid>
 </Page>

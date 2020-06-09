@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Tournament.Views"
         xmlns:ViewModels="clr-namespace:Tournament.ViewModels" x:Class="Tournament.Views.AddPlayer"
         mc:Ignorable="d"
-        Title="AddPlayer" Height="650" Width="912">
+        Title="AddPlayer" Height="630" Width="912">
 
     <Page.Resources>
         <ResourceDictionary>
@@ -50,7 +50,7 @@
                 </Border>
             </Grid>
         </Border>
-        <Button Style="{StaticResource WindowButton}" Click="Button_Click_AddPlayer" HorizontalAlignment="Center" Margin="-200,0,0,10" Content="Save"/>
-        <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,10" Content="Cancel"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click_AddPlayer" HorizontalAlignment="Center" Margin="-200,0,0,20" Content="Save"/>
+        <Button Style="{StaticResource WindowButton}" Click="Button_Click_Cancel" HorizontalAlignment="Center" Margin="200,0,0,20" Content="Cancel"/>
     </Grid>
 </Page>
