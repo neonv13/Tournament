@@ -33,9 +33,9 @@ namespace Tournament.Views.Teams
 
         private void Button_Click_RemoveTeam(object sender, RoutedEventArgs e)
         {
-            int id = int.Parse(IDTextBox.Text);
+            int id;
             string name = NameTextBox.Text;
-            Team team = TeamViewModel.Teams.FindByID(id);
+            
             bool IsNameValid;
             bool IsTeamValid;
             bool IsIDValid;
@@ -44,23 +44,32 @@ namespace Tournament.Views.Teams
                 IsNameValid = true;
             else
             {
-                ErrorWindow errorNameWindow = new ErrorWindow();
-                errorNameWindow.ErrorContent.Text = "Please enter the Name";
-                errorNameWindow.Show();
+                Error("Please enter the Name");
                 return;
             }
 
-            if (id >= 0)
+            if (IDTextBox.Text != string.Empty)
             {
-                IsIDValid = true;
+                id = int.Parse(IDTextBox.Text);
+
+                if (id >= 0)
+                {
+                    IsIDValid = true;
+                }
+                else
+                {
+                    Error("Please enter corect ID");
+                    return;
+                }
+
             }
             else
             {
-                ErrorWindow errorSurnameWindow = new ErrorWindow();
-                errorSurnameWindow.ErrorContent.Text = "Please enter the ID";
-                errorSurnameWindow.Show();
+                Error("Please enter ID");
                 return;
             }
+
+            Team team = TeamViewModel.Teams.FindByID(id);
 
             if (team != null)
             {
@@ -68,25 +77,32 @@ namespace Tournament.Views.Teams
             }
             else
             {
-                ErrorWindow errorSurnameWindow = new ErrorWindow() { Width=400};
-                errorSurnameWindow.ErrorContent.Text = "There is no such Team in the database";
-                errorSurnameWindow.Show();
+                Error("There is no such Team in the database");
                 return;
             }
             
-            if (IsTeamValid && IsIDValid && IsNameValid)
+            if (IsTeamValid && IsIDValid && IsNameValid && team.Name == name)
             {
                 TeamViewModel.Teams.Remove(id);
                 NavigationService.Navigate(ViewTeams);
-                ErrorWindow errorSurnameWindow = new ErrorWindow();
-                errorSurnameWindow.ErrorContent.Text = "Succesfully removed Team";
-                errorSurnameWindow.Show();
+                Error( "Succesfully removed Team");
+            }
+            else
+            {
+                Error("There is no such Team in the database");
+                return;
             }
         }
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
             ViewTeams.MyListBox.Items.Refresh();
             NavigationService.Navigate(ViewTeams);
+        }
+        private void Error(string text)
+        {
+            ErrorWindow errorSurnameWindow = new ErrorWindow() { Width = 400 };
+            errorSurnameWindow.ErrorContent.Text = text;
+            errorSurnameWindow.Show();
         }
     }
 
