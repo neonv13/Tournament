@@ -2,6 +2,9 @@
 namespace Tournament.Models
 {
     using System.Collections.Generic;
+    /// <summary>
+    /// Stores instances of Match 
+    /// </summary>
     public class MatchList : BaseList<Match>
     {
         /// <summary>

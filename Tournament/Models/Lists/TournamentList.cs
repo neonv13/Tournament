@@ -2,6 +2,9 @@
 namespace Tournament.Models
 {
     using System.Collections.Generic;
+    /// <summary>
+    /// Stores instances of Tournament 
+    /// </summary
     public class TournamentList : BaseList<Tournaments>
     {
         /// <summary>

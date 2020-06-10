@@ -2,6 +2,9 @@
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Stores instances of Referee
+    /// </summary
     public class RefereeList : BaseList<Referee>
     {
         /// <summary>

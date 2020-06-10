@@ -6,6 +6,10 @@ using System.Windows;
 
 namespace Tournament.Models
 {
+    /// <summary>
+    /// Abstact class List<T> 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class BaseList<T> where T: BaseObject
     {
         public int Count { get; set; }
