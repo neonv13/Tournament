@@ -30,26 +30,40 @@ namespace Tournament.Views
         }
         private void Button_Click_RemovePlayer(object sender, RoutedEventArgs e)
         {
-            int id = int.Parse(IDTextBox.Text);
+            int id;
             string name= NameTextBox.Text;
             string surname = SurnameTextBox.Text;
-            Player player = PlayersViewModel.Players.FindByID(id);
             bool IsNameValid;
             bool IsSurnameValid;
             bool IsPlayerValid;
             bool IsIDValid;
 
-            if (id >= 0)
+            if (IDTextBox.Text != string.Empty)
             {
-                IsIDValid = true;
+                id = int.Parse(IDTextBox.Text);
+
+                if (id >= 0)
+                {
+                    IsIDValid = true;
+                }
+                else
+                {
+                    ErrorWindow errorNameWindow = new ErrorWindow();
+                    errorNameWindow.ErrorContent.Text = "Please enter corect ID";
+                    errorNameWindow.Show();
+                    return;
+                }
+
             }
-            else 
+            else
             {
-                ErrorWindow errorNameWindow = new ErrorWindow();
-                errorNameWindow.ErrorContent.Text = "Please enter the ID";
-                errorNameWindow.Show();
+                ErrorWindow errorWindow = new ErrorWindow();
+                errorWindow.ErrorContent.Text = "Please enter ID";
+                errorWindow.Show();
                 return;
             }
+
+            Player player = PlayersViewModel.Players.FindByID(id);
 
             if (name != string.Empty)
             {
@@ -82,14 +96,14 @@ namespace Tournament.Views
             }
             else
             {
-                ErrorWindow errorSurnameWindow = new ErrorWindow() { Width = Width + 200 };
+                ErrorWindow errorSurnameWindow = new ErrorWindow() { Width =  500 };
                 errorSurnameWindow.ErrorContent.Text = "There is no such player in the database";
                 errorSurnameWindow.Show();
                 return;
 
             }
 
-            if (IsPlayerValid && IsNameValid && IsSurnameValid && IsIDValid)
+            if (IsPlayerValid && IsNameValid && IsSurnameValid && IsIDValid && player.Name == name && player.Surname == surname)
             {
                 PlayersViewModel.Players.Remove(id);
                 ViewPlayers.Refresh();
@@ -97,6 +111,13 @@ namespace Tournament.Views
                 ErrorWindow errorWindow = new ErrorWindow();
                 errorWindow.ErrorContent.Text = "Succesfully removed Player";
                 errorWindow.Show();
+            }
+            else
+            {
+                ErrorWindow errorSurnameWindow = new ErrorWindow() { Width = 500 };
+                errorSurnameWindow.ErrorContent.Text = "There is no such player in the database";
+                errorSurnameWindow.Show();
+                return;
             }
         }
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)
