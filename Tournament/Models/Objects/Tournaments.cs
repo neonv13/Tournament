@@ -147,7 +147,6 @@ namespace Tournament.Models
             {
                 match.SymulateGame();
                 MatchHistory.Add(match);
-                MatchHistory.Count++;
                 MatchPlanned.Count--;
             }
 
