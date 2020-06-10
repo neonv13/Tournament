@@ -33,7 +33,7 @@ namespace Tournament.Views.Tournament.TourWindow
 
         private void PlannedMatches_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(PlannedMatches.SelectedItem is Match match && match.MatchRanks != MatchRanks.GroupStage)
+            if(PlannedMatches.SelectedItem is Match match)
             {
                 MatchProgression matchProgression = new MatchProgression(match,Planned,History);
                 matchProgression.Show();
