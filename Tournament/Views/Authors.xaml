@@ -36,6 +36,7 @@
                     <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="MVVM Implementation" Margin="30,55,5,5"/>
                     <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Base Models" Margin="30,80,5,5"/>
                     <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Front Design" Margin="30,105,5,5"/>
+                    <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Refactoring" Margin="30,130,5,5"/>
                 </Grid>
             </Border>
             <Border Margin="10" Grid.Row="1" BorderBrush="#FF252526" BorderThickness="1" >
@@ -45,6 +46,7 @@
                     <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Lists" Margin="30,55,5,5"/>
                     <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Front Design" Margin="30,80,5,5"/>
                     <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Documentation" Margin="30,105,5,5"/>
+                    <TextBlock  Style="{StaticResource MainText}" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Refactoring" Margin="30,130,5,5"/>
 
 
                 </Grid>
