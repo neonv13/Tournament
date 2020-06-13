@@ -45,6 +45,7 @@ namespace Tournament.Views.Tournament
             {
                 ErrorWindow errorWindow = new ErrorWindow();
                 errorWindow.Width += 100;
+                errorWindow.ErrorContent.Text = "Wrong ID or Name";
                 errorWindow.Show();
             }
             NavigationService.Navigate(ViewTournaments);

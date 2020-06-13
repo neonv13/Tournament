@@ -1,8 +1,6 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+using System.IO;
 
 namespace Tournament.Models
 {
@@ -10,7 +8,7 @@ namespace Tournament.Models
     /// Abstact class List<T> 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class BaseList<T> where T: BaseObject
+    public abstract class BaseList<T> where T : BaseObject
     {
         public int Count { get; set; }
         public List<T> List { get; set; }
@@ -45,7 +43,7 @@ namespace Tournament.Models
         {
             if (FindByID(t.ID) == null)
             {
-                if(t.ID < 0 )
+                if (t.ID < 0)
                     t.ID = MakeID();
                 List.Add(t);
                 Count++;
@@ -55,7 +53,7 @@ namespace Tournament.Models
         {
             Random random = new Random();
             var b = random.Next(1000);
-            while(FindByID(b) != null)
+            while (FindByID(b) != null)
             {
                 b = random.Next(1000);
             }
@@ -78,15 +76,22 @@ namespace Tournament.Models
         {
             System.Xml.Serialization.XmlSerializer reader =
                new System.Xml.Serialization.XmlSerializer(this.GetType());
-            System.IO.StreamReader file = new System.IO.StreamReader(path);
-            var obj = reader.Deserialize(file);
-            file.Close();
-            SetObj(obj);
+            try
+            {
+                System.IO.StreamReader file = new System.IO.StreamReader(path);
+                var obj = reader.Deserialize(file);
+                file.Close();
+                SetObj(obj);
+            }
+            catch
+            {
+                throw new DirectoryNotFoundException("There was no specyfied file");
+            }
         }
         /// <summary>
         /// Refills this Instance with obj Properies
         /// </summary>
         public abstract void SetObj(object obj);
-        
+
     }
 }

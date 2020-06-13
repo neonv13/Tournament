@@ -29,21 +29,77 @@ namespace Tournament.ViewModels
         }
         public void SaveAll() 
         {
-            PlayersViewModel.SavePlayersViewModel();
-            TeamViewModel.SaveTeamViewModel();
-            RefereesViewModel.SaveRefereesViewModel();
-            TournamentViewModel.SaveViewModel();
+            try
+            {
+                PlayersViewModel.SavePlayersViewModel();
+            }
+            catch (Exception)
+            {
+                throw new Exception("File playersList.xml not found");
+            }
+            try
+            {
+                TeamViewModel.SaveTeamViewModel();
+            }
+            catch (Exception)
+            {
+                throw new Exception("File teamsList.xml not found");
+            }
+            try
+            {
+                RefereesViewModel.SaveRefereesViewModel();
+            }
+            catch (Exception)
+            {
+                throw new Exception("File refereesList.xml not found");
+            }
+            try
+            {
+                TournamentViewModel.SaveViewModel();
+            }
+            catch (Exception)
+            {
+                throw new Exception("File tournamentsList.xml not found");
+            }
         }
         public void LoadAll() 
         {
-            PlayersViewModel.LoadPlayersViewModel();
-            PlayersView.ViewPlayers.Refresh();
-            TeamViewModel.LoadTeamViewModel();
-            TeamsView.ViewTeams.Refresh();
-            RefereesViewModel.LoadRefereesViewModel();
-            RefereeView.ViewReferees.Refresh();
-            TournamentViewModel.LoadViewModel();
-            TournamentView.Refresh();
+            try
+            {
+                PlayersViewModel.LoadPlayersViewModel();
+                PlayersView.ViewPlayers.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception("File playersList.xml not found");
+            }
+            try
+            {
+                TeamViewModel.LoadTeamViewModel();
+                TeamsView.ViewTeams.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception("File teamsList.xml not found");
+            }
+            try
+            {
+                RefereesViewModel.LoadRefereesViewModel();
+                RefereeView.ViewReferees.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception("File refereesList.xml not found");
+            }
+            try
+            {
+                TournamentViewModel.LoadViewModel();
+                TournamentView.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception("File tournamentsList.xml not found");
+            }
         }
     }
 }

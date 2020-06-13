@@ -36,17 +36,25 @@ namespace Tournament.Views
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
             MainViewModel.SaveAll();
-            ErrorWindow errorWindow = new ErrorWindow() {Width = 400 };
-            errorWindow.ErrorContent.Text = "Succesfully saved all data";
+            Error("Succesfully saved all data");
+        }
+        private void Error(string text)
+        {
+            ErrorWindow errorWindow = new ErrorWindow() { Width = 400 };
+            errorWindow.ErrorContent.Text = text;
             errorWindow.Show();
         }
-    
         private void Button_Click_Load(object sender, RoutedEventArgs e)
         {
-            MainViewModel.LoadAll();
-            ErrorWindow errorWindow = new ErrorWindow() {Width=400};
-            errorWindow.ErrorContent.Text = "Succesfully loaded all data";
-            errorWindow.Show();
+            try
+            {
+                MainViewModel.LoadAll();
+                Error("Succesfully loaded data");
+            }
+            catch(System.Exception ex) 
+            {
+                Error(ex.Message);
+            }
         }
         private void Button_Click_Authors(object sender, RoutedEventArgs e)
         {

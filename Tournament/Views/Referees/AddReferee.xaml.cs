@@ -28,6 +28,7 @@ namespace Tournament.Views.Referees
             ViewReferees = viewReferees;
             InitializeComponent();
         }
+
         private void Button_Click_AddReferee(object sender, RoutedEventArgs e)
         {
             string name = NameTextBox.Text;

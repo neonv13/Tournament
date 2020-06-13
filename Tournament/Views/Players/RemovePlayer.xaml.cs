@@ -28,42 +28,50 @@ namespace Tournament.Views
             PlayersViewModel = playersViewModel;
             InitializeComponent();
         }
+        private void Error(string text)
+        {
+            ErrorWindow errorNameWindow = new ErrorWindow();
+            errorNameWindow.ErrorContent.Text = text;
+            errorNameWindow.Show();
+        }
         private void Button_Click_RemovePlayer(object sender, RoutedEventArgs e)
         {
             int id;
-            string name= NameTextBox.Text;
+            string name = NameTextBox.Text;
             string surname = SurnameTextBox.Text;
+            Player player = null;
             bool IsNameValid;
             bool IsSurnameValid;
-            bool IsPlayerValid;
+            bool IsPlayerValid = false;
             bool IsIDValid;
 
-            if (IDTextBox.Text != string.Empty)
+
+            try 
             {
                 id = int.Parse(IDTextBox.Text);
-
                 if (id >= 0)
                 {
                     IsIDValid = true;
                 }
                 else
                 {
-                    ErrorWindow errorNameWindow = new ErrorWindow();
-                    errorNameWindow.ErrorContent.Text = "Please enter corect ID";
-                    errorNameWindow.Show();
+                    Error("Bad ID");
                     return;
                 }
-
             }
-            else
+            catch 
             {
-                ErrorWindow errorWindow = new ErrorWindow();
-                errorWindow.ErrorContent.Text = "Please enter ID";
-                errorWindow.Show();
+                Error("ID is null!");
                 return;
             }
 
-            Player player = PlayersViewModel.Players.FindByID(id);
+            if (IsIDValid)
+                player = PlayersViewModel.Players.FindByID(id);
+            if(player == null)
+            {
+                Error("No player with following ID");
+                return;
+            }
 
             if (name != string.Empty)
             {
@@ -71,9 +79,7 @@ namespace Tournament.Views
             }
             else
             {
-                ErrorWindow errorNameWindow = new ErrorWindow();
-                errorNameWindow.ErrorContent.Text = "Please enter the Name";
-                errorNameWindow.Show();
+                Error("Please enter the Name");
                 return;
             }
 
@@ -83,22 +89,7 @@ namespace Tournament.Views
             }
             else
             {
-                ErrorWindow errorSurnameWindow = new ErrorWindow();
-                errorSurnameWindow.ErrorContent.Text = "Please enter the Surname";
-                errorSurnameWindow.Show();
-                return;
-
-            }
-
-            if (player != null)
-            {
-                IsPlayerValid = true;
-            }
-            else
-            {
-                ErrorWindow errorSurnameWindow = new ErrorWindow() { Width =  500 };
-                errorSurnameWindow.ErrorContent.Text = "There is no such player in the database";
-                errorSurnameWindow.Show();
+                Error("Please enter the Surname");
                 return;
 
             }
@@ -108,15 +99,12 @@ namespace Tournament.Views
                 PlayersViewModel.Players.Remove(id);
                 ViewPlayers.Refresh();
                 NavigationService.Navigate(ViewPlayers);
-                ErrorWindow errorWindow = new ErrorWindow();
-                errorWindow.ErrorContent.Text = "Succesfully removed Player";
-                errorWindow.Show();
+                Error("Succesfully removed Player");
+                
             }
             else
             {
-                ErrorWindow errorSurnameWindow = new ErrorWindow() { Width = 500 };
-                errorSurnameWindow.ErrorContent.Text = "There is no such player in the database";
-                errorSurnameWindow.Show();
+                Error("Wrong data");
                 return;
             }
         }

@@ -32,6 +32,12 @@ namespace Tournament.Views
             PlayersViewModel = playersViewModel;
             InitializeComponent();
         }
+        private void Error(string text)
+        {
+            ErrorWindow errorNameWindow = new ErrorWindow();
+            errorNameWindow.ErrorContent.Text = text;
+            errorNameWindow.Show();
+        }
         private void Button_Click_AddPlayer(object sender, RoutedEventArgs e)
         {
             string name = NameTextBox.Text;
@@ -43,18 +49,14 @@ namespace Tournament.Views
                 IsNameValid = true;
             else
             {
-                ErrorWindow errorNameWindow = new ErrorWindow();
-                errorNameWindow.ErrorContent.Text = "Please enter the Name";
-                errorNameWindow.Show();
+                Error("Please enter the Name");
                 return;
             }
             if (surname != string.Empty)
                 IsSurameValid = true;
             else
             {
-                ErrorWindow errorSurnameWindow = new ErrorWindow();
-                errorSurnameWindow.ErrorContent.Text = "Please enter the Surname";
-                errorSurnameWindow.Show();
+                Error("Please enter the Surname");
                 return;
             }
 
@@ -62,14 +64,10 @@ namespace Tournament.Views
             {
                 PlayersViewModel.Players.Add(new Player() { Name = name, Surname = surname, ID = -1 });
                 ViewPlayers.Refresh();
-                ErrorWindow errorWindow = new ErrorWindow();
-                errorWindow.ErrorContent.Text = "Succesfully added Player";
-                errorWindow.Show();
+                Error("Succesfully added Player");
                 NavigationService.Navigate(ViewPlayers);
             }  
         }
-
-
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
             ViewPlayers.Refresh();
